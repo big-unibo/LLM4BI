@@ -1,0 +1,10 @@
+version: "3"
+services:
+  graphdb:
+    image: khaller/graphdb-free:10.8.4
+    ports:
+      - "7200:7200"
+      - "7300:7300"
+    volumes:
+      - ./graphdb_data:/opt/graphdb/data
+    restart: always
