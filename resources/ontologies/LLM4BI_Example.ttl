@@ -12,22 +12,22 @@
 
 LLM4BI_Example: a owl:Ontology .
 
-LLM4BI_Example:Quantity a LLM4BI:Measure;
+LLM4BI_Example:Quantity a LLM4BI:Measure .
 
 LLM4BI_Example:HistoricalOrder a LLM4BI:Fact ;
-    LLM4BI_Example:determines LLM4BI_Example:Quantity
-    LLM4BI_Example:determines LLM4BI_Example:Customer
+    LLM4BI_Example:determines LLM4BI_Example:Quantity ;
+    LLM4BI_Example:determines LLM4BI_Example:Customer .
 
 LLM4BI_Example:Customer a LLM4BI:Attribute ;
     LLM4BI:determines LLM4BI_Example:HistoricalOrder . 
 
 LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
     LLM4BI_Example:determines LLM4BI_Example:Customer ;
-    LLM4BI_Example:itemName "Country"
+    LLM4BI_Example:itemName "Country" ;
     LLM4BI_Example:Description "Country of the customer"^^xsd:string .
 
 << :Customer_Country  LLM4BI:determines LLM4BI_Example:Customer >> 
     :isOptional "True"^^xsd:boolean .
 
 LLM4BI_Example:Customer_Area a LLM4BI:CrossDimensionalAttribute ;
-    LLM4BI:Arc: LLM4BI_Example:Customer_Country ;
+    LLM4BI:Arc: LLM4BI_Example:Customer_Country .

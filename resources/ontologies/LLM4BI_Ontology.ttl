@@ -13,63 +13,13 @@
 
 LLM4BI:BIObject rdf:type owl:Class .
 
-# Concettualmente la FT non può essere optional, TODO
-LLM4BI:Fact rdf:type owl:Class ;
-    rdfs:subClassOf LLM4BI:BIObject .
+LLM4BI:Fact rdfs:subClassOf LLM4BI:BIObject .
 
-LLM4BI:Measure rdf:type owl:Class ;
-    rdfs:subClassOf LLM4BI:BIObject .
+LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
             
-LLM4BI:Attribute rdf:type owl:Class ;
-    rdfs:subClassOf LLM4BI:BIObject .
+LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
-# Modelling arcs
 LLM4BI:determines rdf:type rdf:type owl:Property ;
     rdfs:subPropertyOf owl:topDataProperty ;
     rdfs:domain DPDO:BIObject ;
-    rdfs:range DPDO:BIObject.
-
-
-# LLM4BI:Hierarchy rdf:type rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:determines ;
-#              rdfs:domain LLM4BI:Fact ;
-#              rdfs:range rdfs:Dimension .   
-
-# LLM4BI:isMultiple rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:determines ;
-#              rdfs:domain LLM4BI:BIObject ;
-#              rdfs:range xsd:boolAttributeean .
-
-# LLM4BI:isOptional rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:determines ;
-#              rdfs:domain LLM4BI:BIObject ;
-#              rdfs:range xsd:Attribute .
-
-# LLM4BI:name rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:determines ;
-#              rdfs:domain LLM4BI:BIObject ;
-#              rdfs:range rdfs:Literal .
-
-# #### Modellazione 2
-
-# LLM4BI:determines rdf:type owl:Class
-#     rdfs:subClassOf LLM4BI:BIObject .
-
-# LLM4BI:Multipledetermines rdf:type owl:Class ;
-#               rdfs:subClassOf LLM4BI:determines .
-
-# LLM4BI:Optionaldetermines rdf:type owl:Class ;
-#               rdfs:subClassOf LLM4BI:determines 
-
-# LLM4BI:Hierdetermineshy rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:topDataProperty ;
-#              rdfs:domain LLM4BI:Attribute ;
-#              rdfs:range rdfs:Literal .  
-    
-# LLM4BI:ConformedHierdetermineshy rdf:type owl:Property ;
-#              rdfs:subPropertyOf owl:topDataProperty ;
-#                 rdfs:domain LLM4BI:Attribute ;
-#                 rdfs:range rdfs:Literal .
-
-
-
+    rdfs:range DPDO:BIObject .
