@@ -19,12 +19,10 @@ LLM4BI_Example:HistoricalOrder a LLM4BI:Fact ;
     LLM4BI_Example:determines LLM4BI_Example:Customer
 
 LLM4BI_Example:Customer a LLM4BI:Attribute ;
-    LLM4BI:determines LLM4BI_Example:HistoricalOrder . ## Or the other way around
+    LLM4BI:determines LLM4BI_Example:HistoricalOrder . 
 
 LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
     LLM4BI_Example:determines LLM4BI_Example:Customer ;
-    LLM4BI_Example:isOptional True;
-    
     LLM4BI_Example:itemName "Country"
     LLM4BI_Example:Description "Country of the customer"^^xsd:string .
 
