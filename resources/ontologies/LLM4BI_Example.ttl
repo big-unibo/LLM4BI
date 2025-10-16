@@ -15,15 +15,25 @@ LLM4BI_Example: a owl:Ontology .
 
 LLM4BI_Example:Quantity a LLM4BI:Measure .
 
-LLM4BI_Example:HistoricalOrder a LLM4BI:Fact ;
-    LLM4BI:determines LLM4BI_Example:Quantity ;
-    LLM4BI:determines LLM4BI_Example:Customer .
+# Declaring fact table
+LLM4BI_Example:HistoricalOrder a LLM4BI:Fact .
 
-LLM4BI_Example:Customer a LLM4BI:Attribute ;
-    LLM4BI:determines LLM4BI_Example:HistoricalOrder . 
+# Customer dimension
+LLM4BI_Example:Customer a LLM4BI:Attribute .
 
-LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
-    LLM4BI:determines LLM4BI_Example:Customer .
+LLM4BI_Example:CustomerCountry a LLM4BI:Attribute ;
+    rdfs:label: "The nation of a city" ;
+    LLM4BI_Example:LogicalName "COUNTRY";
+    LLM4BI_Example:SampleValues ("Italy" "UK" "USA")
+    
+LLM4BI_Example:CustomerArea a LLM4BI:Attribute .
 
-<< LLM4BI_Example:Customer_Country  LLM4BI:determines LLM4BI_Example:Customer >> 
-    LLM4BI:isOptional "True"^^xsd:boolean .
+# Customer dimension edges
+LLM4BI_Example:Customer_CustomerCountry a LLM4BI:Edge;
+    LLM4BI:from LLM4BI_Example:Customer;
+    LLM4BI:to LLM4BI_Example:Customer_Country .
+
+LLM4BI_Example:CustomerCountry_CustomerArea a LLM4BI:Edge;
+    LLM4BI:from LLM4BI_Example:Customer_Country;
+    LLM4BI:to LLM4BI_Example:CustomerArea ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
