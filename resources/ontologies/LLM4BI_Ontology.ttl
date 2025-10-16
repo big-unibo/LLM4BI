@@ -7,7 +7,8 @@
 @prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @prefix spin:    <http://spinrdf.org/spin#> .
 @prefix spl:     <http://spinrdf.org/spl#> .
-@base <http://www.foo.bar/LLM4BI/ontologies/DPDO> .
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> .
+@base <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> .
 
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
 
@@ -19,7 +20,7 @@ LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
             
 LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
-LLM4BI:determines rdf:type rdf:type owl:Property ;
+LLM4BI:determines rdf:type owl:Property ;
     rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain DPDO:BIObject ;
-    rdfs:range DPDO:BIObject .
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range LLM4BI:BIObject .

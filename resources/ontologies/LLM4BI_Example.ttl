@@ -1,10 +1,9 @@
-@prefix @prefix LLM4BI_Example: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Example#> .
-
+@prefix LLM4BI_Example: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Example#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix DPDO: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix swrl: <http://www.w3.org/2003/11/swrl#> .
 @prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
@@ -17,19 +16,14 @@ LLM4BI_Example: a owl:Ontology .
 LLM4BI_Example:Quantity a LLM4BI:Measure .
 
 LLM4BI_Example:HistoricalOrder a LLM4BI:Fact ;
-    LLM4BI_Example:determines LLM4BI_Example:Quantity ;
-    LLM4BI_Example:determines LLM4BI_Example:Customer .
+    LLM4BI:determines LLM4BI_Example:Quantity ;
+    LLM4BI:determines LLM4BI_Example:Customer .
 
 LLM4BI_Example:Customer a LLM4BI:Attribute ;
     LLM4BI:determines LLM4BI_Example:HistoricalOrder . 
 
 LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
-    LLM4BI_Example:determines LLM4BI_Example:Customer ;
-    LLM4BI_Example:itemName "Country" ;
-    LLM4BI_Example:Description "Country of the customer"^^xsd:string .
+    LLM4BI:determines LLM4BI_Example:Customer .
 
-<< :Customer_Country  LLM4BI:determines LLM4BI_Example:Customer >> 
-    :isOptional "True"^^xsd:boolean .
-
-LLM4BI_Example:Customer_Area a LLM4BI:CrossDimensionalAttribute ;
-    LLM4BI:Arc: LLM4BI_Example:Customer_Country .
+<< LLM4BI_Example:Customer_Country  LLM4BI:determines LLM4BI_Example:Customer >> 
+    LLM4BI:isOptional "True"^^xsd:boolean .
