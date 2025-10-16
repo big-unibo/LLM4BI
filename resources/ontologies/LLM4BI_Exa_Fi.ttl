@@ -1,0 +1,64 @@
+@prefix LLM4BI:          <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix llm:             <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Example:  <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Example#> .
+@prefix owl:             <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:             <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:            <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:             <http://www.w3.org/2001/XMLSchema#> .
+
+@base <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Example> .
+
+# Ontology header for the example namespace (optional)
+LLM4BI_Example: a owl:Ontology .
+
+########## CLASSES (from LLM4BI ontology) ##########
+# We assume LLM4BI:Fact, LLM4BI:Measure, LLM4BI:Attribute, LLM4BI:Arc,
+# and properties llm:determines, llm:source, llm:target already exist
+# (e.g., from your ontology shim or corrected ontology).
+
+########## EXAMPLE INSTANCES ##########
+
+# Fact
+LLM4BI_Example:Fact_Historical_Order a LLM4BI:Fact ;
+    llm:itemName "Historical Order" .
+
+# Measure
+LLM4BI_Example:Quantity a LLM4BI:Measure ;
+    llm:itemName "Quantity" ;
+    llm:belongsToFactSchema "Historical Order" .
+
+# Attributes in the Customer hierarchy
+LLM4BI_Example:Customer a LLM4BI:Attribute ;
+    llm:itemID   "Customer" ;
+    llm:itemName "Customer" ;
+    llm:hierarchyName "Customer" ;
+    llm:belongsToFactSchema "Historical Order" .
+
+LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
+    llm:itemID   "Customer_Country" ;
+    llm:itemName "Customer Country" ;
+    llm:hierarchyName "Customer" ;
+    llm:belongsToFactSchema "Historical Order" ;
+    llm:Description "Country of the customer"^^xsd:string ;
+    llm:isOptional true .
+
+LLM4BI_Example:Customer_Area a LLM4BI:Attribute ;
+    llm:itemID   "Customer_Area" ;
+    llm:itemName "Customer Area" ;
+    llm:hierarchyName "Customer" ;
+    llm:belongsToFactSchema "Historical Order" .
+
+# Attribute → Attribute hierarchy (child → parent)
+# (Adjust direction if your convention is the inverse — this matches your earlier instruction.)
+LLM4BI_Example:Customer            llm:determines LLM4BI_Example:Customer_Country .
+LLM4BI_Example:Customer_Country    llm:determines LLM4BI_Example:Customer_Area .
+
+# Fact ↔ Attribute connections are represented as Arc individuals
+# (No llm:determines to/from Fact.)
+LLM4BI_Example:Arc_FACT_Customer a LLM4BI:Arc ;
+    llm:source LLM4BI_Example:Fact_Historical_Order ;
+    llm:target LLM4BI_Example:Customer .
+
+LLM4BI_Example:Arc_FACT_Customer_Country a LLM4BI:Arc ;
+    llm:source LLM4BI_Example:Fact_Historical_Order ;
+    llm:target LLM4BI_Example:Customer_Country .
