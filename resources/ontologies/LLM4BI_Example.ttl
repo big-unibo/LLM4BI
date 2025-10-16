@@ -13,27 +13,41 @@
 
 LLM4BI_Example: a owl:Ontology .
 
-LLM4BI_Example:Quantity a LLM4BI:Measure .
+## Template for nodes name
+# LLM4BI_Example:{FACT_NAME}_{NODE_NAME}
 
-# Declaring fact table
-LLM4BI_Example:HistoricalOrder a LLM4BI:Fact .
+## Template for edges name
+# LLM4BI_Example:{FACT_NAME}_{SOURCE_NODE_NAME}_{DEST_NODE:NAME}
+
+
+# Fact table
+LLM4BI_Example:HistoricalOrder a LLM4BI:Fact ;
+    LLM4BI_Example:HistoricalOrder_HistoricalOrder_Customer LLM4BI_Example:HistoricalOrder_Customer ;
+    LLM4BI_Example:HistoricalOrder_HistoricalOrder_Quantity LLM4BI_Example:HistoricalOrder_Quantity .
+
+# Measure
+LLM4BI_Example:HistoricalOrder_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ("SUM" "AVG") .
 
 # Customer dimension
-LLM4BI_Example:Customer a LLM4BI:Attribute .
+LLM4BI_Example:HistoricalOrder_Customer a LLM4BI:Attribute ;
+    LLM4BI_Example:HistoricalOrder_Customer_CustomerCountry LLM4BI_Example:HistoricalOrder_CustomerCountry .
 
-LLM4BI_Example:CustomerCountry a LLM4BI:Attribute ;
+LLM4BI_Example:HistoricalOrder_CustomerCountry a LLM4BI:Attribute ;
     rdfs:label: "The nation of a city" ;
-    LLM4BI:LogicalName "COUNTRY";
-    LLM4BI:SampleValues ("Italy" "UK" "USA")
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues ("Italy" "UK" "USA") ;
+    LLM4BI_Example:CustomerCountry_CustomerArea LLM4BI_Example:CustomerArea .
     
-LLM4BI_Example:CustomerArea a LLM4BI:Attribute .
+LLM4BI_Example:HistoricalOrder_CustomerArea a LLM4BI:Attribute .
 
-# Customer dimension edges
-LLM4BI_Example:Customer_CustomerCountry a LLM4BI:Dependency;
-    LLM4BI:from LLM4BI_Example:Customer;
-    LLM4BI:to LLM4BI_Example:Customer_Country .
+# Customer dimension dependencies
+LLM4BI_Example:HistoricalOrder_HistoricalOrder_Customer a LLM4BI:Dependency .
 
-LLM4BI_Example:CustomerCountry_CustomerArea a LLM4BI:Dependency;
-    LLM4BI:from LLM4BI_Example:Customer_Country;
-    LLM4BI:to LLM4BI_Example:CustomerArea ;
+LLM4BI_Example:HistoricalOrder_Customer_CustomerCountry a LLM4BI:Dependency .
+
+LLM4BI_Example:HistoricalOrder_CustomerCountry_CustomerArea a LLM4BI:Dependency;
     LLM4BI:isOptional "true"^^xsd:boolean .
+
+# Measure dependency
+LLM4BI_Example:HistoricalOrder_HistoricalOrder_Quantity a LLM4BI:Dependency .

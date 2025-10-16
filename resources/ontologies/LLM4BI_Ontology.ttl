@@ -20,12 +20,6 @@ LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
             
 LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
-LLM4BI:Dependency rdfs:subClassOf LLM4BI:BIObject .
-
-LLM4BI:from rdf:type owl:Property ;
-    rdfs:domain LLM4BI:Dependency ;
-    rdfs:range LLM4BI:Attribute .
-
-LLM4BI:to rdf:type owl:Property ;
-    rdfs:domain LLM4BI:Dependency ;
-    rdfs:range LLM4BI:Attribute .
+LLM4BI:Dependency rdfs:subClassOf owl:ObjectProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:range  LLM4BI:BIObject .
