@@ -1,0 +1,386 @@
+@prefix DPDO: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Invoice: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Invoice#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+LLM4BI_Invoice: a owl:Ontology .
+
+LLM4BI_Invoice:Invoice a DPDO:Fact ;
+    DPDO:determines LLM4BI_Invoice:Agent_Agent,
+        LLM4BI_Invoice:Agent_Area_Manager,
+        LLM4BI_Invoice:Agent_Controller,
+        LLM4BI_Invoice:Currency_Currency,
+        LLM4BI_Invoice:Doc_Type_Doc_Type,
+        LLM4BI_Invoice:First_Commercial_Discount,
+        LLM4BI_Invoice:Goods_On_Delivery_Goods_On_Delivery,
+        LLM4BI_Invoice:Net_Average_Price,
+        LLM4BI_Invoice:Net_Value,
+        LLM4BI_Invoice:Product_Age_Range,
+        LLM4BI_Invoice:Product_Brand,
+        LLM4BI_Invoice:Product_Brand_Group,
+        LLM4BI_Invoice:Product_Category,
+        LLM4BI_Invoice:Product_Color,
+        LLM4BI_Invoice:Product_Customer_Gender,
+        LLM4BI_Invoice:Product_Customer_Type,
+        LLM4BI_Invoice:Product_Macro_Color,
+        LLM4BI_Invoice:Product_Made_In,
+        LLM4BI_Invoice:Product_SKU,
+        LLM4BI_Invoice:Product_Size,
+        LLM4BI_Invoice:Product_Subtype,
+        LLM4BI_Invoice:Product_Type,
+        LLM4BI_Invoice:Profit_Center_Profit_Center,
+        LLM4BI_Invoice:Quantity,
+        LLM4BI_Invoice:Return_Justification_Return_Justification,
+        LLM4BI_Invoice:Season_Season,
+        LLM4BI_Invoice:Second_Commercial_Discount,
+        LLM4BI_Invoice:Sell_In_Margin,
+        LLM4BI_Invoice:Time_4_Month_Period,
+        LLM4BI_Invoice:Time_Date,
+        LLM4BI_Invoice:Time_Month,
+        LLM4BI_Invoice:Time_Month_In_Year,
+        LLM4BI_Invoice:Time_Quarter,
+        LLM4BI_Invoice:Time_Semester,
+        LLM4BI_Invoice:Time_Week,
+        LLM4BI_Invoice:Time_Year,
+        LLM4BI_Invoice:Virtual_Warehouse_Virtual_Warehouse,
+        LLM4BI_Invoice:shipping_Area,
+        LLM4BI_Invoice:shipping_Billing_Information,
+        LLM4BI_Invoice:shipping_City,
+        LLM4BI_Invoice:shipping_Country,
+        LLM4BI_Invoice:shipping_County,
+        LLM4BI_Invoice:shipping_Customer,
+        LLM4BI_Invoice:shipping_Shipping_Address,
+        LLM4BI_Invoice:shipping_State .
+
+LLM4BI_Invoice:Agent_Agent a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Invoice:Agent_Controller ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Agent"^^xsd:string .
+
+LLM4BI_Invoice:Agent_Area_Manager a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Area Manager"^^xsd:string .
+
+LLM4BI_Invoice:Currency_Currency a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Currency"^^xsd:string .
+
+LLM4BI_Invoice:Doc_Type_Doc_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Doc Type"^^xsd:string .
+
+LLM4BI_Invoice:First_Commercial_Discount a DPDO:Measure ;
+    DPDO:aggregationNotes "SUM"^^xsd:string .
+
+LLM4BI_Invoice:Goods_On_Delivery_Goods_On_Delivery a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Goods On Delivery"^^xsd:string .
+
+LLM4BI_Invoice:Net_Average_Price a DPDO:Measure ;
+    DPDO:aggregationNotes "AVG"^^xsd:string .
+
+LLM4BI_Invoice:Net_Value a DPDO:Measure ;
+    DPDO:aggregationNotes "SUM"^^xsd:string .
+
+LLM4BI_Invoice:Product_Age_Range a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive true ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Age Range"^^xsd:string .
+
+LLM4BI_Invoice:Product_Brand a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand"^^xsd:string .
+
+LLM4BI_Invoice:Product_Brand_Group a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand Group"^^xsd:string .
+
+LLM4BI_Invoice:Product_Category a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Category"^^xsd:string .
+
+LLM4BI_Invoice:Product_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Color"^^xsd:string .
+
+LLM4BI_Invoice:Product_Customer_Gender a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Gender"^^xsd:string .
+
+LLM4BI_Invoice:Product_Customer_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Type"^^xsd:string .
+
+LLM4BI_Invoice:Product_Macro_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Macro Color"^^xsd:string .
+
+LLM4BI_Invoice:Product_Made_In a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Made In"^^xsd:string .
+
+LLM4BI_Invoice:Product_SKU a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "SKU"^^xsd:string .
+
+LLM4BI_Invoice:Product_Size a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Size"^^xsd:string .
+
+LLM4BI_Invoice:Product_Subtype a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Subtype"^^xsd:string .
+
+LLM4BI_Invoice:Product_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Type"^^xsd:string .
+
+LLM4BI_Invoice:Profit_Center_Profit_Center a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Profit Center"^^xsd:string .
+
+LLM4BI_Invoice:Quantity a DPDO:Measure ;
+    DPDO:aggregationNotes "SUM, AVG"^^xsd:string .
+
+LLM4BI_Invoice:Return_Justification_Return_Justification a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Return Justification"^^xsd:string .
+
+LLM4BI_Invoice:Season_Season a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Season"^^xsd:string .
+
+LLM4BI_Invoice:Second_Commercial_Discount a DPDO:Measure ;
+    DPDO:aggregationNotes "SUM"^^xsd:string .
+
+LLM4BI_Invoice:Sell_In_Margin a DPDO:Measure .
+
+LLM4BI_Invoice:Time_4_Month_Period a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Invoice:Time_Year ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "4-Month Period"^^xsd:string .
+
+LLM4BI_Invoice:Time_Date a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Date"^^xsd:string .
+
+LLM4BI_Invoice:Time_Month a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Month"^^xsd:string .
+
+LLM4BI_Invoice:Time_Month_In_Year a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Month In Year"^^xsd:string .
+
+LLM4BI_Invoice:Time_Quarter a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Quarter"^^xsd:string .
+
+LLM4BI_Invoice:Time_Semester a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Invoice:Time_Year ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Semester"^^xsd:string .
+
+LLM4BI_Invoice:Time_Week a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Week"^^xsd:string .
+
+LLM4BI_Invoice:Virtual_Warehouse_Virtual_Warehouse a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Virtual Warehouse"^^xsd:string .
+
+LLM4BI_Invoice:shipping_Area a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Area"^^xsd:string .
+
+LLM4BI_Invoice:shipping_Billing_Information a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive true ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Billing Information"^^xsd:string .
+
+LLM4BI_Invoice:shipping_City a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "City"^^xsd:string .
+
+LLM4BI_Invoice:shipping_Country a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Country"^^xsd:string .
+
+LLM4BI_Invoice:shipping_County a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional true ;
+    DPDO:isShared false ;
+    DPDO:itemName "County"^^xsd:string .
+
+LLM4BI_Invoice:shipping_Customer a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared true ;
+    DPDO:itemName "Customer"^^xsd:string .
+
+LLM4BI_Invoice:shipping_Shipping_Address a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive true ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Shipping Address"^^xsd:string .
+
+LLM4BI_Invoice:shipping_State a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional true ;
+    DPDO:isShared false ;
+    DPDO:itemName "State"^^xsd:string .
+
+LLM4BI_Invoice:Agent_Controller a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Controller"^^xsd:string .
+
+LLM4BI_Invoice:Time_Year a DPDO:Attribute ;
+    DPDO:isConvergence true ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Year"^^xsd:string .
+

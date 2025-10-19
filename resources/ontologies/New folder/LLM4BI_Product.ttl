@@ -1,0 +1,126 @@
+@prefix DPDO: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Product: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Product#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+LLM4BI_Product: a owl:Ontology .
+
+LLM4BI_Product:Product a DPDO:Fact ;
+    DPDO:determines LLM4BI_Product:SKU_Age_Range,
+        LLM4BI_Product:SKU_Brand,
+        LLM4BI_Product:SKU_Brand_Group,
+        LLM4BI_Product:SKU_Category,
+        LLM4BI_Product:SKU_Color,
+        LLM4BI_Product:SKU_Customer_Gender,
+        LLM4BI_Product:SKU_Customer_Type,
+        LLM4BI_Product:SKU_Macro_Color,
+        LLM4BI_Product:SKU_Made_In,
+        LLM4BI_Product:SKU_SKU,
+        LLM4BI_Product:SKU_Size,
+        LLM4BI_Product:SKU_Subtype,
+        LLM4BI_Product:SKU_Type .
+
+LLM4BI_Product:SKU_Age_Range a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive true ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Age Range"^^xsd:string .
+
+LLM4BI_Product:SKU_Brand a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand"^^xsd:string .
+
+LLM4BI_Product:SKU_Brand_Group a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand Group"^^xsd:string .
+
+LLM4BI_Product:SKU_Category a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Category"^^xsd:string .
+
+LLM4BI_Product:SKU_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Color"^^xsd:string .
+
+LLM4BI_Product:SKU_Customer_Gender a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Gender"^^xsd:string .
+
+LLM4BI_Product:SKU_Customer_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Type"^^xsd:string .
+
+LLM4BI_Product:SKU_Macro_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Macro Color"^^xsd:string .
+
+LLM4BI_Product:SKU_Made_In a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Made In"^^xsd:string .
+
+LLM4BI_Product:SKU_SKU a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "SKU"^^xsd:string .
+
+LLM4BI_Product:SKU_Size a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Size"^^xsd:string .
+
+LLM4BI_Product:SKU_Subtype a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Subtype"^^xsd:string .
+
+LLM4BI_Product:SKU_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Type"^^xsd:string .
+

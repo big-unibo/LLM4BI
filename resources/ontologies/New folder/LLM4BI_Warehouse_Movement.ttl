@@ -1,0 +1,295 @@
+@prefix DPDO: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Warehouse_Movement: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Warehouse_Movement#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+LLM4BI_Warehouse_Movement: a owl:Ontology .
+
+LLM4BI_Warehouse_Movement:Warehouse_Movement a DPDO:Fact ;
+    DPDO:determines LLM4BI_Warehouse_Movement:Cause_Cause,
+        LLM4BI_Warehouse_Movement:Merchandise_Type_Merchandise_Type,
+        LLM4BI_Warehouse_Movement:Product_Age_Range,
+        LLM4BI_Warehouse_Movement:Product_Brand,
+        LLM4BI_Warehouse_Movement:Product_Brand_Group,
+        LLM4BI_Warehouse_Movement:Product_Category,
+        LLM4BI_Warehouse_Movement:Product_Color,
+        LLM4BI_Warehouse_Movement:Product_Customer_Gender,
+        LLM4BI_Warehouse_Movement:Product_Customer_Type,
+        LLM4BI_Warehouse_Movement:Product_Macro_Color,
+        LLM4BI_Warehouse_Movement:Product_Made_In,
+        LLM4BI_Warehouse_Movement:Product_SKU,
+        LLM4BI_Warehouse_Movement:Product_Size,
+        LLM4BI_Warehouse_Movement:Product_Subtype,
+        LLM4BI_Warehouse_Movement:Product_Type,
+        LLM4BI_Warehouse_Movement:Quantity,
+        LLM4BI_Warehouse_Movement:Warehouse_Area,
+        LLM4BI_Warehouse_Movement:Warehouse_City,
+        LLM4BI_Warehouse_Movement:Warehouse_Country,
+        LLM4BI_Warehouse_Movement:Warehouse_County,
+        LLM4BI_Warehouse_Movement:Warehouse_IsVirtual,
+        LLM4BI_Warehouse_Movement:Warehouse_State,
+        LLM4BI_Warehouse_Movement:Warehouse_Warehouse,
+        LLM4BI_Warehouse_Movement:Warehouse_Warehouse_Type,
+        LLM4BI_Warehouse_Movement:in_4_Month_Period,
+        LLM4BI_Warehouse_Movement:in_Date,
+        LLM4BI_Warehouse_Movement:in_Month,
+        LLM4BI_Warehouse_Movement:in_Month_In_Year,
+        LLM4BI_Warehouse_Movement:in_Quarter,
+        LLM4BI_Warehouse_Movement:in_Semester,
+        LLM4BI_Warehouse_Movement:in_Week,
+        LLM4BI_Warehouse_Movement:in_Year .
+
+LLM4BI_Warehouse_Movement:Cause_Cause a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Cause"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Merchandise_Type_Merchandise_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Merchandise Type"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Age_Range a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive true ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Age Range"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Brand a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Brand_Group a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Brand Group"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Category a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Category"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Color"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Customer_Gender a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Gender"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Customer_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Customer Type"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Macro_Color a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Macro Color"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Made_In a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Made In"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_SKU a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "SKU"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Size a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Size"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Subtype a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Subtype"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Product_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Type"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Quantity a DPDO:Measure ;
+    DPDO:aggregationNotes "AVG, MIN"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_Area a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Area"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_City a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "City"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_Country a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Country"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_County a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional true ;
+    DPDO:isShared false ;
+    DPDO:itemName "County"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_IsVirtual a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "IsVirtual"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_State a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional true ;
+    DPDO:isShared false ;
+    DPDO:itemName "State"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_Warehouse a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Warehouse_Movement:Warehouse_Warehouse_Type ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Warehouse"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_4_Month_Period a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Warehouse_Movement:in_Year ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "4-Month Period"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Date a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared true ;
+    DPDO:itemName "Date"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Month a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Month"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Month_In_Year a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Month In Year"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Quarter a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Quarter"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Semester a DPDO:Attribute ;
+    DPDO:determines LLM4BI_Warehouse_Movement:in_Year ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Semester"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Week a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Week"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:Warehouse_Warehouse_Type a DPDO:Attribute ;
+    DPDO:isConvergence false ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Warehouse Type"^^xsd:string .
+
+LLM4BI_Warehouse_Movement:in_Year a DPDO:Attribute ;
+    DPDO:isConvergence true ;
+    DPDO:isCrossDimensional false ;
+    DPDO:isDescriptive false ;
+    DPDO:isOptional false ;
+    DPDO:isShared false ;
+    DPDO:itemName "Year"^^xsd:string .
+
