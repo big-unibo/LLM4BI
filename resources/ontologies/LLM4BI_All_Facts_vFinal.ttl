@@ -1,0 +1,3407 @@
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Example: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Example#> .
+
+LLM4BI_Example:Agent a LLM4BI:Fact ;
+    LLM4BI_Example:Agent_Agent_Agent LLM4BI_Example:Agent_Agent ;
+    LLM4BI_Example:Agent_Agent_Area_Manager LLM4BI_Example:Agent_Area_Manager ;
+    LLM4BI_Example:Agent_Agent_Controller LLM4BI_Example:Agent_Controller .
+
+LLM4BI_Example:Agent_Agent_Agent a LLM4BI:Dependency .
+
+LLM4BI_Example:Agent_Agent_Area_Manager a LLM4BI:Dependency .
+
+LLM4BI_Example:Agent_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_agent_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_agent_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_agent_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_area_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_area_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_area_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_controller_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_controller_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Agent_controller_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_area_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_area_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_area_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_billing_information_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_city_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_country_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_country_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_country_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_county_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_customer_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_shipping_address_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Customer_state_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_area_Customer_to_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_area_Customer_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_area_Store_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_city_Customer_to_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_city_Customer_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_city_Store_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_country_Customer_to_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_country_Customer_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_country_Store_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_county_Customer_to_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_county_Customer_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_county_Store_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_state_Customer_to_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_state_Customer_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Geography_state_Store_to_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_age_range_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_brand_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_category_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_color_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_customer_gender_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_made_in_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_size_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_sku_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_subtype_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Product_type_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_address_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_area_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_city_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_country_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_county_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_district_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_isconnected_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_state_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_store_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Store_type_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_date_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_month_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_quarter_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_semester_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_week_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Invoice a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Order a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Order_to_Shop_Ticket a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Order_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Order_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Third_Party_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Traffic_Counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Time_year_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_area_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_area_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_area_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_city_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_city_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_city_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_country_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_country_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_country_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_county_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_county_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_county_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_isvirtual_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_state_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_state_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_state_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_type_Third_Party_Warehouse_Stock_to_Warehouse_Movement a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_type_Third_Party_Warehouse_Stock_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_type_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Conformed_Warehouse_warehouse_Warehouse_Movement_to_Warehouse_Stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer a LLM4BI:Fact ;
+    LLM4BI_Example:Customer_Customer_Area LLM4BI_Example:Customer_Area ;
+    LLM4BI_Example:Customer_Customer_Billing_Information LLM4BI_Example:Customer_Billing_Information ;
+    LLM4BI_Example:Customer_Customer_City LLM4BI_Example:Customer_City ;
+    LLM4BI_Example:Customer_Customer_Country LLM4BI_Example:Customer_Country ;
+    LLM4BI_Example:Customer_Customer_County LLM4BI_Example:Customer_County ;
+    LLM4BI_Example:Customer_Customer_Customer LLM4BI_Example:Customer_Customer ;
+    LLM4BI_Example:Customer_Customer_Shipping_Address LLM4BI_Example:Customer_Shipping_Address ;
+    LLM4BI_Example:Customer_Customer_State LLM4BI_Example:Customer_State .
+
+LLM4BI_Example:Customer_Customer_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_Billing_Information a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_Customer a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_Shipping_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Customer_Customer_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography a LLM4BI:Fact ;
+    LLM4BI_Example:Geography_Geography_Area LLM4BI_Example:Geography_Area ;
+    LLM4BI_Example:Geography_Geography_City LLM4BI_Example:Geography_City ;
+    LLM4BI_Example:Geography_Geography_Country LLM4BI_Example:Geography_Country ;
+    LLM4BI_Example:Geography_Geography_County LLM4BI_Example:Geography_County ;
+    LLM4BI_Example:Geography_Geography_State LLM4BI_Example:Geography_State .
+
+LLM4BI_Example:Geography_Area_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_City_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_County_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_Geography_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_Geography_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_Geography_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_Geography_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_Geography_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Geography_State_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order a LLM4BI:Fact ;
+    LLM4BI_Example:Historical_Order_Historical_Order_4_Month_Period LLM4BI_Example:Historical_Order_4_Month_Period ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Age_Range LLM4BI_Example:Historical_Order_Age_Range ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Area LLM4BI_Example:Historical_Order_Area ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Category LLM4BI_Example:Historical_Order_Category ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Country LLM4BI_Example:Historical_Order_Country ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Currency LLM4BI_Example:Historical_Order_Currency ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Customer_Type LLM4BI_Example:Historical_Order_Customer_Type ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Discount_Value LLM4BI_Example:Historical_Order_Discount_Value ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Month LLM4BI_Example:Historical_Order_Month ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Month_In_Year LLM4BI_Example:Historical_Order_Month_In_Year ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Net_Value LLM4BI_Example:Historical_Order_Net_Value ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Quantity LLM4BI_Example:Historical_Order_Quantity ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Quarter LLM4BI_Example:Historical_Order_Quarter ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Season LLM4BI_Example:Historical_Order_Season ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Semester LLM4BI_Example:Historical_Order_Semester ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Subtype LLM4BI_Example:Historical_Order_Subtype ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Type LLM4BI_Example:Historical_Order_Type ;
+    LLM4BI_Example:Historical_Order_Historical_Order_VAT_Value LLM4BI_Example:Historical_Order_VAT_Value ;
+    LLM4BI_Example:Historical_Order_Historical_Order_Year LLM4BI_Example:Historical_Order_Year .
+
+LLM4BI_Example:Historical_Order_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Currency a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Season a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Historical_Order_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Historical_Order_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice a LLM4BI:Fact ;
+    LLM4BI_Example:Invoice_Invoice_4_Month_Period LLM4BI_Example:Invoice_4_Month_Period ;
+    LLM4BI_Example:Invoice_Invoice_Age_Range LLM4BI_Example:Invoice_Age_Range ;
+    LLM4BI_Example:Invoice_Invoice_Agent LLM4BI_Example:Invoice_Agent ;
+    LLM4BI_Example:Invoice_Invoice_Area LLM4BI_Example:Invoice_Area ;
+    LLM4BI_Example:Invoice_Invoice_Area_Manager LLM4BI_Example:Invoice_Area_Manager ;
+    LLM4BI_Example:Invoice_Invoice_Billing_Information LLM4BI_Example:Invoice_Billing_Information ;
+    LLM4BI_Example:Invoice_Invoice_Brand LLM4BI_Example:Invoice_Brand ;
+    LLM4BI_Example:Invoice_Invoice_Brand_Group LLM4BI_Example:Invoice_Brand_Group ;
+    LLM4BI_Example:Invoice_Invoice_Category LLM4BI_Example:Invoice_Category ;
+    LLM4BI_Example:Invoice_Invoice_City LLM4BI_Example:Invoice_City ;
+    LLM4BI_Example:Invoice_Invoice_Color LLM4BI_Example:Invoice_Color ;
+    LLM4BI_Example:Invoice_Invoice_Controller LLM4BI_Example:Invoice_Controller ;
+    LLM4BI_Example:Invoice_Invoice_Country LLM4BI_Example:Invoice_Country ;
+    LLM4BI_Example:Invoice_Invoice_County LLM4BI_Example:Invoice_County ;
+    LLM4BI_Example:Invoice_Invoice_Currency LLM4BI_Example:Invoice_Currency ;
+    LLM4BI_Example:Invoice_Invoice_Customer LLM4BI_Example:Invoice_Customer ;
+    LLM4BI_Example:Invoice_Invoice_Customer_Gender LLM4BI_Example:Invoice_Customer_Gender ;
+    LLM4BI_Example:Invoice_Invoice_Customer_Type LLM4BI_Example:Invoice_Customer_Type ;
+    LLM4BI_Example:Invoice_Invoice_Date LLM4BI_Example:Invoice_Date ;
+    LLM4BI_Example:Invoice_Invoice_Doc_Type LLM4BI_Example:Invoice_Doc_Type ;
+    LLM4BI_Example:Invoice_Invoice_First_Commercial_Discount LLM4BI_Example:Invoice_First_Commercial_Discount ;
+    LLM4BI_Example:Invoice_Invoice_Goods_On_Delivery LLM4BI_Example:Invoice_Goods_On_Delivery ;
+    LLM4BI_Example:Invoice_Invoice_Macro_Color LLM4BI_Example:Invoice_Macro_Color ;
+    LLM4BI_Example:Invoice_Invoice_Made_In LLM4BI_Example:Invoice_Made_In ;
+    LLM4BI_Example:Invoice_Invoice_Month LLM4BI_Example:Invoice_Month ;
+    LLM4BI_Example:Invoice_Invoice_Month_In_Year LLM4BI_Example:Invoice_Month_In_Year ;
+    LLM4BI_Example:Invoice_Invoice_Net_Average_Price LLM4BI_Example:Invoice_Net_Average_Price ;
+    LLM4BI_Example:Invoice_Invoice_Net_Value LLM4BI_Example:Invoice_Net_Value ;
+    LLM4BI_Example:Invoice_Invoice_Profit_Center LLM4BI_Example:Invoice_Profit_Center ;
+    LLM4BI_Example:Invoice_Invoice_Quantity LLM4BI_Example:Invoice_Quantity ;
+    LLM4BI_Example:Invoice_Invoice_Quarter LLM4BI_Example:Invoice_Quarter ;
+    LLM4BI_Example:Invoice_Invoice_Return_Justification LLM4BI_Example:Invoice_Return_Justification ;
+    LLM4BI_Example:Invoice_Invoice_SKU LLM4BI_Example:Invoice_SKU ;
+    LLM4BI_Example:Invoice_Invoice_Season LLM4BI_Example:Invoice_Season ;
+    LLM4BI_Example:Invoice_Invoice_Second_Commercial_Discount LLM4BI_Example:Invoice_Second_Commercial_Discount ;
+    LLM4BI_Example:Invoice_Invoice_Sell_In_Margin LLM4BI_Example:Invoice_Sell_In_Margin ;
+    LLM4BI_Example:Invoice_Invoice_Semester LLM4BI_Example:Invoice_Semester ;
+    LLM4BI_Example:Invoice_Invoice_Shipping_Address LLM4BI_Example:Invoice_Shipping_Address ;
+    LLM4BI_Example:Invoice_Invoice_Size LLM4BI_Example:Invoice_Size ;
+    LLM4BI_Example:Invoice_Invoice_State LLM4BI_Example:Invoice_State ;
+    LLM4BI_Example:Invoice_Invoice_Subtype LLM4BI_Example:Invoice_Subtype ;
+    LLM4BI_Example:Invoice_Invoice_Type LLM4BI_Example:Invoice_Type ;
+    LLM4BI_Example:Invoice_Invoice_Virtual_Warehouse LLM4BI_Example:Invoice_Virtual_Warehouse ;
+    LLM4BI_Example:Invoice_Invoice_Week LLM4BI_Example:Invoice_Week ;
+    LLM4BI_Example:Invoice_Invoice_Year LLM4BI_Example:Invoice_Year .
+
+LLM4BI_Example:Invoice_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Agent a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Area_Manager a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Billing_Information a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Currency a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Customer a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Doc_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_First_Commercial_Discount a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Goods_On_Delivery a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Net_Average_Price a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Profit_Center a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Return_Justification a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Season a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Second_Commercial_Discount a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Sell_In_Margin a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Shipping_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Virtual_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Invoice_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Invoice_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Order a LLM4BI:Fact ;
+    LLM4BI_Example:Order_Order_4_Month_Period LLM4BI_Example:Order_4_Month_Period ;
+    LLM4BI_Example:Order_Order_Age_Range LLM4BI_Example:Order_Age_Range ;
+    LLM4BI_Example:Order_Order_Agent LLM4BI_Example:Order_Agent ;
+    LLM4BI_Example:Order_Order_Area LLM4BI_Example:Order_Area ;
+    LLM4BI_Example:Order_Order_Area_Manager LLM4BI_Example:Order_Area_Manager ;
+    LLM4BI_Example:Order_Order_Billing_Information LLM4BI_Example:Order_Billing_Information ;
+    LLM4BI_Example:Order_Order_Brand LLM4BI_Example:Order_Brand ;
+    LLM4BI_Example:Order_Order_Brand_Group LLM4BI_Example:Order_Brand_Group ;
+    LLM4BI_Example:Order_Order_Category LLM4BI_Example:Order_Category ;
+    LLM4BI_Example:Order_Order_City LLM4BI_Example:Order_City ;
+    LLM4BI_Example:Order_Order_Color LLM4BI_Example:Order_Color ;
+    LLM4BI_Example:Order_Order_Controller LLM4BI_Example:Order_Controller ;
+    LLM4BI_Example:Order_Order_Country LLM4BI_Example:Order_Country ;
+    LLM4BI_Example:Order_Order_County LLM4BI_Example:Order_County ;
+    LLM4BI_Example:Order_Order_Currency LLM4BI_Example:Order_Currency ;
+    LLM4BI_Example:Order_Order_Customer LLM4BI_Example:Order_Customer ;
+    LLM4BI_Example:Order_Order_Customer_Gender LLM4BI_Example:Order_Customer_Gender ;
+    LLM4BI_Example:Order_Order_Customer_Type LLM4BI_Example:Order_Customer_Type ;
+    LLM4BI_Example:Order_Order_Date LLM4BI_Example:Order_Date ;
+    LLM4BI_Example:Order_Order_Discount_Value LLM4BI_Example:Order_Discount_Value ;
+    LLM4BI_Example:Order_Order_Macro_Color LLM4BI_Example:Order_Macro_Color ;
+    LLM4BI_Example:Order_Order_Made_In LLM4BI_Example:Order_Made_In ;
+    LLM4BI_Example:Order_Order_Merchandise_Type LLM4BI_Example:Order_Merchandise_Type ;
+    LLM4BI_Example:Order_Order_Month LLM4BI_Example:Order_Month ;
+    LLM4BI_Example:Order_Order_Month_In_Year LLM4BI_Example:Order_Month_In_Year ;
+    LLM4BI_Example:Order_Order_Net_Value LLM4BI_Example:Order_Net_Value ;
+    LLM4BI_Example:Order_Order_Order_Type LLM4BI_Example:Order_Order_Type ;
+    LLM4BI_Example:Order_Order_Quantity LLM4BI_Example:Order_Quantity ;
+    LLM4BI_Example:Order_Order_Quarter LLM4BI_Example:Order_Quarter ;
+    LLM4BI_Example:Order_Order_SKU LLM4BI_Example:Order_SKU ;
+    LLM4BI_Example:Order_Order_Season LLM4BI_Example:Order_Season ;
+    LLM4BI_Example:Order_Order_Semester LLM4BI_Example:Order_Semester ;
+    LLM4BI_Example:Order_Order_Shipping_Address LLM4BI_Example:Order_Shipping_Address ;
+    LLM4BI_Example:Order_Order_Size LLM4BI_Example:Order_Size ;
+    LLM4BI_Example:Order_Order_State LLM4BI_Example:Order_State ;
+    LLM4BI_Example:Order_Order_Subtype LLM4BI_Example:Order_Subtype ;
+    LLM4BI_Example:Order_Order_Type LLM4BI_Example:Order_Type ;
+    LLM4BI_Example:Order_Order_VAT_Value LLM4BI_Example:Order_VAT_Value ;
+    LLM4BI_Example:Order_Order_Week LLM4BI_Example:Order_Week ;
+    LLM4BI_Example:Order_Order_Year LLM4BI_Example:Order_Year .
+
+LLM4BI_Example:Order_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Agent a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Area_Manager a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Billing_Information a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Currency a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Customer a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Merchandise_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Order_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Season a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Shipping_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Order_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Product a LLM4BI:Fact ;
+    LLM4BI_Example:Product_Product_Age_Range LLM4BI_Example:Product_Age_Range ;
+    LLM4BI_Example:Product_Product_Brand LLM4BI_Example:Product_Brand ;
+    LLM4BI_Example:Product_Product_Brand_Group LLM4BI_Example:Product_Brand_Group ;
+    LLM4BI_Example:Product_Product_Category LLM4BI_Example:Product_Category ;
+    LLM4BI_Example:Product_Product_Color LLM4BI_Example:Product_Color ;
+    LLM4BI_Example:Product_Product_Customer_Gender LLM4BI_Example:Product_Customer_Gender ;
+    LLM4BI_Example:Product_Product_Customer_Type LLM4BI_Example:Product_Customer_Type ;
+    LLM4BI_Example:Product_Product_Macro_Color LLM4BI_Example:Product_Macro_Color ;
+    LLM4BI_Example:Product_Product_Made_In LLM4BI_Example:Product_Made_In ;
+    LLM4BI_Example:Product_Product_SKU LLM4BI_Example:Product_SKU ;
+    LLM4BI_Example:Product_Product_Size LLM4BI_Example:Product_Size ;
+    LLM4BI_Example:Product_Product_Subtype LLM4BI_Example:Product_Subtype ;
+    LLM4BI_Example:Product_Product_Type LLM4BI_Example:Product_Type .
+
+LLM4BI_Example:Product_Product_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Product_Product_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket a LLM4BI:Fact ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_4_Month_Period LLM4BI_Example:Shop_Ticket_4_Month_Period ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Address LLM4BI_Example:Shop_Ticket_Address ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Age_Range LLM4BI_Example:Shop_Ticket_Age_Range ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Agent LLM4BI_Example:Shop_Ticket_Agent ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Area LLM4BI_Example:Shop_Ticket_Area ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Area_Manager LLM4BI_Example:Shop_Ticket_Area_Manager ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Brand LLM4BI_Example:Shop_Ticket_Brand ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Brand_Group LLM4BI_Example:Shop_Ticket_Brand_Group ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Category LLM4BI_Example:Shop_Ticket_Category ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_City LLM4BI_Example:Shop_Ticket_City ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Color LLM4BI_Example:Shop_Ticket_Color ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Controller LLM4BI_Example:Shop_Ticket_Controller ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Country LLM4BI_Example:Shop_Ticket_Country ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_County LLM4BI_Example:Shop_Ticket_County ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Currency LLM4BI_Example:Shop_Ticket_Currency ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Customer_Gender LLM4BI_Example:Shop_Ticket_Customer_Gender ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Customer_Type LLM4BI_Example:Shop_Ticket_Customer_Type ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Date LLM4BI_Example:Shop_Ticket_Date ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Discount_Value LLM4BI_Example:Shop_Ticket_Discount_Value ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_IsConnected LLM4BI_Example:Shop_Ticket_IsConnected ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Location_Type LLM4BI_Example:Shop_Ticket_Location_Type ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Macro_Color LLM4BI_Example:Shop_Ticket_Macro_Color ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Made_In LLM4BI_Example:Shop_Ticket_Made_In ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Month LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Month_In_Year LLM4BI_Example:Shop_Ticket_Month_In_Year ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Net_Value LLM4BI_Example:Shop_Ticket_Net_Value ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Quantity LLM4BI_Example:Shop_Ticket_Quantity ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Quarter LLM4BI_Example:Shop_Ticket_Quarter ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_SKU LLM4BI_Example:Shop_Ticket_SKU ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Sales_District LLM4BI_Example:Shop_Ticket_Sales_District ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Season LLM4BI_Example:Shop_Ticket_Season ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Semester LLM4BI_Example:Shop_Ticket_Semester ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Size LLM4BI_Example:Shop_Ticket_Size ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_State LLM4BI_Example:Shop_Ticket_State ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Store LLM4BI_Example:Shop_Ticket_Store ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Subtype LLM4BI_Example:Shop_Ticket_Subtype ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Type LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_VAT_Value LLM4BI_Example:Shop_Ticket_VAT_Value ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Week LLM4BI_Example:Shop_Ticket_Week ;
+    LLM4BI_Example:Shop_Ticket_Shop_Ticket_Year LLM4BI_Example:Shop_Ticket_Year .
+
+LLM4BI_Example:Shop_Ticket_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Agent a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Area_Manager a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Controller a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Currency a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_IsConnected a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Location_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Sales_District a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Season a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Shop_Ticket_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Shop_Ticket_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Store a LLM4BI:Fact ;
+    LLM4BI_Example:Store_Store_Address LLM4BI_Example:Store_Address ;
+    LLM4BI_Example:Store_Store_Area LLM4BI_Example:Store_Area ;
+    LLM4BI_Example:Store_Store_City LLM4BI_Example:Store_City ;
+    LLM4BI_Example:Store_Store_Country LLM4BI_Example:Store_Country ;
+    LLM4BI_Example:Store_Store_County LLM4BI_Example:Store_County ;
+    LLM4BI_Example:Store_Store_IsConnected LLM4BI_Example:Store_IsConnected ;
+    LLM4BI_Example:Store_Store_Location_Type LLM4BI_Example:Store_Location_Type ;
+    LLM4BI_Example:Store_Store_Sales_District LLM4BI_Example:Store_Sales_District ;
+    LLM4BI_Example:Store_Store_State LLM4BI_Example:Store_State ;
+    LLM4BI_Example:Store_Store_Store LLM4BI_Example:Store_Store .
+
+LLM4BI_Example:Store_Store_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_IsConnected a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_Location_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_Sales_District a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Store_Store_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_4_Month_Period LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Age_Range LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Area LLM4BI_Example:Third_Party_Warehouse_Stock_Area ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Brand LLM4BI_Example:Third_Party_Warehouse_Stock_Brand ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Brand_Group LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Category LLM4BI_Example:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Color LLM4BI_Example:Third_Party_Warehouse_Stock_Color ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Country LLM4BI_Example:Third_Party_Warehouse_Stock_Country ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_County LLM4BI_Example:Third_Party_Warehouse_Stock_County ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Customer_Gender LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Gender ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Customer_Type LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Date LLM4BI_Example:Third_Party_Warehouse_Stock_Date ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Macro_Color LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Made_In LLM4BI_Example:Third_Party_Warehouse_Stock_Made_In ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Month LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Month_In_Year LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quantity_in_stock LLM4BI_Example:Third_Party_Warehouse_Stock_Quantity_in_stock ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quarter LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_SKU LLM4BI_Example:Third_Party_Warehouse_Stock_SKU ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Semester LLM4BI_Example:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Size LLM4BI_Example:Third_Party_Warehouse_Stock_Size ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_State LLM4BI_Example:Third_Party_Warehouse_Stock_State ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Subtype LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Type LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Warehouse_City LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_City ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Warehouse_Type LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Week LLM4BI_Example:Third_Party_Warehouse_Stock_Week ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Year LLM4BI_Example:Third_Party_Warehouse_Stock_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Area_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_County_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_State_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Warehouse_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_City_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Time a LLM4BI:Fact ;
+    LLM4BI_Example:Time_Time_4_Month_Period LLM4BI_Example:Time_4_Month_Period ;
+    LLM4BI_Example:Time_Time_Date LLM4BI_Example:Time_Date ;
+    LLM4BI_Example:Time_Time_Month LLM4BI_Example:Time_Month ;
+    LLM4BI_Example:Time_Time_Month_In_Year LLM4BI_Example:Time_Month_In_Year ;
+    LLM4BI_Example:Time_Time_Quarter LLM4BI_Example:Time_Quarter ;
+    LLM4BI_Example:Time_Time_Semester LLM4BI_Example:Time_Semester ;
+    LLM4BI_Example:Time_Time_Week LLM4BI_Example:Time_Week ;
+    LLM4BI_Example:Time_Time_Year LLM4BI_Example:Time_Year .
+
+LLM4BI_Example:Time_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Time_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter a LLM4BI:Fact ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_4_Month_Period LLM4BI_Example:Traffic_Counter_4_Month_Period ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Address LLM4BI_Example:Traffic_Counter_Address ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Area LLM4BI_Example:Traffic_Counter_Area ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_City LLM4BI_Example:Traffic_Counter_City ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Country LLM4BI_Example:Traffic_Counter_Country ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_County LLM4BI_Example:Traffic_Counter_County ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Date LLM4BI_Example:Traffic_Counter_Date ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Hour LLM4BI_Example:Traffic_Counter_Hour ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_IsConnected LLM4BI_Example:Traffic_Counter_IsConnected ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Location_Type LLM4BI_Example:Traffic_Counter_Location_Type ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Month LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Month_In_Year LLM4BI_Example:Traffic_Counter_Month_In_Year ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_People_tickets_ratio LLM4BI_Example:Traffic_Counter_People_tickets_ratio ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Quarter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Sales_District LLM4BI_Example:Traffic_Counter_Sales_District ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Semester LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_State LLM4BI_Example:Traffic_Counter_State ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Store LLM4BI_Example:Traffic_Counter_Store ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Traffic_counter LLM4BI_Example:Traffic_Counter_Traffic_counter ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Week LLM4BI_Example:Traffic_Counter_Week ;
+    LLM4BI_Example:Traffic_Counter_Traffic_Counter_Year LLM4BI_Example:Traffic_Counter_Year .
+
+LLM4BI_Example:Traffic_Counter_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Address a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Hour a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_IsConnected a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Location_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_People_tickets_ratio a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Sales_District a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Store a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Traffic_counter a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Traffic_Counter_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Traffic_Counter_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse a LLM4BI:Fact ;
+    LLM4BI_Example:Warehouse_Warehouse_Area LLM4BI_Example:Warehouse_Area ;
+    LLM4BI_Example:Warehouse_Warehouse_City LLM4BI_Example:Warehouse_City ;
+    LLM4BI_Example:Warehouse_Warehouse_Country LLM4BI_Example:Warehouse_Country ;
+    LLM4BI_Example:Warehouse_Warehouse_County LLM4BI_Example:Warehouse_County ;
+    LLM4BI_Example:Warehouse_Warehouse_IsVirtual LLM4BI_Example:Warehouse_IsVirtual ;
+    LLM4BI_Example:Warehouse_Warehouse_State LLM4BI_Example:Warehouse_State ;
+    LLM4BI_Example:Warehouse_Warehouse_Warehouse LLM4BI_Example:Warehouse_Warehouse ;
+    LLM4BI_Example:Warehouse_Warehouse_Warehouse_Type LLM4BI_Example:Warehouse_Warehouse_Type .
+
+LLM4BI_Example:Warehouse_Movement a LLM4BI:Fact ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_4_Month_Period LLM4BI_Example:Warehouse_Movement_4_Month_Period ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Age_Range LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Area LLM4BI_Example:Warehouse_Movement_Area ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Brand LLM4BI_Example:Warehouse_Movement_Brand ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Brand_Group LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Category LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Cause LLM4BI_Example:Warehouse_Movement_Cause ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_City LLM4BI_Example:Warehouse_Movement_City ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Color LLM4BI_Example:Warehouse_Movement_Color ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Country LLM4BI_Example:Warehouse_Movement_Country ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_County LLM4BI_Example:Warehouse_Movement_County ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Customer_Gender LLM4BI_Example:Warehouse_Movement_Customer_Gender ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Customer_Type LLM4BI_Example:Warehouse_Movement_Customer_Type ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Date LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_IsVirtual LLM4BI_Example:Warehouse_Movement_IsVirtual ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Macro_Color LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Made_In LLM4BI_Example:Warehouse_Movement_Made_In ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Merchandise_Type LLM4BI_Example:Warehouse_Movement_Merchandise_Type ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Month LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Month_In_Year LLM4BI_Example:Warehouse_Movement_Month_In_Year ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Quantity LLM4BI_Example:Warehouse_Movement_Quantity ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Quarter LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_SKU LLM4BI_Example:Warehouse_Movement_SKU ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Semester LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Size LLM4BI_Example:Warehouse_Movement_Size ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_State LLM4BI_Example:Warehouse_Movement_State ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Subtype LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Type LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Warehouse LLM4BI_Example:Warehouse_Movement_Warehouse ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Warehouse_Type LLM4BI_Example:Warehouse_Movement_Warehouse_Type ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Week LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Year LLM4BI_Example:Warehouse_Movement_Year .
+
+LLM4BI_Example:Warehouse_Movement_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Cause a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_IsVirtual a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Merchandise_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Movement_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_4_Month_Period LLM4BI_Example:Warehouse_Stock_4_Month_Period ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Age_Range LLM4BI_Example:Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Area LLM4BI_Example:Warehouse_Stock_Area ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Brand LLM4BI_Example:Warehouse_Stock_Brand ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Brand_Group LLM4BI_Example:Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Category LLM4BI_Example:Warehouse_Stock_Category ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_City LLM4BI_Example:Warehouse_Stock_City ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Color LLM4BI_Example:Warehouse_Stock_Color ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Country LLM4BI_Example:Warehouse_Stock_Country ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_County LLM4BI_Example:Warehouse_Stock_County ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Customer_Gender LLM4BI_Example:Warehouse_Stock_Customer_Gender ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Customer_Type LLM4BI_Example:Warehouse_Stock_Customer_Type ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Date LLM4BI_Example:Warehouse_Stock_Date ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_IsVirtual LLM4BI_Example:Warehouse_Stock_IsVirtual ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Macro_Color LLM4BI_Example:Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Made_In LLM4BI_Example:Warehouse_Stock_Made_In ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Merchandise_Type LLM4BI_Example:Warehouse_Stock_Merchandise_Type ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Month LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Month_In_Year LLM4BI_Example:Warehouse_Stock_Month_In_Year ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock LLM4BI_Example:Warehouse_Stock_Quantity_in_stock ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Quarter LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_SKU LLM4BI_Example:Warehouse_Stock_SKU ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Semester LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Size LLM4BI_Example:Warehouse_Stock_Size ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_State LLM4BI_Example:Warehouse_Stock_State ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Subtype LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Type LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Warehouse LLM4BI_Example:Warehouse_Stock_Warehouse ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Warehouse_Type LLM4BI_Example:Warehouse_Stock_Warehouse_Type ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Week LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Year LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Stock_4_Month_Period_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_4_Month_Period_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Customer_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Month_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Quarter_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Semester_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Semester_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Subtype_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Subtype_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Type_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Age_Range a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Brand a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Brand_Group a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Category a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Customer_Gender a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Customer_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Date a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_IsVirtual a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Macro_Color a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Made_In a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Merchandise_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Month_In_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Quarter a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_SKU a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Semester a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Size a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Subtype a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Week a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Stock_Year a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Week_4_Month_Period a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Stock_Week_Month a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_Area a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_City a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_Country a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_County a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_IsVirtual a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_State a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_Warehouse a LLM4BI:Dependency .
+
+LLM4BI_Example:Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency .
+
+LLM4BI_Example:Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI_Example:Agent_Agent_Controller LLM4BI_Example:Agent_Controller .
+
+LLM4BI_Example:Agent_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_Example:Customer_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_area_Customer_to_Store LLM4BI_Example:Store_Area ;
+    LLM4BI_Example:Conformed_Geography_area_Customer_to_Warehouse LLM4BI_Example:Warehouse_Area .
+
+LLM4BI_Example:Customer_Billing_Information a LLM4BI:Attribute .
+
+LLM4BI_Example:Customer_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_city_Customer_to_Store LLM4BI_Example:Store_City ;
+    LLM4BI_Example:Conformed_Geography_city_Customer_to_Warehouse LLM4BI_Example:Warehouse_City .
+
+LLM4BI_Example:Customer_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_country_Customer_to_Store LLM4BI_Example:Store_Country ;
+    LLM4BI_Example:Conformed_Geography_country_Customer_to_Warehouse LLM4BI_Example:Warehouse_Country .
+
+LLM4BI_Example:Customer_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_county_Customer_to_Store LLM4BI_Example:Store_County ;
+    LLM4BI_Example:Conformed_Geography_county_Customer_to_Warehouse LLM4BI_Example:Warehouse_County .
+
+LLM4BI_Example:Customer_Customer a LLM4BI:Attribute .
+
+LLM4BI_Example:Customer_Shipping_Address a LLM4BI:Attribute .
+
+LLM4BI_Example:Customer_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_state_Customer_to_Store LLM4BI_Example:Store_State ;
+    LLM4BI_Example:Conformed_Geography_state_Customer_to_Warehouse LLM4BI_Example:Warehouse_State .
+
+LLM4BI_Example:Geography_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Geography_City_Area LLM4BI_Example:Geography_Area .
+
+LLM4BI_Example:Historical_Order_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Invoice LLM4BI_Example:Invoice_4_Month_Period,
+        LLM4BI_Example:Invoice_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Order LLM4BI_Example:Order_4_Month_Period,
+        LLM4BI_Example:Order_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Historical_Order_4_Month_Period_Quarter LLM4BI_Example:Historical_Order_Quarter ;
+    LLM4BI_Example:Historical_Order_4_Month_Period_Year LLM4BI_Example:Historical_Order_Year .
+
+LLM4BI_Example:Historical_Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Order LLM4BI_Example:Order_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Historical_Order_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_area_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Area ;
+    LLM4BI_Example:Conformed_Customer_area_Historical_Order_to_Order LLM4BI_Example:Order_Area .
+
+LLM4BI_Example:Historical_Order_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_country_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Country ;
+    LLM4BI_Example:Conformed_Customer_country_Historical_Order_to_Order LLM4BI_Example:Order_Country .
+
+LLM4BI_Example:Historical_Order_Currency a LLM4BI:Attribute .
+
+LLM4BI_Example:Historical_Order_Discount_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Historical_Order_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Invoice LLM4BI_Example:Invoice_4_Month_Period,
+        LLM4BI_Example:Invoice_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Order LLM4BI_Example:Order_4_Month_Period,
+        LLM4BI_Example:Order_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Historical_Order_Month_Quarter LLM4BI_Example:Historical_Order_Quarter .
+
+LLM4BI_Example:Historical_Order_Net_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Historical_Order_Quantity a LLM4BI:Measure .
+
+LLM4BI_Example:Historical_Order_Season a LLM4BI:Attribute .
+
+LLM4BI_Example:Historical_Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Order LLM4BI_Example:Order_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Historical_Order_Subtype_Customer_Type LLM4BI_Example:Historical_Order_Customer_Type ;
+    LLM4BI_Example:Historical_Order_Subtype_Type LLM4BI_Example:Historical_Order_Type .
+
+LLM4BI_Example:Historical_Order_VAT_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Agent a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_agent_Invoice_to_Order LLM4BI_Example:Order_Agent ;
+    LLM4BI_Example:Conformed_Agent_agent_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Agent ;
+    LLM4BI_Example:Invoice_Agent_Controller LLM4BI_Example:Invoice_Controller .
+
+LLM4BI_Example:Invoice_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_area_Invoice_to_Order LLM4BI_Example:Order_Area_Manager ;
+    LLM4BI_Example:Conformed_Agent_area_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Area_Manager .
+
+LLM4BI_Example:Invoice_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_billing_information_Invoice_to_Order LLM4BI_Example:Order_Billing_Information .
+
+LLM4BI_Example:Invoice_Brand a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Order LLM4BI_Example:Order_Brand,
+        LLM4BI_Example:Order_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Brand,
+        LLM4BI_Example:Shop_Ticket_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Invoice_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Order LLM4BI_Example:Order_Brand,
+        LLM4BI_Example:Order_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Brand,
+        LLM4BI_Example:Shop_Ticket_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Invoice_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_city_Invoice_to_Order LLM4BI_Example:Order_City .
+
+LLM4BI_Example:Invoice_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Order LLM4BI_Example:Order_Color,
+        LLM4BI_Example:Order_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Color,
+        LLM4BI_Example:Shop_Ticket_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Invoice_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_county_Invoice_to_Order LLM4BI_Example:Order_County .
+
+LLM4BI_Example:Invoice_Currency a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Customer a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_customer_Invoice_to_Order LLM4BI_Example:Order_Customer .
+
+LLM4BI_Example:Invoice_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Order LLM4BI_Example:Order_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Gender .
+
+LLM4BI_Example:Invoice_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Order LLM4BI_Example:Order_Date ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Date ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Date ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Date ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Conformed_Time_date_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Invoice_Doc_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_First_Commercial_Discount a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Goods_On_Delivery a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Order LLM4BI_Example:Order_Color,
+        LLM4BI_Example:Order_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Color,
+        LLM4BI_Example:Shop_Ticket_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Invoice_Made_In a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Order LLM4BI_Example:Order_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Made_In .
+
+LLM4BI_Example:Invoice_Net_Average_Price a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Net_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Profit_Center a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Quantity a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Return_Justification a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_SKU a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_sku_Invoice_to_Order LLM4BI_Example:Order_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_SKU .
+
+LLM4BI_Example:Invoice_Season a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Second_Commercial_Discount a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Sell_In_Margin a LLM4BI:Measure .
+
+LLM4BI_Example:Invoice_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_shipping_address_Invoice_to_Order LLM4BI_Example:Order_Shipping_Address .
+
+LLM4BI_Example:Invoice_Size a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_size_Invoice_to_Order LLM4BI_Example:Order_Size ;
+    LLM4BI_Example:Conformed_Product_size_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Size ;
+    LLM4BI_Example:Conformed_Product_size_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Size ;
+    LLM4BI_Example:Conformed_Product_size_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Size ;
+    LLM4BI_Example:Conformed_Product_size_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Size .
+
+LLM4BI_Example:Invoice_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_state_Invoice_to_Order LLM4BI_Example:Order_State .
+
+LLM4BI_Example:Invoice_Virtual_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Order LLM4BI_Example:Order_Week ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Week ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Week ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Week ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Conformed_Time_week_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Invoice_Week_4_Month_Period LLM4BI_Example:Invoice_4_Month_Period ;
+    LLM4BI_Example:Invoice_Week_Month LLM4BI_Example:Invoice_Month .
+
+LLM4BI_Example:Order_Currency a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Discount_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Order_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Net_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Order_Order_Type a LLM4BI:Attribute,
+        LLM4BI:Dependency .
+
+LLM4BI_Example:Order_Quantity a LLM4BI:Measure .
+
+LLM4BI_Example:Order_Season a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_VAT_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Product_Age_Range a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Brand a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Category a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Color a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Made_In a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_SKU a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Size a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Subtype a LLM4BI:Attribute .
+
+LLM4BI_Example:Product_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Shop_Ticket_Address a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_address_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Address .
+
+LLM4BI_Example:Shop_Ticket_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_area_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Area .
+
+LLM4BI_Example:Shop_Ticket_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_city_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_City .
+
+LLM4BI_Example:Shop_Ticket_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_country_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Country .
+
+LLM4BI_Example:Shop_Ticket_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_county_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_County .
+
+LLM4BI_Example:Shop_Ticket_Currency a LLM4BI:Attribute .
+
+LLM4BI_Example:Shop_Ticket_Discount_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Shop_Ticket_IsConnected a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_isconnected_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_IsConnected .
+
+LLM4BI_Example:Shop_Ticket_Location_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_type_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Location_Type .
+
+LLM4BI_Example:Shop_Ticket_Net_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Shop_Ticket_Quantity a LLM4BI:Measure .
+
+LLM4BI_Example:Shop_Ticket_Sales_District a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_district_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Sales_District .
+
+LLM4BI_Example:Shop_Ticket_Season a LLM4BI:Attribute .
+
+LLM4BI_Example:Shop_Ticket_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_state_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_State .
+
+LLM4BI_Example:Shop_Ticket_Store a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Store_store_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Store .
+
+LLM4BI_Example:Shop_Ticket_VAT_Value a LLM4BI:Measure .
+
+LLM4BI_Example:Store_Address a LLM4BI:Attribute .
+
+LLM4BI_Example:Store_IsConnected a LLM4BI:Attribute .
+
+LLM4BI_Example:Store_Location_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Store_Sales_District a LLM4BI:Attribute .
+
+LLM4BI_Example:Store_Store a LLM4BI:Attribute .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_city_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_City ;
+    LLM4BI_Example:Conformed_Warehouse_city_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_City ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_City_Area LLM4BI_Example:Third_Party_Warehouse_Stock_Area .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_type_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Warehouse_Type ;
+    LLM4BI_Example:Conformed_Warehouse_type_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Warehouse_Type .
+
+LLM4BI_Example:Time_Date a LLM4BI:Attribute .
+
+LLM4BI_Example:Time_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Time_Week_4_Month_Period LLM4BI_Example:Time_4_Month_Period ;
+    LLM4BI_Example:Time_Week_Month LLM4BI_Example:Time_Month .
+
+LLM4BI_Example:Traffic_Counter_Hour a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_People_tickets_ratio a LLM4BI:Measure .
+
+LLM4BI_Example:Traffic_Counter_Traffic_counter a LLM4BI:Measure .
+
+LLM4BI_Example:Warehouse_IsVirtual a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Movement_Cause a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Movement_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_isvirtual_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_IsVirtual .
+
+LLM4BI_Example:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Movement_Quantity a LLM4BI:Measure .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_warehouse_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Warehouse ;
+    LLM4BI_Example:Warehouse_Movement_Warehouse_Warehouse_Type LLM4BI_Example:Warehouse_Movement_Warehouse_Type .
+
+LLM4BI_Example:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure .
+
+LLM4BI_Example:Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Warehouse_Warehouse_Type LLM4BI_Example:Warehouse_Warehouse_Type .
+
+LLM4BI_Example:Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_Example:Geography_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Geography_Area_County LLM4BI_Example:Geography_County .
+
+LLM4BI_Example:Geography_Country a LLM4BI:Attribute .
+
+LLM4BI_Example:Geography_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Geography_County_State LLM4BI_Example:Geography_State .
+
+LLM4BI_Example:Geography_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Geography_State_Country LLM4BI_Example:Geography_Country .
+
+LLM4BI_Example:Historical_Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Customer_Type,
+        LLM4BI_Example:Invoice_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Order LLM4BI_Example:Order_Customer_Type,
+        LLM4BI_Example:Order_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Historical_Order_Customer_Type_Category LLM4BI_Example:Historical_Order_Category .
+
+LLM4BI_Example:Historical_Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Month_In_Year,
+        LLM4BI_Example:Invoice_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Order LLM4BI_Example:Order_Month_In_Year,
+        LLM4BI_Example:Order_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Historical_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Order LLM4BI_Example:Order_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Historical_Order_Semester_Month_In_Year LLM4BI_Example:Historical_Order_Month_In_Year ;
+    LLM4BI_Example:Historical_Order_Semester_Year LLM4BI_Example:Historical_Order_Year .
+
+LLM4BI_Example:Historical_Order_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Customer_Type,
+        LLM4BI_Example:Invoice_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Order LLM4BI_Example:Order_Customer_Type,
+        LLM4BI_Example:Order_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Historical_Order_Type_Category LLM4BI_Example:Historical_Order_Category .
+
+LLM4BI_Example:Invoice_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Order LLM4BI_Example:Order_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Invoice_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_area_Invoice_to_Order LLM4BI_Example:Order_Area .
+
+LLM4BI_Example:Invoice_Controller a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_controller_Invoice_to_Order LLM4BI_Example:Order_Controller ;
+    LLM4BI_Example:Conformed_Agent_controller_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Controller .
+
+LLM4BI_Example:Invoice_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Customer_country_Invoice_to_Order LLM4BI_Example:Order_Country .
+
+LLM4BI_Example:Invoice_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Order LLM4BI_Example:Order_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Invoice_Subtype_Customer_Type LLM4BI_Example:Invoice_Customer_Type ;
+    LLM4BI_Example:Invoice_Subtype_Type LLM4BI_Example:Invoice_Type .
+
+LLM4BI_Example:Order_Agent a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_agent_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Agent ;
+    LLM4BI_Example:Order_Agent_Controller LLM4BI_Example:Order_Controller .
+
+LLM4BI_Example:Order_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_area_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Area_Manager .
+
+LLM4BI_Example:Order_Billing_Information a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_City a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_County a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Customer a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Gender .
+
+LLM4BI_Example:Order_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Date ;
+    LLM4BI_Example:Conformed_Time_date_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Date ;
+    LLM4BI_Example:Conformed_Time_date_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Date ;
+    LLM4BI_Example:Conformed_Time_date_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Conformed_Time_date_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Order_Made_In a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_made_in_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Made_In .
+
+LLM4BI_Example:Order_SKU a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_sku_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_SKU .
+
+LLM4BI_Example:Order_Shipping_Address a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Size a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_size_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Size ;
+    LLM4BI_Example:Conformed_Product_size_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Size ;
+    LLM4BI_Example:Conformed_Product_size_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Size ;
+    LLM4BI_Example:Conformed_Product_size_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Size .
+
+LLM4BI_Example:Order_State a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Week ;
+    LLM4BI_Example:Conformed_Time_week_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Week ;
+    LLM4BI_Example:Conformed_Time_week_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Week ;
+    LLM4BI_Example:Conformed_Time_week_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Conformed_Time_week_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Order_Week_4_Month_Period LLM4BI_Example:Order_4_Month_Period ;
+    LLM4BI_Example:Order_Week_Month LLM4BI_Example:Order_Month .
+
+LLM4BI_Example:Store_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_area_Store_to_Warehouse LLM4BI_Example:Warehouse_Area .
+
+LLM4BI_Example:Store_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_city_Store_to_Warehouse LLM4BI_Example:Warehouse_City .
+
+LLM4BI_Example:Store_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_country_Store_to_Warehouse LLM4BI_Example:Warehouse_Country .
+
+LLM4BI_Example:Store_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_county_Store_to_Warehouse LLM4BI_Example:Warehouse_County .
+
+LLM4BI_Example:Store_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Geography_state_Store_to_Warehouse LLM4BI_Example:Warehouse_State .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_area_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Area ;
+    LLM4BI_Example:Conformed_Warehouse_area_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Area ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Area_County LLM4BI_Example:Third_Party_Warehouse_Stock_County .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_country_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Country ;
+    LLM4BI_Example:Conformed_Warehouse_country_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Country .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_county_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_County ;
+    LLM4BI_Example:Conformed_Warehouse_county_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_County ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_County_State LLM4BI_Example:Third_Party_Warehouse_Stock_State .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_state_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_State ;
+    LLM4BI_Example:Conformed_Warehouse_state_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_State ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_State_Country LLM4BI_Example:Third_Party_Warehouse_Stock_Country .
+
+LLM4BI_Example:Time_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Time_4_Month_Period_Quarter LLM4BI_Example:Time_Quarter ;
+    LLM4BI_Example:Time_4_Month_Period_Year LLM4BI_Example:Time_Year .
+
+LLM4BI_Example:Time_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Time_Month_Quarter LLM4BI_Example:Time_Quarter .
+
+LLM4BI_Example:Time_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_Example:Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Time_Semester_Month_In_Year LLM4BI_Example:Time_Month_In_Year ;
+    LLM4BI_Example:Time_Semester_Year LLM4BI_Example:Time_Year .
+
+LLM4BI_Example:Traffic_Counter_Address a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_Area a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_City a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_Country a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_County a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_IsConnected a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_Location_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_Sales_District a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_State a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_Store a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Movement_Area a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_area_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Area .
+
+LLM4BI_Example:Warehouse_Movement_City a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_city_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_City .
+
+LLM4BI_Example:Warehouse_Movement_Country a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_country_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Country .
+
+LLM4BI_Example:Warehouse_Movement_County a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_county_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_County .
+
+LLM4BI_Example:Warehouse_Movement_State a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_state_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_State .
+
+LLM4BI_Example:Warehouse_Stock_IsVirtual a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Warehouse_Warehouse_Type LLM4BI_Example:Warehouse_Stock_Warehouse_Type .
+
+LLM4BI_Example:Warehouse_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Historical_Order_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Category ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Order LLM4BI_Example:Order_Category ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Category ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Conformed_Product_category_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Historical_Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Order LLM4BI_Example:Order_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Historical_Order_Quarter_Semester LLM4BI_Example:Historical_Order_Semester .
+
+LLM4BI_Example:Historical_Order_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Invoice LLM4BI_Example:Invoice_Month_In_Year,
+        LLM4BI_Example:Invoice_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Order LLM4BI_Example:Order_Month_In_Year,
+        LLM4BI_Example:Order_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Historical_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Invoice_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Order LLM4BI_Example:Order_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Invoice_Semester_Month_In_Year LLM4BI_Example:Invoice_Month_In_Year ;
+    LLM4BI_Example:Invoice_Semester_Year LLM4BI_Example:Invoice_Year .
+
+LLM4BI_Example:Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Order_Area a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Brand a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Brand,
+        LLM4BI_Example:Shop_Ticket_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Order_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Brand,
+        LLM4BI_Example:Shop_Ticket_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Order_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Color,
+        LLM4BI_Example:Shop_Ticket_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Order_Controller a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Agent_controller_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Controller .
+
+LLM4BI_Example:Order_Country a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Color,
+        LLM4BI_Example:Shop_Ticket_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Order_Subtype_Customer_Type LLM4BI_Example:Order_Customer_Type ;
+    LLM4BI_Example:Order_Subtype_Type LLM4BI_Example:Order_Type .
+
+LLM4BI_Example:Shop_Ticket_Agent a LLM4BI:Attribute ;
+    LLM4BI_Example:Shop_Ticket_Agent_Controller LLM4BI_Example:Shop_Ticket_Controller .
+
+LLM4BI_Example:Shop_Ticket_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_Example:Shop_Ticket_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Gender .
+
+LLM4BI_Example:Shop_Ticket_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Date ;
+    LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Date ;
+    LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Conformed_Time_date_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Shop_Ticket_Made_In a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Made_In .
+
+LLM4BI_Example:Shop_Ticket_SKU a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_SKU .
+
+LLM4BI_Example:Shop_Ticket_Size a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Size ;
+    LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Size ;
+    LLM4BI_Example:Conformed_Product_size_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Size .
+
+LLM4BI_Example:Shop_Ticket_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Week ;
+    LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Week ;
+    LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Conformed_Time_week_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Shop_Ticket_Week_4_Month_Period LLM4BI_Example:Shop_Ticket_4_Month_Period ;
+    LLM4BI_Example:Shop_Ticket_Week_Month LLM4BI_Example:Shop_Ticket_Month .
+
+LLM4BI_Example:Time_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Time_Quarter_Semester LLM4BI_Example:Time_Semester .
+
+LLM4BI_Example:Time_Year a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Area a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_City a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Country a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_County a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Movement_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Warehouse_type_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Warehouse_Type .
+
+LLM4BI_Example:Warehouse_State a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Area a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_City a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Country a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_County a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_State a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Order LLM4BI_Example:Order_4_Month_Period,
+        LLM4BI_Example:Order_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Invoice_4_Month_Period_Quarter LLM4BI_Example:Invoice_Quarter ;
+    LLM4BI_Example:Invoice_4_Month_Period_Year LLM4BI_Example:Invoice_Year .
+
+LLM4BI_Example:Invoice_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Invoice_to_Order LLM4BI_Example:Order_Category ;
+    LLM4BI_Example:Conformed_Product_category_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Category ;
+    LLM4BI_Example:Conformed_Product_category_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI_Example:Conformed_Product_category_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Conformed_Product_category_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Invoice_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Order LLM4BI_Example:Order_Customer_Type,
+        LLM4BI_Example:Order_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Invoice_Customer_Type_Category LLM4BI_Example:Invoice_Category .
+
+LLM4BI_Example:Invoice_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Order LLM4BI_Example:Order_4_Month_Period,
+        LLM4BI_Example:Order_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Invoice_Month_Quarter LLM4BI_Example:Invoice_Quarter .
+
+LLM4BI_Example:Invoice_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Order LLM4BI_Example:Order_Month_In_Year,
+        LLM4BI_Example:Order_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Invoice_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Order LLM4BI_Example:Order_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Invoice_Quarter_Semester LLM4BI_Example:Invoice_Semester .
+
+LLM4BI_Example:Invoice_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Order LLM4BI_Example:Order_Customer_Type,
+        LLM4BI_Example:Order_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Invoice_Type_Category LLM4BI_Example:Invoice_Category .
+
+LLM4BI_Example:Order_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Order_Semester_Month_In_Year LLM4BI_Example:Order_Month_In_Year ;
+    LLM4BI_Example:Order_Semester_Year LLM4BI_Example:Order_Year .
+
+LLM4BI_Example:Shop_Ticket_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Shop_Ticket_Controller a LLM4BI:Attribute .
+
+LLM4BI_Example:Shop_Ticket_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Shop_Ticket_Subtype_Customer_Type LLM4BI_Example:Shop_Ticket_Customer_Type ;
+    LLM4BI_Example:Shop_Ticket_Subtype_Type LLM4BI_Example:Shop_Ticket_Type .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Gender ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Gender .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Date ;
+    LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Conformed_Time_date_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Made_In a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_made_in_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Made_In ;
+    LLM4BI_Example:Conformed_Product_made_in_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Made_In .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_SKU a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_sku_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_SKU ;
+    LLM4BI_Example:Conformed_Product_sku_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_SKU .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Size a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_size_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Size ;
+    LLM4BI_Example:Conformed_Product_size_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Size .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Week ;
+    LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Conformed_Time_week_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Week_4_Month_Period LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Week_Month LLM4BI_Example:Third_Party_Warehouse_Stock_Month .
+
+LLM4BI_Example:Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_Example:Invoice_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Order LLM4BI_Example:Order_Month_In_Year,
+        LLM4BI_Example:Order_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Invoice_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Order_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Category ;
+    LLM4BI_Example:Conformed_Product_category_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI_Example:Conformed_Product_category_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Conformed_Product_category_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Order_Quarter_Semester LLM4BI_Example:Order_Semester .
+
+LLM4BI_Example:Shop_Ticket_Brand a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Shop_Ticket_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Shop_Ticket_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Shop_Ticket_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Shop_Ticket_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Shop_Ticket_Semester_Month_In_Year LLM4BI_Example:Shop_Ticket_Month_In_Year ;
+    LLM4BI_Example:Shop_Ticket_Semester_Year LLM4BI_Example:Shop_Ticket_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Age_Range ;
+    LLM4BI_Example:Conformed_Product_age_range_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Subtype ;
+    LLM4BI_Example:Conformed_Product_subtype_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype_Customer_Type LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Subtype_Type LLM4BI_Example:Third_Party_Warehouse_Stock_Type .
+
+LLM4BI_Example:Traffic_Counter_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Date ;
+    LLM4BI_Example:Conformed_Time_date_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Traffic_Counter_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Week ;
+    LLM4BI_Example:Conformed_Time_week_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week ;
+    LLM4BI_Example:Traffic_Counter_Week_4_Month_Period LLM4BI_Example:Traffic_Counter_4_Month_Period ;
+    LLM4BI_Example:Traffic_Counter_Week_Month LLM4BI_Example:Traffic_Counter_Month .
+
+LLM4BI_Example:Warehouse_Movement_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_customer_gender_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Gender .
+
+LLM4BI_Example:Warehouse_Movement_Made_In a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_made_in_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Made_In .
+
+LLM4BI_Example:Warehouse_Movement_SKU a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_sku_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_SKU .
+
+LLM4BI_Example:Warehouse_Movement_Size a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_size_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Size .
+
+LLM4BI_Example:Order_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Order_4_Month_Period_Quarter LLM4BI_Example:Order_Quarter ;
+    LLM4BI_Example:Order_4_Month_Period_Year LLM4BI_Example:Order_Year .
+
+LLM4BI_Example:Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Order_Customer_Type_Category LLM4BI_Example:Order_Category .
+
+LLM4BI_Example:Order_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_4_Month_Period,
+        LLM4BI_Example:Shop_Ticket_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Order_Month_Quarter LLM4BI_Example:Order_Quarter .
+
+LLM4BI_Example:Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Order_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Customer_Type,
+        LLM4BI_Example:Shop_Ticket_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Order_Type_Category LLM4BI_Example:Order_Category .
+
+LLM4BI_Example:Shop_Ticket_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Conformed_Product_category_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Shop_Ticket_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Shop_Ticket_Quarter_Semester LLM4BI_Example:Shop_Ticket_Semester .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Semester_Month_In_Year LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Semester_Year LLM4BI_Example:Third_Party_Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Movement_Age_Range a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_age_range_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Age_Range .
+
+LLM4BI_Example:Warehouse_Movement_Date a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_date_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Date .
+
+LLM4BI_Example:Warehouse_Movement_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_subtype_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Subtype ;
+    LLM4BI_Example:Warehouse_Movement_Subtype_Customer_Type LLM4BI_Example:Warehouse_Movement_Customer_Type ;
+    LLM4BI_Example:Warehouse_Movement_Subtype_Type LLM4BI_Example:Warehouse_Movement_Type .
+
+LLM4BI_Example:Warehouse_Movement_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_week_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Week .
+
+LLM4BI_Example:Warehouse_Stock_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Made_In a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_SKU a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Size a LLM4BI:Attribute .
+
+LLM4BI_Example:Order_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Shop_Ticket LLM4BI_Example:Shop_Ticket_Month_In_Year,
+        LLM4BI_Example:Shop_Ticket_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Order_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Brand a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Brand,
+        LLM4BI_Example:Warehouse_Movement_Brand_Group ;
+    LLM4BI_Example:Conformed_Product_brand_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Category ;
+    LLM4BI_Example:Conformed_Product_category_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Color,
+        LLM4BI_Example:Warehouse_Movement_Macro_Color ;
+    LLM4BI_Example:Conformed_Product_color_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter_Semester LLM4BI_Example:Third_Party_Warehouse_Stock_Semester .
+
+LLM4BI_Example:Traffic_Counter_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Semester ;
+    LLM4BI_Example:Conformed_Time_semester_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Traffic_Counter_Semester_Month_In_Year LLM4BI_Example:Traffic_Counter_Month_In_Year ;
+    LLM4BI_Example:Traffic_Counter_Semester_Year LLM4BI_Example:Traffic_Counter_Year .
+
+LLM4BI_Example:Warehouse_Movement_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter .
+
+LLM4BI_Example:Warehouse_Movement_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_semester_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Semester ;
+    LLM4BI_Example:Warehouse_Movement_Semester_Year LLM4BI_Example:Warehouse_Movement_Year .
+
+LLM4BI_Example:Warehouse_Stock_Age_Range a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Date a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Subtype_Customer_Type LLM4BI_Example:Warehouse_Stock_Customer_Type ;
+    LLM4BI_Example:Warehouse_Stock_Subtype_Type LLM4BI_Example:Warehouse_Stock_Type .
+
+LLM4BI_Example:Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Week_4_Month_Period LLM4BI_Example:Warehouse_Stock_4_Month_Period ;
+    LLM4BI_Example:Warehouse_Stock_Week_Month LLM4BI_Example:Warehouse_Stock_Month .
+
+LLM4BI_Example:Shop_Ticket_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Shop_Ticket_4_Month_Period_Quarter LLM4BI_Example:Shop_Ticket_Quarter ;
+    LLM4BI_Example:Shop_Ticket_4_Month_Period_Year LLM4BI_Example:Shop_Ticket_Year .
+
+LLM4BI_Example:Shop_Ticket_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Shop_Ticket_Customer_Type_Category LLM4BI_Example:Shop_Ticket_Category .
+
+LLM4BI_Example:Shop_Ticket_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Shop_Ticket_Month_Quarter LLM4BI_Example:Shop_Ticket_Quarter .
+
+LLM4BI_Example:Shop_Ticket_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Shop_Ticket_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Shop_Ticket_Type_Category LLM4BI_Example:Shop_Ticket_Category .
+
+LLM4BI_Example:Traffic_Counter_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_quarter_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Quarter ;
+    LLM4BI_Example:Conformed_Time_quarter_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Traffic_Counter_Quarter_Semester LLM4BI_Example:Traffic_Counter_Semester .
+
+LLM4BI_Example:Warehouse_Movement_Category a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_category_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Shop_Ticket_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Third_Party_Warehouse_Stock LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Shop_Ticket_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Movement_Brand a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Warehouse_Movement_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_brand_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Brand,
+        LLM4BI_Example:Warehouse_Stock_Brand_Group .
+
+LLM4BI_Example:Warehouse_Movement_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Warehouse_Movement_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_color_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Color,
+        LLM4BI_Example:Warehouse_Stock_Macro_Color .
+
+LLM4BI_Example:Warehouse_Stock_Category a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Semester_Month_In_Year LLM4BI_Example:Warehouse_Stock_Month_In_Year ;
+    LLM4BI_Example:Warehouse_Stock_Semester_Year LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period_Quarter LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_4_Month_Period_Year LLM4BI_Example:Third_Party_Warehouse_Stock_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Customer_Type_Category LLM4BI_Example:Third_Party_Warehouse_Stock_Category .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_4_Month_Period,
+        LLM4BI_Example:Traffic_Counter_Month ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Month_Quarter LLM4BI_Example:Third_Party_Warehouse_Stock_Quarter .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Customer_Type,
+        LLM4BI_Example:Warehouse_Movement_Type ;
+    LLM4BI_Example:Conformed_Product_type_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Third_Party_Warehouse_Stock_Type_Category LLM4BI_Example:Third_Party_Warehouse_Stock_Category .
+
+LLM4BI_Example:Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Quarter_Semester LLM4BI_Example:Warehouse_Stock_Semester .
+
+LLM4BI_Example:Third_Party_Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Traffic_Counter LLM4BI_Example:Traffic_Counter_Month_In_Year,
+        LLM4BI_Example:Traffic_Counter_Year ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Third_Party_Warehouse_Stock_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Stock_Brand a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Color a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_Example:Traffic_Counter_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Traffic_Counter_4_Month_Period_Quarter LLM4BI_Example:Traffic_Counter_Quarter ;
+    LLM4BI_Example:Traffic_Counter_4_Month_Period_Year LLM4BI_Example:Traffic_Counter_Year .
+
+LLM4BI_Example:Traffic_Counter_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_4_Month_Period,
+        LLM4BI_Example:Warehouse_Movement_Month ;
+    LLM4BI_Example:Conformed_Time_month_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Traffic_Counter_Month_Quarter LLM4BI_Example:Traffic_Counter_Quarter .
+
+LLM4BI_Example:Traffic_Counter_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Movement_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Warehouse_Movement_Customer_Type_Category LLM4BI_Example:Warehouse_Movement_Category .
+
+LLM4BI_Example:Warehouse_Movement_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Product_type_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Customer_Type,
+        LLM4BI_Example:Warehouse_Stock_Type ;
+    LLM4BI_Example:Warehouse_Movement_Type_Category LLM4BI_Example:Warehouse_Movement_Category .
+
+LLM4BI_Example:Traffic_Counter_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Movement LLM4BI_Example:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Example:Warehouse_Movement_Year ;
+    LLM4BI_Example:Conformed_Time_year_Traffic_Counter_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Movement_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month ;
+    LLM4BI_Example:Warehouse_Movement_4_Month_Period_Year LLM4BI_Example:Warehouse_Movement_Year .
+
+LLM4BI_Example:Warehouse_Movement_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_month_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_4_Month_Period,
+        LLM4BI_Example:Warehouse_Stock_Month .
+
+LLM4BI_Example:Warehouse_Movement_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Customer_Type_Category LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Type_Category LLM4BI_Example:Warehouse_Stock_Category .
+
+LLM4BI_Example:Warehouse_Movement_Year a LLM4BI:Attribute ;
+    LLM4BI_Example:Conformed_Time_year_Warehouse_Movement_to_Warehouse_Stock LLM4BI_Example:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Stock_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_4_Month_Period_Quarter LLM4BI_Example:Warehouse_Stock_Quarter ;
+    LLM4BI_Example:Warehouse_Stock_4_Month_Period_Year LLM4BI_Example:Warehouse_Stock_Year .
+
+LLM4BI_Example:Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI_Example:Warehouse_Stock_Month_Quarter LLM4BI_Example:Warehouse_Stock_Quarter .
+
+LLM4BI_Example:Warehouse_Stock_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_Example:Warehouse_Stock_Year a LLM4BI:Attribute .
+

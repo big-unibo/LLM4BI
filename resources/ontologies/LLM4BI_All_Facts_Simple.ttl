@@ -1,0 +1,2730 @@
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+LLM4BI:A_Agent_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Agent ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_Customer a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Customer_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Customer ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Currency a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Season a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Currency a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Customer a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared true .
+
+LLM4BI:A_Invoice_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Doc_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Goods_On_Delivery a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Profit_Center a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Return_Justification a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Season a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Currency a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Customer a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Order_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Season a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Product_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Product ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Currency a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Season a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Store a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Store_Store a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Store ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Warehouse_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Address a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Hour a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Store a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Cause a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared true .
+
+LLM4BI:A_Warehouse_Movement_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive true ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Date a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Made_In a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_SKU a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Size a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:DEP_Agent_Agent_TO_Controller a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Agent_Controller ;
+    LLM4BI:determiner LLM4BI:A_Agent_Agent .
+
+LLM4BI:DEP_Geography_Area_TO_County a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Geography_County ;
+    LLM4BI:determiner LLM4BI:A_Geography_Area .
+
+LLM4BI:DEP_Geography_City_TO_Area a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Geography_Area ;
+    LLM4BI:determiner LLM4BI:A_Geography_City .
+
+LLM4BI:DEP_Geography_County_TO_State a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Geography_State ;
+    LLM4BI:determiner LLM4BI:A_Geography_County .
+
+LLM4BI:DEP_Geography_State_TO_Country a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Geography_Country ;
+    LLM4BI:determiner LLM4BI:A_Geography_State .
+
+LLM4BI:DEP_Historical_Order_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Year ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_4_Month_Period .
+
+LLM4BI:DEP_Historical_Order_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_Month .
+
+LLM4BI:DEP_Historical_Order_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Semester ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_Quarter .
+
+LLM4BI:DEP_Historical_Order_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Year ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_Semester .
+
+LLM4BI:DEP_Historical_Order_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Type ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_Subtype .
+
+LLM4BI:DEP_Historical_Order_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Historical_Order_Category ;
+    LLM4BI:determiner LLM4BI:A_Historical_Order_Type .
+
+LLM4BI:DEP_Invoice_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Year ;
+    LLM4BI:determiner LLM4BI:A_Invoice_4_Month_Period .
+
+LLM4BI:DEP_Invoice_Agent_TO_Controller a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Controller ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Agent .
+
+LLM4BI:DEP_Invoice_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Brand .
+
+LLM4BI:DEP_Invoice_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Color .
+
+LLM4BI:DEP_Invoice_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Month .
+
+LLM4BI:DEP_Invoice_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Semester ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Quarter .
+
+LLM4BI:DEP_Invoice_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Year ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Semester .
+
+LLM4BI:DEP_Invoice_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Type ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Subtype .
+
+LLM4BI:DEP_Invoice_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Category ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Type .
+
+LLM4BI:DEP_Invoice_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Invoice_Month ;
+    LLM4BI:determiner LLM4BI:A_Invoice_Week .
+
+LLM4BI:DEP_Order_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Year ;
+    LLM4BI:determiner LLM4BI:A_Order_4_Month_Period .
+
+LLM4BI:DEP_Order_Agent_TO_Controller a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Controller ;
+    LLM4BI:determiner LLM4BI:A_Order_Agent .
+
+LLM4BI:DEP_Order_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Order_Brand .
+
+LLM4BI:DEP_Order_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Order_Color .
+
+LLM4BI:DEP_Order_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Order_Month .
+
+LLM4BI:DEP_Order_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Semester ;
+    LLM4BI:determiner LLM4BI:A_Order_Quarter .
+
+LLM4BI:DEP_Order_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Year ;
+    LLM4BI:determiner LLM4BI:A_Order_Semester .
+
+LLM4BI:DEP_Order_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Type ;
+    LLM4BI:determiner LLM4BI:A_Order_Subtype .
+
+LLM4BI:DEP_Order_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Category ;
+    LLM4BI:determiner LLM4BI:A_Order_Type .
+
+LLM4BI:DEP_Order_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Order_Month ;
+    LLM4BI:determiner LLM4BI:A_Order_Week .
+
+LLM4BI:DEP_Shop_Ticket_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Year ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_4_Month_Period .
+
+LLM4BI:DEP_Shop_Ticket_Agent_TO_Controller a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Controller ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Agent .
+
+LLM4BI:DEP_Shop_Ticket_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Brand .
+
+LLM4BI:DEP_Shop_Ticket_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Color .
+
+LLM4BI:DEP_Shop_Ticket_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Month .
+
+LLM4BI:DEP_Shop_Ticket_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Semester ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Quarter .
+
+LLM4BI:DEP_Shop_Ticket_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Year ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Semester .
+
+LLM4BI:DEP_Shop_Ticket_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Type ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Subtype .
+
+LLM4BI:DEP_Shop_Ticket_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Category ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Type .
+
+LLM4BI:DEP_Shop_Ticket_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Shop_Ticket_Month ;
+    LLM4BI:determiner LLM4BI:A_Shop_Ticket_Week .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Year ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_4_Month_Period .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Area_TO_County a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_County ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Area .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Brand .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Color .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_County_TO_State a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_State ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_County .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Month .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Quarter .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Year ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Semester .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_State_TO_Country a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Country ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_State .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Type ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Subtype .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Category ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Type .
+
+LLM4BI:DEP_Third_Party_Warehouse_Stock_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Third_Party_Warehouse_Stock_Month ;
+    LLM4BI:determiner LLM4BI:A_Third_Party_Warehouse_Stock_Week .
+
+LLM4BI:DEP_Time_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Time_Year ;
+    LLM4BI:determiner LLM4BI:A_Time_4_Month_Period .
+
+LLM4BI:DEP_Time_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Time_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Time_Month .
+
+LLM4BI:DEP_Time_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Time_Semester ;
+    LLM4BI:determiner LLM4BI:A_Time_Quarter .
+
+LLM4BI:DEP_Time_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Time_Year ;
+    LLM4BI:determiner LLM4BI:A_Time_Semester .
+
+LLM4BI:DEP_Time_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Time_Month ;
+    LLM4BI:determiner LLM4BI:A_Time_Week .
+
+LLM4BI:DEP_Traffic_Counter_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Traffic_Counter_Year ;
+    LLM4BI:determiner LLM4BI:A_Traffic_Counter_4_Month_Period .
+
+LLM4BI:DEP_Traffic_Counter_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Traffic_Counter_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Traffic_Counter_Month .
+
+LLM4BI:DEP_Traffic_Counter_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Traffic_Counter_Semester ;
+    LLM4BI:determiner LLM4BI:A_Traffic_Counter_Quarter .
+
+LLM4BI:DEP_Traffic_Counter_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Traffic_Counter_Year ;
+    LLM4BI:determiner LLM4BI:A_Traffic_Counter_Semester .
+
+LLM4BI:DEP_Traffic_Counter_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Traffic_Counter_Month ;
+    LLM4BI:determiner LLM4BI:A_Traffic_Counter_Week .
+
+LLM4BI:DEP_Warehouse_Movement_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Year ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_4_Month_Period .
+
+LLM4BI:DEP_Warehouse_Movement_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Brand .
+
+LLM4BI:DEP_Warehouse_Movement_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Color .
+
+LLM4BI:DEP_Warehouse_Movement_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Year ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Semester .
+
+LLM4BI:DEP_Warehouse_Movement_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Type ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Subtype .
+
+LLM4BI:DEP_Warehouse_Movement_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Category ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Type .
+
+LLM4BI:DEP_Warehouse_Movement_Warehouse_TO_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Movement_Warehouse_Type ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Movement_Warehouse .
+
+LLM4BI:DEP_Warehouse_Stock_4_Month_Period_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Year ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_4_Month_Period .
+
+LLM4BI:DEP_Warehouse_Stock_Brand_TO_Brand_Group a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Brand_Group ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Brand .
+
+LLM4BI:DEP_Warehouse_Stock_Color_TO_Macro_Color a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Macro_Color ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Color .
+
+LLM4BI:DEP_Warehouse_Stock_Month_TO_Quarter a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Quarter ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Month .
+
+LLM4BI:DEP_Warehouse_Stock_Quarter_TO_Semester a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Semester ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Quarter .
+
+LLM4BI:DEP_Warehouse_Stock_Semester_TO_Year a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Year ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Semester .
+
+LLM4BI:DEP_Warehouse_Stock_Subtype_TO_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Type ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Subtype .
+
+LLM4BI:DEP_Warehouse_Stock_Type_TO_Category a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Category ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Type .
+
+LLM4BI:DEP_Warehouse_Stock_Warehouse_TO_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Warehouse_Type ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Warehouse .
+
+LLM4BI:DEP_Warehouse_Stock_Week_TO_Month a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Stock_Month ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Stock_Week .
+
+LLM4BI:DEP_Warehouse_Warehouse_TO_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:determined LLM4BI:A_Warehouse_Warehouse_Type ;
+    LLM4BI:determiner LLM4BI:A_Warehouse_Warehouse .
+
+LLM4BI:M_Historical_Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order .
+
+LLM4BI:M_Historical_Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order .
+
+LLM4BI:M_Historical_Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order .
+
+LLM4BI:M_Historical_Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order .
+
+LLM4BI:M_Invoice_First_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Invoice_Net_Average_Price a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Invoice_Net_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Invoice_Quantity a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Invoice_Sell_In_Margin a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice .
+
+LLM4BI:M_Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order .
+
+LLM4BI:M_Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order .
+
+LLM4BI:M_Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order .
+
+LLM4BI:M_Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order .
+
+LLM4BI:M_Shop_Ticket_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket .
+
+LLM4BI:M_Shop_Ticket_Net_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket .
+
+LLM4BI:M_Shop_Ticket_Quantity a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket .
+
+LLM4BI:M_Shop_Ticket_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket .
+
+LLM4BI:M_Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock .
+
+LLM4BI:M_Traffic_Counter_People_tickets_ratio a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter .
+
+LLM4BI:M_Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter .
+
+LLM4BI:M_Warehouse_Movement_Quantity a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement .
+
+LLM4BI:M_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock .
+
+LLM4BI:A_Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Agent ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Agent_Controller a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Agent ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Geography_City a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Geography ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Geography_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Geography ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Agent a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Controller a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Agent a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Controller a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Agent a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Controller a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Country a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_4_Month_Period a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Brand a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Category a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Geography_Area a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Geography ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Geography_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Geography ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Geography_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Geography ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Historical_Order_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Historical_Order ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Invoice_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Invoice ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Order_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Order ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Shop_Ticket_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Shop_Ticket ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional true ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Third_Party_Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Third_Party_Warehouse_Stock ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Time_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Time ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Traffic_Counter_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Traffic_Counter ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Movement_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Movement ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence false ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:A_Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:belongsToFactSchema LLM4BI:FS_Warehouse_Stock ;
+    LLM4BI:isConvergence true ;
+    LLM4BI:isCrossDimensional false ;
+    LLM4BI:isDescriptive false ;
+    LLM4BI:isOptional false ;
+    LLM4BI:isShared false .
+
+LLM4BI:FS_Agent a LLM4BI:Fact .
+
+LLM4BI:FS_Geography a LLM4BI:Fact .
+
+LLM4BI:FS_Customer a LLM4BI:Fact .
+
+LLM4BI:FS_Time a LLM4BI:Fact .
+
+LLM4BI:FS_Warehouse a LLM4BI:Fact .
+
+LLM4BI:FS_Store a LLM4BI:Fact .
+
+LLM4BI:FS_Product a LLM4BI:Fact .
+
+LLM4BI:FS_Historical_Order a LLM4BI:Fact .
+
+LLM4BI:FS_Traffic_Counter a LLM4BI:Fact .
+
+LLM4BI:FS_Third_Party_Warehouse_Stock a LLM4BI:Fact .
+
+LLM4BI:FS_Warehouse_Stock a LLM4BI:Fact .
+
+LLM4BI:FS_Warehouse_Movement a LLM4BI:Fact .
+
+LLM4BI:FS_Order a LLM4BI:Fact .
+
+LLM4BI:FS_Shop_Ticket a LLM4BI:Fact .
+
+LLM4BI:FS_Invoice a LLM4BI:Fact .
+
