@@ -1,0 +1,34 @@
+query_taxonomy:
+  - syntax: 
+    - "Simple Select"
+    - "Filtered"
+    - "Aggregated"
+    - "Grouped"
+    - "Join"
+    - "Nested/Subquery"
+    - "Multi-clause/Advanced"
+
+  - intent:
+    - "Descriptive"
+    - "Diagnostic"
+    - "Predictive"
+    - "Prescriptive"
+  
+  - query_type:
+    - "Declarative"
+    - "Interrogative"
+    - "Imperative"
+    - "Comparative"
+    - "Conditional"
+
+  - aggregation_type:
+    - "Roll-up"
+    - "Drill-down"
+    - "Slice"
+    - "Dice"
+    - "Pivot"
+    - "Drill-across"
+    - "Drill-through"
+
+
+    # Chiarezza nella descrizione
