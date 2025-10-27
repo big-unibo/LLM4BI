@@ -5,6 +5,12 @@ q1:
   intent: Describe
   query_text: interrogative
   query_type: OLAP
+  query_groundtruyh: |
+    SELECT Product_SKU, SUM(Sell-In Margin) as margin
+    FROM INVOICE
+    WHERE Product_Category <> "apparel"
+    GROUP BY Product_SKU
+    HAVING margin < 0
 
 q2:
   text: Quali referenze perdono Kg vs Ap e non mostrano un trend di miglioramento nell'anno in corso? Mettile in ordine decrescente per Kg.

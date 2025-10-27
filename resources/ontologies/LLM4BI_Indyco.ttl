@@ -9,6 +9,8 @@ LLM4BI_Indyco: a owl:Ontology ;
 LLM4BI_Indyco:Agent_Agent_Agent_Agent a LLM4BI:Dependency,
         owl:ObjectProperty .
 
+LLM4BI_Indyco:Agent_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
+
 LLM4BI_Indyco:Agent_Agent_Area_Manager a LLM4BI:Attribute ;
     LLM4BI:Description "An agent who manages and coordinates other agents" ;
     LLM4BI:LogicalName "AREA_MANAGER" ;
@@ -169,11 +171,13 @@ LLM4BI_Indyco:Historical_Order_Time_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Historical_Order_Customer_Area_Customer_Country LLM4BI_Indyco:Historical_Order_Time_Year ;
-    LLM4BI_Indyco:Historical_Order_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Historical_Order_Time_Month_In_Year .
+    LLM4BI_Indyco:Historical_Order_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Historical_Order_Time_Month_In_Year ;
+    LLM4BI_Indyco:Historical_Order_Time_4Month_Period_Time_Year LLM4BI_Indyco:Historical_Order_Time_Year .
 
 LLM4BI_Indyco:Historical_Order_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Historical_Order_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Historical_Order_Time_Month a LLM4BI:Attribute ;
     LLM4BI:Description "A generic month" ;
@@ -197,11 +201,15 @@ LLM4BI_Indyco:Historical_Order_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Historical_Order_Customer_Area_Customer_Country LLM4BI_Indyco:Historical_Order_Time_Year ;
-    LLM4BI_Indyco:Historical_Order_Time_Semester_Time_Quarter LLM4BI_Indyco:Historical_Order_Time_Quarter .
+    LLM4BI_Indyco:Historical_Order_Time_Semester_Time_Quarter LLM4BI_Indyco:Historical_Order_Time_Quarter ;
+    LLM4BI_Indyco:Historical_Order_Time_Semester_Time_Year LLM4BI_Indyco:Historical_Order_Time_Year .
 
 LLM4BI_Indyco:Historical_Order_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Historical_Order_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Invoice_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_Agent_Agent_Invoice a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -229,24 +237,32 @@ LLM4BI_Indyco:Invoice_Currency_Currency a LLM4BI:Attribute ;
 LLM4BI_Indyco:Invoice_Currency_Currency_Invoice a LLM4BI:Dependency,
         owl:ObjectProperty .
 
-LLM4BI_Indyco:Invoice_FACT LLM4BI_Indyco:Invoice_Product_Made_In_Product_SKU LLM4BI_Indyco:Invoice_Doc_Type_Doc_Type,
-        LLM4BI_Indyco:Invoice_Goods_On_Delivery_Goods_On_Delivery,
-        LLM4BI_Indyco:Invoice_Profit_Center_Profit_Center,
-        LLM4BI_Indyco:Invoice_Return_Justification_Return_Justification,
-        LLM4BI_Indyco:Invoice_Virtual_Warehouse_Virtual_Warehouse,
-        LLM4BI_Indyco:Invoice_shipping_Customer .
+LLM4BI_Indyco:Invoice_Invoice_Doc_Type_Doc_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Invoice_Invoice_First_Commercial_Discount a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Goods_On_Delivery_Goods_On_Delivery a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Invoice_Invoice_Net_Average_Price a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_Invoice_Net_Value a LLM4BI:Dependency .
 
+LLM4BI_Indyco:Invoice_Invoice_Profit_Center_Profit_Center a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
 LLM4BI_Indyco:Invoice_Invoice_Quantity a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Return_Justification_Return_Justification a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Invoice_Invoice_Second_Commercial_Discount a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_Invoice_SellIn_Margin a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse_Virtual_Warehouse a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Invoice_Product_Age_Range a LLM4BI:Attribute ;
     LLM4BI:LogicalName "AGE_RANGE" ;
@@ -355,11 +371,13 @@ LLM4BI_Indyco:Invoice_Time_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Invoice_Product_Made_In_Product_SKU LLM4BI_Indyco:Invoice_Time_Year ;
-    LLM4BI_Indyco:Invoice_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Invoice_Time_Month_In_Year .
+    LLM4BI_Indyco:Invoice_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Invoice_Time_Month_In_Year ;
+    LLM4BI_Indyco:Invoice_Time_4Month_Period_Time_Year LLM4BI_Indyco:Invoice_Time_Year .
 
 LLM4BI_Indyco:Invoice_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Invoice_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_Time_Date_Invoice a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -386,11 +404,13 @@ LLM4BI_Indyco:Invoice_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Invoice_Product_Made_In_Product_SKU LLM4BI_Indyco:Invoice_Time_Year ;
-    LLM4BI_Indyco:Invoice_Time_Semester_Time_Quarter LLM4BI_Indyco:Invoice_Time_Quarter .
+    LLM4BI_Indyco:Invoice_Time_Semester_Time_Quarter LLM4BI_Indyco:Invoice_Time_Quarter ;
+    LLM4BI_Indyco:Invoice_Time_Semester_Time_Year LLM4BI_Indyco:Invoice_Time_Year .
 
 LLM4BI_Indyco:Invoice_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Invoice_Time_Semester_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_Time_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -402,6 +422,8 @@ LLM4BI_Indyco:Invoice_Time_Week a LLM4BI:Attribute ;
 
 LLM4BI_Indyco:Invoice_Time_Week_Time_Date a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Invoice_billing_shipping_Customer a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Invoice_shipping_Area a LLM4BI:Attribute ;
     LLM4BI:Description "The geographic area of a state" ;
@@ -444,6 +466,10 @@ LLM4BI_Indyco:Invoice_shipping_Shipping_Address_shipping_Customer a LLM4BI:Depen
 LLM4BI_Indyco:Invoice_shipping_State_shipping_County a LLM4BI:Dependency,
         owl:ObjectProperty ;
     LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_Indyco:Invoice_shipping_shipping_Customer a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Order_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Order_Agent_Agent_Order a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -653,11 +679,13 @@ LLM4BI_Indyco:Order_Time_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Order_Product_Made_In_Product_SKU LLM4BI_Indyco:Order_Time_Year ;
-    LLM4BI_Indyco:Order_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Order_Time_Month_In_Year .
+    LLM4BI_Indyco:Order_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Order_Time_Month_In_Year ;
+    LLM4BI_Indyco:Order_Time_4Month_Period_Time_Year LLM4BI_Indyco:Order_Time_Year .
 
 LLM4BI_Indyco:Order_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Order_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Order_Time_Date_Order a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -684,11 +712,13 @@ LLM4BI_Indyco:Order_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Order_Product_Made_In_Product_SKU LLM4BI_Indyco:Order_Time_Year ;
-    LLM4BI_Indyco:Order_Time_Semester_Time_Quarter LLM4BI_Indyco:Order_Time_Quarter .
+    LLM4BI_Indyco:Order_Time_Semester_Time_Quarter LLM4BI_Indyco:Order_Time_Quarter ;
+    LLM4BI_Indyco:Order_Time_Semester_Time_Year LLM4BI_Indyco:Order_Time_Year .
 
 LLM4BI_Indyco:Order_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Order_Time_Semester_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Order_Time_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -791,6 +821,8 @@ LLM4BI_Indyco:Product_SKU_Subtype_SKU_SKU a LLM4BI:Dependency,
 
 LLM4BI_Indyco:Product_SKU_Type_SKU_Subtype a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Shop_Ticket_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Shop_Ticket_Agent_Agent_Shop_Ticket a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -997,11 +1029,13 @@ LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Shop_Ticket_Product_Made_In_Product_SKU LLM4BI_Indyco:Shop_Ticket_Time_Year ;
-    LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Shop_Ticket_Time_Month_In_Year .
+    LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Shop_Ticket_Time_Month_In_Year ;
+    LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period_Time_Year LLM4BI_Indyco:Shop_Ticket_Time_Year .
 
 LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Shop_Ticket_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Shop_Ticket_Time_Date_Shop_Ticket a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -1028,11 +1062,13 @@ LLM4BI_Indyco:Shop_Ticket_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Shop_Ticket_Product_Made_In_Product_SKU LLM4BI_Indyco:Shop_Ticket_Time_Year ;
-    LLM4BI_Indyco:Shop_Ticket_Time_Semester_Time_Quarter LLM4BI_Indyco:Shop_Ticket_Time_Quarter .
+    LLM4BI_Indyco:Shop_Ticket_Time_Semester_Time_Quarter LLM4BI_Indyco:Shop_Ticket_Time_Quarter ;
+    LLM4BI_Indyco:Shop_Ticket_Time_Semester_Time_Year LLM4BI_Indyco:Shop_Ticket_Time_Year .
 
 LLM4BI_Indyco:Shop_Ticket_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Shop_Ticket_Time_Semester_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Shop_Ticket_Time_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1208,10 +1244,12 @@ LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_4Month_Period a LLM4BI:Attribute 
         "3MP2 13",
         "3MP3 14" ;
     LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Month_In_Year ;
-    LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_City_Area_Warehouse_City_Country LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Year .
+    LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Year LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Year .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Date_Third_Party_Warehouse_Stock a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -1239,10 +1277,12 @@ LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
     LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Semester_Time_Quarter LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Quarter ;
-    LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_City_Area_Warehouse_City_Country LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Year .
+    LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Semester_Time_Year LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Year .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Semester_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Time_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1297,10 +1337,12 @@ LLM4BI_Indyco:Time_Date_4Month_Period a LLM4BI:Attribute ;
         "3MP2 13",
         "3MP3 14" ;
     LLM4BI_Indyco:Time_Date_4Month_Period_Date_Month_In_Year LLM4BI_Indyco:Time_Date_Month_In_Year ;
-    LLM4BI_Indyco:Time_Date_Month_Date_Month_In_Year LLM4BI_Indyco:Time_Date_Year .
+    LLM4BI_Indyco:Time_Date_4Month_Period_Date_Year LLM4BI_Indyco:Time_Date_Year .
 
 LLM4BI_Indyco:Time_Date_4Month_Period_Date_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Time_Date_4Month_Period_Date_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Time_Date_Date_Time a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -1327,11 +1369,13 @@ LLM4BI_Indyco:Time_Date_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Time_Date_Month_Date_Month_In_Year LLM4BI_Indyco:Time_Date_Year ;
-    LLM4BI_Indyco:Time_Date_Semester_Date_Quarter LLM4BI_Indyco:Time_Date_Quarter .
+    LLM4BI_Indyco:Time_Date_Semester_Date_Quarter LLM4BI_Indyco:Time_Date_Quarter ;
+    LLM4BI_Indyco:Time_Date_Semester_Date_Year LLM4BI_Indyco:Time_Date_Year .
 
 LLM4BI_Indyco:Time_Date_Semester_Date_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Time_Date_Semester_Date_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Time_Date_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1350,10 +1394,12 @@ LLM4BI_Indyco:Traffic_Counter_Date_4Month_Period a LLM4BI:Attribute ;
         "3MP2 13",
         "3MP3 14" ;
     LLM4BI_Indyco:Traffic_Counter_Date_4Month_Period_Date_Month_In_Year LLM4BI_Indyco:Traffic_Counter_Date_Month_In_Year ;
-    LLM4BI_Indyco:Traffic_Counter_Hour_Hour_Traffic_Counter LLM4BI_Indyco:Traffic_Counter_Date_Year .
+    LLM4BI_Indyco:Traffic_Counter_Date_4Month_Period_Date_Year LLM4BI_Indyco:Traffic_Counter_Date_Year .
 
 LLM4BI_Indyco:Traffic_Counter_Date_4Month_Period_Date_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Traffic_Counter_Date_4Month_Period_Date_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Traffic_Counter_Date_Date_Traffic_Counter a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -1381,10 +1427,12 @@ LLM4BI_Indyco:Traffic_Counter_Date_Semester a LLM4BI:Attribute ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
     LLM4BI_Indyco:Traffic_Counter_Date_Semester_Date_Quarter LLM4BI_Indyco:Traffic_Counter_Date_Quarter ;
-    LLM4BI_Indyco:Traffic_Counter_Hour_Hour_Traffic_Counter LLM4BI_Indyco:Traffic_Counter_Date_Year .
+    LLM4BI_Indyco:Traffic_Counter_Date_Semester_Date_Year LLM4BI_Indyco:Traffic_Counter_Date_Year .
 
 LLM4BI_Indyco:Traffic_Counter_Date_Semester_Date_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Traffic_Counter_Date_Semester_Date_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Traffic_Counter_Date_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1483,8 +1531,6 @@ LLM4BI_Indyco:Warehouse_Movement_Cause_Cause a LLM4BI:Attribute ;
 
 LLM4BI_Indyco:Warehouse_Movement_Cause_Cause_Warehouse_Movement a LLM4BI:Dependency,
         owl:ObjectProperty .
-
-LLM4BI_Indyco:Warehouse_Movement_FACT LLM4BI_Indyco:Warehouse_Movement_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Movement_in_Date .
 
 LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type_Merchandise_Type a LLM4BI:Attribute ;
     LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
@@ -1627,16 +1673,21 @@ LLM4BI_Indyco:Warehouse_Movement_Warehouse_State_Warehouse_County a LLM4BI:Depen
 LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Movement a LLM4BI:Dependency,
         owl:ObjectProperty .
 
+LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
 LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Warehouse_Movement_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Movement_in_Year ;
-    LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period_in_Month_In_Year LLM4BI_Indyco:Warehouse_Movement_in_Month_In_Year .
+    LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period_in_Month_In_Year LLM4BI_Indyco:Warehouse_Movement_in_Month_In_Year ;
+    LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period_in_Year LLM4BI_Indyco:Warehouse_Movement_in_Year .
 
 LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period_in_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Warehouse_Movement_in_4Month_Period_in_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Warehouse_Movement_in_Month a LLM4BI:Attribute ;
     LLM4BI:Description "A generic month" ;
@@ -1660,11 +1711,13 @@ LLM4BI_Indyco:Warehouse_Movement_in_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Warehouse_Movement_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Movement_in_Year ;
-    LLM4BI_Indyco:Warehouse_Movement_in_Semester_in_Quarter LLM4BI_Indyco:Warehouse_Movement_in_Quarter .
+    LLM4BI_Indyco:Warehouse_Movement_in_Semester_in_Quarter LLM4BI_Indyco:Warehouse_Movement_in_Quarter ;
+    LLM4BI_Indyco:Warehouse_Movement_in_Semester_in_Year LLM4BI_Indyco:Warehouse_Movement_in_Year .
 
 LLM4BI_Indyco:Warehouse_Movement_in_Semester_in_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Warehouse_Movement_in_Semester_in_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Warehouse_Movement_in_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1676,6 +1729,10 @@ LLM4BI_Indyco:Warehouse_Movement_in_Week a LLM4BI:Attribute ;
 
 LLM4BI_Indyco:Warehouse_Movement_in_Week_in_Date a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Warehouse_Movement_in_in_Date a LLM4BI:Dependency .
+
+LLM4BI_Indyco:Warehouse_Movement_out_in_Date a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type_Merchandise_Type a LLM4BI:Attribute ;
     LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
@@ -1784,11 +1841,13 @@ LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period a LLM4BI:Attribute ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" ;
-    LLM4BI_Indyco:Warehouse_Stock_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Stock_Time_Year ;
-    LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Warehouse_Stock_Time_Month_In_Year .
+    LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period_Time_Month_In_Year LLM4BI_Indyco:Warehouse_Stock_Time_Month_In_Year ;
+    LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period_Time_Year LLM4BI_Indyco:Warehouse_Stock_Time_Year .
 
 LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period_Time_Month_In_Year a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Warehouse_Stock_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Warehouse_Stock_Time_Date_Warehouse_Stock a LLM4BI:Dependency,
         owl:ObjectProperty .
@@ -1815,11 +1874,13 @@ LLM4BI_Indyco:Warehouse_Stock_Time_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" ;
-    LLM4BI_Indyco:Warehouse_Stock_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Stock_Time_Year ;
-    LLM4BI_Indyco:Warehouse_Stock_Time_Semester_Time_Quarter LLM4BI_Indyco:Warehouse_Stock_Time_Quarter .
+    LLM4BI_Indyco:Warehouse_Stock_Time_Semester_Time_Quarter LLM4BI_Indyco:Warehouse_Stock_Time_Quarter ;
+    LLM4BI_Indyco:Warehouse_Stock_Time_Semester_Time_Year LLM4BI_Indyco:Warehouse_Stock_Time_Year .
 
 LLM4BI_Indyco:Warehouse_Stock_Time_Semester_Time_Quarter a LLM4BI:Dependency,
         owl:ObjectProperty .
+
+LLM4BI_Indyco:Warehouse_Stock_Time_Semester_Time_Year a LLM4BI:Dependency .
 
 LLM4BI_Indyco:Warehouse_Stock_Time_Week a LLM4BI:Attribute ;
     LLM4BI:Description "A specific week" ;
@@ -1871,6 +1932,9 @@ LLM4BI_Indyco:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock a LLM4BI:Depende
 LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Stock a LLM4BI:Dependency,
         owl:ObjectProperty .
 
+LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
 LLM4BI_Indyco:Warehouse_Warehouse_Area a LLM4BI:Attribute ;
     LLM4BI:Description "The geographic area of a state" ;
     LLM4BI:LogicalName "AREA" ;
@@ -1908,6 +1972,9 @@ LLM4BI_Indyco:Warehouse_Warehouse_State_Warehouse_County a LLM4BI:Dependency,
 LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Warehouse a LLM4BI:Dependency,
         owl:ObjectProperty .
 
+LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
 LLM4BI_Indyco:Agent a LLM4BI:Fact .
 
 LLM4BI_Indyco:Agent_Agent_Agent a LLM4BI:Attribute ;
@@ -1917,7 +1984,7 @@ LLM4BI_Indyco:Agent_Agent_Agent a LLM4BI:Attribute ;
         "Michael Baldi",
         "Steve Gorini" ;
     LLM4BI_Indyco:Agent_Agent_Agent_Agent LLM4BI_Indyco:Agent ;
-    LLM4BI_Indyco:Agent_Agent_Area_Manager_Agent_Agent LLM4BI_Indyco:Agent_Agent_Controller .
+    LLM4BI_Indyco:Agent_Agent_Agent_Agent_Controller LLM4BI_Indyco:Agent_Agent_Controller .
 
 LLM4BI_Indyco:Agent_Agent_Controller a LLM4BI:Attribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -2039,8 +2106,8 @@ LLM4BI_Indyco:Invoice_Agent_Agent a LLM4BI:Attribute ;
     LLM4BI:SampleValues "John Carrie",
         "Michael Baldi",
         "Steve Gorini" ;
-    LLM4BI_Indyco:Invoice_Agent_Agent_Invoice LLM4BI_Indyco:Invoice ;
-    LLM4BI_Indyco:Invoice_Product_Made_In_Product_SKU LLM4BI_Indyco:Invoice_Agent_Controller .
+    LLM4BI_Indyco:Invoice_Agent_Agent_Agent_Controller LLM4BI_Indyco:Invoice_Agent_Controller ;
+    LLM4BI_Indyco:Invoice_Agent_Agent_Invoice LLM4BI_Indyco:Invoice .
 
 LLM4BI_Indyco:Invoice_Agent_Controller a LLM4BI:Attribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -2168,8 +2235,8 @@ LLM4BI_Indyco:Order_Agent_Agent a LLM4BI:Attribute ;
     LLM4BI:SampleValues "John Carrie",
         "Michael Baldi",
         "Steve Gorini" ;
-    LLM4BI_Indyco:Order_Agent_Agent_Order LLM4BI_Indyco:Order ;
-    LLM4BI_Indyco:Order_Product_Made_In_Product_SKU LLM4BI_Indyco:Order_Agent_Controller .
+    LLM4BI_Indyco:Order_Agent_Agent_Agent_Controller LLM4BI_Indyco:Order_Agent_Controller ;
+    LLM4BI_Indyco:Order_Agent_Agent_Order LLM4BI_Indyco:Order .
 
 LLM4BI_Indyco:Order_Agent_Controller a LLM4BI:Attribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -2291,8 +2358,8 @@ LLM4BI_Indyco:Shop_Ticket_Agent_Agent a LLM4BI:Attribute ;
     LLM4BI:SampleValues "John Carrie",
         "Michael Baldi",
         "Steve Gorini" ;
-    LLM4BI_Indyco:Shop_Ticket_Agent_Agent_Shop_Ticket LLM4BI_Indyco:Shop_Ticket ;
-    LLM4BI_Indyco:Shop_Ticket_Product_Made_In_Product_SKU LLM4BI_Indyco:Shop_Ticket_Agent_Controller .
+    LLM4BI_Indyco:Shop_Ticket_Agent_Agent_Agent_Controller LLM4BI_Indyco:Shop_Ticket_Agent_Controller ;
+    LLM4BI_Indyco:Shop_Ticket_Agent_Agent_Shop_Ticket LLM4BI_Indyco:Shop_Ticket .
 
 LLM4BI_Indyco:Shop_Ticket_Agent_Controller a LLM4BI:Attribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -2898,8 +2965,8 @@ LLM4BI_Indyco:Warehouse_Movement_Product_Subtype a LLM4BI:Attribute ;
 LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse a LLM4BI:Attribute ;
     LLM4BI:Description "The warehouse where a product is stored" ;
     LLM4BI:LogicalName "WAREHOUSE" ;
-    LLM4BI_Indyco:Warehouse_Movement_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type ;
-    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Movement LLM4BI_Indyco:Warehouse_Movement .
+    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Movement LLM4BI_Indyco:Warehouse_Movement ;
+    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Warehouse_Movement_in_Year a LLM4BI:Attribute ;
     LLM4BI:Description "A specific year" ;
@@ -2936,14 +3003,14 @@ LLM4BI_Indyco:Warehouse_Stock_Time_Year a LLM4BI:Attribute ;
 LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse a LLM4BI:Attribute ;
     LLM4BI:Description "The warehouse where a product is stored" ;
     LLM4BI:LogicalName "WAREHOUSE" ;
-    LLM4BI_Indyco:Warehouse_Stock_Product_Made_In_Product_SKU LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Type ;
-    LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Stock LLM4BI_Indyco:Warehouse_Stock .
+    LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Stock LLM4BI_Indyco:Warehouse_Stock ;
+    LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Warehouse_Warehouse_Warehouse a LLM4BI:Attribute ;
     LLM4BI:Description "The warehouse where a product is stored" ;
     LLM4BI:LogicalName "WAREHOUSE" ;
-    LLM4BI_Indyco:Warehouse_Warehouse_Area_Warehouse_Country LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type ;
-    LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Warehouse LLM4BI_Indyco:Warehouse .
+    LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Warehouse LLM4BI_Indyco:Warehouse ;
+    LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Customer_Customer_Customer a LLM4BI:Attribute ;
     LLM4BI:Description "The buying customer" ;
@@ -3019,14 +3086,6 @@ LLM4BI_Indyco:Traffic_Counter_Date_Month_In_Year a LLM4BI:Attribute ;
         "Mar 15" ;
     LLM4BI_Indyco:Traffic_Counter_Date_Month_In_Year_Date_Date LLM4BI_Indyco:Traffic_Counter_Date_Date .
 
-LLM4BI_Indyco:Warehouse_Movement_in_Date a LLM4BI:Attribute ;
-    LLM4BI:Description "A specific day" ;
-    LLM4BI:LogicalName "DATE" ;
-    LLM4BI:SampleValues "01-01-2014",
-        "01-02-2014",
-        "01-03-2014" ;
-    LLM4BI:isShared "true"^^xsd:boolean .
-
 LLM4BI_Indyco:Warehouse_Movement_in_Month_In_Year a LLM4BI:Attribute ;
     LLM4BI:Description "A specific month" ;
     LLM4BI:LogicalName "MONTH_IN_YEAR" ;
@@ -3043,18 +3102,21 @@ LLM4BI_Indyco:Warehouse_Stock_Time_Month_In_Year a LLM4BI:Attribute ;
         "Mar 15" ;
     LLM4BI_Indyco:Warehouse_Stock_Time_Month_In_Year_Time_Date LLM4BI_Indyco:Warehouse_Stock_Time_Date .
 
-LLM4BI_Indyco:Invoice_shipping_Customer a LLM4BI:Attribute ;
-    LLM4BI:Description "The buying customer" ;
-    LLM4BI:LogicalName "CUSTOMER" ;
-    LLM4BI:SampleValues "Holding1",
-        "Holding2" ;
-    LLM4BI:isShared "true"^^xsd:boolean .
-
 LLM4BI_Indyco:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
     LLM4BI_Indyco:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quantity_in_stock LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock .
 
 LLM4BI_Indyco:Warehouse_Movement a LLM4BI:Fact ;
-    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Movement_Quantity LLM4BI_Indyco:Warehouse_Movement_Quantity .
+    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Movement_Quantity LLM4BI_Indyco:Warehouse_Movement_Quantity ;
+    LLM4BI_Indyco:Warehouse_Movement_in_in_Date LLM4BI_Indyco:Warehouse_Movement_in_Date ;
+    LLM4BI_Indyco:Warehouse_Movement_out_in_Date LLM4BI_Indyco:Warehouse_Movement_in_Date .
+
+LLM4BI_Indyco:Warehouse_Movement_in_Date a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues "01-01-2014",
+        "01-02-2014",
+        "01-03-2014" ;
+    LLM4BI:isShared "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Warehouse_Stock a LLM4BI:Fact ;
     LLM4BI_Indyco:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock .
@@ -3066,12 +3128,26 @@ LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
     LLM4BI_Indyco:Historical_Order_Historical_Order_VAT_Value LLM4BI_Indyco:Historical_Order_VAT_Value .
 
 LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
+    LLM4BI_Indyco:Invoice_Invoice_Doc_Type_Doc_Type LLM4BI_Indyco:Invoice_Doc_Type_Doc_Type ;
     LLM4BI_Indyco:Invoice_Invoice_First_Commercial_Discount LLM4BI_Indyco:Invoice_First_Commercial_Discount ;
+    LLM4BI_Indyco:Invoice_Invoice_Goods_On_Delivery_Goods_On_Delivery LLM4BI_Indyco:Invoice_Goods_On_Delivery_Goods_On_Delivery ;
     LLM4BI_Indyco:Invoice_Invoice_Net_Average_Price LLM4BI_Indyco:Invoice_Net_Average_Price ;
     LLM4BI_Indyco:Invoice_Invoice_Net_Value LLM4BI_Indyco:Invoice_Net_Value ;
+    LLM4BI_Indyco:Invoice_Invoice_Profit_Center_Profit_Center LLM4BI_Indyco:Invoice_Profit_Center_Profit_Center ;
     LLM4BI_Indyco:Invoice_Invoice_Quantity LLM4BI_Indyco:Invoice_Quantity ;
+    LLM4BI_Indyco:Invoice_Invoice_Return_Justification_Return_Justification LLM4BI_Indyco:Invoice_Return_Justification_Return_Justification ;
     LLM4BI_Indyco:Invoice_Invoice_Second_Commercial_Discount LLM4BI_Indyco:Invoice_Second_Commercial_Discount ;
-    LLM4BI_Indyco:Invoice_Invoice_SellIn_Margin LLM4BI_Indyco:Invoice_SellIn_Margin .
+    LLM4BI_Indyco:Invoice_Invoice_SellIn_Margin LLM4BI_Indyco:Invoice_SellIn_Margin ;
+    LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse_Virtual_Warehouse LLM4BI_Indyco:Invoice_Virtual_Warehouse_Virtual_Warehouse ;
+    LLM4BI_Indyco:Invoice_billing_shipping_Customer LLM4BI_Indyco:Invoice_shipping_Customer ;
+    LLM4BI_Indyco:Invoice_shipping_shipping_Customer LLM4BI_Indyco:Invoice_shipping_Customer .
+
+LLM4BI_Indyco:Invoice_shipping_Customer a LLM4BI:Attribute ;
+    LLM4BI:Description "The buying customer" ;
+    LLM4BI:LogicalName "CUSTOMER" ;
+    LLM4BI:SampleValues "Holding1",
+        "Holding2" ;
+    LLM4BI:isShared "true"^^xsd:boolean .
 
 LLM4BI_Indyco:Shop_Ticket_Store_Store a LLM4BI:Attribute ;
     LLM4BI:Description "The store where a product is being sold" ;

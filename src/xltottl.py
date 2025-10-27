@@ -187,11 +187,14 @@ def is_truthy(v) -> bool:
 
 seen_attr = set()
 seen_links = set()
+dimensions_attributes = set()
 
 for _, row in df_attrs.iterrows():
     item_type = str(row.get("Item Type", ""))
     fact_label = str(row.get("FactSchema Name", "")).strip()
     item_label = str(row.get("Item ID", "")).strip()
+    if item_label == "shipping_Customer":
+        print("HELLO")
     if item_type == "Attribute":
         previous_node = str(row.get("From Item ID", "")).strip()
         previous_node_in_hierarchy = (
@@ -256,12 +259,34 @@ for _, row in df_attrs.iterrows():
                 if header in row and is_truthy(row[header]):
                     g.add((attr_node, prop, Literal("true", datatype=XSD.boolean)))
     else:
-        src_node = make_obj_uri(fact_label, str(row.get("From Item ID", "")).strip())
-        dest_node = make_obj_uri(fact_label, str(row.get("To Item ID", "")).strip())
-        link = make_link_uri(fact_label, src_node, dest_node)
-        g.add((src_node, link_node, dest_node))
-        g.add((link_node, RDF.type, OWL.ObjectProperty))
-        g.add((link_node, RDF.type, LLM4BI.Dependency))
+        label = str(row.get("Item Name"))
+        from_item = str(row.get("From Item ID", "")).strip()
+        to_item = str(row.get("To Item ID", "")).strip()
+        if to_item == "Virtual Warehouse_Virtual Warehouse":
+            print("HELLO")
+        if fact_label == "Invoice":
+            print("HELLO")
+        src_node = (
+            make_obj_uri(fact_label, from_item)
+            if from_item != "FACT"
+            else make_fact_uri(fact_label)
+        )
+        dest_node = (
+            make_obj_uri(fact_label, to_item)
+            if to_item != "FACT"
+            else make_fact_uri(fact_label)
+        )
+        link = make_link_uri(
+            fact_label,
+            label if label != "" else from_item if from_item != "FACT" else fact_label,
+            to_item,
+        )
+        g.add((src_node, link, dest_node))
+        # g.add((link_node, RDF.type, OWL.ObjectProperty))
+        g.add((link, RDF.type, LLM4BI.Dependency))
+        for header, prop in FLAG_COLUMNS.items():
+            if header in row and is_truthy(row[header]):
+                g.add((link, prop, Literal("true", datatype=XSD.boolean)))
 
 
 # Ontolofy import
