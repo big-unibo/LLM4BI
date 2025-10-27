@@ -83,61 +83,86 @@ def validate_naming_conventions(g: Graph, EX: Namespace) -> list[str]:
 
 # Summary (trackong fact details)
 
-
 def print_excel_summary(df_measures: pd.DataFrame, df_attrs: pd.DataFrame) -> None:
     def col(sheet, name):
         return sheet[name] if name in sheet.columns else pd.Series(dtype=object)
 
-    fact_m = col(df_measures, "FactSchema Name").astype(str).str.strip()
-    item_m = col(df_measures, "Item Name").astype(str).str.strip()
+    # --- columns ---
+    fact_m  = col(df_measures, "FactSchema Name").astype(str).str.strip()
+    item_m  = col(df_measures, "Item Name").astype(str).str.strip()
 
-    fact_a = col(df_attrs, "FactSchema Name").astype(str).str.strip()
-    item_a = col(df_attrs, "Item Name").astype(str).str.strip()
+    fact_a  = col(df_attrs, "FactSchema Name").astype(str).str.strip()
+    item_a  = col(df_attrs, "Item Name").astype(str).str.strip()
     from_id = col(df_attrs, "From Item ID").astype(str).str.strip()
-    to_id   = col(df_attrs, "To Item ID").astype(str).str.strip()
+    item_id = col(df_attrs, "Item ID").astype(str).str.strip()
 
+    
     facts = sorted(set(fact_m[fact_m.ne("")]) | set(fact_a[fact_a.ne("")]))
+
+    #  counts
 
     meas_cnt = (
         pd.DataFrame({"fact": fact_m, "item": item_m})
         .query("fact != '' and item != ''")
         .drop_duplicates()
-        .groupby("fact")["item"].nunique()
+        .groupby("fact")["item"]
+        .nunique()
     )
 
     attrs_cnt = (
         pd.DataFrame({"fact": fact_a, "item": item_a})
         .query("fact != '' and item != ''")
         .drop_duplicates()
-        .groupby("fact")["item"].nunique()
+        .groupby("fact")["item"]
+        .nunique()
     )
+
+    # dependencies, From Item ID -> Item ID
+    dep_rows = pd.DataFrame({"fact": fact_a, "from": from_id, "dst": item_id})
+    dep_rows = dep_rows[
+        dep_rows["fact"].ne("") & dep_rows["from"].ne("") & dep_rows["dst"].ne("")
+    ].copy()
+    
+    dep_rows["from"] = dep_rows["from"].str.split(r"[;,]").apply(
+        lambda xs: [s.strip() for s in xs if s and s.strip()]
+    )
+    dep_rows = dep_rows.explode("from")
+    # de-duplicate identical edges within fact
+    dep_rows = dep_rows.drop_duplicates(subset=["fact", "from", "dst"])
 
     dep_attr_cnt = (
-        pd.DataFrame({"fact": fact_a, "from": from_id, "to": to_id})
-        .query("fact != '' and `from` != '' and to != ''")
-        .groupby("fact")
-        .size()
+        dep_rows.groupby("fact").size()
+        if not dep_rows.empty
+        else pd.Series(dtype=int)
     )
 
-    tot_measure = int(meas_cnt.sum()) if not meas_cnt.empty else 0
-    tot_attr = int(attrs_cnt.sum()) if not attrs_cnt.empty else 0
+    # totals
+    tot_measure  = int(meas_cnt.sum()) if not meas_cnt.empty else 0
+    tot_attr     = int(attrs_cnt.sum()) if not attrs_cnt.empty else 0
     tot_dep_attr = int(dep_attr_cnt.sum()) if not dep_attr_cnt.empty else 0
-    tot_dep_meas = tot_measure
-    tot_dep = tot_dep_attr + tot_dep_meas
 
+    
+    tot_dep_meas = tot_measure
+    tot_dep      = tot_dep_attr + tot_dep_meas
+
+    # --- print summary ---
     print("\n=== BI MODEL SUMMARY (from Excel) ===")
     print(f"Facts: {len(facts)} | Measures: {tot_measure} | Attributes: {tot_attr} | Dependencies: {tot_dep}")
-    print("Facts list:", ", ".join(facts))
+    if facts:
+        print("Facts list:", ", ".join(facts))
+    else:
+        print("Facts list: (none)")
+
     print("\nPer-fact counts:")
     print("fact | measures | attributes | dep(attr) | dep(meas) | dep(total)")
     for f in facts:
-        m = int(meas_cnt.get(f, 0))
-        a = int(attrs_cnt.get(f, 0))
+        m  = int(meas_cnt.get(f, 0))
+        a  = int(attrs_cnt.get(f, 0))
         da = int(dep_attr_cnt.get(f, 0))
-        dm = m
+        dm = m  
         dt = da + dm
         print(f"{f} | {m} | {a} | {da} | {dm} | {dt}")
-
+    
 
 # Namespace
 
@@ -224,53 +249,61 @@ seen_links = set()
 for _, row in df_attrs.iterrows():
     fact_label = str(row.get("FactSchema Name", "")).strip()
     item_label = str(row.get("Item Name", "")).strip()
-    src = str(row.get("From Item ID", "")).strip()
-    dst = str(row.get("To Item ID", "")).strip()
+    item_id    = str(row.get("Item ID", "")).strip()
+    from_raw   = str(row.get("From Item ID", "")).strip()
 
     # 1) make sure Attribute node exists
     attr_node = None
-    if item_label:
-        key = (fact_label, item_label)
+    node_local = item_id or item_label
+    if node_local:
+        node_key = (fact_label, node_local)
         attr_node = make_obj_uri(fact_label, item_label)
-        if key not in seen_attr:
-            seen_attr.add(key)
+        if node_key not in seen_attr:
+            seen_attr.add(node_key)
             g.add((attr_node, RDF.type, LLM4BI.Attribute))
 
             logical = str(row.get("LogicalName", "")).strip()
-            sample  = str(row.get("SampleValues", "")).strip()
+    
             if logical:
                 g.add((attr_node, LLM4BI.LogicalName, Literal(logical)))
-            if sample:
-                vals = [v.strip() for v in re.split(r"[;,]", sample) if v.strip()]
-                rdf_list(g, attr_node, LLM4BI.SampleValues, vals)
+            
+    # 2) dependency edge (From Item ID -> Item ID)
+    src = str(row.get("From Item ID", "")).strip()
+    item_id = str(row.get("Item ID", "")).strip()
 
-    # 2) dependency edge (From, To)
-    if src and dst:
-        link_key = (fact_label, src, dst)
+
+    sources = [s.strip() for s in re.split(r"[;,]", from_raw) if s.strip()]
+    made_edge = False
+    for s in sources:
+        if not s or not item_id:
+            continue
+
+        link_key = (fact_label, s, item_id)
         if link_key in seen_links:
             continue
         seen_links.add(link_key)
 
-        src_node  = make_obj_uri(fact_label, src)
-        dst_node  = make_obj_uri(fact_label, dst)
-        link_node = make_link_uri(fact_label, src, dst)
+        src_node  = make_obj_uri(fact_label, s)
+        dst_node  = make_obj_uri(fact_label, item_id)
+        link_node = make_link_uri(fact_label, s, item_id)
 
         g.add((src_node, RDF.type, LLM4BI.Attribute))
         g.add((dst_node, RDF.type, LLM4BI.Attribute))
         g.add((src_node, link_node, dst_node))
         g.add((link_node, RDF.type, LLM4BI.Dependency))
+        made_edge = True
 
-        # "true"^^xsd:boolean
+        # boolean flags to link
         for header, prop in FLAG_COLUMNS.items():
             if header in row and is_truthy(row[header]):
                 g.add((link_node, prop, Literal("true", datatype=XSD.boolean)))
 
-    # 3) no edge on row, flags on attr node
-    elif attr_node is not None:
+    # 3)  no dependency created -> flags to attribute node
+    if not made_edge and attr_node is not None:
         for header, prop in FLAG_COLUMNS.items():
             if header in row and is_truthy(row[header]):
                 g.add((attr_node, prop, Literal("true", datatype=XSD.boolean)))
-
+    
 
 # Ontolofy import
 ONT_F    = URIRef("http://www.foo.bar/LLM4BI/ontologies/LLM4BI_F#")
