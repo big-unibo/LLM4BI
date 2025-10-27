@@ -1,0 +1,1014 @@
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_F: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_F#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+LLM4BI_F: a owl:Ontology ;
+    owl:imports LLM4BI: .
+
+LLM4BI_F:Agent a LLM4BI:Fact .
+
+LLM4BI_F:Agent_Agent a LLM4BI:Attribute .
+
+LLM4BI_F:Agent_Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI_F:Agent_Agent_Agent_Agent_Controller LLM4BI_F:Agent_Agent_Controller .
+
+LLM4BI_F:Agent_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_F:Agent_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_F:Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Customer a LLM4BI:Fact .
+
+LLM4BI_F:Customer_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Customer_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Customer_City a LLM4BI:Attribute .
+
+LLM4BI_F:Customer_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Customer_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Customer_Customer a LLM4BI:Attribute .
+
+LLM4BI_F:Customer_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Customer_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Geography a LLM4BI:Fact .
+
+LLM4BI_F:Geography_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Geography_City a LLM4BI:Attribute .
+
+LLM4BI_F:Geography_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Geography_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Geography_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Historical_Order a LLM4BI:Fact ;
+    LLM4BI_F:Historical_Order_Historical_Order_Discount_Value LLM4BI_F:Historical_Order_Discount_Value ;
+    LLM4BI_F:Historical_Order_Historical_Order_Net_Value LLM4BI_F:Historical_Order_Net_Value ;
+    LLM4BI_F:Historical_Order_Historical_Order_Quantity LLM4BI_F:Historical_Order_Quantity ;
+    LLM4BI_F:Historical_Order_Historical_Order_VAT_Value LLM4BI_F:Historical_Order_VAT_Value .
+
+LLM4BI_F:Historical_Order_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Historical_Order_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Currency a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Historical_Order_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Historical_Order_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Historical_Order_Quantity a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Historical_Order_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Season a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Historical_Order_Time_4Month_Period_Time_Year LLM4BI_F:Historical_Order_Time_Year .
+
+LLM4BI_F:Historical_Order_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Historical_Order_Time_Semester_Time_Year LLM4BI_F:Historical_Order_Time_Year .
+
+LLM4BI_F:Historical_Order_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Historical_Order_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice a LLM4BI:Fact ;
+    LLM4BI_F:Invoice_Invoice_First_Commercial_Discount LLM4BI_F:Invoice_First_Commercial_Discount ;
+    LLM4BI_F:Invoice_Invoice_Net_Average_Price LLM4BI_F:Invoice_Net_Average_Price ;
+    LLM4BI_F:Invoice_Invoice_Net_Value LLM4BI_F:Invoice_Net_Value ;
+    LLM4BI_F:Invoice_Invoice_Quantity LLM4BI_F:Invoice_Quantity ;
+    LLM4BI_F:Invoice_Invoice_Second_Commercial_Discount LLM4BI_F:Invoice_Second_Commercial_Discount ;
+    LLM4BI_F:Invoice_Invoice_SellIn_Margin LLM4BI_F:Invoice_SellIn_Margin .
+
+LLM4BI_F:Invoice_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Agent a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI_F:Invoice_Agent_Agent_Agent_Controller LLM4BI_F:Invoice_Agent_Controller .
+
+LLM4BI_F:Invoice_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_City a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Currency a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Customer a LLM4BI:Attribute ;
+    LLM4BI:isShared "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Doc_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_FACT a LLM4BI:Attribute ;
+    LLM4BI_F:Invoice_FACT_Doc_Type_Doc_Type LLM4BI_F:Invoice_Doc_Type_Doc_Type ;
+    LLM4BI_F:Invoice_FACT_Goods_On_Delivery_Goods_On_Delivery LLM4BI_F:Invoice_Goods_On_Delivery_Goods_On_Delivery ;
+    LLM4BI_F:Invoice_FACT_Profit_Center_Profit_Center LLM4BI_F:Invoice_Profit_Center_Profit_Center ;
+    LLM4BI_F:Invoice_FACT_Return_Justification_Return_Justification LLM4BI_F:Invoice_Return_Justification_Return_Justification ;
+    LLM4BI_F:Invoice_FACT_Virtual_Warehouse_Virtual_Warehouse LLM4BI_F:Invoice_Virtual_Warehouse_Virtual_Warehouse ;
+    LLM4BI_F:Invoice_FACT_shipping_Customer LLM4BI_F:Invoice_shipping_Customer .
+
+LLM4BI_F:Invoice_FACT_Doc_Type_Doc_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_FACT_Goods_On_Delivery_Goods_On_Delivery a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_FACT_Profit_Center_Profit_Center a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_FACT_Return_Justification_Return_Justification a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_FACT_Virtual_Warehouse_Virtual_Warehouse a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_FACT_shipping_Customer a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Goods_On_Delivery a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Invoice_First_Commercial_Discount a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Invoice_Net_Average_Price a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Invoice_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Invoice_Quantity a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Invoice_Second_Commercial_Discount a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Invoice_SellIn_Margin a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Profit_Center a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Return_Justification a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Season a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Invoice_Time_4Month_Period_Time_Year LLM4BI_F:Invoice_Time_Year .
+
+LLM4BI_F:Invoice_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Invoice_Time_Semester_Time_Year LLM4BI_F:Invoice_Time_Year .
+
+LLM4BI_F:Invoice_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Invoice_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Virtual_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Invoice_billing a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_shipping a LLM4BI:Attribute .
+
+LLM4BI_F:Order a LLM4BI:Fact ;
+    LLM4BI_F:Order_Order_Discount_Value LLM4BI_F:Order_Discount_Value ;
+    LLM4BI_F:Order_Order_Net_Value LLM4BI_F:Order_Net_Value ;
+    LLM4BI_F:Order_Order_Quantity LLM4BI_F:Order_Quantity ;
+    LLM4BI_F:Order_Order_VAT_Value LLM4BI_F:Order_VAT_Value .
+
+LLM4BI_F:Order_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Order_Agent a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI_F:Order_Agent_Agent_Agent_Controller LLM4BI_F:Order_Agent_Controller .
+
+LLM4BI_F:Order_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Order_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Order_City a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Order_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Order_Currency a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Customer a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Order_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Order_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Order_Quantity a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Order_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Order_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Order_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Season a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Order_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Order_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Order_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Order_Time_4Month_Period_Time_Year LLM4BI_F:Order_Time_Year .
+
+LLM4BI_F:Order_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Order_Time_Semester_Time_Year LLM4BI_F:Order_Time_Year .
+
+LLM4BI_F:Order_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Order_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Product a LLM4BI:Fact .
+
+LLM4BI_F:Product_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Product_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Product_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Product_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket a LLM4BI:Fact ;
+    LLM4BI_F:Shop_Ticket_Shop_Ticket_Discount_Value LLM4BI_F:Shop_Ticket_Discount_Value ;
+    LLM4BI_F:Shop_Ticket_Shop_Ticket_Net_Value LLM4BI_F:Shop_Ticket_Net_Value ;
+    LLM4BI_F:Shop_Ticket_Shop_Ticket_Quantity LLM4BI_F:Shop_Ticket_Quantity ;
+    LLM4BI_F:Shop_Ticket_Shop_Ticket_VAT_Value LLM4BI_F:Shop_Ticket_VAT_Value .
+
+LLM4BI_F:Shop_Ticket_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Shop_Ticket_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Shop_Ticket_Agent a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI_F:Shop_Ticket_Agent_Agent_Agent_Controller LLM4BI_F:Shop_Ticket_Agent_Controller .
+
+LLM4BI_F:Shop_Ticket_Agent_Agent_Agent_Controller a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Area_Manager a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_City a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Shop_Ticket_Currency a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_IsConnected a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Location_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Sales_District a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Season a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Shop_Ticket_Discount_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Shop_Ticket_Net_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Shop_Ticket_Quantity a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Shop_Ticket_VAT_Value a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Shop_Ticket_Store a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Shop_Ticket_Time_4Month_Period_Time_Year LLM4BI_F:Shop_Ticket_Time_Year .
+
+LLM4BI_F:Shop_Ticket_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Shop_Ticket_Time_Semester_Time_Year LLM4BI_F:Shop_Ticket_Time_Year .
+
+LLM4BI_F:Shop_Ticket_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Shop_Ticket_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Store a LLM4BI:Fact .
+
+LLM4BI_F:Store_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Store_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Store_City a LLM4BI:Attribute .
+
+LLM4BI_F:Store_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Store_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Store_IsConnected a LLM4BI:Attribute .
+
+LLM4BI_F:Store_Location_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Store_Sales_District a LLM4BI:Attribute .
+
+LLM4BI_F:Store_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Store_Store a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI_F:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quantity_in_stock LLM4BI_F:Third_Party_Warehouse_Stock_Quantity_in_stock .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Dependency .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Year LLM4BI_F:Third_Party_Warehouse_Stock_Time_Year .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Third_Party_Warehouse_Stock_Time_Semester_Time_Year LLM4BI_F:Third_Party_Warehouse_Stock_Time_Year .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Warehouse_City a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Time a LLM4BI:Fact .
+
+LLM4BI_F:Time_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Date_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Time_Date_4Month_Period_Date_Year LLM4BI_F:Time_Date_Year .
+
+LLM4BI_F:Time_Date_4Month_Period_Date_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Time_Date_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Time_Date_Semester_Date_Year LLM4BI_F:Time_Date_Year .
+
+LLM4BI_F:Time_Date_Semester_Date_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Time_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Traffic_Counter a LLM4BI:Fact ;
+    LLM4BI_F:Traffic_Counter_Traffic_Counter_Peopletickets_ratio LLM4BI_F:Traffic_Counter_Peopletickets_ratio ;
+    LLM4BI_F:Traffic_Counter_Traffic_Counter_Traffic_counter LLM4BI_F:Traffic_Counter_Traffic_counter .
+
+LLM4BI_F:Traffic_Counter_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Address a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Traffic_Counter_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_City a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Traffic_Counter_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Date_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Traffic_Counter_Date_4Month_Period_Date_Year LLM4BI_F:Traffic_Counter_Date_Year .
+
+LLM4BI_F:Traffic_Counter_Date_4Month_Period_Date_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Traffic_Counter_Date_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Traffic_Counter_Date_Semester_Date_Year LLM4BI_F:Traffic_Counter_Date_Year .
+
+LLM4BI_F:Traffic_Counter_Date_Semester_Date_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Traffic_Counter_Hour a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_IsConnected a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Location_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Sales_District a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Traffic_Counter_Store a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Traffic_Counter_Peopletickets_ratio a LLM4BI:Dependency .
+
+LLM4BI_F:Traffic_Counter_Traffic_Counter_Traffic_counter a LLM4BI:Dependency .
+
+LLM4BI_F:Traffic_Counter_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse a LLM4BI:Fact .
+
+LLM4BI_F:Warehouse_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_City a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_IsVirtual a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement a LLM4BI:Fact ;
+    LLM4BI_F:Warehouse_Movement_Warehouse_Movement_Quantity LLM4BI_F:Warehouse_Movement_Quantity .
+
+LLM4BI_F:Warehouse_Movement_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Cause a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_City a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Date a LLM4BI:Attribute ;
+    LLM4BI:isShared "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_FACT a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Movement_FACT_in_Date LLM4BI_F:Warehouse_Movement_in_Date .
+
+LLM4BI_F:Warehouse_Movement_FACT_in_Date a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Movement_IsVirtual a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Warehouse_Movement_Quantity a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Movement_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_F:Warehouse_Movement_Warehouse_Warehouse_Type .
+
+LLM4BI_F:Warehouse_Movement_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Movement_in a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_in_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Movement_in_4Month_Period_in_Year LLM4BI_F:Warehouse_Movement_in_Year .
+
+LLM4BI_F:Warehouse_Movement_in_4Month_Period_in_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Movement_in_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Movement_in_Semester_in_Year LLM4BI_F:Warehouse_Movement_in_Year .
+
+LLM4BI_F:Warehouse_Movement_in_Semester_in_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Movement_out a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI_F:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock LLM4BI_F:Warehouse_Stock_Quantity_in_stock .
+
+LLM4BI_F:Warehouse_Stock_4Month_Period a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:isDescriptive "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Stock_Area a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Brand a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Brand_Group a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Category a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_City a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Country a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Stock_Customer_Gender a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Customer_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_IsVirtual a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Macro_Color a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Made_In a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Month a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Month_In_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Quarter a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_SKU a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Semester a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Size a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Stock_Subtype a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Stock_Time_4Month_Period_Time_Year LLM4BI_F:Warehouse_Stock_Time_Year .
+
+LLM4BI_F:Warehouse_Stock_Time_4Month_Period_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Stock_Time_Semester a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Stock_Time_Semester_Time_Year LLM4BI_F:Warehouse_Stock_Time_Year .
+
+LLM4BI_F:Warehouse_Stock_Time_Semester_Time_Year a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Stock_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Warehouse_Stock_Quantity_in_stock a LLM4BI:Dependency .
+
+LLM4BI_F:Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_F:Warehouse_Stock_Warehouse_Warehouse_Type .
+
+LLM4BI_F:Warehouse_Stock_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Stock_Week a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:isConvergence "true"^^xsd:boolean .
+
+LLM4BI_F:Warehouse_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI_F:Warehouse_Warehouse_Warehouse_Warehouse_Warehouse_Type LLM4BI_F:Warehouse_Warehouse_Warehouse_Type .
+
+LLM4BI_F:Warehouse_Warehouse_Warehouse_Warehouse_Warehouse_Type a LLM4BI:Dependency ;
+    LLM4BI:isOptional "true"^^xsd:boolean .
+
+LLM4BI_F:Agent_Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Historical_Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Historical_Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" "AVG" ) .
+
+LLM4BI_F:Historical_Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Invoice_Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Doc_Type_Doc_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Invoice_Goods_On_Delivery_Goods_On_Delivery a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Net_Average_Price a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "AVG" ) .
+
+LLM4BI_F:Invoice_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Invoice_Profit_Center_Profit_Center a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" "AVG" ) .
+
+LLM4BI_F:Invoice_Return_Justification_Return_Justification a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Invoice_SellIn_Margin a LLM4BI:Measure .
+
+LLM4BI_F:Invoice_Virtual_Warehouse_Virtual_Warehouse a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_shipping_Customer a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" "AVG" ) .
+
+LLM4BI_F:Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Shop_Ticket_Agent_Controller a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Shop_Ticket_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Shop_Ticket_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Shop_Ticket_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" ) .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "AVG" "MIN" ) .
+
+LLM4BI_F:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "AVG" ) .
+
+LLM4BI_F:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "SUM" "AVG" ) .
+
+LLM4BI_F:Warehouse_Movement_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "AVG" "MIN" ) .
+
+LLM4BI_F:Warehouse_Movement_Warehouse_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_in_Date a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel ( "AVG" "MIN" ) .
+
+LLM4BI_F:Warehouse_Stock_Warehouse_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Warehouse_Warehouse_Type a LLM4BI:Attribute .
+
+LLM4BI_F:Historical_Order_Time_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Invoice_Time_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Order_Time_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Shop_Ticket_Time_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Third_Party_Warehouse_Stock_Time_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Time_Date_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Traffic_Counter_Date_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Movement_in_Year a LLM4BI:Attribute .
+
+LLM4BI_F:Warehouse_Stock_Time_Year a LLM4BI:Attribute .
+
