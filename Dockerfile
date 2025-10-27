@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.10.4
 
 RUN apt-get update  && \
     apt-get install gcc -y  && \
@@ -6,19 +6,18 @@ RUN apt-get update  && \
     apt-get install -y graphviz && \
     apt-get clean -y
 
-RUN mkdir /dataplatform_design
+RUN mkdir /llm4bi
 
-COPY ./requirements.txt  /dataplatform_design
+COPY ./requirements.txt  /llm4bi
 
-RUN pip install -r /dataplatform_design/requirements.txt
+RUN pip install -r /llm4bi/requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install flake8 black
 
-COPY ./ /dataplatform_design/
+COPY ./ /llm4bi/
 
-WORKDIR /dataplatform_design
+WORKDIR /llm4bi
 
-RUN chmod +x *.sh
 
 

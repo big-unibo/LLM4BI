@@ -7,7 +7,7 @@
 @prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @prefix spin:    <http://spinrdf.org/spin#> .
 @prefix spl:     <http://spinrdf.org/spl#> .
-@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> .
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @base <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> .
 
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
@@ -17,9 +17,25 @@ LLM4BI:BIObject rdf:type owl:Class .
 LLM4BI:Fact rdfs:subClassOf LLM4BI:BIObject .
 
 LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
-            
+
 LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
 LLM4BI:Dependency rdfs:subClassOf owl:ObjectProperty ;
   rdfs:domain LLM4BI:BIObject ;
   rdfs:range  LLM4BI:BIObject .
+
+LLM4BI:LogicalName a owl:DataTypeProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:range xsd:string .
+
+LLM4BI:SampleValues a owl:DataTypeProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:range xsd:string .
+
+LLM4BI:AggregationLevel a owl:DataTypeProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:range xsd:string .
+
+LLM4BI:Descriptiona a owl:DataTypeProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:range xsd:string .
