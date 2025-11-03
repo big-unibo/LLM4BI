@@ -1,0 +1,20 @@
+PREFIX LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#>
+PREFIX LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Indyco#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+  ?s ?finalProp ?o .
+}
+WHERE {
+  ?s a LLM4BI:BIObject .
+  ?o a LLM4BI:BIObject .
+  ?s ?p ?o .
+  #FILTER (CONTAINS(str(?s), "Cliente_Promo") || CONTAINS(str(?p), "Cliente_Promo") || CONTAINS(str(?o), "Cliente_Promo"))
+  OPTIONAL {
+    ?sub rdfs:subPropertyOf ?super .
+    FILTER (?super IN (LLM4BI:MultipleDependency, LLM4BI:OptionalDependency))
+    ?s ?sub ?o .
+  }
+  BIND (IF(bound(?super), ?super, LLM4BI:Dependency) AS ?finalProp)
+}

@@ -1,5 +1,6 @@
 graphdb_data/
-
+/resources/indyco
+IndycoTutorial
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

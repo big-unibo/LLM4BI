@@ -118,24 +118,40 @@ q18:
 
 q21:
   text: quali sono le insegne con margine più alto? su che mix prodotti è sbilanciata la loro vendita?
-  indyco_text: Quali Store presentano il margine medio (SELL_IN_MARGIN%) più alto? Analizza per ciascuno il mix di vendita (distribuzione per CATEGORY o TYPE) per identificare eventuali concentrazioni di prodotto.
+  indyco_text: Quali Store presentano il margine medio più alto? Analizza per ciascuno il mix di vendita (distribuzione per CATEGORY o TYPE) per identificare eventuali concentrazioni di prodotto.
   query_type: OLAP + synthesis
 
-q22:
-  text: |
-    "A quali clienti/insegne sto vendendo sotto il realizzo minimo ingrosso questa settimana per una determinata categoria di prodotti? In questo modo posso intervenire nel corso della settimana per mettere a posto i listini prima che sia troppo tardi.
-    NB tra le metriche ti manca quella fondamentale dell'€/Kg che guardano tutti, tutti i giorni e nel nostro settore è FONDAMENTALE!"
-  query_type: OLAP drill across + insight
+# q22:
+#   text: |
+#     "A quali clienti/insegne sto vendendo sotto il realizzo minimo ingrosso questa settimana per una determinata categoria di prodotti? In questo modo posso intervenire nel corso della settimana per mettere a posto i listini prima che sia troppo tardi.
+#     NB tra le metriche ti manca quella fondamentale dell'€/Kg che guardano tutti, tutti i giorni e nel nostro settore è FONDAMENTALE!"
+#   query_type: OLAP drill across + insight
 
-q23:
-  text: |
-    "Chi sta ordinando meno rispetto alle previsioni della domanda ed eventualmente mettere in campo delle azioni correttive.
-    NB: ti manca il dato casse ordinate 1° ins e casse previste"
-  query_type: OLAP + windowing + insight
+# q23:
+#   text: |
+#     "Chi sta ordinando meno rispetto alle previsioni della domanda ed eventualmente mettere in campo delle azioni correttive.
+#     NB: ti manca il dato casse ordinate 1° ins e casse previste"
+#   query_type: OLAP + windowing + insight
 
-q24:
-  text: |
-    "L'utilizzo di un chat bot a mio avviso deve essere qualcosa che ti permetta di fare delle curvature nel corso della settimana.
-    Se lo usi per fare delle analisi a consuntivo sulle settimane chiuse, i giochi sono fatti.
-    Alla forza vendita servono informazioni veloci per analizzare come sta andando ad esempio una promo nel corso della settimana o se c'è un cliente importante (che ti sposta molti volumi)
-     che sta ordinando meno rispetto alla settimana precedente."
+# q24:
+#   text: |
+#     "L'utilizzo di un chat bot a mio avviso deve essere qualcosa che ti permetta di fare delle curvature nel corso della settimana.
+#     Se lo usi per fare delle analisi a consuntivo sulle settimane chiuse, i giochi sono fatti.
+#     Alla forza vendita servono informazioni veloci per analizzare come sta andando ad esempio una promo nel corso della settimana o se c'è un cliente importante (che ti sposta molti volumi)
+#      che sta ordinando meno rispetto alla settimana precedente."
+
+q25:
+  text: Esistono informazioni di tracciabilità su dove sono stati composti i capi di abbigliamento?
+  indyco_text: Esistono informazioni di tracciabilità su dove sono stati composti i capi di abbigliamento?
+  query_type: metadata
+
+q26:
+  text: Quali dati relativi ai clienti sono disponibili per effettuare attività di profilazione?
+  indyco_text: Quali dati relativi ai clienti sono disponibili per effettuare attività di profilazione?
+  query_type: metadata
+
+q27:
+  text: 
+  indyco_text:
+  query_type: metadata
+

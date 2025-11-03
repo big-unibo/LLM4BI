@@ -1,316 +1,225 @@
-import re
 import os
+import re
+import logging
 import pandas as pd
 from rdflib import Graph, Namespace, URIRef, BNode, Literal
-from rdflib.namespace import RDF, OWL, XSD
+from rdflib.namespace import RDF, OWL, XSD, RDFS, split_uri
 from rdflib.collection import Collection
+import unicodedata
+import utils
 
-# Config
-EXCEL_file = "./src/TutorialIndyco.xlsx"
-ONTO_file = "./resources/ontologies/LLM4BI_Ontology.ttl"
-OUTPUT_TTL = "./resources/ontologies/LLM4BI_Indyco.ttl"
+# -----------------------------------------------------------------------------
+# CONFIG
+# -----------------------------------------------------------------------------
+FILENAME = "TutorialIndyco"
+EXCEL_FILE = f"./src/{FILENAME}.xlsx"
+ONTO_FILE = "./resources/ontologies/LLM4BI_Ontology.ttl"
+OUTPUT_TTL = f"./resources/ontologies/LLM4BI_{FILENAME}.ttl"
 
-
-# Utils
-def Clean_labl(text: str) -> str:
-    text = (text or "").strip()
-    text = re.sub(r"\s+", "_", text)
-    text = re.sub(r"[^0-9A-Za-z_]+", "", text)
-    return text
-
-
-def extract_heads(sheet: pd.DataFrame) -> pd.DataFrame:
-    """first row: header"""
-    header = [str(h).strip() for h in sheet.iloc[0].tolist()]
-    body = sheet.iloc[1:].copy()
-    body.columns = header
-    body.columns = [str(c).strip() for c in body.columns]
-    return body.fillna("")
+# -----------------------------------------------------------------------------
+# LOGGING
+# -----------------------------------------------------------------------------
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
 
-def rdf_list(graph, subject, predicate, py_list):
-    if not py_list:
-        return
-    node_list = BNode()
-    graph.add((subject, predicate, node_list))
-    Collection(graph, node_list, [Literal(v) for v in py_list])
-
-
-# Naming algo
-def _ns_base(ns: Namespace) -> str:
-    return str(ns)
-
-
-def _local_name(ns_base: str, uri: URIRef) -> str | None:
-    s = str(uri)
-    return s[len(ns_base) :] if s.startswith(ns_base) else None
-
-
-def validate_naming_conventions(g: Graph, EX: Namespace) -> list[str]:
-    """violation messages, empty if OK"""
-    ns_base = _ns_base(EX)
-    issues = []
-
-    def ok_edge(local: str) -> bool:
-        return len(local.split("_")) >= 3
-
-    ex_nodes = set()
-    ex_preds = set()
-
-    for s, p, o in g:
-        ls = _local_name(ns_base, s)
-        lp = _local_name(ns_base, p)
-        lo = _local_name(ns_base, o)
-        if ls is not None:
-            ex_nodes.add(ls)
-        if lo is not None:
-            ex_nodes.add(lo)
-        if lp is not None:
-            ex_preds.add(lp)
-
-    for ln in sorted(ex_nodes):
-        if "_" not in ln:
-            uri = EX[ln]
-            is_fact_typed = (uri, RDF.type, LLM4BI.Fact) in g
-            if not is_fact_typed:
-                issues.append(
-                    f"Node '{EX}{ln}' has no underscore and is not typed as Fact (expected FACT or FACT_NODE)."
-                )
-
-    for lp in sorted(ex_preds):
-        if not ok_edge(lp):
-            issues.append(
-                f"Edge predicate '{EX}{lp}' must be FACT_SOURCE_DEST (>= 3 parts)."
-            )
-
-    return issues
-
-
-# Namespace
-
-_ = Graph().parse(ONTO_file, format="turtle")  # just to ensure ontology parses
-
-g = Graph()
+# -----------------------------------------------------------------------------
+# NAMESPACES
+# -----------------------------------------------------------------------------
 LLM4BI = Namespace("http://www.foo.bar/LLM4BI/ontologies/LLM4BI#")
-LLM4BI_F = Namespace("http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Indyco#")
-g.bind("LLM4BI", LLM4BI)
-g.bind("LLM4BI_Indyco", LLM4BI_F)
-g.bind("xsd", XSD)
+LLM4BI_EXAMPLE = Namespace(f"http://www.foo.bar/LLM4BI/ontologies/LLM4BI_{FILENAME}#")
 
 
-# Excel sheet-
-xl_data = pd.ExcelFile(EXCEL_file)
-df_measures = extract_heads(xl_data.parse("MEASURES"))
-df_attrs = extract_heads(xl_data.parse("ATTRIBUTES"))
+# -----------------------------------------------------------------------------
+# MAIN BUILDER
+# -----------------------------------------------------------------------------
+def build_graph() -> Graph:
+    """Parse Excel and ontology to build RDF graph."""
+    g = Graph()
+    g.parse(ONTO_FILE, format="turtle")
 
+    g.bind("LLM4BI", LLM4BI)
+    g.bind("LLM4BI_Indyco", LLM4BI_EXAMPLE)
+    g.bind("xsd", XSD)
 
-# Building URI
-def make_fact_uri(fact_name: str) -> URIRef:
-    return LLM4BI_F[Clean_labl(fact_name)]
+    xl = pd.ExcelFile(EXCEL_FILE)
+    df_measures = utils.extract_heads(xl.parse("MEASURES"))
+    df_attrs = utils.extract_heads(xl.parse("ATTRIBUTES"))
 
+    # --- Create Facts --------------------------------------------------------
+    facts = {
+        f.strip()
+        for frame in (df_measures, df_attrs)
+        if "FactSchema Name" in frame.columns
+        for f in frame["FactSchema Name"].dropna().astype(str)
+    }
 
-def make_obj_uri(fact_name: str, node_name: str) -> URIRef:
-    local = f"{Clean_labl(fact_name)}_{Clean_labl(node_name)}"
-    return LLM4BI_F[local]
+    for name in sorted(facts):
+        if name not in df_attrs["Hierarchy"].values:
+            logging.info(f"Creating FACT for {name}.")
+            g.add((utils.make_fact_uri(LLM4BI_EXAMPLE, name), RDF.type, LLM4BI.Fact))
 
+    # --- Measures ------------------------------------------------------------
+    for _, row in df_measures.iterrows():
+        fact = str(row.get("FactSchema Name", "")).strip()
+        measure = str(row.get("Item Name", "")).strip()
+        if not measure:
+            continue
 
-def make_link_uri(fact_name: str, source_name: str, dest_name: str) -> URIRef:
-    local = f"{Clean_labl(fact_name)}_{Clean_labl(source_name)}_{Clean_labl(dest_name)}"
-    return LLM4BI_F[local]
+        fact_node = utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
+        meas_node = utils.make_obj_uri(LLM4BI_EXAMPLE, fact, measure)
 
+        g.add((meas_node, RDF.type, LLM4BI.Measure))
+        g.add((fact_node, LLM4BI.Dependency, meas_node))
 
-# Fact
-facts = set()
-for frame in (df_measures, df_attrs):
-    if "FactSchema Name" in frame.columns:
-        facts |= set(
-            frame["FactSchema Name"]
-            .astype(str)
-            .str.strip()
-            .replace("", pd.NA)
-            .dropna()
-            .unique()
-        )
+        agg_notes = str(row.get("Aggregation notes", "")).strip()
+        if agg_notes:
+            for token in re.split(r"[;,]", agg_notes):
+                level = token.strip().upper()
+                if level:
+                    g.add((meas_node, LLM4BI.AggregationLevel, Literal(level)))
 
-for name in sorted(facts):
-    g.add((make_fact_uri(name), RDF.type, LLM4BI.Fact))
+    # --- Attributes ----------------------------------------------------------
+    ARCS_CONSTRAINTS = {
+        "Is Optional": LLM4BI.OptionalDependency,
+        "Is Multiple": LLM4BI.MultipleDependency,
+    }
+    NODE_CONSTRAINTS = {
+        "Is Shared": LLM4BI.isShared,
+        "Is Descriptive": LLM4BI.isDescriptive,
+        "Is Cross Dimensional": LLM4BI.isCrossDimensional,
+        "Is Convergence": LLM4BI.isConvergence,
+        "Is Optional": LLM4BI.isOptional,
+    }
 
+    seen_attr = set()
 
-# Measure
-for _, row in df_measures.iterrows():
-    fact_label = str(row.get("FactSchema Name", "")).strip()
-    meas_label = str(row.get("Item Name", "")).strip()
-    if not meas_label:
-        continue
-
-    fact_node = make_fact_uri(fact_label)
-    measure_node = make_obj_uri(fact_label, meas_label)
-    link_node = make_link_uri(fact_label, fact_label, meas_label)
-
-    g.add((measure_node, RDF.type, LLM4BI.Measure))
-    g.add((fact_node, link_node, measure_node))
-    g.add((link_node, RDF.type, LLM4BI.Dependency))
-
-    agg_text = str(row.get("Aggregation notes", "")).strip()
-    if agg_text:
-        tokens = [t.strip() for t in re.split(r"[;,]", agg_text) if t.strip()]
-        norm = {
-            "sum": "SUM",
-            "avg": "AVG",
-            "min": "MIN",
-            "max": "MAX",
-            "count": "COUNT",
+    for _, row in df_attrs.iterrows():
+        row = {
+            k: unicodedata.normalize("NFD", str(v)) if v is not None else ""
+            for k, v in row.items()
         }
-        levels = [norm.get(t.lower(), t) for t in tokens]
-        [
-            g.add((measure_node, LLM4BI.AggregationLevel, Literal(level)))
-            for level in levels
-        ]
-
-# Attribute & Dependency
-FLAG_COLUMNS = {
-    "Is Optional": LLM4BI.isOptional,
-    "Is Shared": LLM4BI.isShared,
-    "Is Descriptive": LLM4BI.isDescriptive,
-    "Is Cross Dimensional": LLM4BI.isCrossDimensional,
-    "Is Convergence": LLM4BI.isConvergence,
-}
-
-
-def is_truthy(v) -> bool:
-    if isinstance(v, bool):
-        return v
-    if isinstance(v, (int, float)):
-        return v != 0
-    return str(v).strip().lower() in {"true", "1", "yes", "y", "t", "x"}
-
-
-seen_attr = set()
-seen_links = set()
-dimensions_attributes = set()
-
-for _, row in df_attrs.iterrows():
-    item_type = str(row.get("Item Type", ""))
-    fact_label = str(row.get("FactSchema Name", "")).strip()
-    item_label = str(row.get("Item ID", "")).strip()
-    if item_label == "shipping_Customer":
-        print("HELLO")
-    if item_type == "Attribute":
-        previous_node = str(row.get("From Item ID", "")).strip()
-        previous_node_in_hierarchy = (
-            previous_node if previous_node != "FACT" else fact_label
-        )
-
-        # 1) make sure Attribute node exists
-        attr_node = None
-        if item_label:
-            key = (fact_label, item_label)
-            attr_node = make_obj_uri(fact_label, item_label)
+        item_type = str(row.get("Item Type", ""))
+        fact = str(row.get("FactSchema Name", "")).strip()
+        item_id = str(row.get("Item ID", "")).strip()
+        hierarchy = str(row.get("Hierarchy", "")).strip()
+        if fact == hierarchy:
+            continue
+        if item_type == "Attribute":
+            prev = (
+                "_".join(str(row.get("From Item ID", "")).strip().split("_")[1:])
+                if str(row.get("From Item ID", "")).strip() != "FACT"
+                else "FACT"
+            )
+            prev_node = prev if prev != "FACT" else fact
+            item_id = item_id.replace(f"{hierarchy}_", "", 1) if hierarchy else item_id
+            if fact == "Cliente Promo" and item_id == "Livello Cliente Promo":
+                print("HELLO")
+            # Attribute node
+            if not item_id:
+                continue
+            key = (fact, item_id)
+            attr_node = utils.make_obj_uri(LLM4BI_EXAMPLE, fact, item_id)
             if key not in seen_attr:
                 seen_attr.add(key)
                 g.add((attr_node, RDF.type, LLM4BI.Attribute))
 
-                logical = str(row.get("Logical Name", "")).strip()
+                for col, prop in {
+                    "Logical Name": LLM4BI.LogicalName,
+                    "Description": LLM4BI.Description,
+                }.items():
+                    val = str(row.get(col, "")).strip()
+                    if val:
+                        g.add((attr_node, prop, Literal(val)))
+
                 sample = str(row.get("Sample Values", "")).strip()
-                description = row.get("Description", "")
-                if logical:
-                    g.add((attr_node, LLM4BI.LogicalName, Literal(logical)))
                 if sample:
-                    vals = [v.strip() for v in re.split(r"[;,]", sample) if v.strip()]
-                    [
-                        g.add((attr_node, LLM4BI.SampleValues, Literal(val)))
-                        for val in vals
-                    ]
-                if description:
-                    g.add((attr_node, LLM4BI.Description, Literal(description)))
+                    for v in re.split(r"[;,]", sample):
+                        if v.strip():
+                            g.add((attr_node, LLM4BI.SampleValues, Literal(v.strip())))
 
-        # 2) dependency edge (From, To)
-        if previous_node_in_hierarchy and attr_node:
-            link_key = (fact_label, attr_node, previous_node_in_hierarchy)
-            if link_key in seen_links:
-                continue
-            seen_links.add(link_key)
+            # Dependency edge
+            if prev_node:
+                dst = (
+                    utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
+                    if prev_node == fact and prev == "FACT"
+                    else utils.make_obj_uri(LLM4BI_EXAMPLE, fact, prev_node)
+                )
+                g.add((dst, LLM4BI.Dependency, attr_node))
+            for col, prop in NODE_CONSTRAINTS.items():
+                if utils.is_truthy(row.get(col, "")):
+                    g.add((attr_node, prop, Literal(True, datatype=XSD.boolean)))
 
+        else:
+            # Arc
+            label = str(row.get("Item Name", ""))
+            src = (
+                "_".join(str(row.get("From Item ID", "")).strip().split("_")[1:])
+                if str(row.get("From Item ID", "")).strip() != "FACT"
+                else "FACT"
+            )
+            dst = "_".join(str(row.get("To Item ID", "")).strip().split("_")[1:])
+
+            src_node = (
+                utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
+                if src == "FACT"
+                else utils.make_obj_uri(LLM4BI_EXAMPLE, fact, src)
+            )
             dst_node = (
-                make_obj_uri(fact_label, previous_node_in_hierarchy)
-                if previous_node_in_hierarchy != fact_label
-                else make_fact_uri(fact_label)
+                utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
+                if dst == "FACT"
+                else utils.make_obj_uri(LLM4BI_EXAMPLE, fact, dst)
             )
 
-            link_node = make_link_uri(
-                fact_label, item_label, previous_node_in_hierarchy
+            standard_link = (
+                utils.make_link_uri(LLM4BI_EXAMPLE, fact, label, dst)
+                if label
+                else LLM4BI.Dependency
             )
 
-            if previous_node_in_hierarchy != fact_label:
-                g.add((dst_node, RDF.type, LLM4BI.Attribute))
+            # Apply constraints
+            links = []
+            for col, prop in ARCS_CONSTRAINTS.items():
+                if utils.is_truthy(row.get(col, "")):
+                    custom_prop = utils.make_link_uri(
+                        LLM4BI_EXAMPLE, fact, src if src != "FACT" else fact, dst
+                    )
+                    g.add((custom_prop, RDF.type, OWL.ObjectProperty))
+                    g.add((custom_prop, RDFS.subPropertyOf, prop))
+                    links.append(custom_prop)
+            if not links:
+                links = [standard_link]
+                g.add((standard_link, RDF.type, OWL.ObjectProperty))
+                g.add((standard_link, RDFS.label, Literal(label)))
+                g.add((standard_link, RDFS.subPropertyOf, LLM4BI.Dependency))
 
-            g.add((attr_node, link_node, dst_node))
-            g.add((link_node, RDF.type, OWL.ObjectProperty))
-            g.add((link_node, RDF.type, LLM4BI.Dependency))
+            for link in links:
+                g.add((src_node, link, dst_node))
 
-            # "true"^^xsd:boolean
-            for header, prop in FLAG_COLUMNS.items():
-                if header in row and is_truthy(row[header]):
-                    g.add((link_node, prop, Literal("true", datatype=XSD.boolean)))
+    # --- Ontology import -----------------------------------------------------
+    ONT_F = URIRef("http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Indyco#")
+    ONT_CORE = URIRef("http://www.foo.bar/LLM4BI/ontologies/LLM4BI#")
+    g.add((ONT_F, RDF.type, OWL.Ontology))
+    g.add((ONT_F, OWL.imports, ONT_CORE))
 
-        # 3) no edge on row, flags on attr node
-        elif attr_node is not None:
-            for header, prop in FLAG_COLUMNS.items():
-                if header in row and is_truthy(row[header]):
-                    g.add((attr_node, prop, Literal("true", datatype=XSD.boolean)))
-    else:
-        label = str(row.get("Item Name"))
-        from_item = str(row.get("From Item ID", "")).strip()
-        to_item = str(row.get("To Item ID", "")).strip()
-        if to_item == "Virtual Warehouse_Virtual Warehouse":
-            print("HELLO")
-        if fact_label == "Invoice":
-            print("HELLO")
-        src_node = (
-            make_obj_uri(fact_label, from_item)
-            if from_item != "FACT"
-            else make_fact_uri(fact_label)
-        )
-        dest_node = (
-            make_obj_uri(fact_label, to_item)
-            if to_item != "FACT"
-            else make_fact_uri(fact_label)
-        )
-        link = make_link_uri(
-            fact_label,
-            label if label != "" else from_item if from_item != "FACT" else fact_label,
-            to_item,
-        )
-        g.add((src_node, link, dest_node))
-        # g.add((link_node, RDF.type, OWL.ObjectProperty))
-        g.add((link, RDF.type, LLM4BI.Dependency))
-        for header, prop in FLAG_COLUMNS.items():
-            if header in row and is_truthy(row[header]):
-                g.add((link, prop, Literal("true", datatype=XSD.boolean)))
+    return g
 
 
-# Ontolofy import
-ONT_F = URIRef("http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Indyco#")
-ONT_CORE = URIRef("http://www.foo.bar/LLM4BI/ontologies/LLM4BI#")
-g.add((ONT_F, RDF.type, OWL.Ontology))
-g.add((ONT_F, OWL.imports, ONT_CORE))
+# -----------------------------------------------------------------------------
+# MAIN EXECUTION
+# -----------------------------------------------------------------------------
+def main():
+    g = build_graph()
+    ttl = g.serialize(format="turtle")
 
-# Output
-# "true"^^xsd:boolean & flags
-ttl_bytes = g.serialize(format="turtle")
-ttl = ttl_bytes.decode("utf-8") if isinstance(ttl_bytes, bytes) else ttl_bytes
+    if isinstance(ttl, bytes):
+        ttl = ttl.decode("utf-8")
 
-for pred in [
-    "isOptional",
-    "isShared",
-    "isDescriptive",
-    "isCrossDimensional",
-    "isConvergence",
-]:
+    os.makedirs(os.path.dirname(OUTPUT_TTL), exist_ok=True)
+    with open(OUTPUT_TTL, "w", encoding="utf-8") as f:
+        f.write(ttl)
 
-    ttl = re.sub(rf"(LLM4BI:{pred})\s+true\b", r'\1 "true"^^xsd:boolean', ttl)
-    ttl = re.sub(rf"(LLM4BI:{pred})\s+false\b", r'\1 "false"^^xsd:boolean', ttl)
+    logging.info(f"Ontology exported to: {OUTPUT_TTL}")
 
-os.makedirs(os.path.dirname(OUTPUT_TTL), exist_ok=True)
-with open(OUTPUT_TTL, "w", encoding="utf-8") as f:
-    f.write(ttl)
+
+if __name__ == "__main__":
+    main()

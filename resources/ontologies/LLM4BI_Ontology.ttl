@@ -16,13 +16,29 @@ LLM4BI:BIObject rdf:type owl:Class .
 
 LLM4BI:Fact rdfs:subClassOf LLM4BI:BIObject .
 
+LLM4BI:ConformedHierarchy rdfs:subClassOf LLM4BI:BIObject .
+
 LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
 
 LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
-LLM4BI:Dependency rdfs:subClassOf owl:ObjectProperty ;
+LLM4BI:Dependency a owl:ObjectProperty ;
   rdfs:domain LLM4BI:BIObject ;
+  rdfs:label "" ;
   rdfs:range  LLM4BI:BIObject .
+
+LLM4BI:ConformsTo a owl:ObjectProperty ;
+  rdfs:domain LLM4BI:BIObject ;
+  rdfs:label "ConformsTo" ;
+  rdfs:range  LLM4BI:BIObject .
+
+LLM4BI:MultipleDependency a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:Dependency ;
+    rdfs:label "MultipleDependency" .
+
+LLM4BI:OptionalDependency a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:Dependency ;
+    rdfs:label "OptionalDependency" .
 
 LLM4BI:LogicalName a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:BIObject ;
@@ -36,6 +52,6 @@ LLM4BI:AggregationLevel a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:BIObject ;
   rdfs:range xsd:string .
 
-LLM4BI:Descriptiona a owl:DataTypeProperty ;
+LLM4BI:Description a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:BIObject ;
   rdfs:range xsd:string .

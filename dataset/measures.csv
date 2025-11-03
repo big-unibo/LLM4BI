@@ -1,0 +1,25 @@
+FactSchema Name,Item Name,Description,Notes,Source Table,Source Field,Formula,Logical Name,SQL Type,Length,Precision,Scale,Aggregation notes
+Historical Order,Quantity,"Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ...",,,,,QUANTITY,DECIMAL,,18,3,"SUM, AVG"
+Historical Order,Net Value,"Value, net of discounts and VAT",,,,,NET_VALUE,DECIMAL,,18,3,SUM
+Historical Order,Discount Value,Discount if any,,,,,DISCOUNT_VALUE,DECIMAL,,18,3,SUM
+Historical Order,VAT Value,Taxes,,,,,VAT_VALUE,DECIMAL,,18,3,SUM
+Invoice,Quantity,"Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ...",,,,,QUANTITY,DECIMAL,,18,3,"SUM, AVG"
+Invoice,Net Value,"Value, net of discounts and VAT",,,,,NET_VALUE,DECIMAL,,18,3,SUM
+Invoice,First Commercial Discount,A discount,,,,,FIRST_COMMERCIAL_DISCOUNT,DECIMAL,,18,3,SUM
+Invoice,Second Commercial Discount,A discount,,,,,SECOND_COMMERCIAL_DISCOUNT,DECIMAL,,18,3,SUM
+Invoice,Sell-In Margin,Gross margin,,,,,SELL_IN_MARGIN,DECIMAL,,18,3,
+Invoice,Net Average Price,,,,,,NET_AVERAGE_PRICE,DECIMAL,,18,3,AVG
+Order,Quantity,"Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ...",,,,,QUANTITY,DECIMAL,,18,3,"SUM, AVG"
+Order,Net Value,"Value, net of discounts and VAT",,,,,NET_VALUE,DECIMAL,,18,3,SUM
+Order,Discount Value,"Discount, if any",,,,,DISCOUNT_VALUE,DECIMAL,,18,3,SUM
+Order,VAT Value,Taxes,,,,,VAT_VALUE,DECIMAL,,18,3,SUM
+Shop Ticket,Quantity,"Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ...",,,,,QUANTITY,DECIMAL,,18,3,SUM
+Shop Ticket,Net Value,"Value, net of discounts and VAT",,,,,NET_VALUE,DECIMAL,,18,3,SUM
+Shop Ticket,Discount Value,,,,,,DISCOUNT_VALUE,DECIMAL,,18,3,SUM
+Shop Ticket,VAT Value,Taxes,,,,,VAT_VALUE,DECIMAL,,18,3,SUM
+Traffic Counter,Traffic counter,Numer of persons who entered the store,,,,,TRAFFIC_COUNTER,DECIMAL,,18,3,"SUM, AVG"
+Traffic Counter,People/tickets ratio ,Number of ticket vs. people who entered,,,,,PEOPLETICKETS_RATIO,DECIMAL,,18,3,AVG
+Third Party Warehouse Stock,Quantity in stock,The inventory level,,,,,QUANTITY_IN_STOCK,DECIMAL,,18,3,"AVG, MIN"
+Warehouse Movement,Quantity,The quantity of goods being moved,"
+",,,,QUANTITY,DECIMAL,,18,3,"AVG, MIN"
+Warehouse Stock,Quantity in stock,The inventory level,,,,,QUANTITY_IN_STOCK,DECIMAL,,18,3,"AVG, MIN"
