@@ -19,3 +19,4 @@ flake8
 nbconvert
 rdflib
 openpyxl
+anytree

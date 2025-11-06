@@ -7,6 +7,7 @@ import unicodedata
 import utils
 import requests
 from pathlib import Path
+
 # -----------------------------------------------------------------------------
 # logger
 # -----------------------------------------------------------------------------
@@ -16,7 +17,7 @@ logger = utils.setup_logger("LLM4BI_ExcelParser_FullyConnected")
 # CONFIG
 # -----------------------------------------------------------------------------
 base = Path("/home")
-FILENAME = "TutorialIndyco"
+FILENAME = "amadori_dwh"
 
 EXCEL_FILE = base / "resources" / "input" / f"{FILENAME}.xlsx"
 ONTO_FILE = base / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
@@ -205,90 +206,16 @@ def build_graph(excelFile) -> Graph:
                         # If I'm modeling conformed hierarchies as a singleton
                         if REIFICATE_CONFORMED_HIERARCHIES:
                             logger.exception("Not implemented")
-                            # if (
-                            #     fact_table in conformed_hierarchies
-                            #     and from_item_id == "FACT"
-                            # ):
-                            #     # It's the conformed hierarchy root
-                            #     conformed_hierarchies[fact_table] = attribute_node
-                            #     from_node = utils.make_fact_uri(
-                            #         LLM4BI_EXAMPLE, fact_table
-                            #     )
-                            #     g.add((from_node, LLM4BI.Dependency, attribute_node))
-
-                            # # If I'm parsing a conformed hierarchy attribute
-                            # if hierarchy in conformed_hierarchies:
-                            #     # Check if it's the first node in the hierarchy
-                            #     if conformed_hierarchies[hierarchy] == "":
-                            #         from_node = (
-                            #             utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
-                            #             if from_item_id == "FACT"
-                            #             else utils.make_obj_uri(
-                            #                 LLM4BI_EXAMPLE,
-                            #                 fact_table,
-                            #                 "_".join(from_item_id.split("_")[1:]),
-                            #             )
-                            #         )
-                            #         # If I don't know what node to link to, save this link (from the previous node) for later processing
-                            #         latent_edges[(attribute_name, from_node)] = (
-                            #             hierarchy
-                            #         )
-                            #     else:
-                            #         if fact_name == conformed_hierarchy:
-                            #             from_node = (
-                            #                 utils.make_fact_uri(
-                            #                     LLM4BI_EXAMPLE, fact_table
-                            #                 )
-                            #                 if from_item_id == "FACT"
-                            #                 else utils.make_obj_uri(
-                            #                     LLM4BI_EXAMPLE,
-                            #                     fact_table,
-                            #                     "_".join(from_item_id.split("_")[1:]),
-                            #                 )
-                            #             )
-                            #             # Link to conformed hierarchy attribute
-                            #             g.add(
-                            #                 (
-                            #                     from_node,
-                            #                     LLM4BI.Dependency,
-                            #                     attribute_node,
-                            #                 )
-                            #             )
-                            #         elif (
-                            #             fact_name == hierarchy
-                            #             and fact_name != conformed_hierarchy
-                            #         ):
-                            #             # Link to conformed hierarchy root
-                            #             from_node = conformed_hierarchies[
-                            #                 conformed_hierarchy
-                            #             ]
-                            #             g.add(
-                            #                 (
-                            #                     from_node,
-                            #                     LLM4BI.ConformsTo,
-                            #                     attribute_node,
-                            #                 )
-                            #             )
-                            #         else:
-                            #             # If I know the node, link to it
-                            #             g.add(
-                            #                 (
-                            #                     attribute_node,
-                            #                     LLM4BI.ConformsTo,
-                            #                     conformed_hierarchies[hierarchy],
-                            #                 )
-                            #             )
-                            else:
-                                from_node = (
-                                    utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
-                                    if from_item_id == "FACT"
-                                    else utils.make_obj_uri(
-                                        LLM4BI_EXAMPLE,
-                                        fact_table,
-                                        "_".join(from_item_id.split("_")[1:]),
-                                    )
+                            from_node = (
+                                utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
+                                if from_item_id == "FACT"
+                                else utils.make_obj_uri(
+                                    LLM4BI_EXAMPLE,
+                                    fact_table,
+                                    "_".join(from_item_id.split("_")[1:]),
                                 )
-                                g.add((from_node, LLM4BI.Dependency, attribute_node))
+                            )
+                            g.add((from_node, LLM4BI.Dependency, attribute_node))
                         else:
                             #  Link to conformed hierarchy attribute
                             if (

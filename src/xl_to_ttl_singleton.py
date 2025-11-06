@@ -7,6 +7,7 @@ import unicodedata
 import utils
 import requests
 from pathlib import Path
+from anytree import Node
 
 # -----------------------------------------------------------------------------
 # logger
@@ -17,7 +18,7 @@ logger = utils.setup_logger("LLM4BI_ExcelParser_FullyConnected")
 # CONFIG
 # -----------------------------------------------------------------------------
 base = Path("/home")
-FILENAME = "TutorialIndyco"
+FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
 
 EXCEL_FILE = base / "resources" / "input" / f"{FILENAME}.xlsx"
 ONTO_FILE = base / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
@@ -55,11 +56,21 @@ NODE_CONSTRAINTS = {
 
 latent_edges = {}
 conformed_hierarchies = {}
+hierarchy_dimensions = {}
+conformed_attributes = {}
 facts = {}
 
 
+def resolveConformedAttribute(attribute_node):
+    global conformed_attributes
+    if attribute_node in conformed_attributes:
+        return resolveConformedAttribute(conformed_attributes[attribute_node])
+    else:
+        return attribute_node
+
+
 def parseConformedHierarchyAttribute(graph, row, hierarchy):
-    global conformed_hierarchies
+    global conformed_hierarchies, conformed_attributes
     row = {
         k: unicodedata.normalize("NFD", str(v)) if v is not None else ""
         for k, v in row.items()
@@ -67,6 +78,7 @@ def parseConformedHierarchyAttribute(graph, row, hierarchy):
     fact_table = str(row.get("FactSchema Name", "")).strip()
     item_name = str(row.get("Item Name", "")).strip()
     attribute_name = str(row.get("Item Name", "")).strip()
+    hier = str(row.get("Hierarchy", "")).strip()
     attribute_description = str(row.get("Description", "")).strip()
     from_item_id = str(row.get("From Item ID", "")).strip()
     attribute_node = utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, attribute_name)
@@ -74,6 +86,12 @@ def parseConformedHierarchyAttribute(graph, row, hierarchy):
     conformed_hierarchy_attribute = str(
         row.get("Conformed Hierarchy Attribute", "")
     ).strip()
+    if conformed_hierarchy != "" and conformed_hierarchy_attribute != "":
+        conformed_attributes[attribute_node] = utils.make_obj_uri(
+            LLM4BI_EXAMPLE,
+            conformed_hierarchies[conformed_hierarchy][1],
+            conformed_hierarchy_attribute,
+        )
     from_node = (
         utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
         if from_item_id == "FACT"
@@ -87,23 +105,18 @@ def parseConformedHierarchyAttribute(graph, row, hierarchy):
         conformed_hierarchy in conformed_hierarchies
         and conformed_hierarchy_attribute == item_name
     ):
-        latent_edge = conformed_hierarchies[conformed_hierarchy]
-        if latent_edge != "" and latent_edge[1] == item_name:
-            graph.add(
-                (
-                    attribute_node,
-                    LLM4BI.conformsTo,
-                    latent_edge[0],
-                )
-            )
-        else:
-            latent_edges[attribute_node] = (from_node, item_name, conformed_hierarchy)
+        latent_edges.setdefault(hier, {})[attribute_node] = (
+            from_node,
+            item_name,
+            conformed_hierarchy,
+        )
+
     else:
         # If its' first node of conformed hierarchy, save it
         if from_item_id == "FACT":
             conformed_hierarchies[fact_table] = (attribute_node, item_name)
         # Add attribute
-        graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
+        graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
 
         if attribute_description:
             graph.add(
@@ -153,22 +166,28 @@ def parseConformedHierarchyAttribute(graph, row, hierarchy):
 def parseArc(graph, row, hierarchy):
     fact_table = str(row.get("FactSchema Name", "")).strip()
     label = str(row.get("Item Name", ""))
+    from_item_id = str(row.get("From Item ID", "")).strip()
     src = (
         "_".join(str(row.get("From Item ID", "")).strip().split("_")[1:])
         if str(row.get("From Item ID", "")).strip() != "FACT"
         else "FACT"
     )
     dst = "_".join(str(row.get("To Item ID", "")).strip().split("_")[1:])
+    if fact_table == "Invoice":
+        print("HELLO")
+    attribute_node = utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, src)
 
     src_node = (
         utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
         if src == "FACT"
-        else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, src)
+        else attribute_node
     )
-    dst_node = (
-        utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
-        if dst == "FACT"
-        else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, dst)
+    dst_node = resolveConformedAttribute(
+        (
+            utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
+            if dst == "FACT"
+            else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, dst)
+        )
     )
 
     standard_link = (
@@ -176,6 +195,8 @@ def parseArc(graph, row, hierarchy):
         if label
         else LLM4BI.Dependency
     )
+    if from_item_id == "FACT":
+        conformed_hierarchies[fact_table] = (attribute_node, label)
 
     # Apply constraints
     links = []
@@ -204,17 +225,24 @@ def parseArc(graph, row, hierarchy):
 # ----------------------------------------------------------------------------
 # MAIN BUILDER
 # ------------------------------------------------------------------------------
-def build_conformed_hierarchy(graph: Graph, excelFile: pd.ExcelFile) -> Graph:
+def build_conformed_hierarchy(graph: Graph, attributes_file: pd.DataFrame) -> Graph:
     global conformed_hierarchies, latent_edges
     for hierarchy in conformed_hierarchies:
-        conformed_hierarchy_tuples = utils.extract_heads(excelFile.parse("ATTRIBUTES"))
+        conformed_hierarchy_tuples = attributes_file.copy(deep=True)
         conformed_hierarchy_tuples = conformed_hierarchy_tuples.loc[
             (conformed_hierarchy_tuples["FactSchema Name"] == hierarchy)
         ]
         internal_hierarchy = conformed_hierarchy_tuples["Hierarchy"].iloc[0].strip()
+        conformed_hierarchies[hierarchy] = (None, internal_hierarchy)
 
-        if hierarchy == "Customer":
-            print("HELLO")
+    for hierarchy in conformed_hierarchies:
+        logger.info(f"Building conformed hierarchy: {hierarchy}")
+        conformed_hierarchy_tuples = attributes_file.copy(deep=True)
+
+        conformed_hierarchy_tuples = conformed_hierarchy_tuples.loc[
+            (conformed_hierarchy_tuples["FactSchema Name"] == hierarchy)
+        ]
+        internal_hierarchy = conformed_hierarchy_tuples["Hierarchy"].iloc[0].strip()
 
         root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
         # Add root node
@@ -222,7 +250,7 @@ def build_conformed_hierarchy(graph: Graph, excelFile: pd.ExcelFile) -> Graph:
             (
                 root_node,
                 RDF.type,
-                LLM4BI.ConformedHierarchy,
+                LLM4BI.ConformedHierarchyRoot,
             )
         )
         for _, row in conformed_hierarchy_tuples.iterrows():
@@ -231,27 +259,42 @@ def build_conformed_hierarchy(graph: Graph, excelFile: pd.ExcelFile) -> Graph:
                 graph = parseConformedHierarchyAttribute(graph, row, internal_hierarchy)
             else:
                 graph = parseArc(graph, row, internal_hierarchy)
-    for _, row in latent_edges.items():
-        previous_attribute = row[0]
-        item_name = row[1]
-        conformed_hierarchy = row[2]
-        if (
-            conformed_hierarchy in conformed_hierarchies
-            and item_name == conformed_hierarchies[conformed_hierarchy][1]
-        ):
-            latent_edge = conformed_hierarchies[conformed_hierarchy][0]
+    for index, row in latent_edges.items():
+        conformed_hierarchies_for_hierarchy = list({elem[2] for elem in row.values()})
+        for conformed_hierarchy in conformed_hierarchies_for_hierarchy:
+            nodes = [elem[1] for elem in row.values() if elem[2] == conformed_hierarchy]
+
+            conformed_hierarchy_node, distance, original_node = (
+                utils.closest_to_node_to_root_tree(
+                    graph,
+                    [
+                        utils.make_obj_uri(
+                            LLM4BI_EXAMPLE,
+                            conformed_hierarchies[conformed_hierarchy][1],
+                            node,
+                        )
+                        for node in nodes
+                    ],
+                    utils.make_fact_uri(LLM4BI_EXAMPLE, conformed_hierarchy),
+                    nodes,
+                    LLM4BI.Dependency,
+                )
+            )
+            test = utils.make_obj_uri(LLM4BI_EXAMPLE, index, original_node)
+            previous_attribute = row[test]
+            c = previous_attribute[0]
             graph.add(
                 (
-                    previous_attribute,
-                    LLM4BI.conformsTo,
-                    latent_edge,
+                    c,
+                    LLM4BI.Dependency,
+                    resolveConformedAttribute(conformed_hierarchy_node),
                 )
             )
     return graph
 
 
 def parseAttribute(graph, row):
-    global conformed_hierarchies
+    global conformed_hierarchies, conformed_attributes
     row = {
         k: unicodedata.normalize("NFD", str(v)) if v is not None else ""
         for k, v in row.items()
@@ -260,48 +303,41 @@ def parseAttribute(graph, row):
     item_name = str(row.get("Item Name", "")).strip()
     attribute_name = str(row.get("Item Name", "")).strip()
     attribute_description = str(row.get("Description", "")).strip()
+    hier = str(row.get("Hierarchy", "")).strip()
     from_item_id = str(row.get("From Item ID", "")).strip()
     attribute_node = utils.make_obj_uri(LLM4BI_EXAMPLE, fact_table, attribute_name)
     conformed_hierarchy = str(row.get("Conformed Hierarchy", "")).strip()
     conformed_hierarchy_attribute = str(
         row.get("Conformed Hierarchy Attribute", "")
     ).strip()
+    if conformed_hierarchy != "" and conformed_hierarchy_attribute != "":
+        conformed_attributes[attribute_node] = utils.make_obj_uri(
+            LLM4BI_EXAMPLE,
+            conformed_hierarchies[conformed_hierarchy][1],
+            conformed_hierarchy_attribute,
+        )
     from_node = (
         utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
-        if from_item_id == "FACT"
-        else utils.make_obj_uri(
-            LLM4BI_EXAMPLE,
-            fact_table,
-            "_".join(from_item_id.split("_")[1:]),
+        if from_item_id == "FACT" or from_item_id == "" or conformed_hierarchy != ""
+        else (
+            utils.make_obj_uri(
+                LLM4BI_EXAMPLE,
+                fact_table,
+                "_".join(from_item_id.split("_")[1:]),
+            )
         )
     )
     # If it's the root of a conformed hierarchy, link it
-    if (
-        conformed_hierarchy != ""
-        and conformed_hierarchy in conformed_hierarchies
-        and conformed_hierarchy_attribute
-        == conformed_hierarchies[conformed_hierarchy][1]
-    ):
-        latent_edge = conformed_hierarchies[conformed_hierarchy][0]
-        graph.add(
-            (
-                from_node,
-                LLM4BI.conformsTo,
-                latent_edge,
-            )
+    if conformed_hierarchy != "" and conformed_hierarchy in conformed_hierarchies:
+        latent_edges.setdefault(fact_table, {})[attribute_node] = (
+            from_node,
+            item_name,
+            conformed_hierarchy,
         )
-    # If it's in the conformed hierarchy, skip it
-    elif (
-        conformed_hierarchy != ""
-        and conformed_hierarchy in conformed_hierarchies
-        and conformed_hierarchy_attribute
-        != conformed_hierarchies[conformed_hierarchy][1]
-    ):
-        logger.info("Processing a middle conformed hierarchy attribute, skipping...")
     else:
         # Add attribute
         graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
-
+        graph.add((from_node, LLM4BI.Dependency, attribute_node))
         if attribute_description:
             graph.add(
                 (
@@ -335,15 +371,15 @@ def parseAttribute(graph, row):
     return graph
 
 
-def build_fact_tables(graph, excelFile) -> Graph:
+def build_fact_tables(graph, excelFile: pd.DataFrame) -> Graph:
     global facts, conformed_hierarchies, latent_edges
+
     latent_edges = {}
     for hierarchy in facts:
-        conformed_hierarchy_tuples = utils.extract_heads(excelFile.parse("ATTRIBUTES"))
+        conformed_hierarchy_tuples = excelFile.copy(deep=True)
         conformed_hierarchy_tuples = conformed_hierarchy_tuples.loc[
             (conformed_hierarchy_tuples["FactSchema Name"] == hierarchy)
         ]
-
         root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
         # Add root node
         graph.add(
@@ -359,20 +395,36 @@ def build_fact_tables(graph, excelFile) -> Graph:
                 graph = parseAttribute(graph, row)
             else:
                 graph = parseArc(graph, row, hierarchy)
-    for _, row in latent_edges.items():
-        previous_attribute = row[0]
-        item_name = row[1]
-        conformed_hierarchy = row[2]
-        if (
-            conformed_hierarchy in conformed_hierarchies
-            and item_name == conformed_hierarchies[conformed_hierarchy][1]
-        ):
-            latent_edge = conformed_hierarchies[conformed_hierarchy][0]
+
+    for index, row in latent_edges.items():
+        conformed_hierarchies_for_hierarchy = list({elem[2] for elem in row.values()})
+        for conformed_hierarchy in conformed_hierarchies_for_hierarchy:
+            nodes = [elem[1] for elem in row.values() if elem[2] == conformed_hierarchy]
+            conformed_nodes = [
+                utils.make_obj_uri(
+                    LLM4BI_EXAMPLE,
+                    conformed_hierarchies[conformed_hierarchy][1],
+                    node,
+                )
+                for node in nodes
+            ]
+            conformed_hierarchy_node, distance, original_node = (
+                utils.closest_to_node_to_root_tree(
+                    graph,
+                    conformed_nodes,
+                    utils.make_fact_uri(LLM4BI_EXAMPLE, conformed_hierarchy),
+                    nodes,
+                    LLM4BI.Dependency,
+                )
+            )
+            test = utils.make_obj_uri(LLM4BI_EXAMPLE, index, original_node)
+            previous_attribute = row[test]
+            c = previous_attribute[0]
             graph.add(
                 (
-                    previous_attribute,
-                    LLM4BI.conformsTo,
-                    latent_edge,
+                    c,
+                    LLM4BI.Dependency,
+                    resolveConformedAttribute(conformed_hierarchy_node),
                 )
             )
     return graph
@@ -424,6 +476,7 @@ def build_graph(excelFile) -> Graph:
     g.bind("xsd", XSD)
 
     xl = pd.ExcelFile(excelFile)
+
     print(type(xl))
     conformed_hierarchies = {
         h: ""
@@ -433,22 +486,28 @@ def build_graph(excelFile) -> Graph:
         .tolist()
         if h != ""
     }
+    conformed_hierarchies = {
+        utils.remove_accents(hierarchy): "" for hierarchy in conformed_hierarchies
+    }
     facts = [
-        fact
+        utils.remove_accents(fact)
         for fact in utils.extract_heads(xl.parse("ATTRIBUTES"))["FactSchema Name"]
         .dropna()
         .unique()
         .tolist()
         if fact not in conformed_hierarchies.keys()
     ]
+    facts = [unicodedata.normalize("NFD", fact) for fact in facts]
     logger.info(f"File {FILENAME} has {len(facts)} FACTS:\n {facts}")
     logger.info(
         f"File {FILENAME} has  {len(conformed_hierarchies)} conformed hierarchies: \n {conformed_hierarchies}"
     )
 
     xl = pd.ExcelFile(excelFile)
-    g = build_conformed_hierarchy(g, xl)
-    g = build_fact_tables(g, xl)
+    attribute_df = utils.extract_heads(xl.parse("ATTRIBUTES"))
+    attribute_df = attribute_df.apply(utils.clean_row, axis=1)
+    g = build_conformed_hierarchy(g, attribute_df)
+    g = build_fact_tables(g, attribute_df)
     g = parse_measures(g, xl)
     return g
 

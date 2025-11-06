@@ -5,6 +5,56 @@ import logging
 import requests
 import os
 import sys
+import unicodedata
+from collections import deque
+
+
+def closest_to_node_to_root_tree(
+    graph, nodes_to_check, target_node, nodes, dependency_ns
+):
+    """
+    Trova il nodo più vicino a target_node in un grafo rdflib, seguendo la proprietà Dependency.
+
+    :param graph: rdflib.Graph
+    :param nodes_to_check: lista di URI (string) dei nodi da verificare
+    :param target_node: URI (string) del nodo di riferimento
+    :param nodes: lista originale dei nodi che hanno generato nodes_to_check
+    :param dependency_ns: URI della proprietà LLM4BI:Dependency (es. URIRef)
+    :return: tuple (closest_node_to_target, distanza, nodo_originale)
+    """
+    # costruisci grafo come dizionario {nodo: [figli]}
+    graph_dict = {}
+    for s, p, o in graph.triples((None, dependency_ns, None)):
+        graph_dict.setdefault(str(s), []).append(str(o))
+
+    # BFS per calcolare distanza minima
+    def bfs_distance(start, target):
+        visited = set()
+        queue = deque([(start, 0)])
+        while queue:
+            node, dist = queue.popleft()
+            if node == target:
+                return dist
+            if node in visited:
+                continue
+            visited.add(node)
+            for neighbor in graph_dict.get(node, []):
+                if neighbor not in visited:
+                    queue.append((neighbor, dist + 1))
+        return float("inf")
+
+    # mappa nodes_to_check al nodo originale
+    check_to_original = dict(zip(nodes_to_check, nodes))
+
+    # calcola distanze
+    distances = {node: bfs_distance(node, target_node) for node in nodes_to_check}
+
+    # nodo con distanza minima
+    closest_check_node = min(distances, key=distances.get)
+    distance = distances[closest_check_node]
+    original_node = check_to_original[closest_check_node]
+
+    return closest_check_node, distance, original_node
 
 
 def setup_logger(logger_name, log_level=logging.DEBUG):
@@ -36,11 +86,23 @@ def clean_label(text: str) -> str:
     return re.sub(r"[^0-9A-Za-z_]+", "", text)
 
 
+def remove_accents(s):
+    if isinstance(s, str):
+        s = unicodedata.normalize("NFD", s)
+        return "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return s
+
+
+def clean_row(row):
+    return row.apply(remove_accents)
+
+
 def extract_heads(sheet: pd.DataFrame) -> pd.DataFrame:
     """Use the first row as header and return cleaned DataFrame."""
     header = [str(h).strip() for h in sheet.iloc[0].tolist()]
     body = sheet.iloc[1:].copy()
     body.columns = header
+    # body = body.apply(clean_row, axis=1)
     return body.fillna("")
 
 

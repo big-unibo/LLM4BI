@@ -16,7 +16,9 @@ LLM4BI:BIObject rdf:type owl:Class .
 
 LLM4BI:Fact rdfs:subClassOf LLM4BI:BIObject .
 
-LLM4BI:ConformedHierarchy rdfs:subClassOf LLM4BI:BIObject .
+LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:BIObject .
+
+LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:BIObject .
 
 LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
 
@@ -28,6 +30,7 @@ LLM4BI:Dependency a owl:ObjectProperty ;
   rdfs:range  LLM4BI:BIObject .
 
 LLM4BI:ConformsTo a owl:ObjectProperty ;
+  rdfs:subPropertyOf LLM4BI:Dependency ; 
   rdfs:domain LLM4BI:BIObject ;
   rdfs:label "ConformsTo" ;
   rdfs:range  LLM4BI:BIObject .

@@ -1,0 +1,16 @@
+questions:
+  - id: q1
+    question: "How many facts and conformed hierarchies are present?"
+    answer: "There are 8 facts and 7 conformed hierarchies"
+
+  - id: q2
+    question: "Where can I find informations about the margin percentage of sold goods?"
+    answer: "Invoice fact table"
+
+  - id: q3
+    question: "Which events can be analyzed from the perspective of products?"
+    answer: "All facts linked to the Product conformed hierarchy."
+
+  - id: q4
+    question: "Which are the links between the concepts of warehouses and states?"
+    answer: "The Sales_Date attribute in the Sales fact table can help analyze sales performance over time."
