@@ -1,0 +1,2652 @@
+@prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
+@prefix LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.foo.bar/LLM4BI/ontologies/LLM4BI> a owl:Ontology .
+
+LLM4BI:AggregationLevel a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range xsd:string .
+
+LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:BIObject .
+
+LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:BIObject .
+
+LLM4BI:ConformsTo a owl:ObjectProperty ;
+    rdfs:label "ConformsTo" ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range LLM4BI:BIObject ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI:Description a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range xsd:string .
+
+LLM4BI:LogicalName a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range xsd:string .
+
+LLM4BI:SampleValues a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range xsd:string .
+
+LLM4BI_Indyco:Agent a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Agent_Agent .
+
+LLM4BI_Indyco:Agent_Agent_Controller a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:MultipleDependency .
+
+LLM4BI_Indyco:Customer a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_Customer .
+
+LLM4BI_Indyco:Geography a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Geography_City .
+
+LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Country,
+        LLM4BI_Indyco:Historical_Order_Currency,
+        LLM4BI_Indyco:Historical_Order_Discount_Value,
+        LLM4BI_Indyco:Historical_Order_Month_In_Year,
+        LLM4BI_Indyco:Historical_Order_Net_Value,
+        LLM4BI_Indyco:Historical_Order_Quantity,
+        LLM4BI_Indyco:Historical_Order_Season,
+        LLM4BI_Indyco:Historical_Order_Subtype,
+        LLM4BI_Indyco:Historical_Order_VAT_Value .
+
+LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Agent,
+        LLM4BI_Indyco:Invoice_Currency,
+        LLM4BI_Indyco:Invoice_Date,
+        LLM4BI_Indyco:Invoice_First_Commercial_Discount,
+        LLM4BI_Indyco:Invoice_Net_Average_Price,
+        LLM4BI_Indyco:Invoice_Net_Value,
+        LLM4BI_Indyco:Invoice_Quantity,
+        LLM4BI_Indyco:Invoice_SKU,
+        LLM4BI_Indyco:Invoice_Season,
+        LLM4BI_Indyco:Invoice_Second_Commercial_Discount,
+        LLM4BI_Indyco:Invoice_SellIn_Margin ;
+    LLM4BI_Indyco:Invoice_Invoice_Doc_Type LLM4BI_Indyco:Invoice_Doc_Type ;
+    LLM4BI_Indyco:Invoice_Invoice_Goods_On_Delivery LLM4BI_Indyco:Invoice_Goods_On_Delivery ;
+    LLM4BI_Indyco:Invoice_Invoice_Profit_Center LLM4BI_Indyco:Invoice_Profit_Center ;
+    LLM4BI_Indyco:Invoice_Invoice_Return_Justification LLM4BI_Indyco:Invoice_Return_Justification ;
+    LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse LLM4BI_Indyco:Invoice_Virtual_Warehouse ;
+    LLM4BI_Indyco:Invoice_billing_Customer LLM4BI_Indyco:Invoice_Customer ;
+    LLM4BI_Indyco:Invoice_shipping_Customer LLM4BI_Indyco:Invoice_Customer .
+
+LLM4BI_Indyco:Invoice_Agent_Controller a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:MultipleDependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Doc_Type a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Goods_On_Delivery a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Profit_Center a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Return_Justification a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Invoice_billing_Customer a owl:ObjectProperty ;
+    rdfs:label "billing" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Invoice_shipping_Customer a owl:ObjectProperty ;
+    rdfs:label "shipping" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Order a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Agent,
+        LLM4BI_Indyco:Order_Currency,
+        LLM4BI_Indyco:Order_Customer,
+        LLM4BI_Indyco:Order_Date,
+        LLM4BI_Indyco:Order_Discount_Value,
+        LLM4BI_Indyco:Order_Merchandise_Type,
+        LLM4BI_Indyco:Order_Net_Value,
+        LLM4BI_Indyco:Order_Order_Type,
+        LLM4BI_Indyco:Order_Quantity,
+        LLM4BI_Indyco:Order_SKU,
+        LLM4BI_Indyco:Order_Season,
+        LLM4BI_Indyco:Order_VAT_Value .
+
+LLM4BI_Indyco:Order_Agent_Controller a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:MultipleDependency .
+
+LLM4BI_Indyco:Product a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_SKU .
+
+LLM4BI_Indyco:Shop_Ticket a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Agent,
+        LLM4BI_Indyco:Shop_Ticket_Currency,
+        LLM4BI_Indyco:Shop_Ticket_Date,
+        LLM4BI_Indyco:Shop_Ticket_Discount_Value,
+        LLM4BI_Indyco:Shop_Ticket_Net_Value,
+        LLM4BI_Indyco:Shop_Ticket_Quantity,
+        LLM4BI_Indyco:Shop_Ticket_SKU,
+        LLM4BI_Indyco:Shop_Ticket_Season,
+        LLM4BI_Indyco:Shop_Ticket_Store,
+        LLM4BI_Indyco:Shop_Ticket_VAT_Value .
+
+LLM4BI_Indyco:Shop_Ticket_Agent_Controller a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:MultipleDependency .
+
+LLM4BI_Indyco:Store a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_Store .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Date,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_SKU,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_City,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_Type .
+
+LLM4BI_Indyco:Time a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_Date .
+
+LLM4BI_Indyco:Traffic_Counter a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Date,
+        LLM4BI_Indyco:Traffic_Counter_Hour,
+        LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio,
+        LLM4BI_Indyco:Traffic_Counter_Store,
+        LLM4BI_Indyco:Traffic_Counter_Traffic_counter .
+
+LLM4BI_Indyco:Warehouse a LLM4BI:ConformedHierarchy ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Warehouse .
+
+LLM4BI_Indyco:Warehouse_Movement a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Cause,
+        LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type,
+        LLM4BI_Indyco:Warehouse_Movement_Quantity,
+        LLM4BI_Indyco:Warehouse_Movement_SKU,
+        LLM4BI_Indyco:Warehouse_Movement_Warehouse ;
+    LLM4BI_Indyco:Warehouse_Movement_in_Date LLM4BI_Indyco:Warehouse_Movement_Date ;
+    LLM4BI_Indyco:Warehouse_Movement_out_Date LLM4BI_Indyco:Warehouse_Movement_Date .
+
+LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Warehouse_Movement_in_Date a owl:ObjectProperty ;
+    rdfs:label "in" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Warehouse_Movement_out_Date a owl:ObjectProperty ;
+    rdfs:label "out" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Warehouse_Stock a LLM4BI:Fact ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Date,
+        LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type,
+        LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock,
+        LLM4BI_Indyco:Warehouse_Stock_SKU,
+        LLM4BI_Indyco:Warehouse_Stock_Warehouse .
+
+LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Type a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type a owl:ObjectProperty ;
+    rdfs:subPropertyOf LLM4BI:OptionalDependency .
+
+LLM4BI_Indyco:Agent_Controller a LLM4BI:Attribute ;
+    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
+    LLM4BI:LogicalName "CONTROLLER" .
+
+LLM4BI_Indyco:Historical_Order_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Historical_Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Historical_Order_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Historical_Order_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Historical_Order_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Historical_Order_Currency a LLM4BI:Attribute ;
+    LLM4BI:Description "The currency used for billing" ;
+    LLM4BI:LogicalName "CURRENCY" ;
+    LLM4BI:SampleValues " CAD",
+        " EUR",
+        " GBP",
+        " JPY",
+        "USD" .
+
+LLM4BI_Indyco:Historical_Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Historical_Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Discount if any" .
+
+LLM4BI_Indyco:Historical_Order_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Historical_Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_4Month_Period,
+        LLM4BI_Indyco:Historical_Order_Month,
+        LLM4BI_Indyco:Historical_Order_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Historical_Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Value, net of discounts and VAT" .
+
+LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " AVG",
+        "SUM" ;
+    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
+
+LLM4BI_Indyco:Historical_Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
+    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:SampleValues " FW13",
+        " SS13",
+        "FW12" .
+
+LLM4BI_Indyco:Historical_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Historical_Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Customer_Type,
+        LLM4BI_Indyco:Historical_Order_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Historical_Order_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Historical_Order_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Historical_Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Taxes" .
+
+LLM4BI_Indyco:Invoice_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Invoice_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Invoice_Agent a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Agent ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Area_Manager ;
+    LLM4BI:Description "A salesman who covers a geographic area" ;
+    LLM4BI:LogicalName "AGENT" ;
+    LLM4BI:SampleValues " John Carrie",
+        " Steve Gorini",
+        "Michael Baldi" ;
+    LLM4BI_Indyco:Invoice_Agent_Controller LLM4BI_Indyco:Invoice_Controller .
+
+LLM4BI_Indyco:Invoice_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Invoice_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Area_Manager ;
+    LLM4BI:Description "An agent who manages and coordinates other agents" ;
+    LLM4BI:LogicalName "AREA_MANAGER" ;
+    LLM4BI:SampleValues " John Green",
+        "Mark White" .
+
+LLM4BI_Indyco:Invoice_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Billing_Information ;
+    LLM4BI:Description "The specific data needed for billing a customer" ;
+    LLM4BI:LogicalName "BILLING_INFORMATION" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Invoice_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Invoice_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Invoice_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Invoice_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Invoice_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Invoice_Controller a LLM4BI:Attribute ;
+    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
+    LLM4BI:LogicalName "CONTROLLER" .
+
+LLM4BI_Indyco:Invoice_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Invoice_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
+    LLM4BI:Description "The currency used for invoicing" ;
+    LLM4BI:LogicalName "CURRENCY" ;
+    LLM4BI:SampleValues " CAD",
+        " EUR",
+        " GBP",
+        " JPY",
+        "USD" .
+
+LLM4BI_Indyco:Invoice_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Invoice_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Invoice_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Month_In_Year,
+        LLM4BI_Indyco:Invoice_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Invoice_Doc_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "The document type" ;
+    LLM4BI:LogicalName "DOC_TYPE" ;
+    LLM4BI:SampleValues " shipped",
+        " ticket",
+        "Deposit" .
+
+LLM4BI_Indyco:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "A discount" .
+
+LLM4BI_Indyco:Invoice_Goods_On_Delivery a LLM4BI:Attribute ;
+    LLM4BI:Description "Whether the good is being delivered" ;
+    LLM4BI:LogicalName "GOODS_ON_DELIVERY" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Invoice_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Invoice_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Invoice_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Invoice_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_4Month_Period,
+        LLM4BI_Indyco:Invoice_Month,
+        LLM4BI_Indyco:Invoice_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Invoice_Net_Average_Price a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "AVG" .
+
+LLM4BI_Indyco:Invoice_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Value, net of discounts and VAT" .
+
+LLM4BI_Indyco:Invoice_Profit_Center a LLM4BI:Attribute ;
+    LLM4BI:Description "A part of the company that directly adds the sale to its profits" ;
+    LLM4BI:LogicalName "PROFIT_CENTER" .
+
+LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " AVG",
+        "SUM" ;
+    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
+
+LLM4BI_Indyco:Invoice_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Invoice_Return_Justification a LLM4BI:Attribute ;
+    LLM4BI:Description "The reason for which the goods are returned back" ;
+    LLM4BI:LogicalName "RETURN_JUSTIFICATION" ;
+    LLM4BI:SampleValues " Dead Stock",
+        " Flawed Goods",
+        " Outdate Stock",
+        " Wrong Goods",
+        "Shipping Error" .
+
+LLM4BI_Indyco:Invoice_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Brand,
+        LLM4BI_Indyco:Invoice_Color,
+        LLM4BI_Indyco:Invoice_Customer_Gender,
+        LLM4BI_Indyco:Invoice_Made_In,
+        LLM4BI_Indyco:Invoice_Size,
+        LLM4BI_Indyco:Invoice_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
+    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:SampleValues " FW13",
+        " SS13",
+        "FW12" .
+
+LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "A discount" .
+
+LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
+    LLM4BI:Description "Gross margin" .
+
+LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Invoice_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Shipping_Address ;
+    LLM4BI:Description "The shipping address of a customer" ;
+    LLM4BI:LogicalName "SHIPPING_ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Invoice_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Invoice_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Invoice_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Customer_Type,
+        LLM4BI_Indyco:Invoice_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Invoice_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:Description "Goods in shipping status" ;
+    LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" ;
+    LLM4BI:SampleValues "Y/N" .
+
+LLM4BI_Indyco:Invoice_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Order_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Order_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Order_Agent a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Agent ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Area_Manager ;
+    LLM4BI:Description "A salesman who covers a geographic area" ;
+    LLM4BI:LogicalName "AGENT" ;
+    LLM4BI:SampleValues " John Carrie",
+        " Steve Gorini",
+        "Michael Baldi" ;
+    LLM4BI_Indyco:Order_Agent_Controller LLM4BI_Indyco:Order_Controller .
+
+LLM4BI_Indyco:Order_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Order_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Area_Manager ;
+    LLM4BI:Description "An agent who manages and coordinates other agents" ;
+    LLM4BI:LogicalName "AREA_MANAGER" ;
+    LLM4BI:SampleValues " John Green",
+        "Mark White" .
+
+LLM4BI_Indyco:Order_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Billing_Information ;
+    LLM4BI:Description "The specific data needed for billing a customer" ;
+    LLM4BI:LogicalName "BILLING_INFORMATION" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Order_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Order_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Order_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Order_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Order_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Order_Controller a LLM4BI:Attribute ;
+    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
+    LLM4BI:LogicalName "CONTROLLER" .
+
+LLM4BI_Indyco:Order_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Order_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Order_Currency a LLM4BI:Attribute ;
+    LLM4BI:Description "The currency used for billing" ;
+    LLM4BI:LogicalName "CURRENCY" ;
+    LLM4BI:SampleValues " CAD",
+        " EUR",
+        " GBP",
+        " JPY",
+        "USD" .
+
+LLM4BI_Indyco:Order_Customer a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Customer ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Billing_Information,
+        LLM4BI_Indyco:Order_City,
+        LLM4BI_Indyco:Order_Shipping_Address ;
+    LLM4BI:Description "The buying customer" ;
+    LLM4BI:LogicalName "CUSTOMER" ;
+    LLM4BI:SampleValues " Holding2",
+        "Holding1" .
+
+LLM4BI_Indyco:Order_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Order_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Order_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Month_In_Year,
+        LLM4BI_Indyco:Order_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Order_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Discount, if any" .
+
+LLM4BI_Indyco:Order_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Order_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the decisions about which products should be presented to which customers at what time." ;
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
+    LLM4BI:SampleValues " Disney Toons",
+        " Far West Men wears",
+        "Football UK Teams" .
+
+LLM4BI_Indyco:Order_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Order_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_4Month_Period,
+        LLM4BI_Indyco:Order_Month,
+        LLM4BI_Indyco:Order_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Order_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Value, net of discounts and VAT" .
+
+LLM4BI_Indyco:Order_Order_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "Conditions on how the order is executed" ;
+    LLM4BI:LogicalName "ORDER_TYPE" ;
+    LLM4BI:SampleValues " limit order",
+        " stop order",
+        "Market order" .
+
+LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " AVG",
+        "SUM" ;
+    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
+
+LLM4BI_Indyco:Order_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Order_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Brand,
+        LLM4BI_Indyco:Order_Color,
+        LLM4BI_Indyco:Order_Customer_Gender,
+        LLM4BI_Indyco:Order_Made_In,
+        LLM4BI_Indyco:Order_Size,
+        LLM4BI_Indyco:Order_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Order_Season a LLM4BI:Attribute ;
+    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:SampleValues " FW13",
+        " SS13",
+        "FW12" .
+
+LLM4BI_Indyco:Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Order_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_Shipping_Address ;
+    LLM4BI:Description "The shipping address of a customer" ;
+    LLM4BI:LogicalName "SHIPPING_ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Order_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Order_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Customer_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Order_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Customer_Type,
+        LLM4BI_Indyco:Order_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Order_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Order_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Order_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Taxes" .
+
+LLM4BI_Indyco:Order_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Shop_Ticket_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Shop_Ticket_Address a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Address ;
+    LLM4BI:LogicalName "ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Shop_Ticket_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Shop_Ticket_Agent a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Agent ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Area_Manager ;
+    LLM4BI:Description "A salesman who covers a geographic area" ;
+    LLM4BI:LogicalName "AGENT" ;
+    LLM4BI:SampleValues " John Carrie",
+        " Steve Gorini",
+        "Michael Baldi" ;
+    LLM4BI_Indyco:Shop_Ticket_Agent_Controller LLM4BI_Indyco:Shop_Ticket_Controller .
+
+LLM4BI_Indyco:Shop_Ticket_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Shop_Ticket_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Agent_Area_Manager ;
+    LLM4BI:Description "An agent who manages and coordinates other agents" ;
+    LLM4BI:LogicalName "AREA_MANAGER" ;
+    LLM4BI:SampleValues " John Green",
+        "Mark White" .
+
+LLM4BI_Indyco:Shop_Ticket_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Shop_Ticket_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Shop_Ticket_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Shop_Ticket_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Shop_Ticket_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Shop_Ticket_Controller a LLM4BI:Attribute ;
+    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
+    LLM4BI:LogicalName "CONTROLLER" .
+
+LLM4BI_Indyco:Shop_Ticket_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Shop_Ticket_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Shop_Ticket_Currency a LLM4BI:Attribute ;
+    LLM4BI:Description "The currency used for buying" ;
+    LLM4BI:LogicalName "CURRENCY" ;
+    LLM4BI:SampleValues " CAD",
+        " EUR",
+        " GBP",
+        " JPY",
+        "USD" .
+
+LLM4BI_Indyco:Shop_Ticket_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Shop_Ticket_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Shop_Ticket_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Month_In_Year,
+        LLM4BI_Indyco:Shop_Ticket_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Shop_Ticket_Discount_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" .
+
+LLM4BI_Indyco:Shop_Ticket_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_IsConnected ;
+    LLM4BI:Description "Whether the store is connected to Internet or not" ;
+    LLM4BI:LogicalName "ISCONNECTED" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Shop_Ticket_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Location_Type ;
+    LLM4BI:Description "The environment where the store is located" ;
+    LLM4BI:LogicalName "LOCATION_TYPE" ;
+    LLM4BI:SampleValues " Highway shopping center",
+        " Mall",
+        "Old Town" .
+
+LLM4BI_Indyco:Shop_Ticket_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Shop_Ticket_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Shop_Ticket_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Shop_Ticket_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_4Month_Period,
+        LLM4BI_Indyco:Shop_Ticket_Month,
+        LLM4BI_Indyco:Shop_Ticket_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Shop_Ticket_Net_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Value, net of discounts and VAT" .
+
+LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
+
+LLM4BI_Indyco:Shop_Ticket_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Shop_Ticket_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Brand,
+        LLM4BI_Indyco:Shop_Ticket_Color,
+        LLM4BI_Indyco:Shop_Ticket_Customer_Gender,
+        LLM4BI_Indyco:Shop_Ticket_Made_In,
+        LLM4BI_Indyco:Shop_Ticket_Size,
+        LLM4BI_Indyco:Shop_Ticket_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Shop_Ticket_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Sales_District ;
+    LLM4BI:Description "A geography-based grouping of stores" ;
+    LLM4BI:LogicalName "SALES_DISTRICT" .
+
+LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
+    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:SampleValues " FW13",
+        " SS13",
+        "FW12" .
+
+LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Shop_Ticket_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Shop_Ticket_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Shop_Ticket_Store a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Store ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Address,
+        LLM4BI_Indyco:Shop_Ticket_City,
+        LLM4BI_Indyco:Shop_Ticket_IsConnected,
+        LLM4BI_Indyco:Shop_Ticket_Location_Type,
+        LLM4BI_Indyco:Shop_Ticket_Sales_District ;
+    LLM4BI:Description "The store where a product is being sold" ;
+    LLM4BI:LogicalName "STORE" .
+
+LLM4BI_Indyco:Shop_Ticket_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Customer_Type,
+        LLM4BI_Indyco:Shop_Ticket_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Shop_Ticket_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Shop_Ticket_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Shop_Ticket_VAT_Value a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:Description "Taxes" .
+
+LLM4BI_Indyco:Shop_Ticket_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Month_In_Year,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_4Month_Period,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Month,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " MIN",
+        "AVG" ;
+    LLM4BI:Description "The inventory level" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Brand,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Color,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Customer_Gender,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Made_In,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Size,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Customer_Type,
+        LLM4BI_Indyco:Third_Party_Warehouse_Stock_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Third_Party_Warehouse_Stock_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Warehouse_Type ;
+    LLM4BI:Description "A classification of warehouses" ;
+    LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
+    LLM4BI:SampleValues " Other",
+        " POP",
+        " Stock Production",
+        "Third party warehouse" .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Traffic_Counter_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Traffic_Counter_Address a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Address ;
+    LLM4BI:LogicalName "ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Traffic_Counter_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Traffic_Counter_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Traffic_Counter_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Traffic_Counter_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Traffic_Counter_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Month_In_Year,
+        LLM4BI_Indyco:Traffic_Counter_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
+    LLM4BI:Description "Part of the day" ;
+    LLM4BI:LogicalName "HOUR" ;
+    LLM4BI:SampleValues " 10-12",
+        " 12-14",
+        "8-10" .
+
+LLM4BI_Indyco:Traffic_Counter_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_IsConnected ;
+    LLM4BI:Description "Whether the store is connected to Internet or not" ;
+    LLM4BI:LogicalName "ISCONNECTED" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Traffic_Counter_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Location_Type ;
+    LLM4BI:Description "The environment where the store is located" ;
+    LLM4BI:LogicalName "LOCATION_TYPE" ;
+    LLM4BI:SampleValues " Highway shopping center",
+        " Mall",
+        "Old Town" .
+
+LLM4BI_Indyco:Traffic_Counter_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Traffic_Counter_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_4Month_Period,
+        LLM4BI_Indyco:Traffic_Counter_Month,
+        LLM4BI_Indyco:Traffic_Counter_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel "AVG" ;
+    LLM4BI:Description "Number of ticket vs. people who entered" .
+
+LLM4BI_Indyco:Traffic_Counter_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Traffic_Counter_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Sales_District ;
+    LLM4BI:Description "A geography-based grouping of stores" ;
+    LLM4BI:LogicalName "SALES_DISTRICT" .
+
+LLM4BI_Indyco:Traffic_Counter_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Traffic_Counter_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Traffic_Counter_Store a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Store_Store ;
+    LLM4BI:Dependency LLM4BI_Indyco:Traffic_Counter_Address,
+        LLM4BI_Indyco:Traffic_Counter_City,
+        LLM4BI_Indyco:Traffic_Counter_IsConnected,
+        LLM4BI_Indyco:Traffic_Counter_Location_Type,
+        LLM4BI_Indyco:Traffic_Counter_Sales_District ;
+    LLM4BI:Description "The store where a product is being sold" ;
+    LLM4BI:LogicalName "STORE" .
+
+LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " AVG",
+        "SUM" ;
+    LLM4BI:Description "Numer of persons who entered the store" .
+
+LLM4BI_Indyco:Traffic_Counter_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Warehouse_Movement_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Warehouse_Movement_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Warehouse_Movement_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Warehouse_Movement_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Warehouse_Movement_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Warehouse_Movement_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Warehouse_Movement_Cause a LLM4BI:Attribute ;
+    LLM4BI:Description "The reason for moving goods" ;
+    LLM4BI:LogicalName "CAUSE" .
+
+LLM4BI_Indyco:Warehouse_Movement_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Warehouse_Movement_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Warehouse_Movement_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Warehouse_Movement_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_Movement_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Warehouse_Movement_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Warehouse_Movement_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_IsVirtual ;
+    LLM4BI:Description "Specifies whether the warehouse is a physical or a virtual one" ;
+    LLM4BI:LogicalName "ISVIRTUAL" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Warehouse_Movement_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Warehouse_Movement_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
+    LLM4BI:SampleValues " Disney Toons",
+        " Far West Men wears",
+        "Football UK Teams" .
+
+LLM4BI_Indyco:Warehouse_Movement_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Warehouse_Movement_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_4Month_Period,
+        LLM4BI_Indyco:Warehouse_Movement_Month,
+        LLM4BI_Indyco:Warehouse_Movement_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " MIN",
+        "AVG" ;
+    LLM4BI:Description "The quantity of goods being moved" .
+
+LLM4BI_Indyco:Warehouse_Movement_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Warehouse_Movement_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Brand,
+        LLM4BI_Indyco:Warehouse_Movement_Color,
+        LLM4BI_Indyco:Warehouse_Movement_Customer_Gender,
+        LLM4BI_Indyco:Warehouse_Movement_Made_In,
+        LLM4BI_Indyco:Warehouse_Movement_Size,
+        LLM4BI_Indyco:Warehouse_Movement_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Warehouse_Movement_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Warehouse_Movement_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Warehouse_Movement_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_Movement_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Customer_Type,
+        LLM4BI_Indyco:Warehouse_Movement_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Warehouse_Movement_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Warehouse_Movement_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Warehouse ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_City,
+        LLM4BI_Indyco:Warehouse_Movement_IsVirtual ;
+    LLM4BI:Description "The warehouse where a product is stored" ;
+    LLM4BI:LogicalName "WAREHOUSE" ;
+    LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Movement_Warehouse_Type .
+
+LLM4BI_Indyco:Warehouse_Movement_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "A classification of warehouses" ;
+    LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
+    LLM4BI:SampleValues " Other",
+        " POP",
+        " Stock Production",
+        "Third party warehouse" .
+
+LLM4BI_Indyco:Warehouse_Movement_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Warehouse_Stock_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_4Month_Period ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Warehouse_Stock_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Warehouse_Stock_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Warehouse_Stock_Brand a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Warehouse_Stock_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Warehouse_Stock_Category a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Warehouse_Stock_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Warehouse_Stock_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Color ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Warehouse_Stock_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Warehouse_Stock_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_Stock_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Gender ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Warehouse_Stock_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Customer_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Warehouse_Stock_Date a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Date ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Month_In_Year,
+        LLM4BI_Indyco:Warehouse_Stock_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI_Indyco:Warehouse_Stock_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_IsVirtual ;
+    LLM4BI:Description "Specifies whether the warehouse is a physical or a virtual one" ;
+    LLM4BI:LogicalName "ISVIRTUAL" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Warehouse_Stock_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Warehouse_Stock_Made_In a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Made_In ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
+    LLM4BI:SampleValues " Disney Toons",
+        " Far West Men wears",
+        "Football UK Teams" .
+
+LLM4BI_Indyco:Warehouse_Stock_Month a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Warehouse_Stock_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Month_In_Year ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_4Month_Period,
+        LLM4BI_Indyco:Warehouse_Stock_Month,
+        LLM4BI_Indyco:Warehouse_Stock_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
+    LLM4BI:AggregationLevel " MIN",
+        "AVG" ;
+    LLM4BI:Description "The inventory level" .
+
+LLM4BI_Indyco:Warehouse_Stock_Quarter a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Warehouse_Stock_SKU a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_SKU ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Brand,
+        LLM4BI_Indyco:Warehouse_Stock_Color,
+        LLM4BI_Indyco:Warehouse_Stock_Customer_Gender,
+        LLM4BI_Indyco:Warehouse_Stock_Made_In,
+        LLM4BI_Indyco:Warehouse_Stock_Size,
+        LLM4BI_Indyco:Warehouse_Stock_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Warehouse_Stock_Semester a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI_Indyco:Warehouse_Stock_Size a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Size ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Warehouse_Stock_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_Stock_Subtype a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Customer_Type,
+        LLM4BI_Indyco:Warehouse_Stock_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Warehouse_Stock_Type a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Warehouse_Stock_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Warehouse_Warehouse ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Stock_City,
+        LLM4BI_Indyco:Warehouse_Stock_IsVirtual ;
+    LLM4BI:Description "The warehouse where a product is stored" ;
+    LLM4BI:LogicalName "WAREHOUSE" ;
+    LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Stock_Warehouse_Type .
+
+LLM4BI_Indyco:Warehouse_Stock_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "A classification of warehouses" ;
+    LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
+    LLM4BI:SampleValues " Other",
+        " POP",
+        " Stock Production",
+        "Third party warehouse" .
+
+LLM4BI_Indyco:Warehouse_Stock_Week a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Customer_Customer a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_Billing_Information,
+        LLM4BI_Indyco:Customer_City,
+        LLM4BI_Indyco:Customer_Shipping_Address ;
+    LLM4BI:Description "The buying customer" ;
+    LLM4BI:LogicalName "CUSTOMER" ;
+    LLM4BI:SampleValues " Holding2",
+        "Holding1" .
+
+LLM4BI_Indyco:Historical_Order_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Invoice_Customer a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Invoice_Billing_Information,
+        LLM4BI_Indyco:Invoice_City,
+        LLM4BI_Indyco:Invoice_Shipping_Address ;
+    LLM4BI:Description "The buying customer" ;
+    LLM4BI:LogicalName "CUSTOMER" ;
+    LLM4BI:SampleValues " Holding2",
+        "Holding1" ;
+    LLM4BI:isShared true .
+
+LLM4BI_Indyco:Invoice_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Order_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Shop_Ticket_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Time_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Traffic_Counter_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Warehouse_Movement_Date a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Movement_Month_In_Year,
+        LLM4BI_Indyco:Warehouse_Movement_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" ;
+    LLM4BI:isShared true .
+
+LLM4BI_Indyco:Warehouse_Movement_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Warehouse_Stock_Year a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific year" ;
+    LLM4BI:LogicalName "YEAR" ;
+    LLM4BI:SampleValues " 2014",
+        " 2015",
+        "2013" ;
+    LLM4BI:isConvergence true .
+
+LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "A classification of warehouses" ;
+    LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
+    LLM4BI:SampleValues " Other",
+        " POP",
+        " Stock Production",
+        "Third party warehouse" .
+
+LLM4BI_Indyco:Customer_Billing_Information a LLM4BI:Attribute ;
+    LLM4BI:Description "The specific data needed for billing a customer" ;
+    LLM4BI:LogicalName "BILLING_INFORMATION" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Customer_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Customer_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Customer_Shipping_Address a LLM4BI:Attribute ;
+    LLM4BI:Description "The shipping address of a customer" ;
+    LLM4BI:LogicalName "SHIPPING_ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Customer_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Store_Address a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "ADDRESS" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Store_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Store_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Store_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Store_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Store_IsConnected a LLM4BI:Attribute ;
+    LLM4BI:Description "Whether the store is connected to Internet or not" ;
+    LLM4BI:LogicalName "ISCONNECTED" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Store_Location_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "The environment where the store is located" ;
+    LLM4BI:LogicalName "LOCATION_TYPE" ;
+    LLM4BI:SampleValues " Highway shopping center",
+        " Mall",
+        "Old Town" .
+
+LLM4BI_Indyco:Store_Sales_District a LLM4BI:Attribute ;
+    LLM4BI:Description "A geography-based grouping of stores" ;
+    LLM4BI:LogicalName "SALES_DISTRICT" .
+
+LLM4BI_Indyco:Store_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Store_Store a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Store_Address,
+        LLM4BI_Indyco:Store_City,
+        LLM4BI_Indyco:Store_IsConnected,
+        LLM4BI_Indyco:Store_Location_Type,
+        LLM4BI_Indyco:Store_Sales_District ;
+    LLM4BI:Description "The store where a product is being sold" ;
+    LLM4BI:LogicalName "STORE" .
+
+LLM4BI_Indyco:Warehouse_IsVirtual a LLM4BI:Attribute ;
+    LLM4BI:Description "Specifies whether the warehouse is a physical or a virtual one" ;
+    LLM4BI:LogicalName "ISVIRTUAL" ;
+    LLM4BI:SampleValues " N",
+        "Y" .
+
+LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_City,
+        LLM4BI_Indyco:Warehouse_IsVirtual ;
+    LLM4BI:Description "The warehouse where a product is stored" ;
+    LLM4BI:LogicalName "WAREHOUSE" ;
+    LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
+
+LLM4BI:MultipleDependency a owl:ObjectProperty ;
+    rdfs:label "MultipleDependency" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Agent_Agent a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Agent_Area_Manager ;
+    LLM4BI:Description "A salesman who covers a geographic area" ;
+    LLM4BI:LogicalName "AGENT" ;
+    LLM4BI:SampleValues " John Carrie",
+        " Steve Gorini",
+        "Michael Baldi" ;
+    LLM4BI_Indyco:Agent_Agent_Controller LLM4BI_Indyco:Agent_Controller .
+
+LLM4BI_Indyco:Agent_Area_Manager a LLM4BI:Attribute ;
+    LLM4BI:Description "An agent who manages and coordinates other agents" ;
+    LLM4BI:LogicalName "AREA_MANAGER" ;
+    LLM4BI:SampleValues " John Green",
+        "Mark White" .
+
+LLM4BI_Indyco:Customer_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Customer_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Customer_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Geography_Area a LLM4BI:Attribute ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Geography_City a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Geography_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Geography_Country a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Geography_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Geography_County a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Geography_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Geography_State a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Geography_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_Area a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Area ;
+    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:LogicalName "AREA" ;
+    LLM4BI:SampleValues " North America",
+        "North Europe" .
+
+LLM4BI_Indyco:Warehouse_City a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_City ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_County ;
+    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:LogicalName "CITY" ;
+    LLM4BI:SampleValues " London",
+        " Miami",
+        "Rome" .
+
+LLM4BI_Indyco:Warehouse_Country a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_Country ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Area ;
+    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:SampleValues " UK",
+        " USA",
+        "Italy" .
+
+LLM4BI_Indyco:Warehouse_County a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_County ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_State ;
+    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:SampleValues " Orange",
+        "Monterey" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Warehouse_State a LLM4BI:Attribute ;
+    LLM4BI:ConformsTo LLM4BI_Indyco:Geography_State ;
+    LLM4BI:Dependency LLM4BI_Indyco:Warehouse_Country ;
+    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:LogicalName "STATE" ;
+    LLM4BI:SampleValues " California",
+        "Florida" ;
+    LLM4BI:isOptional true .
+
+LLM4BI_Indyco:Product_Brand a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Brand_Group ;
+    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:LogicalName "BRAND" .
+
+LLM4BI_Indyco:Product_Brand_Group a LLM4BI:Attribute ;
+    LLM4BI:Description "A group of brands" ;
+    LLM4BI:LogicalName "BRAND_GROUP" .
+
+LLM4BI_Indyco:Product_Color a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Macro_Color ;
+    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:SampleValues " light blu",
+        "Dark blu" .
+
+LLM4BI_Indyco:Product_Customer_Gender a LLM4BI:Attribute ;
+    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
+    LLM4BI:SampleValues " female",
+        " unisex",
+        "Male" .
+
+LLM4BI_Indyco:Product_Macro_Color a LLM4BI:Attribute ;
+    LLM4BI:Description "A group of colors" ;
+    LLM4BI:LogicalName "MACRO_COLOR" ;
+    LLM4BI:SampleValues " red",
+        "Blu" .
+
+LLM4BI_Indyco:Product_Made_In a LLM4BI:Attribute ;
+    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:LogicalName "MADE_IN" ;
+    LLM4BI:SampleValues " Korea",
+        "China" .
+
+LLM4BI_Indyco:Product_SKU a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Brand,
+        LLM4BI_Indyco:Product_Color,
+        LLM4BI_Indyco:Product_Customer_Gender,
+        LLM4BI_Indyco:Product_Made_In,
+        LLM4BI_Indyco:Product_Size,
+        LLM4BI_Indyco:Product_Subtype ;
+    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:SampleValues " Sneakers British Knight Suede Brown XL",
+        " Sneakers Sporty Lady Faux Leather White S",
+        "Sneakers British Knight Leather Red M" .
+
+LLM4BI_Indyco:Product_Size a LLM4BI:Attribute ;
+    LLM4BI:Description "The size of the product" ;
+    LLM4BI:LogicalName "SIZE" ;
+    LLM4BI:SampleValues " L",
+        " M",
+        " XL",
+        "S" .
+
+LLM4BI_Indyco:Time_Date a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_Month_In_Year,
+        LLM4BI_Indyco:Time_Week ;
+    LLM4BI:Description "A specific day" ;
+    LLM4BI:LogicalName "DATE" ;
+    LLM4BI:SampleValues " 01-02-2014",
+        " 01-03-2014",
+        "01-01-2014" .
+
+LLM4BI:Dependency a owl:ObjectProperty ;
+    rdfs:label "" ;
+    rdfs:domain LLM4BI:BIObject ;
+    rdfs:range LLM4BI:BIObject ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI:Fact rdfs:subClassOf LLM4BI:BIObject .
+
+LLM4BI:OptionalDependency a owl:ObjectProperty ;
+    rdfs:label "OptionalDependency" ;
+    rdfs:subPropertyOf LLM4BI:Dependency .
+
+LLM4BI_Indyco:Product_Age_Range a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "AGE_RANGE" ;
+    LLM4BI:SampleValues " 11-16",
+        " 6-10",
+        "1-5" ;
+    LLM4BI:isDescriptive true .
+
+LLM4BI_Indyco:Product_Category a LLM4BI:Attribute ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "CATEGORY" ;
+    LLM4BI:SampleValues " accessories",
+        " apparel",
+        "Footwear" .
+
+LLM4BI_Indyco:Product_Customer_Type a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Age_Range ;
+    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:SampleValues " adult",
+        " baby",
+        "Junior" .
+
+LLM4BI_Indyco:Product_Subtype a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Customer_Type,
+        LLM4BI_Indyco:Product_Type ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:SampleValues " Lady Sandals Casual Footwear",
+        " Man Leathers Formal Footwear",
+        "Lady Sports Multipurpose Footwear" .
+
+LLM4BI_Indyco:Product_Type a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Product_Category ;
+    LLM4BI:Description "A classification of products" ;
+    LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:SampleValues " casual",
+        " suits",
+        "Coats" .
+
+LLM4BI_Indyco:Time_Week a LLM4BI:Attribute ;
+    LLM4BI:Description "A specific week" ;
+    LLM4BI:LogicalName "WEEK" ;
+    LLM4BI:SampleValues " W2",
+        " W3",
+        "W1" .
+
+LLM4BI_Indyco:Time_4Month_Period a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_Year ;
+    LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:SampleValues " 3MP2 13",
+        " 3MP3 14",
+        "3MP1 13" .
+
+LLM4BI_Indyco:Time_Month a LLM4BI:Attribute ;
+    LLM4BI:Description "A generic month" ;
+    LLM4BI:LogicalName "MONTH" ;
+    LLM4BI:SampleValues " Feb",
+        " Mar",
+        "Jan" .
+
+LLM4BI_Indyco:Time_Month_In_Year a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_4Month_Period,
+        LLM4BI_Indyco:Time_Month,
+        LLM4BI_Indyco:Time_Quarter ;
+    LLM4BI:Description "A specific month" ;
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:SampleValues " Feb 14",
+        " Mar 15",
+        "Jan 14" .
+
+LLM4BI_Indyco:Time_Quarter a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_Semester ;
+    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:SampleValues " Q2 14",
+        " Q3 14",
+        " Q4 14",
+        "Q1 14" .
+
+LLM4BI_Indyco:Time_Semester a LLM4BI:Attribute ;
+    LLM4BI:Dependency LLM4BI_Indyco:Time_Year ;
+    LLM4BI:Description "A specific semester" ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:SampleValues " S2 14",
+        "S1 14" .
+
+LLM4BI:BIObject a owl:Class .
+
+LLM4BI:Measure rdfs:subClassOf LLM4BI:BIObject .
+
+LLM4BI:Attribute rdfs:subClassOf LLM4BI:BIObject .
+

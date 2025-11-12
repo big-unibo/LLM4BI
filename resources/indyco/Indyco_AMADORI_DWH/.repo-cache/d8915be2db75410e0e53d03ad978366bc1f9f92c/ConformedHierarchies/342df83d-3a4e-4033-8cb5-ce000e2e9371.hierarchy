@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.12.0.0" factSchemaId="342df83d-3a4e-4033-8cb5-ce000e2e9371" name="Cliente Promo">
+    <node id="5e5f7433-b894-4e0e-963f-e0dc7e0e60d6">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="5e5f7433-b894-4e0e-963f-e0dc7e0e60d6" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="e0c2d663-ea90-45cf-aa4f-f96ff9dd822d">
+      <data key="d1">
+        <ico:Attribute Name="Cliente Promo" Description="Cliente sul quale è montata la promo. Distinzione tra cliente promo orig (vero intestatario della promo) e cliente promo (cliente a livello di insegna) per consentire l'analisi delle promozioni a livello di insegna anche quando sono montate su altri livelli." Id="e0c2d663-ea90-45cf-aa4f-f96ff9dd822d" X="-80" Y="-158" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="346554 = SALUMERIA PERI STEFANO, 446640 = COOP. S.M.V. INGROSSO ALIMENTARE, 654595 = PLANET FOOD SRL, 93664 = AUCHAN SPA MELILLI" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="FQ19223" SourceField="SOAN8" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="GER_CLI_COD" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_GER_CLI_H, L_GER_CLI_ORIG_H" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Cliente Promo, Cliente Promo Orig" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori Data - Warehouse\Schema Objects\Attributes\Cliente\Cliente Promo\Gerarchia Cliente Promo, \Amadori Data - Warehouse\Schema Objects\Attributes\Cliente\Cliente Promo\Gerarchia Cliente Promo Orig" />
+            <ico:property id="4cb6d321-f130-4280-b98b-efdd4080ec4e" value="Se il livello è minore o uguale L2 allora cliente promo = cliente promo orig, altrimenti in cliente promo riporto il livello insegna." />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="118743bc-95ba-4d0b-9883-eae8bab0eb5c">
+      <data key="d1">
+        <ico:Attribute Name="Livello Cliente Promo" Description="Indica il livello gerarchico del cliente promozione e del cliente promozione orig." Id="118743bc-95ba-4d0b-9883-eae8bab0eb5c" X="-50" Y="-247" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="CS, CF, L0, L1, L2, L3, L4, L5" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Livello Cliente Promo, Liv Ger Cliente Promo Orig" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="GER_CLI_LIV_COD" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_GER_CLI_H, L_GER_CLI_ORIG_H" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori Data - Warehouse\Schema Objects\Attributes\Cliente\Cliente Promo\Gerarchia Cliente Promo, \Amadori Data - Warehouse\Schema Objects\Attributes\Cliente\Cliente Promo\Gerarchia Cliente Promo Orig" />
+            <ico:property id="e5ea9df0-833f-4275-afb4-d09967cd48b3" value="SM1" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="bd57f587-6be4-423e-99b4-550b9fc9a9b4" source="5e5f7433-b894-4e0e-963f-e0dc7e0e60d6" target="e0c2d663-ea90-45cf-aa4f-f96ff9dd822d" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <edge id="32a9fac3-93be-4e05-8f85-19bccfb7fcef" source="e0c2d663-ea90-45cf-aa4f-f96ff9dd822d" target="118743bc-95ba-4d0b-9883-eae8bab0eb5c" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <hierarchy id="1d9f1e4a-9a7e-4e00-843d-66704d2b81e1" rootArcId="bd57f587-6be4-423e-99b4-550b9fc9a9b4" name="Cliente Promo" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="60832b68-da3f-4914-9a4f-cacaf406d70a" name="Sorgente Promozione">
+    <node id="f51c2b85-45a0-40b5-bb4c-377115061db4">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="f51c2b85-45a0-40b5-bb4c-377115061db4" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="174631bf-0c17-4453-b451-1b89324ecfd8">
+      <data key="d1">
+        <ico:Attribute Name="Sorgente Promozione" Description="Indica a quale canale commerciale si riferisce la promozione." Id="174631bf-0c17-4453-b451-1b89324ecfd8" X="255" Y="1145" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="DET = Dettaglio, GDO = GDO" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="PROMO_SORGENTE_COD" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_PROMO_SORGENTE" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Promo Sorgente Cod" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\ Schema Objects\Attributes\Promozioni" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="d264dcc7-9091-4335-a60a-a5cbd72b7743" source="f51c2b85-45a0-40b5-bb4c-377115061db4" target="174631bf-0c17-4453-b451-1b89324ecfd8" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="309a99f9-ba70-49a3-9a9a-38423e257e2d" rootArcId="d264dcc7-9091-4335-a60a-a5cbd72b7743" name="Sorgente Promozione" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="24931494-ec6b-47b8-b8bf-0b5d1d88fdb8" name="Stato Riga">
+    <node id="529fc737-6267-44c0-89e4-2ba4cb055ba5">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="529fc737-6267-44c0-89e4-2ba4cb055ba5" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="4cb37817-3640-42ce-a392-ca4f0ff6cdf1">
+      <data key="d1">
+        <ico:Attribute Name="Stato Riga" Description="Identifica lo stato di avanzamento della riga nel processo di evasione dell’ordine." Id="4cb37817-3640-42ce-a392-ca4f0ff6cdf1" X="1330" Y="1560" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="100 = Inserimento RdA, 619 = Conferma Spedizione, 540 = Valutaz. Disponibilità Plann., 563 = Conferma Sped. Notturna" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F4211, F42119" SourceField="LTTR" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_STATO_RIGA" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Stato Riga" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="STATO_RIGA_COD" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Ordine" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="1d679bba-7102-4f86-82a3-a0c5f3d7651c" source="529fc737-6267-44c0-89e4-2ba4cb055ba5" target="4cb37817-3640-42ce-a392-ca4f0ff6cdf1" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="87123a33-cf13-4244-90c5-f2426180393e" rootArcId="1d679bba-7102-4f86-82a3-a0c5f3d7651c" name="Stato Riga" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

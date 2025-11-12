@@ -1,0 +1,167 @@
+<project name="AMADORI_DWH" id="b59affca-5b98-4a0a-98b2-962710912629" toolversion="2.20.0.0">
+  <datawarehouse>
+    <datamarts>
+      <datamart name="Fatturato" id="2a2d441f-d9c7-480d-b3ec-26f0cdb4542f">
+        <factschemas>
+          <factschema id="9dbcd8a7-625c-4be3-9209-24d5f12f7f3f" />
+          <factschema id="3ec92945-8cf1-44ba-8843-ed8ac4dc2347" />
+        </factschemas>
+      </datamart>
+      <datamart name="Budget" id="e22cbe1c-38b7-45b8-bb78-faa87b68e872">
+        <factschemas>
+          <factschema id="6ffb36c6-5c33-4af6-a63a-b6ac2a8c55ca" />
+          <factschema id="2aaac70b-9f9d-47d8-aaee-a528cf4b9625" />
+          <factschema id="25573970-21e2-4a5b-b25b-a7ddf76986de" />
+        </factschemas>
+      </datamart>
+      <datamart name="Ordinato" id="c5b0fe89-bfcb-4615-8b7c-67ceeaaf508d">
+        <factschemas>
+          <factschema id="7736526c-9f74-4e68-b051-a9bff436ae65" />
+          <factschema id="ed57d316-19bf-4eb5-a49f-675974e724f2" />
+        </factschemas>
+      </datamart>
+      <datamart name="Costi" id="1312beea-0325-43ec-b6b4-56f8aeba3bbb">
+        <factschemas>
+          <factschema id="b4033a80-b8b2-4143-bb37-0d8bae7e769a" />
+          <factschema id="df7aba52-ec66-4cce-9f0c-bb108945c505" />
+          <factschema id="f55570e9-ca9d-4f3e-8a74-c1905686866d" />
+        </factschemas>
+      </datamart>
+      <datamart name="Promozioni" id="9d1d12f9-5afd-462f-81c6-1847fa8c0f69">
+        <factschemas>
+          <factschema id="88bf2e5f-f188-4143-bf17-8a661d6f1010" />
+          <factschema id="e6e127c3-45d9-461f-8393-07d9b0f9f249" />
+          <factschema id="91bb500a-5f08-4c3e-8141-05b1a3619fb4" />
+          <factschema id="e04712d6-72ff-4fa2-8091-83bc41815dcd" />
+          <factschema id="e2891d45-3ad8-4aa3-8f81-673e3288949a" />
+        </factschemas>
+      </datamart>
+      <datamart name="Trasporto" id="151687bf-89f1-4d34-b7b6-569696b003b7">
+        <factschemas>
+          <factschema id="71c261b0-f5c8-4c5a-8194-1040afe8c3ed" />
+          <factschema id="cbc76ff8-055b-46d5-952c-06c654a4e372" />
+          <factschema id="f4052465-efc2-4d21-9792-7a0b14813e8f" />
+        </factschemas>
+      </datamart>
+      <datamart name="Credito" id="2278b1e8-311b-4f93-b62b-2990390c71b8">
+        <factschemas>
+          <factschema id="32bd0307-a455-44c8-bd16-b8308394e2ed" />
+          <factschema id="82ef6e13-3925-43f0-a853-d637d1281566" />
+        </factschemas>
+      </datamart>
+    </datamarts>
+  </datawarehouse>
+  <conformedHierarchies>
+    <conformedHierarchy id="adfa8473-1127-4e6e-a7e0-df204d8ddd20" />
+    <conformedHierarchy id="084208f4-50ef-4c39-b72f-141b8ce250eb" />
+    <conformedHierarchy id="02d3c8fb-95e6-41c5-bb82-ebee5580222e" />
+    <conformedHierarchy id="63dadf3f-8472-48db-8ee3-7bca81da35cd" />
+    <conformedHierarchy id="7cc14696-6aca-4f31-90a6-5dc606368f0e" />
+    <conformedHierarchy id="7bb9ab4f-688f-44e9-ab80-dc27122b3ac3" />
+    <conformedHierarchy id="86d3a5d4-522a-4d57-a99e-04c384b56784" />
+    <conformedHierarchy id="70090cde-bb0e-42dc-8d9c-b7a27c2784f7" />
+    <conformedHierarchy id="0424a6ec-5230-4a84-8b3a-c2a360618d3f" />
+    <conformedHierarchy id="60832b68-da3f-4914-9a4f-cacaf406d70a" />
+    <conformedHierarchy id="2b11747d-09db-438a-a2af-40dc9011f75f" />
+    <conformedHierarchy id="0b177890-db1b-46d5-9753-076ef5e2cf95" />
+    <conformedHierarchy id="ab69261e-ac33-415b-a7fb-18635bff0ee1" />
+    <conformedHierarchy id="dec1875b-268a-4f48-a6e7-dc4a242e47af" />
+    <conformedHierarchy id="9015fa4a-09d9-4978-9231-72d0c369bd58" />
+    <conformedHierarchy id="3511e4cb-3e8a-4d82-b5e6-07e538d8c1ee" />
+    <conformedHierarchy id="342df83d-3a4e-4033-8cb5-ce000e2e9371" />
+    <conformedHierarchy id="539fc95f-9ef6-405e-8c6e-bcc572dda39c" />
+    <conformedHierarchy id="7fe9a131-b308-439a-a1a3-cefb1bf2640b" />
+    <conformedHierarchy id="24931494-ec6b-47b8-b8bf-0b5d1d88fdb8" />
+    <conformedHierarchy id="ea8bd069-b611-4429-98bd-af24beb9c581" />
+    <conformedHierarchy id="79a3824b-4a2c-40eb-b318-0bfbde9de509" />
+    <conformedHierarchy id="d7eb5553-b2b2-482f-a00e-08b1cf832527" />
+    <conformedHierarchy id="fd729d45-a101-40af-aa41-34c623a74746" />
+    <conformedHierarchy id="3ffebf6c-4940-4187-8e0c-64b0bc504532" />
+    <conformedHierarchy id="7cf1ea70-a385-41c2-970e-c106b60fe827" />
+    <conformedHierarchy id="d9c30d80-1433-4b59-ad53-c6db3d1f1e01" />
+  </conformedHierarchies>
+  <areas>
+    <area name="Commerciale" id="d840319b-8969-432c-b0c1-7c262c5d3764">
+      <factSchemas>
+        <factschema id="9dbcd8a7-625c-4be3-9209-24d5f12f7f3f" />
+        <factschema id="7736526c-9f74-4e68-b051-a9bff436ae65" />
+        <factschema id="ed57d316-19bf-4eb5-a49f-675974e724f2" />
+        <factschema id="3ec92945-8cf1-44ba-8843-ed8ac4dc2347" />
+      </factSchemas>
+    </area>
+    <area name="Budget" id="92583c63-fed5-4e76-b90b-07373df98dd9">
+      <factSchemas>
+        <factschema id="6ffb36c6-5c33-4af6-a63a-b6ac2a8c55ca" />
+        <factschema id="2aaac70b-9f9d-47d8-aaee-a528cf4b9625" />
+        <factschema id="25573970-21e2-4a5b-b25b-a7ddf76986de" />
+      </factSchemas>
+    </area>
+    <area name="Premi/Provvigioni" id="77aac637-44d6-4499-bd57-d17cbd9190e0">
+      <factSchemas>
+        <factschema id="b4033a80-b8b2-4143-bb37-0d8bae7e769a" />
+        <factschema id="df7aba52-ec66-4cce-9f0c-bb108945c505" />
+        <factschema id="f55570e9-ca9d-4f3e-8a74-c1905686866d" />
+      </factSchemas>
+    </area>
+    <area name="Promozioni" id="7e6fb4af-2a16-41cf-9728-952a8c7d333a">
+      <factSchemas>
+        <factschema id="88bf2e5f-f188-4143-bf17-8a661d6f1010" />
+        <factschema id="e6e127c3-45d9-461f-8393-07d9b0f9f249" />
+        <factschema id="91bb500a-5f08-4c3e-8141-05b1a3619fb4" />
+        <factschema id="e04712d6-72ff-4fa2-8091-83bc41815dcd" />
+        <factschema id="e2891d45-3ad8-4aa3-8f81-673e3288949a" />
+      </factSchemas>
+    </area>
+    <area name="Trasporti" id="e3a04871-05d9-40ce-a8e4-2d47c7ce0b30">
+      <factSchemas>
+        <factschema id="71c261b0-f5c8-4c5a-8194-1040afe8c3ed" />
+        <factschema id="cbc76ff8-055b-46d5-952c-06c654a4e372" />
+        <factschema id="f4052465-efc2-4d21-9792-7a0b14813e8f" />
+      </factSchemas>
+    </area>
+    <area name="Credito" id="c8ac40f0-63d1-4baf-b608-dd44e3954507">
+      <factSchemas>
+        <factschema id="32bd0307-a455-44c8-bd16-b8308394e2ed" />
+        <factschema id="82ef6e13-3925-43f0-a853-d637d1281566" />
+      </factSchemas>
+    </area>
+  </areas>
+  <customProperties>
+    <attributes>
+      <propertyDefinition id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" name="MicroStrategy name" description="Nome dell'attributo su MicroStrategy." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="e75e7c10-5dc5-4984-a787-c233ec28de2d" name="Logical table" description="Indica la tabella del DWH di riferimento." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="48d5ae6c-1c21-43d1-a24a-f0b9794b1c93" name="Validity end" description="Indica la fine di validità dell'attributo." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="4cb6d321-f130-4280-b98b-efdd4080ec4e" name="Function" description="Descrive la regola di opzionalità dell'attributo" type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="0443bdc3-4171-41ab-90e5-e7733e85a9cb" name="Technical description" description="Descrizione tecnica orientata all'IT." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="0e428e91-8020-4167-9502-29cb4843af7d" name="Logical field" description="Indica la colonna del DWH di riferimento." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="3db67d0f-b544-4e9a-a549-5dd8325e273b" name="Validity start" description="Indica l'inizio di validità dell'attributo." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="fbbff517-30f6-4562-81e3-fe7bda12da06" name="MicroStrategy path" description="Indica il percorso su MicroStragy per ottenere quell'attributo." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="7d75e582-7c70-44db-a88d-98d6d7aaa9e8" name="Sample Usage" description="Esempio di utilizzo dell'attributo." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="05ea9543-ec85-454b-b1ee-1ae71fbd48cc" name="Owner" description="" type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="e5ea9df0-833f-4275-afb4-d09967cd48b3" name="Source Name" description="Nome del file o del sistema sorgente da cui proviene il dato." type="Text" visibleInExplorer="true" />
+    </attributes>
+    <measures>
+      <propertyDefinition id="500b5371-981f-4f4b-baa7-accd81b5d6f4" name="MicroStrategy name" description="Nome della misura su MicroStrategy." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="4c5fccb6-6aa1-4c22-9f35-109835949106" name="Logical table" description="Indica la tabella del DWH di riferimento." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="71ab99ff-9b75-4467-9e8e-e8f3f44a8ac9" name="Logical field" description="Indica la colonna del DWH di riferimento." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="e2fcf34e-426e-4c53-9098-19beb3bd8f52" name="Technical description" description="Descrizione tecnica orientata all'IT." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="ed67741d-5723-4daa-9008-31b26522786f" name="Sample Usage" description="Esempio di utilizzo della metrica." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="93b8c77b-342a-4916-9a3b-8ff8671d5dc3" name="Source Name" description="Nome del file o del sistema sorgente da cui proviene il dato." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="80412e7f-efaa-430a-89fe-ea3f717a3488" name="MicroStrategy Path" description="Indica il percorso su MicroStragy per ottenere quella misura." type="Text" visibleInExplorer="true" />
+      <propertyDefinition id="ef5e2256-f3c2-44ae-b2f0-9ca055b3c453" name="Filters" description="Criterio su cui agisce il filtro." type="Text" visibleInExplorer="true" />
+    </measures>
+    <facts />
+  </customProperties>
+  <projectOptions>
+    <logicModelingProfile name="starschema" isEditable="false" />
+    <logicModelingNamePrefixes DimensionTableNamePrefix="DT_" FactTableNamePrefix="FT_" BridgeTableNamePrefix="BT_" NavigationTableNamePrefix="NAV_" JunkTableNamePrefix="JT_" PrimaryKeyNamePrefix="PK_" ForeignKeyNamePrefix="FK_" TableIdNamePrefix="ID_" ConformedDimensionViewNamePrefix="DTV_" TemporalScenarioRollbackFromFieldName="FROM" TemporalScenarioRollbackToFieldName="TO" TemporalScenarioRollbackMasterFieldName="MASTER" />
+    <logicalModelingDefaultTypes>
+      <attributes name="VARCHAR" length="255" scale="-1" precision="-1" />
+      <measures name="DECIMAL" length="-1" scale="3" precision="18" />
+      <surrogates name="INT" length="-1" scale="-1" precision="-1" />
+      <temporalScenarioRollbackFromType name="DATE" length="-1" scale="-1" precision="-1" />
+      <temporalScenarioRollbackToType name="DATE" length="-1" scale="-1" precision="-1" />
+      <temporalScenarioRollbackMasterType name="INT" length="-1" scale="-1" precision="-1" />
+    </logicalModelingDefaultTypes>
+  </projectOptions>
+</project>

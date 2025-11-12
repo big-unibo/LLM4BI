@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="86d3a5d4-522a-4d57-a99e-04c384b56784" name="Tempo Promo">
+    <node id="fa18cc3f-2301-4065-8791-68dd0f052652">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="fa18cc3f-2301-4065-8791-68dd0f052652" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="9220bc50-dc8a-496f-ad10-2a54a8dfcc04">
+      <data key="d1">
+        <ico:Attribute Name="Giorno Promo" Description="Giorno di inizio validità della promozione." Id="9220bc50-dc8a-496f-ad10-2a54a8dfcc04" X="625" Y="260" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="31/12/2014, 01/01/2015, 02/01/2015" Note="Sell-in = per Amadori nei confronti dei clienti B2B, Sell-out = per i clienti B2B nei confronti del consumatore finale." MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F4072" SourceField="ADEFTJ" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Data Promo, Data Promo Sellout" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="GIORNO_PROMO_DES, GIORNO_PROMO_SELLOUT_DES" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_GIORNO_PROMO, L_GIORNO_PROMO_SELLOUT" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo, \Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo Sellout" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="02235f27-f7a5-40e2-9556-f24850e401c9">
+      <data key="d1">
+        <ico:Attribute Name="Mese Promo" Description="Mese di inizio validità della promozione." Id="02235f27-f7a5-40e2-9556-f24850e401c9" X="500" Y="145" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="Dic 2014, Gen 2015, Feb 2015" Note="Sell-in = per Amadori nei confronti dei clienti B2B, Sell-out = per i clienti B2B nei confronti del consumatore finale." MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="Rollback" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="MESE_PROMO_DES, MESE_PROMO_SELLOUT_DES" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_MESE_PROMO, L_MESE_PROMO_SELLOUT" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Mese Promo, Mese Promo Sellout" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo, \Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo Sellout" />
+          </ico:customProperties>
+          <ico:logicalModeling LogicalName="MESE_SPEDIZIONE" />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="15d3c54e-1162-497f-88fe-6e4163363426">
+      <data key="d1">
+        <ico:Attribute Name="Anno Promo" Description="Anno di inizio validità della promozione." Id="15d3c54e-1162-497f-88fe-6e4163363426" X="608" Y="5" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="2014, 2015, 2013" Note="Sell-in = per Amadori nei confronti dei clienti B2B, Sell-out = per i clienti B2B nei confronti del consumatore finale." MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Anno Promo, Anno Promo Sellout" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="ANNO_PROMO_DES, ANNO_PROMO_SELLOUT_DES" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_ANNO_PROMO, L_ANNO_PROMO_SELLOUT" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo, \Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo Sellout" />
+          </ico:customProperties>
+          <ico:logicalModeling LogicalName="ANNO_SPEDIZIONE" />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="6c21a74c-3046-445e-86b2-fd1eeaf21e9f">
+      <data key="d1">
+        <ico:Attribute Name="Settimana Promo" Description="Settimana di inizio validità della promozione." Id="6c21a74c-3046-445e-86b2-fd1eeaf21e9f" X="700" Y="145" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="2014/53, 2015/01, 2015/02" Note="Sell-in = per Amadori nei confronti dei clienti B2B, Sell-out = per i clienti B2B nei confronti del consumatore finale." MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Settimana Promo, Settimana Promo Sellout" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="SETT_PROMO_DES, SETT_PROMO_SELLOUT_DES" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_SETT_PROMO, L_SETT_PROMO_SELLOUT" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo, \Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo Sellout" />
+          </ico:customProperties>
+          <ico:logicalModeling LogicalName="SETTIMANA_SPEDIZIONE" />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="43338e72-8beb-433b-8fe7-9a684ae420c1">
+      <data key="d1">
+        <ico:Attribute Name="Settimana dell'Anno Promo" Description="Numero della settimana di inizio validità della promozione." Id="43338e72-8beb-433b-8fe7-9a684ae420c1" X="810" Y="80" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="53 settimana, 1 settimana, 2 settimana" Note="Sell-in = per Amadori nei confronti dei clienti B2B, Sell-out = per i clienti B2B nei confronti del consumatore finale." MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Settimana dell'anno Promo, Settimana dell'anno Promo Sellout" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="SETT_N_PROMO_ID, SETT_N_PROMO_SELLOUT_ID" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_SETT_PROMO, L_SETT_PROMO_SELLOUT" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo, \Amadori - Data Warehouse\Schema Objects\Attributes\Tempo\Data Promo Sellout" />
+          </ico:customProperties>
+          <ico:logicalModeling LogicalName="SETTIMANA_DELLANNO_SPEDIZIONE" />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="72338d78-95a9-467a-afaf-98f57a3f8a98" source="fa18cc3f-2301-4065-8791-68dd0f052652" target="9220bc50-dc8a-496f-ad10-2a54a8dfcc04" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <edge id="f3d8e62b-fa09-49cd-a7bd-346d10f6dcc2" source="6c21a74c-3046-445e-86b2-fd1eeaf21e9f" target="43338e72-8beb-433b-8fe7-9a684ae420c1" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <edge id="d6e1df0a-dc31-40e2-9929-8c83b6331776" source="6c21a74c-3046-445e-86b2-fd1eeaf21e9f" target="15d3c54e-1162-497f-88fe-6e4163363426" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="true" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <edge id="6cb580e3-05c5-492e-8d62-ab922e92875f" source="9220bc50-dc8a-496f-ad10-2a54a8dfcc04" target="6c21a74c-3046-445e-86b2-fd1eeaf21e9f" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <edge id="97094bad-5123-43fe-acce-6fc40560a357" source="9220bc50-dc8a-496f-ad10-2a54a8dfcc04" target="02235f27-f7a5-40e2-9556-f24850e401c9" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <edge id="78ffd92e-b35f-4e42-af21-5db6267ffa6e" source="02235f27-f7a5-40e2-9556-f24850e401c9" target="15d3c54e-1162-497f-88fe-6e4163363426" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="true" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <hierarchy id="949d6e40-ab65-4edf-90c4-8d5bbe89013e" rootArcId="72338d78-95a9-467a-afaf-98f57a3f8a98" name="Giorno Promo" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

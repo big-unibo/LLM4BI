@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="2b11747d-09db-438a-a2af-40dc9011f75f" name="Reparto Promozione">
+    <node id="3e3a04ae-7184-4ffc-9026-6545dcf7e556">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="3e3a04ae-7184-4ffc-9026-6545dcf7e556" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="c524d55f-cdb4-4448-8515-5e84af93b361">
+      <data key="d1">
+        <ico:Attribute Name="Reparto Promozione" Description="Reparto che filtra quali sono i clienti della gerarchia su cui viene effettuata la promo." Id="c524d55f-cdb4-4448-8515-5e84af93b361" X="450" Y="1105" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="CRO = Carni Rosse, GAS = Gastronomie, JOL = Jolly" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F40942" SourceField="IF CKCPGP='AC25' THEN CKCGP1 ELSE 0" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="PROMO_REPARTO_COD" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_PROMO_REPARTO" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Reparto Promo" />
+            <ico:property id="4cb6d321-f130-4280-b98b-efdd4080ec4e" value="Valorizzato se la promozione è montata in base a reparto e segmento." />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Promozioni" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="0d5315cd-baa7-4c8e-8c84-13ee4e014619" source="3e3a04ae-7184-4ffc-9026-6545dcf7e556" target="c524d55f-cdb4-4448-8515-5e84af93b361" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="true" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="b4f16871-ab94-45ee-aa8c-83cc8c915fac" rootArcId="0d5315cd-baa7-4c8e-8c84-13ee4e014619" name="Reparto Promozione" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

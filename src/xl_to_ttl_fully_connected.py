@@ -21,7 +21,7 @@ FILENAME = "amadori_dwh"
 
 EXCEL_FILE = base / "resources" / "input" / f"{FILENAME}.xlsx"
 ONTO_FILE = base / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
-OUTPUT_TTL = base / "output" / "ontologies" / f"LLM4BI_{FILENAME}.ttl"
+OUTPUT_TTL = base / "output" / "ontologies" / f"LLM4BI_{FILENAME}_fully_connected.ttl"
 
 REIFICATE_CONFORMED_HIERARCHIES = False
 # GraphDB Endpoint

@@ -4,6 +4,11 @@ questions:
       question: Are there any attributes or hierarchies that could be conformed across facts but are modeled as separate, non-conformed hierarchies?
       answer:
 
+    # q1:
+    #   question: Which facts represent transactional events versus snapshot events?
+    #   answer: Invoice, Warehouse_Movement
+    #   query: //
+
     q2:
       question: How do these facts together represent the end-to-end business process?
       answer:
@@ -29,6 +34,15 @@ questions:
       answer:
 
   structure:
+    # q0:
+    #   question_type: Count type of node
+    #   template_type: sparql
+    #   template: |
+    #         SELECT ?entity
+    #         WHERE {
+    #             ?entity a <x>
+    #         }
+    #   parameters: [x]
 
     q1:
       question_type: Find facts from a given x?
@@ -46,7 +60,6 @@ questions:
         }
       parameters: [x]
 
-    # X in {Attribute}
     q2:
       question_type: Which are the relationships between x and y
       template_type: python
@@ -58,7 +71,7 @@ questions:
 
     ## TODO: Measure types: Flow, Level, Unit, etc.
     q3:
-      question: Which measures can be aggregated with X measure types?
+      question: Which measures are aggregated with X measure types?
       answer:
       template_type: sparql
       query: |
@@ -92,7 +105,7 @@ questions:
         # WARNING: FIXED PATH HOP LENGHT
 
     q5:
-      question: Are there dangling attributes defined in the schema that are not linked to any fact?
+      question: Are there attributes defined in the schema that are not linked to any fact through a dependency?
       answer:
       template_type: sparql
       query: |
@@ -107,7 +120,7 @@ questions:
 
       parameters:
 
-    q6:
+    q2:
       question: Are there any circular dependencies between attributes or dimensions that are not convergence/shared/cross-dimensional?
       answer:
 
@@ -123,3 +136,29 @@ questions:
     q2:
       question: I would like to perform an analysis to evaluate the agents' performances, which entities should I look at?
       answer:
+
+
+Explain to me how Agent, Customer, Stores and Warehouse are integration points
+How can I aggregate along the product hierarchy?
+- Coca cola in quale livello è modellato?
+goals:
+  - refinement
+  - exploration
+
+
+
+# Se attributo gerarchia condivisa è shared (e.g. customer-billing, customer-shipping) devo mettere isShared sull'attributo di customerCustomer?
+# Aggiungi domande di comprensione mista strutturale/semantica, e.g. posso fare roll-up di attributo type? dimmi quali sono i percorsi su cui posso fare roll-up tra product e warehouse
+
+
+# Aggiungi datamart ai cubi
+
+
+## TODO:
+# 1. Aggiungi famiglia mixed (structural-semantics) -- DONE
+# 2. Valutazione quantitativa errori.
+# 3. Ci sono domande strutturali a cui io so dare risposta ma un LLM no?
+# 4. Domanda comprensione grafo. -- DONE
+# 5. Data ontologia, creami un dfm che segua l'ontologia. -- DONE
+# 6. Test con graph as a text. -- DONE
+# 7. rivedere prompt

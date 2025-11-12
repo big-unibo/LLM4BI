@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="3ffebf6c-4940-4187-8e0c-64b0bc504532" name="Attività Promo">
+    <node id="04eb0c07-37dd-4aae-92ac-310b3729eeb6">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="04eb0c07-37dd-4aae-92ac-310b3729eeb6" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="fd6bde01-f65f-4087-bb2c-3d393337974b">
+      <data key="d1">
+        <ico:Attribute Name="Attività Promozione" Description="Attributo che consente di aggregare promozioni con caratteristiche simili (insegna, articolo e periodo)." Id="fd6bde01-f65f-4087-bb2c-3d393337974b" X="880" Y="816" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="7105596 - 112728 = Promo ap 25 dal 09/12 al 31/12, 7134190 - 454159 = n.27 Iper dal 23/12, 7143977 - 347058 = Promo AP 25 dal 18/12" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="PROMO_ATTIVITA_COD" />
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_PROMO_ATTIVITA" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Attivita Promo" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Promozioni" />
+            <ico:property id="4cb6d321-f130-4280-b98b-efdd4080ec4e" value="Valorizzato per il canale GDO e per clienti con livello &gt; o = a L2 e con reparto e segmento promozione non valorizzati." />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="d1ee306a-468d-4093-9e23-25e17ac1de47" source="04eb0c07-37dd-4aae-92ac-310b3729eeb6" target="fd6bde01-f65f-4087-bb2c-3d393337974b" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="true" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="3058d37f-469d-4fa8-b1ba-97f13048cbd3" rootArcId="d1ee306a-468d-4093-9e23-25e17ac1de47" name="Attività Promozione" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

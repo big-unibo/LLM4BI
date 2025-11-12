@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.12.0.0" factSchemaId="539fc95f-9ef6-405e-8c6e-bcc572dda39c" name="Tipo Riga">
+    <node id="6f146992-34bf-426c-b933-2951b0a7b6c8">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="6f146992-34bf-426c-b933-2951b0a7b6c8" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="5fa94037-b3d5-4706-8493-a852663df1de">
+      <data key="d1">
+        <ico:Attribute Name="Tipo Riga" Description="Identifica la tipologia della riga d'ordine. Descrive il comportamento che l'ordine deve avere nel magazzino e nelle vendite." Id="5fa94037-b3d5-4706-8493-a852663df1de" X="1338" Y="1706" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="CX = Accrediti a Valore Stock, E = Merce in Eccedenza, S = Articolo di Magazzino, SP = Articolo di Magazzino SPINTA" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F4211, F42119" SourceField="LNTY" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_TIPO_RIGA" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Tipo Riga" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="TIPO_RIGA_COD" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Ordine" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <node id="8858a80b-a8a4-4710-93c4-daa8a342d6a5">
+      <data key="d1">
+        <ico:Attribute Name="Tipo Vendita" Description="Sintesi di tipi riga d’ordine&#xD;&#xA;Distingue le righe d’ordine normali rispetto ad esempio a quelle spinte dalla forza commerciale o immesse per smaltimento di eccedenze di produzione." Id="8858a80b-a8a4-4710-93c4-daa8a342d6a5" X="1456" Y="1782" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="A = Accrediti/Addebiti, E =  Eccedenza, G = Generico, N = Normale, O = Omaggio, R = Reso a quantità, S = Spinta" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F4211, F42119" SourceField="LNTY" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_TIPO_VEN" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Tipo Vendita" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="TIPO_VEN_COD" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Ordine" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="410f1603-92b5-4767-a376-fee1fc7eaede" source="6f146992-34bf-426c-b933-2951b0a7b6c8" target="5fa94037-b3d5-4706-8493-a852663df1de" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <edge id="59f93b52-94c9-469c-b156-3f01a277837d" source="5fa94037-b3d5-4706-8493-a852663df1de" target="8858a80b-a8a4-4710-93c4-daa8a342d6a5" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="1" />
+      </data>
+    </edge>
+    <hierarchy id="e913bf2d-dc1c-4b57-9d4f-441329667c61" rootArcId="410f1603-92b5-4767-a376-fee1fc7eaede" name="Tipo Riga" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

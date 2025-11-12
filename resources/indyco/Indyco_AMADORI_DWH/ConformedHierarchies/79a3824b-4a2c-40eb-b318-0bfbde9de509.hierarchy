@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="79a3824b-4a2c-40eb-b318-0bfbde9de509" name="Stato Promozione">
+    <node id="e2116b50-d6e6-406a-b949-a76f782e4144">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="e2116b50-d6e6-406a-b949-a76f782e4144" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="1394f7af-ba7e-40dc-8ea6-54c96f5ca20a">
+      <data key="d1">
+        <ico:Attribute Name="Stato Promozione" Description="Identifica lo stato di avanzamento della promozione." Id="1394f7af-ba7e-40dc-8ea6-54c96f5ca20a" X="535" Y="950" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="A = PROMO ATTIVA, 0 = PROMO NON ATTIVA, 1 = PROMO RILEVATA, 2 = PROMO NON RILEVATA, 3 = PROMO RILEVATA MA NON PREVISTA" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="" SourceField="" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_STATO_PROMO" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Stato Promo" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="STATO _PROMO_COD" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Promozioni" />
+            <ico:property id="e5ea9df0-833f-4275-afb4-d09967cd48b3" value="Fonte SM1" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="528d2bb9-091c-4876-acd4-dfd14a954c1c" source="e2116b50-d6e6-406a-b949-a76f782e4144" target="1394f7af-ba7e-40dc-8ea6-54c96f5ca20a" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="bd072ba8-4fda-4ed3-83bb-affd5cbd549b" rootArcId="528d2bb9-091c-4876-acd4-dfd14a954c1c" name="Stato Promozione" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>

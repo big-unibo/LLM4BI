@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ico="http://iconsulting.biz/dfm" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.type="fact" />
+  <key id="d1" for="node" attr.type="attribute" />
+  <key id="d2" for="edge" attr.type="arc" />
+  <graph id="G" edgedefault="directed" toolversion="2.20.0.0" factSchemaId="7fe9a131-b308-439a-a1a3-cefb1bf2640b" name="Tipo Fattura">
+    <node id="3f85fe87-0707-4b0c-a2a1-bc35ff569da8">
+      <data key="d0">
+        <ico:Fact Name="" Description="" Id="3f85fe87-0707-4b0c-a2a1-bc35ff569da8" X="580" Y="340" BackgroundColor="#FFFFFF" BorderColor="#FFA9A9A9" IsBoldText="false" IsItalicText="false" LoadingFrequency="" HistoricalDepth="0" AreMeasuresVisible="true" Width="113" Height="76">
+          <ico:customProperties />
+          <ico:Measures />
+          <ico:GroupsOfMeasures />
+        </ico:Fact>
+      </data>
+    </node>
+    <node id="6c567e97-8f6a-4488-bdad-561a43593db9">
+      <data key="d1">
+        <ico:Attribute Name="Tipo Fattura" Description="Tipologia di fattura associata al tipo di bollettazione e al deposito di spedizione." Id="6c567e97-8f6a-4488-bdad-561a43593db9" X="1120" Y="1748" BackgroundColor="#FFFFFF" BorderColor="#00539C" IsBoldText="false" IsItalicText="false" IsDescriptive="false" IsOptional="false" IsShared="false" SampleValues="B6 = Fatt. Acc. MILANO ITA, D6 = Fattura Accomp.Teramo, F1 = Nota Credito Sedi, FD = Fattura Accompagnatoria, L6= Fattura Differita.Teramo" Note="" MasterId="00000000-0000-0000-0000-000000000000" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" IsCrossDimensional="false" TemporalScenario="UpToDate" SourceTable="F4211, F42119" SourceField="DCT" HasHierarchyCollapsed="false">
+          <ico:customProperties>
+            <ico:property id="e75e7c10-5dc5-4984-a787-c233ec28de2d" value="L_TIPO_FATT" />
+            <ico:property id="c4ba9ff4-d6fb-4e3b-929a-69024dfa62fa" value="Tipo Fattura" />
+            <ico:property id="0e428e91-8020-4167-9502-29cb4843af7d" value="TIPO_FATT_COD" />
+            <ico:property id="4cb6d321-f130-4280-b98b-efdd4080ec4e" value="Valorizzato SE riga d'ordine ha fattura" />
+            <ico:property id="fbbff517-30f6-4562-81e3-fe7bda12da06" value="\Amadori - Data Warehouse\Schema Objects\Attributes\Ordine" />
+          </ico:customProperties>
+          <ico:logicalModeling />
+        </ico:Attribute>
+      </data>
+    </node>
+    <edge id="c33f1c2f-1d56-44a6-82ac-b847054ecba9" source="3f85fe87-0707-4b0c-a2a1-bc35ff569da8" target="6c567e97-8f6a-4488-bdad-561a43593db9" IsBoldText="false" IsItalicText="false" HierarchyId="00000000-0000-0000-0000-000000000000" MasterHierarchyId="00000000-0000-0000-0000-000000000000" MasterId="00000000-0000-0000-0000-000000000000">
+      <data key="d2">
+        <ico:Arc Role="" IsConvergence="false" IsOptional="false" IsMultiple="false" IsRecursive="false" IndexOfRecursion="0" SourceConnectorPosition="Auto" IndexOfSameNodesLink="0" />
+      </data>
+    </edge>
+    <hierarchy id="7c3abe65-97c2-4b76-98ba-7718a4873c8f" rootArcId="c33f1c2f-1d56-44a6-82ac-b847054ecba9" name="Tipo Fattura" description="" note="" />
+  </graph>
+  <additivityMatrix xmlns="" />
+</graphml>
