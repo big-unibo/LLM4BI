@@ -5,23 +5,23 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 LLM4BI_Indyco:Agent a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Agent .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent .
 
-LLM4BI_Indyco:Agent_ LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Controller .
+LLM4BI_Indyco:Agent_ LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Controller .
 
 LLM4BI_Indyco:Agent_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
 
 LLM4BI_Indyco:Customer a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Customer_Customer .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Customer_Customer .
 
-LLM4BI_Indyco:Date_ LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Date_ LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Geography a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_City .
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_City .
 
 LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_Country,
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_Country,
         LLM4BI_Indyco:Date_Month_In_Year,
         LLM4BI_Indyco:Historical_Order_Currency,
         LLM4BI_Indyco:Historical_Order_Discount_Value,
@@ -31,12 +31,12 @@ LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
         LLM4BI_Indyco:Historical_Order_VAT_Value,
         LLM4BI_Indyco:SKU_Subtype .
 
-LLM4BI_Indyco:Historical_Order_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Historical_Order_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Historical_Order_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Historical_Order_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Agent,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent,
         LLM4BI_Indyco:Customer_Customer,
         LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:Invoice_Currency,
@@ -61,7 +61,7 @@ LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
     LLM4BI_Indyco:Invoice_billing_Customer LLM4BI_Indyco:Customer_Customer ;
     LLM4BI_Indyco:Invoice_shipping_Customer LLM4BI_Indyco:Customer_Customer .
 
-LLM4BI_Indyco:Invoice_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Invoice_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice_Agent LLM4BI_Indyco:Invoice_Agent_Controller LLM4BI_Indyco:Agent_Controller .
 
@@ -83,18 +83,18 @@ LLM4BI_Indyco:Invoice_Invoice_Return_Justification a owl:ObjectProperty ;
 LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:OptionalArc .
 
-LLM4BI_Indyco:Invoice_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Invoice_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice_billing_Customer a owl:ObjectProperty ;
     rdfs:label "billing" ;
-    rdfs:subPropertyOf LLM4BI:FunctionalDependency .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Invoice_shipping_Customer a owl:ObjectProperty ;
     rdfs:label "shipping" ;
-    rdfs:subPropertyOf LLM4BI:FunctionalDependency .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Order a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Agent,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent,
         LLM4BI_Indyco:Customer_Customer,
         LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:Order_Currency,
@@ -107,20 +107,20 @@ LLM4BI_Indyco:Order a LLM4BI:Fact ;
         LLM4BI_Indyco:Order_VAT_Value,
         LLM4BI_Indyco:SKU_Subtype .
 
-LLM4BI_Indyco:Order_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Order_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Order_Agent LLM4BI_Indyco:Order_Agent_Controller LLM4BI_Indyco:Agent_Controller .
 
 LLM4BI_Indyco:Order_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
 
-LLM4BI_Indyco:Order_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Order_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Product a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_SKU .
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_SKU .
 
 LLM4BI_Indyco:Shop_Ticket a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Agent,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent,
         LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:SKU_SKU,
         LLM4BI_Indyco:Shop_Ticket_Currency,
@@ -131,49 +131,49 @@ LLM4BI_Indyco:Shop_Ticket a LLM4BI:Fact ;
         LLM4BI_Indyco:Shop_Ticket_VAT_Value,
         LLM4BI_Indyco:Store_Store .
 
-LLM4BI_Indyco:Shop_Ticket_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Shop_Ticket_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Shop_Ticket_Agent LLM4BI_Indyco:Shop_Ticket_Agent_Controller LLM4BI_Indyco:Agent_Controller .
 
 LLM4BI_Indyco:Shop_Ticket_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
 
-LLM4BI_Indyco:Shop_Ticket_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Shop_Ticket_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Store a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Store_Store .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Store_Store .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Date,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:SKU_SKU,
         LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock,
         LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
-LLM4BI_Indyco:Third_Party_Warehouse_Stock_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Third_Party_Warehouse_Stock_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Third_Party_Warehouse_Stock_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Time a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Date .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date .
 
 LLM4BI_Indyco:Traffic_Counter a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Date,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:Store_Store,
         LLM4BI_Indyco:Traffic_Counter_Hour,
         LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio,
         LLM4BI_Indyco:Traffic_Counter_Traffic_counter .
 
-LLM4BI_Indyco:Traffic_Counter_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Traffic_Counter_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Traffic_Counter_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Traffic_Counter_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Warehouse a LLM4BI:ConformedHierarchyRoot ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Warehouse_Warehouse .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Warehouse_Warehouse .
 
-LLM4BI_Indyco:Warehouse_ LLM4BI:FunctionalDependency LLM4BI_Indyco:Warehouse_Warehouse_Type .
+LLM4BI_Indyco:Warehouse_ LLM4BI:RollUpArc LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Warehouse_Movement a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Date,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:SKU_SKU,
         LLM4BI_Indyco:Warehouse_Movement_Cause,
         LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type,
@@ -182,9 +182,9 @@ LLM4BI_Indyco:Warehouse_Movement a LLM4BI:Fact ;
     LLM4BI_Indyco:Warehouse_Movement_in_Date LLM4BI_Indyco:Date_Date ;
     LLM4BI_Indyco:Warehouse_Movement_out_Date LLM4BI_Indyco:Date_Date .
 
-LLM4BI_Indyco:Warehouse_Movement_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Warehouse_Movement_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Warehouse_Movement_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Warehouse_Movement_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Warehouse_Movement_Warehouse LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
@@ -193,22 +193,22 @@ LLM4BI_Indyco:Warehouse_Movement_Warehouse_Warehouse_Type a owl:ObjectProperty ;
 
 LLM4BI_Indyco:Warehouse_Movement_in_Date a owl:ObjectProperty ;
     rdfs:label "in" ;
-    rdfs:subPropertyOf LLM4BI:FunctionalDependency .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Warehouse_Movement_out_Date a owl:ObjectProperty ;
     rdfs:label "out" ;
-    rdfs:subPropertyOf LLM4BI:FunctionalDependency .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Warehouse_Stock a LLM4BI:Fact ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Date,
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date,
         LLM4BI_Indyco:SKU_SKU,
         LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type,
         LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock,
         LLM4BI_Indyco:Warehouse_Warehouse .
 
-LLM4BI_Indyco:Warehouse_Stock_4Month_Period LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Warehouse_Stock_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Warehouse_Stock_Semester LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year .
+LLM4BI_Indyco:Warehouse_Stock_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Warehouse_Stock_Warehouse LLM4BI_Indyco:Warehouse_Stock_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
@@ -232,16 +232,16 @@ LLM4BI_Indyco:City_Area a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:City_County a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The county where a city belongs (if specified)" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_State ;
     LLM4BI:LogicalName "COUNTY" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_State ;
     LLM4BI:SampleValues "Monterey",
         "Orange" ;
     LLM4BI:isOptional true .
 
 LLM4BI_Indyco:City_State a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The state where a city belongs (for USA only)" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_Country ;
     LLM4BI:LogicalName "STATE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_Country ;
     LLM4BI:SampleValues "California",
         "Florida" ;
     LLM4BI:isOptional true .
@@ -257,8 +257,8 @@ LLM4BI_Indyco:Customer_Shipping_Address a LLM4BI:ConformedAttribute ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Date_4Month_Period a LLM4BI:ConformedAttribute ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year ;
     LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "3MP1 13",
         "3MP2 13",
         "3MP3 14" .
@@ -272,8 +272,8 @@ LLM4BI_Indyco:Date_Month a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:Date_Quarter a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific quarter" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Semester ;
     LLM4BI:LogicalName "QUARTER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Semester ;
     LLM4BI:SampleValues "Q1 14",
         "Q2 14",
         "Q3 14",
@@ -281,8 +281,8 @@ LLM4BI_Indyco:Date_Quarter a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:Date_Semester a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific semester" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Year ;
     LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "S1 14",
         "S2 14" .
 
@@ -303,15 +303,15 @@ LLM4BI_Indyco:Historical_Order_Currency a LLM4BI:Attribute ;
         "USD" .
 
 LLM4BI_Indyco:Historical_Order_Discount_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Discount if any" .
 
 LLM4BI_Indyco:Historical_Order_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "SUM" ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
 
@@ -323,7 +323,7 @@ LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
         "SS13" .
 
 LLM4BI_Indyco:Historical_Order_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Taxes" .
 
 LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
@@ -336,18 +336,18 @@ LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
         "USD" .
 
 LLM4BI_Indyco:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "A discount" .
 
 LLM4BI_Indyco:Invoice_Net_Average_Price a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG" .
+    LLM4BI:AggregationOperator "AVG" .
 
 LLM4BI_Indyco:Invoice_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "SUM" ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
 
@@ -359,7 +359,7 @@ LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
         "SS13" .
 
 LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "A discount" .
 
 LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
@@ -375,7 +375,7 @@ LLM4BI_Indyco:Order_Currency a LLM4BI:Attribute ;
         "USD" .
 
 LLM4BI_Indyco:Order_Discount_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Discount, if any" .
 
 LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
@@ -386,7 +386,7 @@ LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
         "Football UK Teams" .
 
 LLM4BI_Indyco:Order_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Order_Order_Type a LLM4BI:Attribute ;
@@ -402,7 +402,7 @@ Stop Limit Order: This is identical to the stop order, except for the fact that 
         "stop order" .
 
 LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "SUM" ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
 
@@ -414,7 +414,7 @@ LLM4BI_Indyco:Order_Season a LLM4BI:Attribute ;
         "SS13" .
 
 LLM4BI_Indyco:Order_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Taxes" .
 
 LLM4BI_Indyco:SKU_Age_Range a LLM4BI:ConformedAttribute ;
@@ -426,8 +426,8 @@ LLM4BI_Indyco:SKU_Age_Range a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:SKU_Brand a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The brand of the product" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Brand_Group ;
-    LLM4BI:LogicalName "BRAND" .
+    LLM4BI:LogicalName "BRAND" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand_Group .
 
 LLM4BI_Indyco:SKU_Brand_Group a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A group of brands" ;
@@ -442,8 +442,8 @@ LLM4BI_Indyco:SKU_Category a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:SKU_Color a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The specific color of the product" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Macro_Color ;
     LLM4BI:LogicalName "COLOR" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Macro_Color ;
     LLM4BI:SampleValues "Dark blu",
         "light blu" .
 
@@ -456,8 +456,8 @@ LLM4BI_Indyco:SKU_Customer_Gender a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:SKU_Customer_Type a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The type of customer the product is targeted to" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Age_Range ;
     LLM4BI:LogicalName "CUSTOMER_TYPE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Age_Range ;
     LLM4BI:SampleValues "Junior",
         "adult",
         "baby" .
@@ -484,8 +484,8 @@ LLM4BI_Indyco:SKU_Size a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:SKU_Type a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A classification of products" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Category ;
     LLM4BI:LogicalName "TYPE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Category ;
     LLM4BI:SampleValues "Coats",
         "casual",
         "suits" .
@@ -500,14 +500,14 @@ LLM4BI_Indyco:Shop_Ticket_Currency a LLM4BI:Attribute ;
         "USD" .
 
 LLM4BI_Indyco:Shop_Ticket_Discount_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Shop_Ticket_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
 
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
@@ -518,7 +518,7 @@ LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
         "SS13" .
 
 LLM4BI_Indyco:Shop_Ticket_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "SUM" ;
+    LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Taxes" .
 
 LLM4BI_Indyco:Store_Address a LLM4BI:ConformedAttribute ;
@@ -543,7 +543,7 @@ LLM4BI_Indyco:Store_Sales_District a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "SALES_DISTRICT" .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "MIN" ;
     LLM4BI:Description "The inventory level" .
 
@@ -555,11 +555,11 @@ LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
         "8-10" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG" ;
+    LLM4BI:AggregationOperator "AVG" ;
     LLM4BI:Description "Number of ticket vs. people who entered" .
 
 LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "SUM" ;
     LLM4BI:Description "Numer of persons who entered the store" .
 
@@ -581,7 +581,7 @@ LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
         "Football UK Teams" .
 
 LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "MIN" ;
     LLM4BI:Description "The quantity of goods being moved" .
 
@@ -593,24 +593,24 @@ LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
         "Football UK Teams" .
 
 LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
-    LLM4BI:AggregationLevel "AVG",
+    LLM4BI:AggregationOperator "AVG",
         "MIN" ;
     LLM4BI:Description "The inventory level" .
 
 LLM4BI_Indyco:City_Country a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The nation of a city" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_Area ;
     LLM4BI:LogicalName "COUNTRY" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_Area ;
     LLM4BI:SampleValues "Italy",
         "UK",
         "USA" .
 
 LLM4BI_Indyco:Date_Month_In_Year a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific month" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_4Month_Period,
+    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_4Month_Period,
         LLM4BI_Indyco:Date_Month,
         LLM4BI_Indyco:Date_Quarter ;
-    LLM4BI:LogicalName "MONTH_IN_YEAR" ;
     LLM4BI:SampleValues "Feb 14",
         "Jan 14",
         "Mar 15" .
@@ -649,24 +649,24 @@ LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
 
 LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The store where a product is being sold" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_City,
+    LLM4BI:LogicalName "STORE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Store_Address,
         LLM4BI_Indyco:Store_IsConnected,
         LLM4BI_Indyco:Store_Location_Type,
-        LLM4BI_Indyco:Store_Sales_District ;
-    LLM4BI:LogicalName "STORE" .
+        LLM4BI_Indyco:Store_Sales_District .
 
 LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The warehouse where a product is stored" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_City,
-        LLM4BI_Indyco:Warehouse_IsVirtual ;
     LLM4BI:LogicalName "WAREHOUSE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
+        LLM4BI_Indyco:Warehouse_IsVirtual ;
     LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A salesman who covers a geographic area" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Agent_Area_Manager ;
     LLM4BI:LogicalName "AGENT" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Area_Manager ;
     LLM4BI:SampleValues "John Carrie",
         "Michael Baldi",
         "Steve Gorini" ;
@@ -674,24 +674,24 @@ LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:City_City a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific city or town" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_County ;
     LLM4BI:LogicalName "CITY" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_County ;
     LLM4BI:SampleValues "London",
         "Miami",
         "Rome" .
 
 LLM4BI_Indyco:SKU_Subtype a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A classification of products" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Customer_Type,
-        LLM4BI_Indyco:SKU_Type ;
     LLM4BI:LogicalName "SUBTYPE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Customer_Type,
+        LLM4BI_Indyco:SKU_Type ;
     LLM4BI:SampleValues "Lady Sandals Casual Footwear",
         "Lady Sports Multipurpose Footwear",
         "Man Leathers Formal Footwear" .
 
-LLM4BI:FunctionalDependency a owl:ObjectProperty ;
+LLM4BI:RollUpArc a owl:ObjectProperty ;
     rdfs:label "" ;
-    rdfs:subPropertyOf LLM4BI:FunctionalDependency .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -699,22 +699,23 @@ LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:Customer_Customer a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The buying customer" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:City_City,
+    LLM4BI:LogicalName "CUSTOMER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Customer_Billing_Information,
         LLM4BI_Indyco:Customer_Shipping_Address ;
-    LLM4BI:LogicalName "CUSTOMER" ;
     LLM4BI:SampleValues "Holding1",
-        "Holding2" .
+        "Holding2" ;
+    LLM4BI:isShared true .
 
 LLM4BI_Indyco:SKU_SKU a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "Stock keeping unit" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:SKU_Brand,
+    LLM4BI:LogicalName "SKU" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand,
         LLM4BI_Indyco:SKU_Color,
         LLM4BI_Indyco:SKU_Customer_Gender,
         LLM4BI_Indyco:SKU_Made_In,
         LLM4BI_Indyco:SKU_Size,
         LLM4BI_Indyco:SKU_Subtype ;
-    LLM4BI:LogicalName "SKU" ;
     LLM4BI:SampleValues "Sneakers British Knight Leather Red M",
         "Sneakers British Knight Suede Brown XL",
         "Sneakers Sporty Lady Faux Leather White S" .
@@ -729,12 +730,13 @@ LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:ConformedAttribute ;
 
 LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific day" ;
-    LLM4BI:FunctionalDependency LLM4BI_Indyco:Date_Month_In_Year,
-        LLM4BI_Indyco:Date_Week ;
     LLM4BI:LogicalName "DATE" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Month_In_Year,
+        LLM4BI_Indyco:Date_Week ;
     LLM4BI:SampleValues "01-01-2014",
         "01-02-2014",
-        "01-03-2014" .
+        "01-03-2014" ;
+    LLM4BI:isShared true .
 
 LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific year" ;

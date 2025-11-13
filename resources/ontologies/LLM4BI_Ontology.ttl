@@ -13,7 +13,6 @@
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
 
 
-# Manca specializzazione da associare al concetto di "Entity" che prende tutto attributi facts ma non misure
 LLM4BI:BIObject rdf:type owl:Class ;
     rdfs:comment "Represents an entity within the Dimensional Fact Model schema" .
 
@@ -31,16 +30,16 @@ LLM4BI:Attribute  rdfs:subClassOf LLM4BI:BIObject .
 
 LLM4BI:Arc a owl:ObjectProperty ;
   rdfs:domain LLM4BI:BIObject ;
+  rdfs:range  LLM4BI:BIObject ;
   rdfs:comment "An arc connecting entities within a Dimensional Fact Model schema. In presence of an arc from A to B, the user can roll-up from A to B." ; 
-  rdfs:label "" ;
-  rdfs:range  LLM4BI:BIObject .
+  rdfs:label "" .
 
-LLM4BI:FunctionalDependency a owl:ObjectProperty ;
+LLM4BI:RollUpArc a owl:ObjectProperty ;
   rdfs:subPropertyOf LLM4BI:Arc ;
   rdfs:domain LLM4BI:BIObject ;
+  rdfs:range  LLM4BI:BIObject ;
   rdfs:comment "Represents a functional dependency between two attributes connected by a many-to-one relationship (e.g., if one product belongs to one type, there is an arc from product to the type attribute)." ; 
-  rdfs:label "" ;
-  rdfs:range  LLM4BI:BIObject .
+  rdfs:label "" .
 
 LLM4BI:MultipleArc a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:Arc ;
@@ -76,6 +75,7 @@ LLM4BI:Notes a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:BIObject ;
   rdfs:comment "Additional notes regarding an entity." ;
   rdfs:range xsd:string .
+
 LLM4BI:isConvergence a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:BIObject ;
   rdfs:comment "In a convergence, two attributes are connected by two or more distinct directed paths of arcs, and each of them still represents a functional dependency." ;

@@ -29,8 +29,7 @@ questions:
       answer:
 
   structure:
-
-    q1:
+    q0:
       question_type: Find facts from a given x?
       template_type: sparql
       template: |
@@ -47,7 +46,7 @@ questions:
       parameters: [x]
 
     # X in {Attribute}
-    q2:
+    q1:
       question_type: Which are the relationships between x and y
       template_type: python
       query: |
@@ -56,8 +55,8 @@ questions:
         paths = list(nx.all_simple_paths(G, source=<x>, target=<y>, cutoff=5))
       parameters: [x,y]
 
-    ## TODO: Measure types: Flow, Level, Unit, etc.
-    q3:
+    ## Measure types: Flow, Level, Unit, etc.
+    q2:
       question: Which measures can be aggregated with X measure types?
       answer:
       template_type: sparql
@@ -72,7 +71,7 @@ questions:
       parameters: [x]
 
     # TODO: e.g., N = [Product, Warehouse]
-    q4:
+    q3:
       question: Which facts can be analyzed by N dimensions together?
       answer:
       query: |
@@ -91,7 +90,7 @@ questions:
         }
         # WARNING: FIXED PATH HOP LENGHT
 
-    q5:
+    q4:
       question: Are there dangling attributes defined in the schema that are not linked to any fact?
       answer:
       template_type: sparql
@@ -104,10 +103,9 @@ questions:
             ?fact LLM4BI:Dependency+ ?attribute .
           }
         }
-
       parameters:
 
-    q6:
+    q5:
       question: Are there any circular dependencies between attributes or dimensions that are not convergence/shared/cross-dimensional?
       answer:
 
@@ -122,4 +120,12 @@ questions:
 
     q2:
       question: I would like to perform an analysis to evaluate the agents' performances, which entities should I look at?
+      answer:
+
+    q3:
+      question: Provide me a description of the Invoice cube and its dimensions.
+      answer:
+
+    q4:
+      question: What cubes and dimensions should I look to analyze casual footwear sales?
       answer:

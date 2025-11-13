@@ -143,39 +143,46 @@ class OntologyBuilder:
             conformed_hierarchy in self.conformed_hierarchies
             and conformed_hierarchy_attribute == item_name
         ):
+            props = [
+                (prop, True)
+                for col, prop in NODE_CONSTRAINTS.items()
+                if utils.is_truthy(row.get(col, ""))
+            ]
             self.latent_edges.setdefault(hier, {})[attribute_node] = (
                 from_node,
                 item_name,
                 conformed_hierarchy,
+                props,
             )
-            return
+        else:
+            # otherwise add attribute node and metadata
+            graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
+            if attribute_description:
+                graph.add(
+                    (attribute_node, LLM4BI.Description, Literal(attribute_description))
+                )
 
-        # otherwise add attribute node and metadata
-        graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
-        if attribute_description:
-            graph.add(
-                (attribute_node, LLM4BI.Description, Literal(attribute_description))
-            )
+            # metadata properties
+            for col, prop in {
+                "Logical Name": LLM4BI.LogicalName,
+                "Description": LLM4BI.Description,
+                "Sample Values": LLM4BI.SampleValues,
+            }.items():
+                val = row.get(col, "").strip()
+                if val:
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, val)
+                    else:
+                        graph.add((attribute_node, prop, Literal(val)))
 
-        # metadata properties
-        for col, prop in {
-            "Logical Name": LLM4BI.LogicalName,
-            "Description": LLM4BI.Description,
-            "Sample Values": LLM4BI.SampleValues,
-        }.items():
-            val = row.get(col, "").strip()
-            if val:
-                if col == "Sample Values":
-                    self._add_sample_values(graph, attribute_node, val)
-                else:
-                    graph.add((attribute_node, prop, Literal(val)))
+            graph.add((from_node, LLM4BI.RollUpArc, attribute_node))
 
-        graph.add((from_node, LLM4BI.FunctionalDependency, attribute_node))
-
-        # node-level constraints
-        for col, prop in NODE_CONSTRAINTS.items():
-            if utils.is_truthy(row.get(col, "")):
-                graph.add((attribute_node, prop, Literal(True, datatype=XSD.boolean)))
+            # node-level constraints
+            for col, prop in NODE_CONSTRAINTS.items():
+                if utils.is_truthy(row.get(col, "")):
+                    graph.add(
+                        (attribute_node, prop, Literal(True, datatype=XSD.boolean))
+                    )
 
     def parse_arc(self, graph: Graph, row: pd.Series, hierarchy: str) -> None:
         """Parse an arc / link row and add appropriate properties to the graph."""
@@ -203,7 +210,7 @@ class OntologyBuilder:
         standard_link = (
             utils.make_link_uri(LLM4BI_EXAMPLE, hierarchy, label, dst)
             if label
-            else LLM4BI.FunctionalDependency
+            else LLM4BI.RollUpArc
         )
 
         # If arc defines root of conformed hierarchy
@@ -233,7 +240,7 @@ class OntologyBuilder:
             links = [standard_link]
             graph.add((standard_link, RDF.type, OWL.ObjectProperty))
             graph.add((standard_link, RDFS.label, Literal(label)))
-            graph.add((standard_link, RDFS.subPropertyOf, LLM4BI.FunctionalDependency))
+            graph.add((standard_link, RDFS.subPropertyOf, LLM4BI.RollUpArc))
 
         for link in links:
             graph.add((src_node, link, dst_node))
@@ -269,47 +276,47 @@ class OntologyBuilder:
                 LLM4BI_EXAMPLE, fact_table, "_".join(from_item_id.split("_")[1:])
             )
         )
-        if fact_table == "IN STORE PROMOTION" and item_name == "Key Account ISP":
-            in_store_promos = {
-                k: v
-                for k, v in self.conformed_attributes.items()
-                if "IN_STORE_PROMOTION" in str(k) or "IN_STORE_PROMOTION" in str(v)
-            }
-
-            print(f"Trovate {len(in_store_promos)} corrispondenze:")
-            for k, v in in_store_promos.items():
-                print(k, "=>", v)
-            c = self.resolve_conformed_attribute(attribute_node)
 
         # if attribute links to a conformed hierarchy, record as latent edge to resolve later
         if conformed_hierarchy and conformed_hierarchy in self.conformed_hierarchies:
+            props = [
+                (prop, True)
+                for col, prop in NODE_CONSTRAINTS.items()
+                if utils.is_truthy(row.get(col, ""))
+            ]
             self.latent_edges.setdefault(fact_table, {})[attribute_node] = (
                 from_node,
                 item_name,
                 conformed_hierarchy,
+                props,
             )
-            return
+        else:
+            # otherwise add attribute and metadata
+            graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
+            graph.add((from_node, LLM4BI.RollUpArc, attribute_node))
+            if attribute_description:
+                graph.add(
+                    (attribute_node, LLM4BI.Description, Literal(attribute_description))
+                )
 
-        # otherwise add attribute and metadata
-        graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
-        graph.add((from_node, LLM4BI.FunctionalDependency, attribute_node))
-        if attribute_description:
-            graph.add(
-                (attribute_node, LLM4BI.Description, Literal(attribute_description))
-            )
+            for col, prop in {
+                "Logical Name": LLM4BI.LogicalName,
+                "Description": LLM4BI.Description,
+                "Sample Values": LLM4BI.SampleValues,
+                "Notes": LLM4BI.Notes,
+            }.items():
+                val = row.get(col, "").strip()
+                if val:
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, val)
+                    else:
+                        graph.add((attribute_node, prop, Literal(val)))
 
-        for col, prop in {
-            "Logical Name": LLM4BI.LogicalName,
-            "Description": LLM4BI.Description,
-            "Sample Values": LLM4BI.SampleValues,
-            "Notes": LLM4BI.Notes,
-        }.items():
-            val = row.get(col, "").strip()
-            if val:
-                if col == "Sample Values":
-                    self._add_sample_values(graph, attribute_node, val)
-                else:
-                    graph.add((attribute_node, prop, Literal(val)))
+            for col, prop in NODE_CONSTRAINTS.items():
+                if utils.is_truthy(row.get(col, "")):
+                    graph.add(
+                        (attribute_node, prop, Literal(True, datatype=XSD.boolean))
+                    )
 
     # -------------------------
     # High-level build steps
@@ -387,10 +394,7 @@ class OntologyBuilder:
                 {elem[2] for elem in row.values()}
             )
             for conformed_hierarchy in conformed_hierarchies_for_hierarchy:
-                if (
-                    index == "IN STORE PROMOTION"
-                    and conformed_hierarchy == "Key Account"
-                ):
+                if index == "Invoice" and conformed_hierarchy == "Customer":
                     print("HELLO")
                 nodes = [
                     elem[1] for elem in row.values() if elem[2] == conformed_hierarchy
@@ -411,7 +415,7 @@ class OntologyBuilder:
                         conformed_nodes,
                         utils.make_fact_uri(LLM4BI_EXAMPLE, conformed_hierarchy),
                         nodes,
-                        LLM4BI.FunctionalDependency,
+                        LLM4BI.RollUpArc,
                     )
                 )
 
@@ -419,11 +423,18 @@ class OntologyBuilder:
                 test_uri = utils.make_obj_uri(LLM4BI_EXAMPLE, index, original_node)
                 previous_attribute = row[test_uri]
                 predecessor = previous_attribute[0]
+                dest = self.resolve_conformed_attribute(conformed_hierarchy_node)
+                props = row.get(
+                    utils.make_obj_uri(LLM4BI_EXAMPLE, index, original_node)
+                )[3]
+                if props:
+                    for prop, value in props:
+                        graph.add((dest, prop, Literal(value, datatype=XSD.boolean)))
                 graph.add(
                     (
                         predecessor,
-                        LLM4BI.FunctionalDependency,
-                        self.resolve_conformed_attribute(conformed_hierarchy_node),
+                        LLM4BI.RollUpArc,
+                        dest,
                     )
                 )
 
@@ -440,7 +451,7 @@ class OntologyBuilder:
                 LLM4BI_EXAMPLE, fact_table, attribute_name
             )
             graph.add((attribute_node, RDF.type, LLM4BI.Measure))
-            graph.add((fact_node, LLM4BI.FunctionalDependency, attribute_node))
+            graph.add((fact_node, LLM4BI.RollUpArc, attribute_node))
 
             agg_notes = row.get("Aggregation notes", "").strip()
             if agg_notes:
@@ -448,7 +459,7 @@ class OntologyBuilder:
                     graph.add(
                         (
                             attribute_node,
-                            LLM4BI.AggregationLevel,
+                            LLM4BI.AggregationOperator,
                             Literal(level.strip()),
                         )
                     )
