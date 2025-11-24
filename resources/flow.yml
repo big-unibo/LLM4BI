@@ -1,0 +1,47 @@
+-
+  - Question: "Describe the cubes"
+  - Flow:
+    - KG: (SPARQL) Retrieve all facts, with all their dimensions and top N measures
+    - LLM: Send triples for description
+-
+  - Question: "Describe a cube"
+  - Flow:
+    - KG: (SPARQL) Retrieve facts
+    - LLM: Ask to identify the fact
+    - KG: (SPARQL) Retrieve all triples related to the fact
+    - LLM: Send triples for description
+- 
+  - Question: "Do we have anything that represents X?"
+  - Flow:
+    - LLM: Ask to return the string S(X) for similarity matching
+    - VDB: Similarity search over S(X), return top N nodes with sim >= T
+    - KG: (SPARQL) Enrich nodes with some info
+      - If fact, add its measures and dimensions
+      - If measure, add its fact
+      - If attribute, add its dimension hierarchy and facts
+    - LLM: Send triples for description
+- 
+  - Question: "Which facts are related to X?"
+  - Flow:
+    - LLM: Ask to return the string S(X) for similarity matching
+    - VDB: Similarity search over S(X), return top 1 attribute/measure with sim >= T
+    - KG: (SPARQL) Retrieve facts related to top 1 attribute/measure
+    - LLM: Send triples for description
+- 
+  - Question: "Which relationships exist between X and Y?"
+  - Flow:
+    - LLM: Ask to return the strings S(X) and S(Y) for similarity matching
+    - VDB: Similarity search over S(X), return top 1 node with sim >= T
+    - VDB: Similarity search over S(Y), return top 1 node with sim >= T
+    - KG: (Python) Shortest paths between top 1 X and top 1 Y
+    - LLM: Send triples for description
+- 
+  - Question: "Can we analyze X by Y1, Y2, ..?"
+  - Flow:
+    - LLM: Ask to return the strings S(X), S(Y1), S(Y2) for similarity matching
+    - VDB: Similarity search over S(X), return top 1 fact with sim >= T
+    - VDB: Similarity search over S(Y1), return top 1 attribute with sim >= T
+    - VDB: Similarity search over S(Y2), return top 1 attribute with sim >= T
+    - KG: (SPARQL) Exists paths between top 1 X and top 1 Y1
+    - KG: (SPARQL) Exists paths between top 1 X and top 1 Y2
+    - LLM: Send triples for description
