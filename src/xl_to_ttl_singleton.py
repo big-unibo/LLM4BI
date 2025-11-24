@@ -36,7 +36,7 @@ NODE_CONSTRAINTS = {
     "Is Shared": LLM4BI.isShared,
     "Is Descriptive": LLM4BI.isDescriptive,
     "Is Cross Dimensional": LLM4BI.isCrossDimensional,
-    "Is Convergence": LLM4BI.isConvergence,
+    # "Is Convergence": LLM4BI.isConvergence,
     "Is Optional": LLM4BI.isOptional,
 }
 
@@ -475,7 +475,7 @@ class OntologyBuilder:
     def build_graph(self) -> Graph:
         """Main entry: read excel, prepare lists and build the RDF graph."""
         g = Graph()
-        # g.parse(self.ontology_ttl, format="turtle")
+        g.parse(self.ontology_ttl, format="turtle")
 
         g.bind("LLM4BI", LLM4BI)
         g.bind("LLM4BI_Indyco", LLM4BI_EXAMPLE)

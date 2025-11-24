@@ -1,11 +1,11 @@
 questions:
   semantics:
     q0:
-      question: Are there any attributes or hierarchies that could be conformed across facts but are modeled as separate, non-conformed hierarchies?
+      question: Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies?
       answer:
 
     q2:
-      question: How do these facts together represent the end-to-end business process?
+      question: How do these facts, together, represent the end-to-end business process?
       answer:
       query: //
 
@@ -15,22 +15,22 @@ questions:
       query: //
 
     q4:
-      question: Which attributes refers to Product IDs?
+      question: Which attributes refer to Product IDs?
       answer:
       query: ""
       open_question : (?)
 
     q4:
-      question: Are there measures with aggregation operators that are inconsistent with their business meaning? (e.g., SUM for percentage)
+      question: Are there measures whose aggregation operators are inconsistent with their business meaning? (e.g., SUM for a percentage)
       goal:
 
     q5:
-      question: Give me a business oriented description of each cube.
+      question: Give me a business-oriented description of each cube.
       answer:
 
   structure:
     q0:
-      question_type: Find facts from a given x?
+      question_type: Find the facts related to attribute/measure x.
       template_type: sparql
       template: |
         SELECT DISTINCT ?fact ?p
@@ -47,7 +47,7 @@ questions:
 
     # X in {Attribute}
     q1:
-      question_type: Which are the relationships between x and y
+      question_type: Which cardinality relationship holds between x and y?
       template_type: python
       query: |
         import networkx as nx
@@ -57,7 +57,7 @@ questions:
 
     ## Measure types: Flow, Level, Unit, etc.
     q2:
-      question: Which measures can be aggregated with X measure types?
+      question: Classify measures as either flow, level, or unit.
       answer:
       template_type: sparql
       query: |
@@ -72,7 +72,7 @@ questions:
 
     # TODO: e.g., N = [Product, Warehouse]
     q3:
-      question: Which facts can be analyzed by N dimensions together?
+      question: Which facts can be jointly analyzed by attributes X and Y?
       answer:
       query: |
         SELECT DISTINCT ?n1 ?n2 ?n3 ?n4 ?n5 ?n6
@@ -91,7 +91,7 @@ questions:
         # WARNING: FIXED PATH HOP LENGHT
 
     q4:
-      question: Are there dangling attributes defined in the schema that are not linked to any fact?
+      question: Are there dangling attributes, i.e., attributes that are not linked to any fact?
       answer:
       template_type: sparql
       query: |
@@ -105,27 +105,23 @@ questions:
         }
       parameters:
 
-    q5:
-      question: Are there any circular dependencies between attributes or dimensions that are not convergence/shared/cross-dimensional?
-      answer:
-
   hybrid:
     q0:
       question: Where can I find informations about customers and the products they bought?
       answer:
 
     q1:
-      question: Can I analyze the invoices with respect to the controllers?
+      question: Can I analyze invoices with reference to controllers?
       answer:
 
     q2:
-      question: I would like to perform an analysis to evaluate the agents' performances, which entities should I look at?
+      question: I would like to analyze the agents' performances, which facts should I look at?
       answer:
 
     q3:
-      question: Provide me a description of the Invoice cube and its dimensions.
+      question: Describe the Invoice cube and its dimensions.
       answer:
 
     q4:
-      question: What cubes and dimensions should I look to analyze casual footwear sales?
+      question: Which cubes and dimensions should I consider to analyze casual footwear sales?
       answer:

@@ -1,0 +1,132 @@
+answers:
+  it0:
+    q1: No
+    q2: No
+    q3: Warehouse_Name, Warehouse_Movement_Cause
+    q4: Order, Invoice, Historical_Order
+    q5: Yes – Invoice_Agent linked via MultipleArc to Agent_Controller
+    q6: Facts are Order, Invoice, Historical_Order Dimensions are SKU_Subtype includes casual in SKU_Type hierarchy
+    q7: |
+      Roll-up to Agent_Agent, Customer_Customer, Date_Date, Invoice_Currency, Invoice_Doc_Type,
+       Invoice_First_Commercial_Discount, Invoice_Goods_On_Delivery, Invoice_Net_Average_Price, Invoice_Net_Value, I
+       nvoice_Profit_Center, Invoice_Quantity, Invoice_Return_Justification, Invoice_Season,
+       Invoice_Second_Commercial_Discount, Invoice_SellIn_Margin, Invoice_Virtual_Warehouse,
+       SKU_Subtype; plus Date_Year via 4Month_Period and Semester
+    q8: Shop_Ticket (SKU_SKU, Store_Store)
+    q10: |
+      The Invoice cube contains sales invoice data with measures such as net value, discounts (first/second commercial),
+      sell-in margin, quantities, and net average price. Its dimensions include Agent (and Controller),
+      Customer (billing and shipping), Date (with roll-ups to month, quarter, year),
+      Currency, Document Type, Goods on Delivery, Profit Center, Return Justification, Season, Virtual Warehouse,
+      and Product Subtype.
+    q11: Facts connected to the Customer_City attribute (via City_City) are Historical_Order, Invoice, Order, Shop_Ticket, Warehouse_Stock, and Warehouse_Movement.
+  it1:
+    q1: No
+    q2: No
+    q3: No
+    q4: Invoice, Order, Historical_Order.
+    q5: Yes, via Invoice_Agent → Agent_Controller.
+    q6: "Facts: Invoice, Order, Historical_Order, Shop_Ticket; Dimension: SKU_Subtype → includes casual footwear."
+    q7: |
+      roll up to Agent_Agent, Customer_Customer, Date_Date, SKU_Subtype, and further along their hierarchies 
+      (e.g., Agent_Area_Manager, City_Country, Date_Year).
+    q8: |
+      Shop_Ticket (SKU_SKU and Store_Store), Traffic_Counter (Store_Store and indirectly Product via SKU_SKU if extended).
+  it2:
+    q1: No
+    q2: No
+    q3: No
+    q4: Invoice, Order, Historical_Order, combined with SKU_Subtype (Product dimension).
+    q5: Yes, via Invoice_Agent  Agent_Controller.
+    q6: Facts Invoice, Order, Historical_Order, Shop_Ticket; Dimension SKU_Subtype → includes "casual" footwear in SKU_Type.
+    q7: |
+        Roll-up to Agent_Agent, Customer_Customer, Date_Date, Invoice_Currency, Invoice_Doc_Type,
+        Invoice_First_Commercial_Discount, Invoice_Goods_On_Delivery, Invoice_Net_Average_Price, Invoice_Net_Value,
+        Invoice_Profit_Center, Invoice_Quantity, Invoice_Return_Justification, Invoice_Season,
+        Invoice_Second_Commercial_Discount, Invoice_SellIn_Margin, Invoice_Virtual_Warehouse, SKU_Subtype, Date_Year,
+        Agent_Controller.
+    q8: Shop_Ticket (SKU_SKU, Store_Store).
+    q9: |
+        Historical_Order: Past orders with location, date, currency, discounts, net value, quantity, season, VAT, product subtype.
+        Invoice: Sales invoices with agent, customer, date, currency, doc type, discounts, net price/value, profit center, quantity, season, margin, warehouse, product subtype.
+        Order: Customer orders with agent, customer, date, currency, discounts, merchandise type, net value, order type, quantity, season, VAT, product subtype.
+        Shop_Ticket: In-store sales tickets with agent, date, product, currency, discounts, net value, quantity, season, VAT, store.
+        Third_Party_Warehouse_Stock: Stock levels in third-party warehouses by date, product, quantity, warehouse type.
+        Traffic_Counter: Store traffic counts by date, store, hour, people/tickets ratio, total traffic.
+        Warehouse_Movement: Goods movements by date, product, cause, merchandise type, quantity, warehouse.
+        Warehouse_Stock: Stock levels in warehouses by date, product, merchandise type, quantity, warehouse.
+    q10: |
+        Invoice cube Represents sales invoices. Dimensions Agent_Agent (salesperson), Customer_Customer (buyer),
+        Date_Date (invoice date), Invoice_Currency, Invoice_Doc_Type, Invoice_First_Commercial_Discount,
+        Invoice_Goods_On_Delivery, Invoice_Net_Average_Price, Invoice_Net_Value, Invoice_Profit_Center,
+        Invoice_Quantity, Invoice_Return_Justification, Invoice_Season, Invoice_Second_Commercial_Discount,
+        Invoice_SellIn_Margin, Invoice_Virtual_Warehouse, SKU_Subtype (product classification),
+        Agent_Controller (supervisor).
+    q11: Historical_Order, Invoice, Order, Shop_Ticket, Warehouse_Warehouse (via City_City in Customer_Customer and Store_Store). 
+
+  it3:
+    q1: No
+    q2: Traffic_Counter_Peopletickets_ratio
+    q3: Warehouse_Name, Warehouse_Movement_Cause
+    q4: Order, Invoice, Shop_Ticket, Historical_Order.
+    q5: Yes, via Invoice_Agent → Agent_Controller relationship.
+    q6: Order, Invoice, Shop_Ticket, Historical_Order; dimension SKU_Subtype with value "casual footwear".
+    q7: |
+      Roll-up to Agent_Agent, Customer_Customer, Date_Date, SKU_Subtype, Invoice_Currency,
+      Invoice_Doc_Type, Invoice_Season, Invoice_Profit_Center, Invoice_Virtual_Warehouse,
+      and further up their hierarchies (e.g., Date_Year, SKU_Type, City_City).
+    q8: Shop_Ticket (SKU_SKU, Store_Store) and possibly Warehouse_Stock if Product dimension is SKU_SKU and Store dimension is Store_Store.
+
+  it4:
+    q1: No
+    q2: No
+    q3: No
+    q4: Order, Invoice, Historical_Order.
+    q5: Yes, via Agent_Agent → Agent_Controller in the Invoice cube.
+    q6: Order, Invoice, Shop_Ticket cubes with SKU_Subtype and SKU_Type dimensions filtered for "casual footwear".
+    q7: Roll-up from Invoice to dimensions: Agent_Agent (→ Agent_Area_Manager), Customer_Customer (→ City_City), Date_Date (→ Date_Month_In_Year), SKU_Subtype (→ SKU_Type), and other linked attributes like Invoice_Season, Invoice_Currency.
+    q8: Shop_Ticket (SKU_SKU + Store_Store), possibly Warehouse_Stock if store-level stock is relevant.
+
+  it5:
+    q1: No
+    q2: Traffic_Counter_Peopletickets_ratio has SUM, which is inconsistent for a ratio/percentage.
+    q3: Warehouse_Name
+    q4: Invoice, Order, Historical_Order, and product info in SKU_SKU dimension.
+    q5: Yes, via Invoice_Agent → Agent_Controller relationship.
+    q6: Facts Order, Invoice, Historical_Order, Shop_Ticket; Dimension SKU_Subtype with value "casual footwear".
+    q7: Roll-up to Agent_Agent, Customer_Customer, Date_Date → Date_Month_In_Year → Date_4Month_Period/Date_Quarter/Date_Month, SKU_Subtype → SKU_Type/SKU_Customer_Type, and other linked attributes like Invoice_Currency, Invoice_Season.
+    q8: Shop_Ticket (SKU_SKU + Store_Store), potentially Warehouse_Stock and Warehouse_Movement if store is linked via city.
+    q9: |
+      Historical_Order: Past orders with location, date, currency, discounts, net value, quantity, season, VAT, product subtype.
+      Invoice: Sales invoices with agent, customer, date, currency, doc type, discounts, net value, profit center, quantity, season, margins, warehouse, product subtype.
+      Order: Customer orders with agent, customer, date, currency, discounts, merchandise type, net value, order type, quantity, season, VAT, product subtype.
+      Shop_Ticket: In-store sales tickets with agent, date, product, currency, discounts, net value, quantity, season, VAT, store.
+      Third_Party_Warehouse_Stock: Stock levels in third-party warehouses by date, product, quantity, warehouse type.
+      Traffic_Counter: Store traffic counts by date, store, hour, people/tickets ratio, total traffic.
+      Warehouse_Movement: Goods movements by date, product, cause, merchandise type, quantity, warehouse.
+      Warehouse_Stock: Stock levels in warehouses by date, product, merchandise type, quantity, warehouse.
+      q10: Invoice cube: Represents sales invoices. Dimensions: Agent (with controller), Customer (billing/shipping), Date, Currency, Doc Type, Discounts, Net Value, Profit Center, Quantity, Season, Margin, Virtual Warehouse, Product Subtype.
+      q11: Facts: Invoice, Order, Historical_Order (via Customer_Customer → City_City).
+    q10: Invoice cube: Represents sales invoices. Dimensions: Agent (with controller), Customer (billing/shipping), Date, Currency, Doc Type, Discounts, Net Value, Profit Center, Quantity, Season, Margin, Virtual Warehouse, Product Subtype.
+    q11: Facts: Invoice, Order, Historical_Order (via Customer_Customer → City_City).
+
+  it6:
+    q1: No
+    q2: No
+    q3: No
+    q4: Order, Invoice, Historical_Order.
+    q5: Yes, via Agent_Agent → Agent_Controller in the Invoice cube.
+    q6: Facts: Order, Invoice, Historical_Order; Dimension: SKU_Subtype with value "casual footwear".
+    q7: Roll-up to Agent_Agent, Customer_Customer, Date_Date, SKU_Subtype, and further to their higher-level attributes (e.g., City_City, Date_Year).
+    q8: Shop_Ticket (has SKU_SKU and Store_Store).
+    q9: |
+      Historical_Order: Past orders with product, date, location, and financial details.
+      Invoice: Sales invoices with product, customer, agent, and financial measures.
+      Order: Customer orders with product, date, agent, and financial measures.
+      Shop_Ticket: In-store sales tickets with product, store, date, and financial measures.
+      Third_Party_Warehouse_Stock: Stock levels in third-party warehouses.
+      Traffic_Counter: Store foot traffic and conversion ratios.
+      Warehouse_Movement: Movements of goods in/out of warehouses.
+      Warehouse_Stock: Stock levels in company warehouses.
+    q10: Invoice cube tracks sales invoices, linked to dimensions: Agent_Agent (salesperson), Customer_Customer (buyer), Date_Date (invoice date), SKU_Subtype (product classification), plus optional attributes like Invoice_Doc_Type, Invoice_Profit_Center, Invoice_Virtual_Warehouse. Measures include net value, quantity, discounts, margins.
+    q11: Historical_Order, Invoice, Order (via Customer_Customer → City_City).

@@ -1,0 +1,33 @@
+q1:
+  question: Are there any attributes or hierarchies that could be conformed across facts but are modeled as separate, non-conformed hierarchies?
+  answer: Currency, Season
+q2:
+  question: Are there measures with aggregation operators that are inconsistent with their business meaning? (e.g., SUM for percentage)
+  answer: Traffic_Counter_Peopletickets_ratio
+q3:
+  question: Are there dangling attributes defined in the schema that are not linked to any fact?
+  answer: Warehouse_name
+q4:
+  question: Where can I find informations about customers and the products they bought?
+  answer: Historical_Order, Order, Invoice, Shop Ticket
+q5:
+  question: Can I analyze the invoices with respect to the controllers?
+  answer: Yes, but there is a multiple arc between them.
+q6:
+  question: What cubes and dimensions should I look to analyze casual footwear sales?
+  answer: "cubes: Historical_order, Invoice, Order, Shop_Ticket; dimensions: Product_SKU_Subtype"
+q7:
+  question: Given the Invoice cube, which roll-up operations can I perform?
+  answer: time-based, customer geography, product dimension, agent-manager
+q8:
+  question: Which facts can be analyzed by Product and Store dimensions together?
+  answer: Shop_Ticket
+q9:
+  question: Give me a business oriented description of each cube.
+  answer: //
+
+q10:
+  question: Provide me a description of the Invoice cube and its dimensions.
+  answer: //
+
+q11: Find all facts connected to the Customer_City attribute.

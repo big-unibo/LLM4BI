@@ -2,7 +2,6 @@ The following is a turtle representation of the Dimensional Fact Model formalism
 
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
 
-
 LLM4BI:DFMConcept rdf:type owl:Class ;
     rdfs:comment "Represents a concept within the Dimensional Fact Model formalism" .
 
@@ -12,10 +11,10 @@ LLM4BI:DFMEntity rdf:type owl:Class ;
 
 LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMEntity .
 
-LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:DFMEntity ;
+LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "Represent the root attribute of a conformed hierarchy" .
 
-LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:DFMEntity ;
+LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "Defines an attribute that is shared across multiple dimensions or fact tables and maintains the same meaning, domain of values, and granularity in all contexts where it appears." .
 
 LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
@@ -89,9 +88,7 @@ LLM4BI:isDescriptive a owl:DataTypeProperty ;
   rdfs:range xsd:boolean .
 
 Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
-of a set of OLAP cubes, described through the above ontology. Now I am going to ask a few question about metadata exploration on such cubes.
-Please carefully understand the turtle triples below and based on your reasoning capabilities on such schema,
-provide answers to my questions. Always answer in a simple and concise way.
+of a set of OLAP cubes, described through the above ontology. Please analyze it.
 
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> a owl:Ontology .
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_Indyco> a owl:Ontology .
@@ -648,7 +645,7 @@ LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
         "8-10" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "AVG" ;
+    LLM4BI:AggregationOperator "AVG", "SUM" ;
     LLM4BI:Description "Number of ticket vs. people who entered" .
 
 LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
@@ -665,6 +662,10 @@ LLM4BI_Indyco:Warehouse_IsVirtual a LLM4BI:ConformedAttribute ;
 LLM4BI_Indyco:Warehouse_Movement_Cause a LLM4BI:Attribute ;
     LLM4BI:Description "The reason for moving goods" ;
     LLM4BI:LogicalName "CAUSE" .
+
+LLM4BI_Indyco:Warehouse_Name a LLM4BI:Attribute ;
+    LLM4BI:Description "The name of a warehouse." ;
+    LLM4BI:LogicalName "NAME" .
 
 LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
     LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
@@ -838,3 +839,25 @@ LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
         "2014",
         "2015" ;
     LLM4BI:isConvergence true .
+
+Now I am going to ask a few question about metadata exploration on such cubes.
+Please carefully understand the turtle triples above and based on your reasoning capabilities on such schema,
+provide answers to my questions. Always answer in a simple and concise way omitting useless details. If the question could be answered via a SPARQL query, please provide it; otherwise directly provide the answer
+Respond following this template:
+q1: {answer},
+q2: {answer}
+[..]
+
+Here are the list of questions:
+
+q1: Are there any attributes or hierarchies that could be conformed across facts but are modeled as separate, non-conformed hierarchies?
+q2: Are there measures with aggregation operators that are inconsistent with their business meaning? (e.g., SUM for percentage)
+q3: Are there dangling attributes defined in the schema that are not linked to any fact?
+q4: Where can I find informations about customers and the products they bought?
+q5: Can I analyze the invoices with respect to the controllers?
+q6: What cubes and dimensions should I look to analyze casual footwear sales?
+q7: Given the Invoice cube, which roll-up operations can I perform?
+q8: Which facts can be analyzed by Product and Store dimensions together?
+q9: Give me a business oriented description of each cube.
+q10: Provide me a description of the Invoice cube and its dimensions.
+q11: Find all facts connected to the Customer_City attribute.
