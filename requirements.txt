@@ -20,3 +20,5 @@ nbconvert
 rdflib
 openpyxl
 anytree
+openai
+dspy

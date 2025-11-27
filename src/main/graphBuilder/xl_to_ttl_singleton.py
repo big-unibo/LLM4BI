@@ -7,6 +7,9 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 from rdflib import Graph, Literal, Namespace
 from rdflib.namespace import RDF, RDFS, OWL, XSD
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import utils
 
 # ---------------------------------------------------------------------

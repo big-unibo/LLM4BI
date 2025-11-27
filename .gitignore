@@ -4,7 +4,7 @@ IndycoTutorial
 __pycache__/
 *.py[codz]
 *$py.class
-
+credentials.yaml
 # C extensions
 *.so
 

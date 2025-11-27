@@ -7,6 +7,7 @@ import os
 import sys
 import unicodedata
 from collections import deque
+import yaml
 
 
 def closest_to_node_to_root_tree(
@@ -177,3 +178,14 @@ def load_ontology(file_path, endpoint, repository):
         response.raise_for_status()
         print(f"{file_path} uploaded successfully")
         return response.status_code
+
+
+def load_yml(yml_path):
+    """
+    Load yml file as a dict
+    :param yml_path: file path
+    :return: yml file content as a dict
+    """
+    yml_file = open(yml_path)
+    yml_dict = yaml.load(yml_file, Loader=yaml.FullLoader)
+    return yml_dict
