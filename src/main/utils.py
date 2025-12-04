@@ -8,6 +8,7 @@ import sys
 import unicodedata
 from collections import deque
 import yaml
+from rdflib import Graph
 
 
 def closest_to_node_to_root_tree(
@@ -189,3 +190,19 @@ def load_yml(yml_path):
     yml_file = open(yml_path)
     yml_dict = yaml.load(yml_file, Loader=yaml.FullLoader)
     return yml_dict
+
+
+# -------------------------------------------------------
+# FILE UTILITIES
+# -------------------------------------------------------
+def load_ttl_as_text(path: str) -> str:
+    """Load a Turtle (.ttl) file as plain text for passing into LLM prompts."""
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+def load_graph(path: str) -> Graph:
+    """Load a Turtle file into an rdflib Graph (only used if needed locally)."""
+    g = Graph()
+    g.parse(path, format="turtle")
+    return g

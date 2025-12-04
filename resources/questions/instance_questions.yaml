@@ -30,4 +30,6 @@ q10:
   question: Provide me a description of the Invoice cube and its dimensions.
   answer: //
 
-q11: Find all facts connected to the Customer_City attribute.
+q11: 
+  question: Find all facts connected to the Customer_City attribute.
+  answer: //

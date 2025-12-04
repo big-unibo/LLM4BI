@@ -1,4 +1,4 @@
--
+- q1:
   - Question: "Describe the cubes"
   - Flow:
     - KG: (SPARQL) Retrieve all facts, with all their dimensions and top N measures
@@ -10,7 +10,7 @@
     - LLM: Ask to identify the fact
     - KG: (SPARQL) Retrieve all triples related to the fact
     - LLM: Send triples for description
-- 
+- q2:
   - Question: "Do we have anything that represents X?"
   - Flow:
     - LLM: Ask to return the string S(X) for similarity matching
@@ -20,14 +20,16 @@
       - If measure, add its fact
       - If attribute, add its dimension hierarchy and facts
     - LLM: Send triples for description
-- 
+
+- q3:
   - Question: "Which facts are related to X?"
   - Flow:
     - LLM: Ask to return the string S(X) for similarity matching
     - VDB: Similarity search over S(X), return top 1 attribute/measure with sim >= T
     - KG: (SPARQL) Retrieve facts related to top 1 attribute/measure
     - LLM: Send triples for description
-- 
+
+- q4:
   - Question: "Which relationships exist between X and Y?"
   - Flow:
     - LLM: Ask to return the strings S(X) and S(Y) for similarity matching
@@ -35,7 +37,8 @@
     - VDB: Similarity search over S(Y), return top 1 node with sim >= T
     - KG: (Python) Shortest paths between top 1 X and top 1 Y
     - LLM: Send triples for description
-- 
+
+- q5:
   - Question: "Can we analyze X by Y1, Y2, ..?"
   - Flow:
     - LLM: Ask to return the strings S(X), S(Y1), S(Y2) for similarity matching
@@ -44,4 +47,13 @@
     - VDB: Similarity search over S(Y2), return top 1 attribute with sim >= T
     - KG: (SPARQL) Exists paths between top 1 X and top 1 Y1
     - KG: (SPARQL) Exists paths between top 1 X and top 1 Y2
+    - LLM: Send triples for description
+
+## No RAG
+
+- q1:
+  - Question: "Which facts are related to X?"
+  - Flow:
+    - LLM: Ask to return the DFMConcepty from KG most similar to the string S(X)
+    - KG: (SPARQL) Retrieve facts connected to previous DFMConcept
     - LLM: Send triples for description
