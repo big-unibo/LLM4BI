@@ -1,0 +1,29 @@
+categories:
+  search:
+    - In which facts can I find information about clients?
+    - Which facts can be analyzed by articole and shop together?
+    - Find the facts related to nations.
+    - I would like to analyze the performances of sales representatives, which facts should I look at?
+    - Which cubes and dimensions should I look to analyze t-shirts sales?
+  olap:
+    - Can I analyze bills with reference to sales supervisors?
+    - Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications?
+    - Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications in 2025? 
+    - Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment? 
+    - Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products?
+    - Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products of the Winter Sports Apparel assortment?
+    - "If I'm aggregating data by article, which roll-up paths are available?"
+    - "If I'm aggregating data by 12-months periods, which drill-down paths are available?"
+    - "Can I do a drill-across between bills and logistic hub transfers?"
+
+  business_oriented:
+    # - "How do these facts, together, represent the end-to-end business process?"
+    - "Give me a business-oriented description the purchases cube."
+    -  Describe the bills cube and its dimensions.
+    - "Which relationship holds between product labels and product classifications?"
+    - "Which relationship holds between sales representatives and sales supervisors?"
+    - "Which relationship holds between product labels and sales supervisors?"
+  test:
+    # - "Are there multiple measures with different names but same semantics?" # Discount Value -> Price Reduction, NET Value -> Amount After Tax
+    # - "Are there measures whose aggregation operators are inconsistent with their business meaning? (e.g., SUM for a percentage)" #  Traffic_Counter_Peopletickets_ratio
+    # - "Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies?" # Season -> Season_Type in Order fact, Season -> Semester in other facts (with same sample values SS FW)
