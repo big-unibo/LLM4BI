@@ -1,5 +1,7 @@
 The following is a turtle representation of the Dimensional Fact Model formalism through which we describe the conceptual schema of a set of OLAP cubes.
 
+--------------------
+
 <http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
 
 LLM4BI:DFMConcept rdf:type owl:Class ;
@@ -87,12 +89,12 @@ LLM4BI:isDescriptive a owl:DataTypeProperty ;
   rdfs:comment "A descriptive attribute stores additional information about another attribute and is not used for aggregation because it has a dense domain and/or it is the child of a one-to-one association." ;
   rdfs:range xsd:boolean .
 
-----------
+--------------------
 
 Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
 of a set of OLAP cubes, described through the above ontology. Please analyze it.
 
-----------
+--------------------
 
 @prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @prefix LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#> .
@@ -869,8 +871,8 @@ LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
         "2014",
         "2015" .
 
-----------
+--------------------
 
 Have you understood the ontology and the cubes described with it? Just answer yes or no.
 If yes, now I'm going to ask a few questions about metadata exploration on such cubes.
-Please keep the answers as concise and structured as possible.
+Please keep the answers as concise as possible. Avoid particular formattings. When possible, keep answers on a single line
