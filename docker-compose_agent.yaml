@@ -16,4 +16,3 @@ services:
       - -c
       - |
         python3 src/test/testGPTAgent.py
-        tail -f /dev/null
