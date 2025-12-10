@@ -87,56 +87,18 @@ LLM4BI:isDescriptive a owl:DataTypeProperty ;
   rdfs:comment "A descriptive attribute stores additional information about another attribute and is not used for aggregation because it has a dense domain and/or it is the child of a one-to-one association." ;
   rdfs:range xsd:boolean .
 
+----------
+
 Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
 of a set of OLAP cubes, described through the above ontology. Please analyze it.
+
+----------
 
 @prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @prefix LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-<http://www.foo.bar/LLM4BI/ontologies/LLM4BI> a owl:Ontology .
-
-LLM4BI:AggregationOperator a owl:DataTypeProperty ;
-    rdfs:comment "An operator that can be used to aggregate a measure along one hierarchy (e.g., SUM, AVG, MIN, MAX)" ;
-    rdfs:domain LLM4BI:Measure ;
-    rdfs:range xsd:string .
-
-LLM4BI:Description a owl:DataTypeProperty ;
-    rdfs:comment "A description for what a DFM concept represents in the business logic" ;
-    rdfs:domain LLM4BI:DFMConcept ;
-    rdfs:range xsd:string .
-
-LLM4BI:LogicalName a owl:DataTypeProperty ;
-    rdfs:comment "The name of an attribute/measure within the logical schema" ;
-    rdfs:domain LLM4BI:DFMConcept ;
-    rdfs:range xsd:string .
-
-LLM4BI:Notes a owl:DataTypeProperty ;
-    rdfs:comment "Additional notes regarding a DFM concept." ;
-    rdfs:domain LLM4BI:DFMConcept ;
-    rdfs:range xsd:string .
-
-LLM4BI:SampleValues a owl:DataTypeProperty ;
-    rdfs:comment "A set of sample values for an attribute" ;
-    rdfs:domain LLM4BI:DFMEntity ;
-    rdfs:range xsd:string .
-
-LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
-    rdfs:comment "A cross-dimensional attribute is functionally determined by two or more attributes together, possibly belonging to different hierarchies." ;
-    rdfs:domain LLM4BI:DFMEntity ;
-    rdfs:range xsd:boolean .
-
-LLM4BI:isDescriptive a owl:DataTypeProperty ;
-    rdfs:comment "An attribute that cannot be used for aggregation, typically because it has a dense domain and/or it is connected to its father by a one-to-one association." ;
-    rdfs:domain LLM4BI:DFMEntity ;
-    rdfs:range xsd:boolean .
-
-LLM4BI:isShared a owl:DataTypeProperty ;
-    rdfs:comment "A shared hierarchy denotes that a part of a hierarchy is used twice or more within a fact schema." ;
-    rdfs:domain LLM4BI:DFMEntity ;
-    rdfs:range xsd:boolean .
 
 LLM4BI_Indyco:Agent a LLM4BI:ConformedHierarchyRoot ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent .
@@ -158,27 +120,26 @@ LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_Country,
         LLM4BI_Indyco:Date_Month_In_Year,
         LLM4BI_Indyco:Historical_Order_Currency,
-        LLM4BI_Indyco:Historical_Order_Discount_Value,
         LLM4BI_Indyco:Historical_Order_Net_Value,
+        LLM4BI_Indyco:Historical_Order_Price_Reduction,
         LLM4BI_Indyco:Historical_Order_Quantity,
         LLM4BI_Indyco:Historical_Order_Season,
         LLM4BI_Indyco:Historical_Order_VAT_Value,
+        LLM4BI_Indyco:Historical_Order_name,
         LLM4BI_Indyco:SKU_Subtype .
 
 LLM4BI_Indyco:Historical_Order_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
-
-LLM4BI_Indyco:Historical_Order_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent,
         LLM4BI_Indyco:Customer_Customer,
         LLM4BI_Indyco:Date_Date,
+        LLM4BI_Indyco:Invoice_Amount_After_Discount,
         LLM4BI_Indyco:Invoice_Currency,
         LLM4BI_Indyco:Invoice_Doc_Type,
         LLM4BI_Indyco:Invoice_First_Commercial_Discount,
         LLM4BI_Indyco:Invoice_Goods_On_Delivery,
         LLM4BI_Indyco:Invoice_Net_Average_Price,
-        LLM4BI_Indyco:Invoice_Net_Value,
         LLM4BI_Indyco:Invoice_Profit_Center,
         LLM4BI_Indyco:Invoice_Quantity,
         LLM4BI_Indyco:Invoice_Return_Justification,
@@ -186,6 +147,7 @@ LLM4BI_Indyco:Invoice a LLM4BI:Fact ;
         LLM4BI_Indyco:Invoice_Second_Commercial_Discount,
         LLM4BI_Indyco:Invoice_SellIn_Margin,
         LLM4BI_Indyco:Invoice_Virtual_Warehouse,
+        LLM4BI_Indyco:Invoice_name,
         LLM4BI_Indyco:SKU_Subtype ;
     LLM4BI_Indyco:Invoice_Invoice_Doc_Type LLM4BI_Indyco:Invoice_Doc_Type ;
     LLM4BI_Indyco:Invoice_Invoice_Goods_On_Delivery LLM4BI_Indyco:Invoice_Goods_On_Delivery ;
@@ -216,8 +178,6 @@ LLM4BI_Indyco:Invoice_Invoice_Return_Justification a owl:ObjectProperty ;
 
 LLM4BI_Indyco:Invoice_Invoice_Virtual_Warehouse a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:OptionalArc .
-
-LLM4BI_Indyco:Invoice_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice_billing_Customer a owl:ObjectProperty ;
     rdfs:label "billing" ;
@@ -271,8 +231,6 @@ LLM4BI_Indyco:Shop_Ticket_Agent LLM4BI_Indyco:Shop_Ticket_Agent_Controller LLM4B
 
 LLM4BI_Indyco:Shop_Ticket_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
-
-LLM4BI_Indyco:Shop_Ticket_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Store a LLM4BI:ConformedHierarchyRoot ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Store_Store .
@@ -436,13 +394,13 @@ LLM4BI_Indyco:Historical_Order_Currency a LLM4BI:Attribute ;
         "JPY",
         "USD" .
 
-LLM4BI_Indyco:Historical_Order_Discount_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Discount if any" .
-
 LLM4BI_Indyco:Historical_Order_Net_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
+
+LLM4BI_Indyco:Historical_Order_Price_Reduction a LLM4BI:Measure ;
+    LLM4BI:AggregationOperator "SUM" ;
+    LLM4BI:Description "Discount if any" .
 
 LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
@@ -452,13 +410,26 @@ LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
 LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
     LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "SS13" .
 
+LLM4BI_Indyco:Historical_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
+    LLM4BI:SampleValues "FW",
+        "SS" .
+
 LLM4BI_Indyco:Historical_Order_VAT_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Taxes" .
+
+LLM4BI_Indyco:Historical_Order_name a LLM4BI:Measure .
+
+LLM4BI_Indyco:Invoice_Amount_After_Discount a LLM4BI:Measure ;
+    LLM4BI:AggregationOperator "SUM" ;
+    LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
     LLM4BI:Description "The currency used for invoicing" ;
@@ -476,10 +447,6 @@ LLM4BI_Indyco:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
 LLM4BI_Indyco:Invoice_Net_Average_Price a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG" .
 
-LLM4BI_Indyco:Invoice_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Value, net of discounts and VAT" .
-
 LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
         "SUM" ;
@@ -488,6 +455,7 @@ LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
 LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
     LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "SS13" .
@@ -498,6 +466,14 @@ LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
 
 LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
     LLM4BI:Description "Gross margin" .
+
+LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
+    LLM4BI:SampleValues "FW",
+        "SS" .
+
+LLM4BI_Indyco:Invoice_name a LLM4BI:Measure .
 
 LLM4BI_Indyco:Order_Currency a LLM4BI:Attribute ;
     LLM4BI:Description "The currency used for billing" ;
@@ -543,9 +519,15 @@ LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
 LLM4BI_Indyco:Order_Season a LLM4BI:Attribute ;
     LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Order_Season_Type ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "SS13" .
+
+LLM4BI_Indyco:Order_Season_Type a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "SEASON_TYPE" ;
+    LLM4BI:SampleValues "FW",
+        "SS" .
 
 LLM4BI_Indyco:Order_VAT_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
@@ -647,9 +629,16 @@ LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
     LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "SS13" .
+
+LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
+    LLM4BI:LogicalName "SEMESTER" ;
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
+    LLM4BI:SampleValues "FW",
+        "SS" .
 
 LLM4BI_Indyco:Shop_Ticket_VAT_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
@@ -689,7 +678,8 @@ LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
         "8-10" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "AVG" ;
+    LLM4BI:AggregationOperator "AVG",
+        "SUM" ;
     LLM4BI:Description "Number of ticket vs. people who entered" .
 
 LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
@@ -781,12 +771,6 @@ LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
     LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" ;
     LLM4BI:SampleValues "Y/N" .
 
-LLM4BI:Arc a owl:ObjectProperty ;
-    rdfs:label "" ;
-    rdfs:comment "An arc connecting two entities within a DFM schema. In presence of an arc from A to B, the user can roll-up from A to B." ;
-    rdfs:domain LLM4BI:DFMEntity ;
-    rdfs:range LLM4BI:DFMConcept .
-
 LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The store where a product is being sold" ;
     LLM4BI:LogicalName "STORE" ;
@@ -802,11 +786,6 @@ LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Warehouse_IsVirtual ;
     LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
-
-LLM4BI:MultipleArc a owl:ObjectProperty ;
-    rdfs:label "MultipleArc" ;
-    rdfs:comment "Represents a many-to-many-relationship between two attributes (e.g., if one book has several authors and an author writes several books, there is a multiple arc between author and book)" ;
-    rdfs:subPropertyOf LLM4BI:Arc .
 
 LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A salesman who covers a geographic area" ;
@@ -836,9 +815,7 @@ LLM4BI_Indyco:SKU_Subtype a LLM4BI:ConformedAttribute ;
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
     rdfs:label "" ;
-    rdfs:comment "Represents a functional dependency between two attributes connected by a many-to-one relationship (e.g., if one product belongs to one type, there is an arc from product to the type attribute)." ;
-    rdfs:subPropertyOf LLM4BI:Arc,
-        LLM4BI:RollUpArc .
+    rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -875,23 +852,6 @@ LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:ConformedAttribute ;
         "Stock Production",
         "Third party warehouse" .
 
-LLM4BI:DFMConcept a owl:Class ;
-    rdfs:comment "A concept within the Dimensional Fact Model" .
-
-LLM4BI:ConformedHierarchyRoot rdfs:comment "The root attribute of a conformed hierarchy" ;
-    rdfs:subClassOf LLM4BI:DFMEntity .
-
-LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMEntity .
-
-LLM4BI:OptionalArc a owl:ObjectProperty ;
-    rdfs:label "OptionalArc" ;
-    rdfs:comment "An optional arc between two entities (e.g.,  there is an optional arc from Product to Diet_Y/N because Diet_Y/N has no value for some product)" ;
-    rdfs:subPropertyOf LLM4BI:Arc .
-
-LLM4BI:DFMEntity a owl:Class ;
-    rdfs:comment "Any entity (e.g., attribute, fact, conformed hierarchy, dimension, measure) within the Dimensional Fact Model" ;
-    rdfs:subClassOf LLM4BI:DFMConcept .
-
 LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific day" ;
     LLM4BI:LogicalName "DATE" ;
@@ -902,8 +862,6 @@ LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
         "01-03-2014" ;
     LLM4BI:isShared true .
 
-LLM4BI:Attribute rdfs:subClassOf LLM4BI:DFMEntity .
-
 LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific year" ;
     LLM4BI:LogicalName "YEAR" ;
@@ -911,11 +869,8 @@ LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
         "2014",
         "2015" .
 
-LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
-
-LLM4BI:ConformedAttribute rdfs:comment "An attribute shared across multiple hierarchies and maintaining the same meaning, domain of values, and granularity" ;
-    rdfs:subClassOf LLM4BI:DFMEntity .
+----------
 
 Have you understood the ontology and the cubes described with it? Just answer yes or no.
 If yes, now I'm going to ask a few questions about metadata exploration on such cubes.
-
+Please keep the answers as concise and structured as possible.

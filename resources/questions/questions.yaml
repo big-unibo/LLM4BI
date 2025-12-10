@@ -1,0 +1,29 @@
+categories:
+  search:
+    - In which facts can I find information about customers?
+    - Which facts can be analyzed by SKU and store together?
+    - Find the facts related to countries.
+    - I would like to analyze the agents' performances, which facts should I look at?
+    - Which cubes and dimensions should I look to analyze casual footwear sales?
+  olap:
+    - Can I analyze invoices with reference to controllers?
+    - Can I aggregate quantities of shop tickets by area manager and category?
+    - Can I aggregate quantities of shop tickets by area manager and category in 2025? 
+    - Can I aggregate quantities of shop tickets by area manager and category by Disney Toons merchandise type? 
+    - Can I aggregate quantities of shop tickets by warehouse countries and brands?
+    - Can I aggregate quantities of shop tickets by warehouse countries and brands by Disney Toons merchandise?
+    - "If I'm aggregating data by SKU, which roll-up paths are available?"
+    - "If I'm aggregating data by year, which drill-down paths are available?"
+    - "Can I do a drill-across between invoices and warehouse movements?"
+
+  business_oriented:
+    - "How do these facts, together, represent the end-to-end business process?"
+    - "Give me a business-oriented description the order cube."
+    -  Describe the invoice cube and its dimensions.
+    - "Which relationship holds between brands and categories?"
+    - "Which relationship holds between agents and controllers?"
+    - "Which relationship holds between brands and controllers?"
+  test:
+    - "Are there multiple measures with different names but same semantics?" # Discount Value -> Price Reduction, NET Value -> Amount After Tax
+    - "Are there measures whose aggregation operators are inconsistent with their business meaning? (e.g., SUM for a percentage)" #  Traffic_Counter_Peopletickets_ratio
+    - "Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies?" # Season -> Season_Type in Order fact, Season -> Semester in other facts (with same sample values SS FW)

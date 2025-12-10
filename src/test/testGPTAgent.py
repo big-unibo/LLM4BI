@@ -1,73 +1,62 @@
 import os
 import sys
 from pathlib import Path
-import dspy
-from typing import List, Dict, Any, TypedDict
+import pandas as pd
+from sqlalchemy import create_engine
 import os
+import uuid
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
-
-credentials = utils.load_yml(
-    os.path.join(os.sep, "home", "resources", "credentials.yaml")
-)
-
-gpt_model = "gpt-5-chat"
-
-os.environ["AZURE_API_KEY"] = credentials["gpt"]["api-key"]
-os.environ["AZURE_API_VERSION"] = "2025-01-01-preview"
-os.environ["AZURE_API_BASE"] = "https://llm4dfm-gpt.openai.azure.com"
-os.environ["AZURE_DEPLOYMENT_NAME"] = "gpt-5-chat"
+from main.agents.GPTAgent import GPTAgent
 
 BASE = Path("/home")
-FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
+QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
+CREDENTIALS_FILE = BASE / "resources" / "credentials.yaml"
+credentials = utils.load_yml(CREDENTIALS_FILE)
+PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "indyco_tutorial_prompt.txt"
+ITERATIONS = 10
 
-ONTOLOGY_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
-CUBES_TTL = BASE / "output" / "ontologies" / f"LLM4BI_{FILENAME}.ttl"
-
-# Configuring DSpy
-MODEL = "azure/gpt-5-chat"
-lm = dspy.LM(model=MODEL, provider="litellm")
-dspy.configure(lm=lm)
-
-
-class QuestionResult(TypedDict):
-    answer: Dict[str, Any]
-    triples: List[str]
+# Stats setup
+POSTGRESQL_ENDPOINT = "137.204.70.156:45532"
+SQL_ENGINE = create_engine(
+    f"postgresql://{credentials['postgres']['user']}:{credentials['postgres']['psw']}@{POSTGRESQL_ENDPOINT}/{credentials['postgres']['db']}"
+)
+STATISTICS_COLUMNS = "test_id,model,category,question,answer,iteration"
 
 
-class QAOutput(TypedDict):
-    __root__: Dict[str, QuestionResult]
+questions = utils.load_yml(QUESTION_FILE)
+statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
+prompt = open(PROMPT_FILE).read()
 
-
-class UnifiedMetadataQA(dspy.Signature):
-    ontology_ttl: str = dspy.InputField()
-    cubes_ttl: str = dspy.InputField()
-    questions: List[str] = dspy.InputField()
-    results: QAOutput = dspy.OutputField()
-
-
-class IndycoMetadataExplorer(dspy.Module):
-    def __init__(self):
-        super().__init__()
-        self.predict = dspy.Predict(UnifiedMetadataQA)
-
-    def forward(self, ontology_ttl, cubes_ttl, questions):
-        return self.predict(
-            ontology_ttl=ontology_ttl, cubes_ttl=cubes_ttl, questions=questions
-        )
-
-
-pipeline = IndycoMetadataExplorer()
-
-result = pipeline(
-    ontology_ttl=open(ONTOLOGY_FILE).read(),
-    cubes_ttl=open(CUBES_TTL).read(),
-    questions=[
-        "Describe the cubes",
-        "Do we have anything that represents In-Store sales?",
-    ],
+agent = GPTAgent(
+    instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
+    api_key=credentials["gpt"]["api-key"],
 )
 
-print(result.results)
+for i in range(ITERATIONS):
+    test_id = uuid.uuid4()
+    for q_cat, q_list in questions["categories"].items():
+        for q in q_list:
+            print(f"Iteration {i} - Category: {q_cat} - Question ID: {q}")
+            agent.query(prompt)
+            answer = agent.query(q)
+            statistics = pd.concat(
+                [
+                    statistics,
+                    pd.DataFrame(
+                        {
+                            "test_id": [test_id],
+                            "model": [agent.model],
+                            "category": [q_cat],
+                            "question": [q],
+                            "answer": [answer],
+                            "iteration": [i],
+                        }
+                    ),
+                ],
+                ignore_index=True,
+            )
+            agent.reset()
+    statistics.to_sql("answers", SQL_ENGINE, if_exists="replace", index=False)
