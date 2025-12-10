@@ -2,17 +2,17 @@
 services:
   gpt_agent:
     image: indycoagent
+    container_name: indyco_agent
     build:
       context: ./
       dockerfile: Dockerfile
-    environment:
-      - BASE_PATH=/llm4bi
-      - ITERATIONS=5
+    env_file: .env
     volumes:
-      - ./resources/input/prompts/indyco_tutorial_prompt.txt:/home/resources/input/prompts/indyco_tutorial_prompt.txt
-      - ./resources/questions/questions.yaml:/home/resources/questions/questions.yaml
+      - ./resources/input/prompts/:/llm4bi/resources/input/prompts/
+      - ./resources/questions/:/llm4bi/resources/questions
     command: 
       - /bin/bash
       - -c
       - |
         python3 src/test/testGPTAgent.py
+        tail -f /dev/null
