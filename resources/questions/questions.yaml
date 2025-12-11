@@ -8,14 +8,14 @@ Categories:
     S3D: Find the facts related to nations.
     S4: I would like to analyze the agents' performances, which facts should I look at?
     S4D: I would like to analyze the performances of sales representatives, which facts should I look at?
-    S5: Which cubes and dimensions should I look to analyze casual footwear sales?
-    S5D: Which cubes and dimensions should I look to analyze t-shirts sales?
+    S5: Which cubes and dimensions should I check to analyze casual footwear sales?
+    S5D: Which cubes and dimensions should I check to analyze t-shirts sales?
 
   Olap:
     O1: Can I analyze invoices with reference to controllers?
     O1D: Can I analyze bills with reference to sales supervisors?
-    O2: Can I aggregate quantities of shop tickets by area manager and category?
-    O2D: Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications?
+    O2: Can I find the total quantities of shop tickets by area manager and category?
+    O2D: Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?
     O3: Can I aggregate quantities of shop tickets by area manager and category in 2025?
     O3D: Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications in 2025?
     O4: Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?
@@ -33,8 +33,8 @@ Categories:
 
   Business_oriented:
     B1: "How do these facts, together, represent the end-to-end business process?"
-    B1D: "Give me a business-oriented description the purchases cube."
-    B2: "Give me a business-oriented description the order cube."
+    B1D: "Give me a business-oriented description of the purchases cube."
+    B2: "Give me a business-oriented description of the order cube."
     B2D:  Describe the bills cube and its dimensions.
     B3: "Which relationship holds between brands and categories?"
     B3D: "Which relationship holds between product labels and product classifications?"
