@@ -141,4 +141,4 @@ for i in range(ITERATIONS):
             )
             agent.reset()
     logger.info(f"Iteration {i} completed, uplaoding results to database.")
-    statistics.to_sql("answers", SQL_ENGINE, if_exists="replace", index=False)
+    statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
