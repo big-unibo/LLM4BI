@@ -24,26 +24,26 @@ Categories:
     O5D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products?
     O6: Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?
     O6D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products of the Winter Sports Apparel assortment?
-    O7: "If I'm aggregating data by SKU, which roll-up paths are available?"
-    O7D: "If I'm aggregating data by article, which roll-up paths are available?"
-    O8: "If I'm aggregating data by year, which drill-down paths are available?"
-    Q8D: "If I'm aggregating data by 12-months periods, which drill-down paths are available?"
-    O9: "Can I do a drill-across between invoices and warehouse movements?"
-    Q9D: "Can I do a drill-across between bills and logistic hub transfers?"
+    O7: If I'm aggregating data by SKU, which roll-up paths are available?
+    O7D: If I'm aggregating data by article, which roll-up paths are available?
+    O8: If I'm aggregating data by year, which drill-down paths are available?
+    O8D: If I'm aggregating data by 12-months periods, which drill-down paths are available?
+    O9: Can I do a drill-across between invoices and warehouse movements?
+    O9D: Can I do a drill-across between bills and logistic hub transfers?
 
   Business_oriented:
-    B1: "How do these facts, together, represent the end-to-end business process?"
-    B1D: "Give me a business-oriented description of the purchases cube."
-    B2: "Give me a business-oriented description of the order cube."
+    B1: How do these facts, together, represent the end-to-end business process?
+    B1D: Give me a business-oriented description of the purchases cube.
+    B2: Give me a business-oriented description of the order cube.
     B2D:  Describe the bills cube and its dimensions.
-    B3: "Which relationship holds between brands and categories?"
-    B3D: "Which relationship holds between product labels and product classifications?"
-    B4: "Which relationship holds between agents and controllers?"
-    B4D: "Which relationship holds between sales representatives and sales supervisors?"
-    B6: "Which relationship holds between brands and controllers?"
-    B6D: "Which relationship holds between product labels and sales supervisors?"
+    B3: Which relationship holds between brands and categories?
+    B3D: Which relationship holds between product labels and product classifications?
+    B4: Which relationship holds between agents and controllers?
+    B4D: Which relationship holds between sales representatives and sales supervisors?
+    B6: Which relationship holds between brands and controllers?
+    B6D: Which relationship holds between product labels and sales supervisors?
 
   Test:
-    T1: "Are there multiple measures with different names but same semantics?" # Discount Value -> Price Reduction, NET Value -> Amount After Tax
-    T2: "Are there measures whose aggregation operators are inconsistent with their business meaning? (e.g., SUM for a percentage)" #  Traffic_Counter_Peopletickets_ratio
-    T3: "Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies?" # Season -> Season_Type in Order fact, Season -> Semester in other facts (with same sample values SS FW)
+    T1: Are there multiple measures with different names but same semantics? # Discount Value -> Price Reduction, NET Value -> Amount After Tax
+    T2: Are there measures whose aggregation operators are inconsistent with their business meaning? (e.g., SUM for a percentage) #  Traffic_Counter_Peopletickets_ratio
+    T3: Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? # Season -> Season_Type in Order fact, Season -> Semester in other facts (with same sample values SS FW)
