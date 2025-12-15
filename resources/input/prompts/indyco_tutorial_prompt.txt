@@ -467,7 +467,8 @@ LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
     LLM4BI:Description "A discount" .
 
 LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
-    LLM4BI:Description "Gross margin" .
+    LLM4BI:Description "Gross margin" ;
+    LLM4BI:AggregationOperator "SUM", "AVG" .
 
 LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
@@ -680,8 +681,7 @@ LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
         "8-10" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "AVG",
-        "SUM" ;
+    LLM4BI:AggregationOperator "AVG", "SUM" ;
     LLM4BI:Description "Number of ticket vs. people who entered" .
 
 LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;

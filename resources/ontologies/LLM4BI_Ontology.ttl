@@ -16,25 +16,33 @@
 LLM4BI:DFMConcept rdf:type owl:Class ;
     rdfs:comment "A concept within the Dimensional Fact Model" .
 
-LLM4BI:DFMEntity rdf:type owl:Class ;
-rdfs:subClassOf LLM4BI:DFMConcept ;
-rdfs:comment "Any entity (e.g., attribute, fact, conformed hierarchy, dimension, measure) within the Dimensional Fact Model" .
+LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMConcept .
 
-LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMEntity .
-
-LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:DFMEntity ;
+LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "The root attribute of a conformed hierarchy" .
 
-LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:DFMEntity ;
+LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "An attribute shared across multiple hierarchies and maintaining the same meaning, domain of values, and granularity" .
 
 LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
 
-LLM4BI:Attribute  rdfs:subClassOf LLM4BI:DFMEntity .
+LLM4BI:Attribute  rdfs:subClassOf LLM4BI:DFMConcept .
 
 LLM4BI:Arc a owl:ObjectProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:range  LLM4BI:DFMConcept ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:unionOf (
+      LLM4BI:Attribute
+      LLM4BI:Fact
+    )
+  ] ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf (
+      LLM4BI:Attribute
+      LLM4BI:Measure
+    )
+  ] ;
   rdfs:comment "An arc connecting two entities within a DFM schema. In presence of an arc from A to B, the user can roll-up from A to B." ; 
   rdfs:label "" .
 
@@ -68,27 +76,22 @@ LLM4BI:Description a owl:DataTypeProperty ;
   rdfs:comment "A description for what a DFM concept represents in the business logic" ;
   rdfs:range xsd:string .
 
-LLM4BI:Notes a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "Additional notes regarding a DFM concept." ;
-  rdfs:range xsd:string .
-
 LLM4BI:SampleValues a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
+  rdfs:domain LLM4BI:DFMConcept ;
   rdfs:comment "A set of sample values for an attribute" ;
   rdfs:range xsd:string .
 
 LLM4BI:isShared a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
+  rdfs:domain LLM4BI:DFMConcept ;
   rdfs:comment "A shared hierarchy denotes that a part of a hierarchy is used twice or more within a fact schema." ;
   rdfs:range xsd:boolean .
 
 LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
+  rdfs:domain LLM4BI:DFMConcept ;
   rdfs:comment "A cross-dimensional attribute is functionally determined by two or more attributes together, possibly belonging to different hierarchies." ;
   rdfs:range xsd:boolean .
 
 LLM4BI:isDescriptive a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
+  rdfs:domain LLM4BI:DFMConcept ;
   rdfs:comment "An attribute that cannot be used for aggregation, typically because it has a dense domain and/or it is connected to its father by a one-to-one association." ;
   rdfs:range xsd:boolean .
