@@ -25,9 +25,11 @@ LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute ;
 LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "An attribute shared across multiple hierarchies and maintaining the same meaning, domain of values, and granularity" .
 
-LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
+LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept ;
+    rdfs:comment "A measure is a numerical property of a fact and describes a quantitative fact aspect that is relevant to analysis (e.g., every sale is quantified by its receipts)" .
 
-LLM4BI:Attribute  rdfs:subClassOf LLM4BI:DFMConcept .
+LLM4BI:Attribute  rdfs:subClassOf LLM4BI:DFMConcept ;
+    rdfs:comment "An attribute is a descriptive property of a fact or a dimension that is relevant to analysis (e.g., every sale is described by the date when it took place, the product sold, the customer who bought it, etc.)" .
 
 LLM4BI:Arc a owl:ObjectProperty ;
   rdfs:domain [
@@ -44,7 +46,7 @@ LLM4BI:Arc a owl:ObjectProperty ;
       LLM4BI:Measure
     )
   ] ;
-  rdfs:comment "An arc connecting two entities within a DFM schema. In presence of an arc from A to B, the user can roll-up from A to B." ; 
+  rdfs:comment "An arc connecting two entities within a DFM schema. In presence of an arc from A to B, the user can roll-up from A to B." ;
   rdfs:label "" .
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
