@@ -16,7 +16,8 @@
 LLM4BI:DFMConcept rdf:type owl:Class ;
     rdfs:comment "A concept within the Dimensional Fact Model" .
 
-LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMConcept .
+LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMConcept ;
+    rdfs:comment "A fact is a concept relevant to decision making processes. It typically models a set of events taking place within a company (e.g., sales, shipments, purchases, ...). A fact has dynamic properties or evolves in some way over time"
 
 LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute ;
     rdfs:comment "The root attribute of a conformed hierarchy" .
