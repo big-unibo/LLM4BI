@@ -33,9 +33,8 @@ Categories:
 
   Business_oriented:
     B1: How do these facts, together, represent the end-to-end business process?
-    B1D: Give me a business-oriented description of the purchases cube.
     B2: Give me a business-oriented description of the order cube.
-    B2D:  Describe the bills cube and its dimensions.
+    B2D: Give me a business-oriented description of the purchases cube.
     B3: Which relationship holds between brands and categories?
     B3D: Which relationship holds between product trademarks and product classifications?
     B4: Which relationship holds between agents and controllers?
