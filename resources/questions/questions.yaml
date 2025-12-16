@@ -21,9 +21,9 @@ Categories:
     O4: Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?
     O4D: Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment?
     O5: Can I aggregate quantities of shop tickets by warehouse countries and brands?
-    O5D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products?
+    O5D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products?
     O6: Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?
-    O6D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the labels of the products of the Winter Sports Apparel assortment?
+    O6D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?
     O7: If I'm aggregating data by SKU, which roll-up paths are available?
     O7D: If I'm aggregating data by article, which roll-up paths are available?
     O8: If I'm aggregating data by year, which drill-down paths are available?
@@ -37,11 +37,11 @@ Categories:
     B2: Give me a business-oriented description of the order cube.
     B2D:  Describe the bills cube and its dimensions.
     B3: Which relationship holds between brands and categories?
-    B3D: Which relationship holds between product labels and product classifications?
+    B3D: Which relationship holds between product trademarks and product classifications?
     B4: Which relationship holds between agents and controllers?
     B4D: Which relationship holds between sales representatives and sales supervisors?
     B6: Which relationship holds between brands and controllers?
-    B6D: Which relationship holds between product labels and sales supervisors?
+    B6D: Which relationship holds between product trademarks and sales supervisors?
 
   Test:
     T1: Are there multiple measures with different names but same semantics? # Discount Value -> Price Reduction, NET Value -> Amount After Tax
