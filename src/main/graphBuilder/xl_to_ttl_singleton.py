@@ -20,7 +20,7 @@ FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
 
 EXCEL_FILE = BASE / "resources" / "input" / "indyco_export" / f"{FILENAME}.xlsx"
 ONTO_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
-OUTPUT_TTL = BASE / "output" / "ontologies" / f"LLM4BI_{FILENAME}.ttl"
+OUTPUT_TTL = BASE / "output" / "ontologies" / f"LLM4BI_{FILENAME}"
 
 GRAPHDB_ENDPOINT = "http://127.0.0.1:7200"
 REPOSITORY = "test"
@@ -306,7 +306,7 @@ class OntologyBuilder:
                 "Logical Name": LLM4BI.LogicalName,
                 "Description": LLM4BI.Description,
                 "Sample Values": LLM4BI.SampleValues,
-                "Notes": LLM4BI.Notes,
+                # "Notes": LLM4BI.Notes,
             }.items():
                 val = row.get(col, "").strip()
                 if val:
@@ -359,7 +359,14 @@ class OntologyBuilder:
 
             root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
             graph.add((root_node, RDF.type, LLM4BI.ConformedHierarchyRoot))
-
+            if hierarchy == "Warehouse":
+                graph.add(
+                    (
+                        root_node,
+                        LLM4BI.Description,
+                        Literal("The warehouse (or hub) where a product is stored."),
+                    )
+                )
             for _, row in df.iterrows():
                 if row.get("Item Type", "").strip() == "Attribute":
                     self.parse_conformed_hierarchy_attribute(graph, row, internal)
@@ -376,6 +383,17 @@ class OntologyBuilder:
             df = attributes_df[attributes_df["FactSchema Name"] == fact]
             root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
             graph.add((root_node, RDF.type, LLM4BI.Fact))
+            graph.add(
+                (
+                    root_node,
+                    LLM4BI.Description,
+                    Literal(
+                        self.project_info.loc[
+                            self.project_info["Name"] == fact, "Description"
+                        ].iloc[0]
+                    ),
+                )
+            )
             for _, row in df.iterrows():
                 if row.get("Item Type", "").strip() == "Attribute":
                     self.parse_attribute(graph, row)
@@ -472,6 +490,38 @@ class OntologyBuilder:
                     (attribute_node, LLM4BI.Description, Literal(attribute_description))
                 )
 
+    def extract_name_description(self, df: pd.DataFrame) -> pd.DataFrame:
+        # 1. Trova la riga header (contiene Name e Description)
+        header_mask = df.apply(
+            lambda row: (
+                row.astype(str).str.strip().eq("Name").any()
+                and row.astype(str).str.strip().eq("Description").any()
+            ),
+            axis=1,
+        )
+
+        if not header_mask.any():
+            raise ValueError("Header row with 'Name' and 'Description' not found")
+
+        header_row = df.index[header_mask][0]
+
+        # 2. Costruisci un nuovo DataFrame con header corretto
+        data = df.iloc[header_row + 1 :].copy()
+        data.columns = df.iloc[header_row].astype(str).str.strip()
+
+        # 3. Tieni solo Name e Description
+        data = data[["Name", "Description"]]
+
+        # 4. Stop alla prima riga completamente vuota
+        stop_idx = data.isna().all(axis=1)
+        if stop_idx.any():
+            data = data.loc[: stop_idx.idxmax() - 1]
+
+        # 5. Pulisci righe vuote
+        data = data.dropna(subset=["Name"], how="any")
+
+        return data.reset_index(drop=True)
+
     # -------------------------
     # Orchestration
     # -------------------------
@@ -489,6 +539,11 @@ class OntologyBuilder:
 
         # collect conformed hierarchies and facts (normalized)
         attribute_heads = utils.extract_heads(xl.parse("ATTRIBUTES"))
+
+        df = xl.parse("PROJECT")
+
+        self.project_info = self.extract_name_description(df)
+
         raw_conformed = (
             attribute_heads["Conformed Hierarchy"].dropna().unique().tolist()
         )
@@ -520,15 +575,18 @@ class OntologyBuilder:
     def export_and_load(self, graph: Graph, output_ttl: Optional[Path] = None) -> None:
         """Serialize graph to TTL file and load into GraphDB repository (clears first)."""
         out = output_ttl or self.output_ttl
+
+        # Version 0
+        first_version = f"{out}_version1.ttl"
         ttl = graph.serialize(format="turtle")
         if isinstance(ttl, bytes):
             ttl = ttl.decode("utf-8")
 
-        os.makedirs(os.path.dirname(out), exist_ok=True)
-        with open(out, "w", encoding="utf-8") as f:
+        os.makedirs(os.path.dirname(first_version), exist_ok=True)
+        with open(first_version, "w", encoding="utf-8") as f:
             f.write(ttl)
 
-        self.logger.info(f"Ontology exported to: {out}")
+        self.logger.info(f"Ontology version 0 exported to: {first_version}")
 
         # clear and upload
         utils.delete_repository(self.repository, self.graphdb_endpoint)
@@ -537,7 +595,21 @@ class OntologyBuilder:
             f"Cleared GraphDB repository: {self.repository} at {self.graphdb_endpoint}"
         )
 
-        utils.load_ontology(out, self.graphdb_endpoint, self.repository)
+        utils.load_ontology(first_version, self.graphdb_endpoint, self.repository)
+
+        # Version 1
+        graph.remove((None, LLM4BI.Notes, None))
+        graph.remove((None, LLM4BI.Description, None))
+        graph.remove((None, LLM4BI.SampleValues, None))
+
+        second_version = f"{out}_version0.ttl"
+        ttl = graph.serialize(format="turtle")
+        if isinstance(ttl, bytes):
+            ttl = ttl.decode("utf-8")
+
+        os.makedirs(os.path.dirname(second_version), exist_ok=True)
+        with open(second_version, "w", encoding="utf-8") as f:
+            f.write(ttl)
 
 
 # ---------------------------------------------------------------------

@@ -1,101 +1,3 @@
-The following is a turtle representation of the Dimensional Fact Model formalism through which we describe the conceptual schema of a set of OLAP cubes.
-
---------------------
-
-<http://www.foo.bar/LLM4BI/ontologies/LLM4BI> rdf:type owl:Ontology .
-
-LLM4BI:DFMConcept rdf:type owl:Class ;
-    rdfs:comment "Represents a concept within the Dimensional Fact Model formalism" .
-
-LLM4BI:DFMEntity rdf:type owl:Class ;
-    rdfs:subClassOf LLM4BI:DFMConcept .
-    rdfs:comment "An entity (e.g., attributes, facts, conformed hierarchies) within the Dimensional Fact Model schema" .
-
-LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMEntity .
-
-LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute ;
-    rdfs:comment "Represent the root attribute of a conformed hierarchy" .
-
-LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:Attribute ;
-    rdfs:comment "Defines an attribute that is shared across multiple dimensions or fact tables and maintains the same meaning, domain of values, and granularity in all contexts where it appears." .
-
-LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
-
-LLM4BI:Attribute  rdfs:subClassOf LLM4BI:DFMEntity .
-
-LLM4BI:Arc a owl:ObjectProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:range  LLM4BI:DFMConcept ;
-  rdfs:comment "An arc connecting entities within a Dimensional Fact Model schema. In presence of an arc from A to B, the user can roll-up from A to B." ; 
-  rdfs:label "" .
-
-LLM4BI:RollUpArc a owl:ObjectProperty ;
-  rdfs:subPropertyOf LLM4BI:Arc ;
-  rdfs:comment "Represents a functional dependency between two attributes connected by a many-to-one relationship (e.g., if one product belongs to one type, there is an arc from product to the type attribute)." ; 
-  rdfs:label "" .
-
-LLM4BI:MultipleArc a owl:ObjectProperty ;
-    rdfs:subPropertyOf LLM4BI:Arc ;
-    rdfs:comment "Represents a many-to-many-relationship between two attributes (e.g., if one book has several authors and an author writes several books, there is a multiple arc between author and book)" ;
-    rdfs:label "MultipleArc" .
-
-LLM4BI:OptionalArc a owl:ObjectProperty ;
-    rdfs:subPropertyOf LLM4BI:Arc ;
-    rdfs:comment "Defines an optional arc between two entities (e.g.,  there is an optional arc from Product to Diet_Y/N because Diet_Y/N has no value for some product)" ;
-    rdfs:label "OptionalArc" .
-
-LLM4BI:AggregationOperator a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:Measure ;
-  rdfs:comment "Defines the operator that can be used to aggregate a measure along one hierarchy (e.g., SUM,AVG,MIN,MAX)" ;
-  rdfs:range xsd:string .
-
-LLM4BI:LogicalName a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "Defines the name of an attribute/measure within the logical schema" ;
-  rdfs:range xsd:string .
-
-LLM4BI:Description a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "A description for what an entity represents in the business logic" ;
-  rdfs:range xsd:string .
-
-LLM4BI:Notes a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "Additional notes regarding an entity." ;
-  rdfs:range xsd:string .
-
-LLM4BI:SampleValues a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:comment "Defines a set of values for an attribute" ;
-  rdfs:range xsd:string .
-
-LLM4BI:isConvergence a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:comment "In a convergence, two attributes are connected by two or more distinct directed paths of arcs, and each of them still represents a functional dependency." ;
-  rdfs:range xsd:boolean .
-
-LLM4BI:isShared a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:comment "A shared hierarchy denotes that an attribute (part of a hierarchy) is replicated two or more times within a fact schema." ;
-  rdfs:range xsd:boolean .
-
-LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:comment "A cross-dimensional attribute is a dimensional or descriptive attribute whose value is defined by the combination of two or more dimensional attributes, possibly belonging to different hierarchies." ;
-  rdfs:range xsd:boolean .
-
-LLM4BI:isDescriptive a owl:DataTypeProperty ;
-  rdfs:domain LLM4BI:DFMEntity ;
-  rdfs:comment "A descriptive attribute stores additional information about another attribute and is not used for aggregation because it has a dense domain and/or it is the child of a one-to-one association." ;
-  rdfs:range xsd:boolean .
-
---------------------
-
-Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
-of a set of OLAP cubes, described through the above ontology. Please analyze it.
-
---------------------
-
 @prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @prefix LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -313,468 +215,268 @@ LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:OptionalArc .
 
 LLM4BI_Indyco:Agent_Area_Manager a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "An agent who manages and coordinates other agents" ;
-    LLM4BI:LogicalName "AREA_MANAGER" ;
-    LLM4BI:SampleValues "John Green",
-        "Mark White" .
+    LLM4BI:LogicalName "AREA_MANAGER" .
 
 LLM4BI_Indyco:City_Area a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The geographic area of a state" ;
-    LLM4BI:LogicalName "AREA" ;
-    LLM4BI:SampleValues "North America",
-        "North Europe" .
+    LLM4BI:LogicalName "AREA" .
 
 LLM4BI_Indyco:City_County a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The county where a city belongs (if specified)" ;
     LLM4BI:LogicalName "COUNTY" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_State ;
-    LLM4BI:SampleValues "Monterey",
-        "Orange" ;
     LLM4BI:isOptional true .
 
 LLM4BI_Indyco:City_State a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The state where a city belongs (for USA only)" ;
     LLM4BI:LogicalName "STATE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_Country ;
-    LLM4BI:SampleValues "California",
-        "Florida" ;
     LLM4BI:isOptional true .
 
 LLM4BI_Indyco:Customer_Billing_Information a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The specific data needed for billing a customer" ;
     LLM4BI:LogicalName "BILLING_INFORMATION" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Customer_Shipping_Address a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The shipping address of a customer" ;
     LLM4BI:LogicalName "SHIPPING_ADDRESS" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Date_4Month_Period a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "3MP1 13",
-        "3MP2 13",
-        "3MP3 14" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Date_Month a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A generic month" ;
-    LLM4BI:LogicalName "MONTH" ;
-    LLM4BI:SampleValues "Feb",
-        "Jan",
-        "Mar" .
+    LLM4BI:LogicalName "MONTH" .
 
 LLM4BI_Indyco:Date_Quarter a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific quarter" ;
     LLM4BI:LogicalName "QUARTER" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Semester ;
-    LLM4BI:SampleValues "Q1 14",
-        "Q2 14",
-        "Q3 14",
-        "Q4 14" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Semester .
 
 LLM4BI_Indyco:Date_Semester a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific semester" ;
     LLM4BI:LogicalName "SEMESTER" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "S1 14",
-        "S2 14" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Date_Week a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific week" ;
-    LLM4BI:LogicalName "WEEK" ;
-    LLM4BI:SampleValues "W1",
-        "W2",
-        "W3" .
+    LLM4BI:LogicalName "WEEK" .
 
 LLM4BI_Indyco:Historical_Order_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for billing" ;
-    LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
-        "EUR",
-        "GBP",
-        "JPY",
-        "USD" .
+    LLM4BI:LogicalName "CURRENCY" .
 
 LLM4BI_Indyco:Historical_Order_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Value, net of discounts and VAT" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Historical_Order_Price_Reduction a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Discount if any" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "SUM" ;
-    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
+        "SUM" .
 
 LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester ;
-    LLM4BI:SampleValues "FW12",
-        "FW13",
-        "SS13" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester .
 
 LLM4BI_Indyco:Historical_Order_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "FW",
-        "SS" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Historical_Order_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Taxes" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Historical_Order_name a LLM4BI:Measure .
 
 LLM4BI_Indyco:Invoice_Amount_After_Discount a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Value, net of discounts and VAT" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for invoicing" ;
-    LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
-        "EUR",
-        "GBP",
-        "JPY",
-        "USD" .
+    LLM4BI:LogicalName "CURRENCY" .
 
 LLM4BI_Indyco:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "A discount" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Invoice_Net_Average_Price a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG" .
 
 LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "SUM" ;
-    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
+        "SUM" .
 
 LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester ;
-    LLM4BI:SampleValues "FW12",
-        "FW13",
-        "SS13" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester .
 
 LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "A discount" .
+    LLM4BI:AggregationOperator "SUM" .
 
-LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
-    LLM4BI:Description "Gross margin" ;
-    LLM4BI:AggregationOperator "SUM", "AVG" .
+LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure .
 
 LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "FW",
-        "SS" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Invoice_name a LLM4BI:Measure .
 
 LLM4BI_Indyco:Order_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for billing" ;
-    LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
-        "EUR",
-        "GBP",
-        "JPY",
-        "USD" .
+    LLM4BI:LogicalName "CURRENCY" .
 
 LLM4BI_Indyco:Order_Discount_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Discount, if any" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the decisions about which products should be presented to which customers at what time." ;
-    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" .
 
 LLM4BI_Indyco:Order_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Value, net of discounts and VAT" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Order_Order_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Conditions on how the order is executed" ;
-    LLM4BI:LogicalName "ORDER_TYPE" ;
-    LLM4BI:Notes """Limit Order: This is an order that executes at a specific price that you set (or better) and can be open for a specific time period
-
-Stop Orders: This is a market order that is triggered once your stock reaches a specific target price, the stop price.
-
-Stop Limit Order: This is identical to the stop order, except for the fact that a limit order is triggered once your stock reaches a specific target price""" ;
-    LLM4BI:SampleValues "Market order",
-        "limit order",
-        "stop order" .
+    LLM4BI:LogicalName "ORDER_TYPE" .
 
 LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "SUM" ;
-    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
+        "SUM" .
 
 LLM4BI_Indyco:Order_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Order_Season_Type ;
-    LLM4BI:SampleValues "FW12",
-        "FW13",
-        "SS13" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Order_Season_Type .
 
 LLM4BI_Indyco:Order_Season_Type a LLM4BI:Attribute ;
-    LLM4BI:LogicalName "SEASON_TYPE" ;
-    LLM4BI:SampleValues "FW",
-        "SS" .
+    LLM4BI:LogicalName "SEASON_TYPE" .
 
 LLM4BI_Indyco:Order_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Taxes" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:SKU_Age_Range a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "AGE_RANGE" ;
-    LLM4BI:SampleValues "1-5",
-        "11-16",
-        "6-10" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:SKU_Brand a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The brand of the product" ;
     LLM4BI:LogicalName "BRAND" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand_Group .
 
 LLM4BI_Indyco:SKU_Brand_Group a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A group of brands" ;
     LLM4BI:LogicalName "BRAND_GROUP" .
 
 LLM4BI_Indyco:SKU_Category a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
-    LLM4BI:LogicalName "CATEGORY" ;
-    LLM4BI:SampleValues "Footwear",
-        "accessories",
-        "apparel" .
+    LLM4BI:LogicalName "CATEGORY" .
 
 LLM4BI_Indyco:SKU_Color a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The specific color of the product" ;
     LLM4BI:LogicalName "COLOR" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Macro_Color ;
-    LLM4BI:SampleValues "Dark blu",
-        "light blu" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Macro_Color .
 
 LLM4BI_Indyco:SKU_Customer_Gender a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The gender the product is targeted to" ;
-    LLM4BI:LogicalName "CUSTOMER_GENDER" ;
-    LLM4BI:SampleValues "Male",
-        "female",
-        "unisex" .
+    LLM4BI:LogicalName "CUSTOMER_GENDER" .
 
 LLM4BI_Indyco:SKU_Customer_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The type of customer the product is targeted to" ;
     LLM4BI:LogicalName "CUSTOMER_TYPE" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Age_Range ;
-    LLM4BI:SampleValues "Junior",
-        "adult",
-        "baby" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Age_Range .
 
 LLM4BI_Indyco:SKU_Macro_Color a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A group of colors" ;
-    LLM4BI:LogicalName "MACRO_COLOR" ;
-    LLM4BI:SampleValues "Blu",
-        "red" .
+    LLM4BI:LogicalName "MACRO_COLOR" .
 
 LLM4BI_Indyco:SKU_Made_In a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The country where the product has been manufactured" ;
-    LLM4BI:LogicalName "MADE_IN" ;
-    LLM4BI:SampleValues "China",
-        "Korea" .
+    LLM4BI:LogicalName "MADE_IN" .
 
 LLM4BI_Indyco:SKU_Size a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The size of the product" ;
-    LLM4BI:LogicalName "SIZE" ;
-    LLM4BI:SampleValues "L",
-        "M",
-        "S",
-        "XL" .
+    LLM4BI:LogicalName "SIZE" .
 
 LLM4BI_Indyco:SKU_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
     LLM4BI:LogicalName "TYPE" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Category ;
-    LLM4BI:SampleValues "Coats",
-        "casual",
-        "suits" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Category .
 
 LLM4BI_Indyco:Shop_Ticket_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for buying" ;
-    LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
-        "EUR",
-        "GBP",
-        "JPY",
-        "USD" .
+    LLM4BI:LogicalName "CURRENCY" .
 
 LLM4BI_Indyco:Shop_Ticket_Discount_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Shop_Ticket_Net_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Value, net of discounts and VAT" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
-    LLM4BI:SampleValues "FW12",
-        "FW13",
-        "SS13" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester .
 
 LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "FW",
-        "SS" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
 LLM4BI_Indyco:Shop_Ticket_VAT_Value a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "SUM" ;
-    LLM4BI:Description "Taxes" .
+    LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Store_Address a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "ADDRESS" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Store_IsConnected a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Whether the store is connected to Internet or not" ;
-    LLM4BI:LogicalName "ISCONNECTED" ;
-    LLM4BI:SampleValues "N",
-        "Y" .
+    LLM4BI:LogicalName "ISCONNECTED" .
 
 LLM4BI_Indyco:Store_Location_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The environment where the store is located" ;
-    LLM4BI:LogicalName "LOCATION_TYPE" ;
-    LLM4BI:SampleValues "Highway shopping center",
-        "Mall",
-        "Old Town" .
+    LLM4BI:LogicalName "LOCATION_TYPE" .
 
 LLM4BI_Indyco:Store_Sales_District a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A geography-based grouping of stores" ;
     LLM4BI:LogicalName "SALES_DISTRICT" .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "MIN" ;
-    LLM4BI:Description "The inventory level" .
+        "MIN" .
 
 LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
-    LLM4BI:Description "Part of the day" ;
-    LLM4BI:LogicalName "HOUR" ;
-    LLM4BI:SampleValues "10-12",
-        "12-14",
-        "8-10" .
+    LLM4BI:LogicalName "HOUR" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
-    LLM4BI:AggregationOperator "AVG", "SUM" ;
-    LLM4BI:Description "Number of ticket vs. people who entered" .
+    LLM4BI:AggregationOperator "AVG",
+        "SUM" .
 
 LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "SUM" ;
-    LLM4BI:Description "Numer of persons who entered the store" .
+        "SUM" .
 
 LLM4BI_Indyco:Warehouse_IsVirtual a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Specifies whether the warehouse is a physical or a virtual one" ;
-    LLM4BI:LogicalName "ISVIRTUAL" ;
-    LLM4BI:SampleValues "N",
-        "Y" .
+    LLM4BI:LogicalName "ISVIRTUAL" .
 
 LLM4BI_Indyco:Warehouse_Movement_Cause a LLM4BI:Attribute ;
-    LLM4BI:Description "The reason for moving goods" ;
     LLM4BI:LogicalName "CAUSE" .
 
 LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
-    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" .
 
 LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "MIN" ;
-    LLM4BI:Description "The quantity of goods being moved" .
+        "MIN" .
 
 LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
-    LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:LogicalName "MERCHANDISE_TYPE" .
 
 LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
-        "MIN" ;
-    LLM4BI:Description "The inventory level" .
+        "MIN" .
 
 LLM4BI_Indyco:City_Country a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The nation of a city" ;
     LLM4BI:LogicalName "COUNTRY" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:City_Area ;
-    LLM4BI:SampleValues "Italy",
-        "UK",
-        "USA" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_Area .
 
 LLM4BI_Indyco:Date_Month_In_Year a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific month" ;
     LLM4BI:LogicalName "MONTH_IN_YEAR" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_4Month_Period,
         LLM4BI_Indyco:Date_Month,
-        LLM4BI_Indyco:Date_Quarter ;
-    LLM4BI:SampleValues "Feb 14",
-        "Jan 14",
-        "Mar 15" .
+        LLM4BI_Indyco:Date_Quarter .
 
 LLM4BI_Indyco:Invoice_Doc_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "The document type" ;
-    LLM4BI:LogicalName "DOC_TYPE" ;
-    LLM4BI:SampleValues "Deposit",
-        "shipped",
-        "ticket" .
+    LLM4BI:LogicalName "DOC_TYPE" .
 
 LLM4BI_Indyco:Invoice_Goods_On_Delivery a LLM4BI:Attribute ;
-    LLM4BI:Description "Whether the good is being delivered" ;
-    LLM4BI:LogicalName "GOODS_ON_DELIVERY" ;
-    LLM4BI:SampleValues "N",
-        "Y" .
+    LLM4BI:LogicalName "GOODS_ON_DELIVERY" .
 
 LLM4BI_Indyco:Invoice_Profit_Center a LLM4BI:Attribute ;
-    LLM4BI:Description "A part of the company that directly adds the sale to its profits" ;
-    LLM4BI:LogicalName "PROFIT_CENTER" ;
-    LLM4BI:Notes "Revenues and expenses are held separate from the main company's in order to determine their profitability" .
+    LLM4BI:LogicalName "PROFIT_CENTER" .
 
 LLM4BI_Indyco:Invoice_Return_Justification a LLM4BI:Attribute ;
-    LLM4BI:Description "The reason for which the goods are returned back" ;
-    LLM4BI:LogicalName "RETURN_JUSTIFICATION" ;
-    LLM4BI:SampleValues "Dead Stock",
-        "Flawed Goods",
-        "Outdate Stock",
-        "Shipping Error",
-        "Wrong Goods" .
+    LLM4BI:LogicalName "RETURN_JUSTIFICATION" .
 
 LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
-    LLM4BI:Description "Goods in shipping status" ;
-    LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" ;
-    LLM4BI:SampleValues "Y/N" .
+    LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" .
 
 LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The store where a product is being sold" ;
     LLM4BI:LogicalName "STORE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Store_Address,
@@ -783,96 +485,57 @@ LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
         LLM4BI_Indyco:Store_Sales_District .
 
 LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The warehouse where a product is stored" ;
     LLM4BI:LogicalName "WAREHOUSE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Warehouse_IsVirtual ;
     LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
 
 LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A salesman who covers a geographic area" ;
     LLM4BI:LogicalName "AGENT" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Area_Manager ;
-    LLM4BI:SampleValues "John Carrie",
-        "Michael Baldi",
-        "Steve Gorini" ;
     LLM4BI_Indyco:Agent_Agent_Controller LLM4BI_Indyco:Agent_Controller .
 
 LLM4BI_Indyco:City_City a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific city or town" ;
     LLM4BI:LogicalName "CITY" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:City_County ;
-    LLM4BI:SampleValues "London",
-        "Miami",
-        "Rome" .
+    LLM4BI:RollUpArc LLM4BI_Indyco:City_County .
 
 LLM4BI_Indyco:SKU_Subtype a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
     LLM4BI:LogicalName "SUBTYPE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Customer_Type,
-        LLM4BI_Indyco:SKU_Type ;
-    LLM4BI:SampleValues "Lady Sandals Casual Footwear",
-        "Lady Sports Multipurpose Footwear",
-        "Man Leathers Formal Footwear" .
+        LLM4BI_Indyco:SKU_Type .
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
     rdfs:label "" ;
     rdfs:subPropertyOf LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
     LLM4BI:LogicalName "CONTROLLER" .
 
 LLM4BI_Indyco:Customer_Customer a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The buying customer" ;
     LLM4BI:LogicalName "CUSTOMER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Customer_Billing_Information,
         LLM4BI_Indyco:Customer_Shipping_Address ;
-    LLM4BI:SampleValues "Holding1",
-        "Holding2" ;
     LLM4BI:isShared true .
 
 LLM4BI_Indyco:SKU_SKU a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Stock keeping unit" ;
     LLM4BI:LogicalName "SKU" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand,
         LLM4BI_Indyco:SKU_Color,
         LLM4BI_Indyco:SKU_Customer_Gender,
         LLM4BI_Indyco:SKU_Made_In,
         LLM4BI_Indyco:SKU_Size,
-        LLM4BI_Indyco:SKU_Subtype ;
-    LLM4BI:SampleValues "Sneakers British Knight Leather Red M",
-        "Sneakers British Knight Suede Brown XL",
-        "Sneakers Sporty Lady Faux Leather White S" .
+        LLM4BI_Indyco:SKU_Subtype .
 
 LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of warehouses" ;
-    LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
-    LLM4BI:SampleValues "Other",
-        "POP",
-        "Stock Production",
-        "Third party warehouse" .
+    LLM4BI:LogicalName "WAREHOUSE_TYPE" .
 
 LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific day" ;
     LLM4BI:LogicalName "DATE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Month_In_Year,
         LLM4BI_Indyco:Date_Week ;
-    LLM4BI:SampleValues "01-01-2014",
-        "01-02-2014",
-        "01-03-2014" ;
     LLM4BI:isShared true .
 
 LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific year" ;
-    LLM4BI:LogicalName "YEAR" ;
-    LLM4BI:SampleValues "2013",
-        "2014",
-        "2015" .
+    LLM4BI:LogicalName "YEAR" .
 
---------------------
-
-Have you understood the ontology and the cubes described with it? Just answer yes or no.
-If yes, now I'm going to ask a few questions about metadata exploration on such cubes.
-Please keep the answers as concise as possible. Avoid particular formattings. When possible, keep answers on a single line

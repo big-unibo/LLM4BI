@@ -38,6 +38,9 @@ class GPTAgent(Agent):
 
         return answer
 
+    def build_prompt(self, instruction):
+        return super().build_prompt(instruction)
+
     def reset(self):
         """
         Clears the conversation history but keeps the initial system instruction.

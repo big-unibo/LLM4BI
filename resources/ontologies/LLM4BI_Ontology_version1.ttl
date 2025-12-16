@@ -46,7 +46,7 @@ LLM4BI:Arc a owl:ObjectProperty ;
       LLM4BI:Measure
     )
   ] ;
-  rdfs:comment "An arc connecting two entities within a DFM schema. In presence of an arc from A to B, the user can roll-up from A to B." ;
+  rdfs:comment "An arc connecting entities within a Dimensional Fact Model schema. In presence of an arc from A to B, the user can roll-up from A to B or drill-down from B to A. Arcs are transitive: in presence of an arc from A to B and from B to C, then the user can roll-up from A to C or drill-down from C to A. In the case of branches (i.e., there is an arc from A to B and from A to C, but not from B to C), then B and C are in a many-to-many relationship, but there is no roll-up or drill-down relationship between them." ;
   rdfs:label "" .
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
@@ -96,5 +96,5 @@ LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
 
 LLM4BI:isDescriptive a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "An attribute that cannot be used for aggregation, typically because it has a dense domain and/or it is connected to its father by a one-to-one association." ;
+  rdfs:comment "A descriptive attribute stores additional information about another attribute; it should not be used for aggregation, because it has a dense domain and/or it is the child of a one-to-one association.";
   rdfs:range xsd:boolean .

@@ -61,84 +61,94 @@ from main.agents.GPTAgent import GPTAgent
 
 logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
-BASE = Path(os.getenv("BASE_PATH", "/home"))
-QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
-CREDENTIALS_FILE = BASE / "resources" / "credentials.yaml"
-credentials = utils.load_yml(CREDENTIALS_FILE)
-PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "indyco_tutorial_prompt.txt"
+# Retrieving env variables
 ITERATIONS = int(os.getenv("ITERATIONS", 5))
+VERSIONS = [int(v) for v in os.getenv("VERSIONS", "1").split(",")]
+BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
 
+# File paths
+QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
+LLM4BI_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
+ONTOLOGY_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
+CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
+PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt.yaml"
 
-def parse_list(name: str):
-    raw = os.getenv(name)
-    if raw is None:
-        return None
-    raw = raw.strip()
-    if raw == "":
-        return []
-    return [x.strip() for x in raw.split(",") if x.strip()]
-
-
-INCLUDED_QUESTIONS = parse_list("INCLUDED_QUESTIONS")
-EXCLUDED_QUESTIONS = parse_list("EXCLUDED_QUESTIONS")
+# Filtering questions
+INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")
+EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
-
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
-# Stats setup
+questions = utils.load_yml(QUESTION_FILE)
+questions = filter_questions(questions, INCLUDED_QUESTIONS, EXCLUDED_QUESTIONS)
+
+# Statistics setup - Database connection
 POSTGRESQL_ENDPOINT = "137.204.70.156:45532"
+CREDENTIALS = utils.load_yml(CREDENTIALS_FILE)
 SQL_ENGINE = create_engine(
-    f"postgresql://{credentials['postgres']['user']}:{credentials['postgres']['psw']}@{POSTGRESQL_ENDPOINT}/{credentials['postgres']['db']}"
+    f"postgresql://{CREDENTIALS['postgres']['user']}:{CREDENTIALS['postgres']['psw']}@{POSTGRESQL_ENDPOINT}/{CREDENTIALS['postgres']['db']}"
 )
 STATISTICS_COLUMNS = "test_id,model,category,question,answer,iteration,start_time,end_time,duration,prompt"
-
-
-questions = utils.load_yml(QUESTION_FILE)
-logger.info(len(questions["Categories"]))
-questions = filter_questions(questions, INCLUDED_QUESTIONS, EXCLUDED_QUESTIONS)
-logger.info(f"Filtered questions: {questions}")
 statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
-prompt = open(PROMPT_FILE).read()
-prompts = "|".join(
-    [prompt.split("--------------------")[i] for i in [0, 2, 4]]
-).replace("\n", " ")
+
+prompt = utils.load_yml(PROMPT_FILE)
+
 
 agent = GPTAgent(
     instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
-    api_key=credentials["gpt"]["api-key"],
+    api_key=CREDENTIALS["gpt"]["api-key"],
 )
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
-for i in range(ITERATIONS):
-    test_id = uuid.uuid4()
-    for q_cat, q_dict in questions["Categories"].items():
-        for q_id, q in q_dict.items():
-            logger.info(f"Iteration {i} - Category: {q_cat} - Question ID: {q_id}")
-            agent.query(prompt)
-            start_time = int(time.time())
-            answer = agent.query(q)
-            end_time = int(time.time())
-            statistics = pd.concat(
-                [
-                    statistics,
-                    pd.DataFrame(
-                        {
-                            "test_id": [test_id],
-                            "model": [agent.model],
-                            "category": [q_cat],
-                            "question": [q],
-                            "answer": [answer],
-                            "iteration": [i],
-                            "start_time": [start_time],
-                            "end_time": [end_time],
-                            "duration": [(end_time - start_time) * 1000],
-                            "prompt": [prompts],
-                            "query_id": q_id,
-                        }
-                    ),
-                ],
-                ignore_index=True,
-            )
-            agent.reset()
+for version in VERSIONS:
+    llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version{version}.ttl")
+    cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version{version}.ttl")
+    initial_prompt = f"""
+        {prompt['versions'][version]['incipit']}
+        --------------------
+        {llm4bi_ontology}
+        --------------------
+        {prompt['versions'][version]['after_llm4bi']}
+        --------------------
+        {cubes_ontology}
+        
+        {prompt['versions'][version]['after_cubes']}
+    """
+    for i in range(ITERATIONS):
+        test_id = uuid.uuid4()
+        for q_cat, q_dict in questions["Categories"].items():
+            for q_id, q in q_dict.items():
+                logger.info(f"Iteration {i} - Category: {q_cat} - Question ID: {q_id}")
+                agent.query(initial_prompt)
+                start_time = int(time.time())
+                question = f"{q}\n{prompt['versions'][version]['question_end']}"
+                answer = agent.query(question)
+                end_time = int(time.time())
+                prompts = prompt["version"]
+                statistics = pd.concat(
+                    [
+                        statistics,
+                        pd.DataFrame(
+                            {
+                                "test_id": [test_id],
+                                "model": [agent.model],
+                                "category": [q_cat],
+                                "question": [q],
+                                "answer": [answer],
+                                "iteration": [i],
+                                "start_time": [start_time],
+                                "end_time": [end_time],
+                                "duration": [(end_time - start_time) * 1000],
+                                "prompt": [
+                                    "|".join(prompt["versions"][version].values())
+                                ],
+                                "query_id": q_id,
+                                "version": version,
+                            }
+                        ),
+                    ],
+                    ignore_index=True,
+                )
+                agent.reset()
     logger.info(f"Iteration {i} completed, uplaoding results to database.")
     statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)

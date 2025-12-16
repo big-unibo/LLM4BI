@@ -117,6 +117,16 @@ def is_truthy(value) -> bool:
     return str(value).strip().lower() in {"true", "1", "yes", "y", "t", "x"}
 
 
+def parse_list(name: str):
+    raw = os.getenv(name)
+    if raw is None:
+        return None
+    raw = raw.strip()
+    if raw == "":
+        return []
+    return [x.strip() for x in raw.split(",") if x.strip()]
+
+
 # -----------------------------------------------------------------------------
 # RDF URI BUILDERS
 # -----------------------------------------------------------------------------
