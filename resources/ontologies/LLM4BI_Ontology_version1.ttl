@@ -81,7 +81,7 @@ LLM4BI:Description a owl:DataTypeProperty ;
 
 LLM4BI:SampleValues a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "A set of sample values for an attribute" ;
+  rdfs:comment "A set of sample values for an attribute; samples are not meant to be exhaustive, but just to give an idea of the domain of values" ;
   rdfs:range xsd:string .
 
 LLM4BI:isShared a owl:DataTypeProperty ;

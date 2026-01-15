@@ -63,7 +63,7 @@ logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
 # Retrieving env variables
 ITERATIONS = int(os.getenv("ITERATIONS", 5))
-VERSIONS = [int(v) for v in os.getenv("VERSIONS", "1").split(",")]
+VERSIONS = [int(v) for v in os.getenv("VERSIONS", "0").split(",")]
 BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
 
 # File paths
@@ -74,7 +74,16 @@ CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt.yaml"
 
 # Filtering questions
-INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")
+INCLUDED_QUESTIONS = [
+    "O3",
+    "O3D",
+    "O4",
+    "O4D",
+    "O5D",
+    "O6D",
+    "B3D",
+    "B6D",
+]  # utils.parse_list("INCLUDED_QUESTIONS")
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
@@ -111,20 +120,22 @@ for version in VERSIONS:
         {prompt['versions'][version]['after_llm4bi']}
         --------------------
         {cubes_ontology}
-        
+        --------------------
         {prompt['versions'][version]['after_cubes']}
     """
     for i in range(ITERATIONS):
         test_id = uuid.uuid4()
         for q_cat, q_dict in questions["Categories"].items():
             for q_id, q in q_dict.items():
-                logger.info(f"Iteration {i} - Category: {q_cat} - Question ID: {q_id}")
+                logger.info(
+                    f"Version {version} - Iteration {i} - Category: {q_cat} - Question ID: {q_id}"
+                )
                 agent.query(initial_prompt)
                 start_time = int(time.time())
                 question = f"{q}\n{prompt['versions'][version]['question_end']}"
                 answer = agent.query(question)
                 end_time = int(time.time())
-                prompts = prompt["version"]
+                prompts = prompt["versions"]
                 statistics = pd.concat(
                     [
                         statistics,
@@ -150,5 +161,5 @@ for version in VERSIONS:
                     ignore_index=True,
                 )
                 agent.reset()
-    logger.info(f"Iteration {i} completed, uplaoding results to database.")
-    statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        logger.info(f"Iteration {i} completed, uplaoding results to database.")
+        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)

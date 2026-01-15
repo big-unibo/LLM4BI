@@ -1,10 +1,43 @@
 @prefix LLM4BI: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI#> .
 @prefix LLM4BI_Indyco: <http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-LLM4BI_Indyco:Agent a LLM4BI:ConformedHierarchyRoot ;
+<http://www.foo.bar/LLM4BI/ontologies/LLM4BI> a owl:Ontology .
+
+LLM4BI:AggregationOperator a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:Measure ;
+    rdfs:range xsd:string .
+
+LLM4BI:ConformedHierarchyRoot rdfs:subClassOf LLM4BI:Attribute .
+
+LLM4BI:Description a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:string .
+
+LLM4BI:LogicalName a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:string .
+
+LLM4BI:SampleValues a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:string .
+
+LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:boolean .
+
+LLM4BI:isDescriptive a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:boolean .
+
+LLM4BI:isShared a owl:DataTypeProperty ;
+    rdfs:domain LLM4BI:DFMConcept ;
+    rdfs:range xsd:boolean .
+
+LLM4BI_Indyco:Agent a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Agent .
 
 LLM4BI_Indyco:Agent_ LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Controller .
@@ -12,12 +45,12 @@ LLM4BI_Indyco:Agent_ LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Controller .
 LLM4BI_Indyco:Agent_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
 
-LLM4BI_Indyco:Customer a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Customer a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Customer_Customer .
 
 LLM4BI_Indyco:Date_ LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Geography a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Geography a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City .
 
 LLM4BI_Indyco:Historical_Order a LLM4BI:Fact ;
@@ -117,7 +150,7 @@ LLM4BI_Indyco:Order_Agent_Controller a owl:ObjectProperty ;
 
 LLM4BI_Indyco:Order_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Product a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Product a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_SKU .
 
 LLM4BI_Indyco:Shop_Ticket a LLM4BI:Fact ;
@@ -140,7 +173,7 @@ LLM4BI_Indyco:Shop_Ticket_Agent LLM4BI_Indyco:Shop_Ticket_Agent_Controller LLM4B
 LLM4BI_Indyco:Shop_Ticket_Agent_Controller a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:MultipleArc .
 
-LLM4BI_Indyco:Store a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Store a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Store_Store .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock a LLM4BI:Fact ;
@@ -154,7 +187,7 @@ LLM4BI_Indyco:Third_Party_Warehouse_Stock_4Month_Period LLM4BI:RollUpArc LLM4BI_
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Time a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Time a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Date .
 
 LLM4BI_Indyco:Traffic_Counter a LLM4BI:Fact ;
@@ -169,7 +202,7 @@ LLM4BI_Indyco:Traffic_Counter_4Month_Period LLM4BI:RollUpArc LLM4BI_Indyco:Date_
 
 LLM4BI_Indyco:Traffic_Counter_Semester LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year .
 
-LLM4BI_Indyco:Warehouse a LLM4BI:ConformedHierarchyRoot ;
+LLM4BI_Indyco:Warehouse a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The warehouse (or hub) where a product is stored." ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Warehouse_Warehouse .
 
@@ -402,7 +435,7 @@ LLM4BI_Indyco:Order_Discount_Value a LLM4BI:Measure ;
     LLM4BI:Description "Discount, if any" .
 
 LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the decisions about which products should be presented to which customers at what time." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
     LLM4BI:SampleValues "Disney Toons",
         "Far West Men wears",
@@ -449,7 +482,7 @@ LLM4BI_Indyco:SKU_Age_Range a LLM4BI:ConformedAttribute ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:SKU_Brand a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The brand of the product" ;
+    LLM4BI:Description "The brand of the product (a.k.a. the label or trademark of the product)" ;
     LLM4BI:LogicalName "BRAND" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand_Group .
 
@@ -606,7 +639,7 @@ LLM4BI_Indyco:Warehouse_Movement_Cause a LLM4BI:Attribute ;
     LLM4BI:LogicalName "CAUSE" .
 
 LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
     LLM4BI:SampleValues "Disney Toons",
         "Far West Men wears",
@@ -618,7 +651,7 @@ LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "The quantity of goods being moved" .
 
 LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Includes disciplines and discounting, physical presentation of products and displays, etc." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
     LLM4BI:SampleValues "Disney Toons",
         "Far West Men wears",
@@ -678,6 +711,13 @@ LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
     LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" ;
     LLM4BI:SampleValues "Y/N" .
 
+LLM4BI:Arc a owl:ObjectProperty ;
+    rdfs:label "" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( LLM4BI:Attribute LLM4BI:Fact ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( LLM4BI:Attribute LLM4BI:Measure ) ] .
+
 LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "The store where a product is being sold" ;
     LLM4BI:LogicalName "STORE" ;
@@ -693,6 +733,10 @@ LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:ConformedAttribute ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Warehouse_IsVirtual ;
     LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type LLM4BI_Indyco:Warehouse_Warehouse_Type .
+
+LLM4BI:MultipleArc a owl:ObjectProperty ;
+    rdfs:label "MultipleArc" ;
+    rdfs:subPropertyOf LLM4BI:Arc .
 
 LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A salesman who covers a geographic area" ;
@@ -722,7 +766,8 @@ LLM4BI_Indyco:SKU_Subtype a LLM4BI:ConformedAttribute ;
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
     rdfs:label "" ;
-    rdfs:subPropertyOf LLM4BI:RollUpArc .
+    rdfs:subPropertyOf LLM4BI:Arc,
+        LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
@@ -759,6 +804,14 @@ LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:ConformedAttribute ;
         "Stock Production",
         "Third party warehouse" .
 
+LLM4BI:OptionalArc a owl:ObjectProperty ;
+    rdfs:label "OptionalArc" ;
+    rdfs:subPropertyOf LLM4BI:Arc .
+
+LLM4BI:DFMConcept a owl:Class .
+
+LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMConcept .
+
 LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
     LLM4BI:Description "A specific day" ;
     LLM4BI:LogicalName "DATE" ;
@@ -775,4 +828,10 @@ LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
     LLM4BI:SampleValues "2013",
         "2014",
         "2015" .
+
+LLM4BI:Attribute rdfs:subClassOf LLM4BI:DFMConcept .
+
+LLM4BI:Measure rdfs:subClassOf LLM4BI:DFMConcept .
+
+LLM4BI:ConformedAttribute rdfs:subClassOf LLM4BI:Attribute .
 

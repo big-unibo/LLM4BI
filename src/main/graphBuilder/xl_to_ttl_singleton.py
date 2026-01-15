@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import re
 import unicodedata
@@ -19,7 +18,7 @@ BASE = Path("/home")
 FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
 
 EXCEL_FILE = BASE / "resources" / "input" / "indyco_export" / f"{FILENAME}.xlsx"
-ONTO_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology.ttl"
+ONTO_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 OUTPUT_TTL = BASE / "output" / "ontologies" / f"LLM4BI_{FILENAME}"
 
 GRAPHDB_ENDPOINT = "http://127.0.0.1:7200"
@@ -358,7 +357,7 @@ class OntologyBuilder:
             self.conformed_hierarchies[hierarchy] = (None, internal)
 
             root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
-            graph.add((root_node, RDF.type, LLM4BI.ConformedHierarchyRoot))
+            graph.add((root_node, RDF.type, LLM4BI.ConformedAttribute))
             if hierarchy == "Warehouse":
                 graph.add(
                     (
@@ -528,7 +527,7 @@ class OntologyBuilder:
     def build_graph(self) -> Graph:
         """Main entry: read excel, prepare lists and build the RDF graph."""
         g = Graph()
-        # g.parse(self.ontology_ttl, format="turtle")
+        g.parse(f"{self.ontology_ttl}_version0.ttl", format="turtle")
 
         g.bind("LLM4BI", LLM4BI)
         g.bind("LLM4BI_Indyco", LLM4BI_EXAMPLE)
@@ -600,7 +599,7 @@ class OntologyBuilder:
         # Version 1
         graph.remove((None, LLM4BI.Notes, None))
         graph.remove((None, LLM4BI.Description, None))
-        graph.remove((None, LLM4BI.SampleValues, None))
+        # graph.remove((None, LLM4BI.SampleValues, None))
 
         second_version = f"{out}_version0.ttl"
         ttl = graph.serialize(format="turtle")
