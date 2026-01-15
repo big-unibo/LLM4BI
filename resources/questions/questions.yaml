@@ -1,6 +1,9 @@
 Categories:
   Search:
-    S1: In which facts can I find information about customers?
+    S1: 
+      -Q: In which facts can I find information about customers?
+      -GT: ...
+      -Format: Provide the answer as a list of the fact names (using the full URI)
     S1D: In which facts can I find information about clients?
     S2: Which facts can be analyzed by SKU and store together?
     S2D: Which facts can be analyzed by article and shop together?
@@ -13,6 +16,7 @@ Categories:
 
   Olap:
     O1: Can I analyze invoices with reference to controllers?
+      -Format: Provide the answer as a "Yes" or "No"
     O1D: Can I analyze bills with reference to sales supervisors?
     O2: Can I find the total quantities of shop tickets by area manager and category?
     O2D: Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?
@@ -25,8 +29,10 @@ Categories:
     O6: Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?
     O6D: Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?
     O7: If I'm aggregating data by SKU, which roll-up paths are available?
+      -Format: Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one.
     O7D: If I'm aggregating data by article, which roll-up paths are available?
     O8: If I'm aggregating data by year, which drill-down paths are available?
+      -Format: Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one.
     O8D: If I'm aggregating data by 12-months periods, which drill-down paths are available?
     O9: Can I do a drill-across between invoices and warehouse movements?
     O9D: Can I do a drill-across between bills and logistic hub transfers?
