@@ -1,0 +1,17 @@
+versions:
+  0:
+    incipit: The following is a turtle representation of the Dimensional Fact Model formalism through which we describe the conceptual schema of a set of OLAP cubes.
+    after_llm4bi: Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
+      of a set of OLAP cubes, described through the above ontology. Please analyze it.
+    after_cubes: Now I'm going to ask a question about metadata exploration on such cubes. 
+    after_question: For such question, I expect you to provide the following output:
+      The full answer you would give to the question. Keep it concise, avoid using particular formatting (e.g., emoji, headings, arrows, special characters), and keep it on a single line if possible. Let's call this <FULL_ANS>.
+      A non-verbose, structured version of the answer, that strictly follows the following format instructions.
+    after_format: 
+      Let's call this <STR_ANS>.
+      A concise explanation of how you derived the answer, mentioning the key elements that led to it. Let's call this <MOT>.
+      
+      Ultimately, your answer should strictly follow this pattern using YAML syntax:
+      Full: <FULL_ANS>
+      Structured: <STR_ANS>
+      Motivation: <MOT>
