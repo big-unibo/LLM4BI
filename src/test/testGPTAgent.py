@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 import os
 import uuid
 import time
+import textwrap
 
 
 def filter_questions(questions, included, excluded):
@@ -71,19 +72,10 @@ QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
 LLM4BI_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 ONTOLOGY_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
-PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt.yaml"
+PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt2.yaml"
 
 # Filtering questions
-INCLUDED_QUESTIONS = [
-    "O3",
-    "O3D",
-    "O4",
-    "O4D",
-    "O5D",
-    "O6D",
-    "B3D",
-    "B6D",
-]  # utils.parse_list("INCLUDED_QUESTIONS")
+INCLUDED_QUESTIONS = ["S1", "O1", "O7", "O8"]  # utils.parse_list("INCLUDED_QUESTIONS")
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
@@ -107,44 +99,73 @@ agent = GPTAgent(
     api_key=CREDENTIALS["gpt"]["api-key"],
 )
 
+refree = GPTAgent(
+    instruction="You are a highly expert professor of Business Intelligence. Your goal is to verify students' answers to Business Intelligence questions."
+    "You will be prompted the Dimensional Fact Model of some Data Marts, a business intelligence question on such cubes and a student answer to such question."
+    "Always provide the output in the form: Correct/Inaccurate/Incorrect",
+    api_key=CREDENTIALS["gpt"]["api-key"],
+)
+
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
 for version in VERSIONS:
     llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version{version}.ttl")
     cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version{version}.ttl")
-    initial_prompt = f"""
-        {prompt['versions'][version]['incipit']}
-        --------------------
-        {llm4bi_ontology}
-        --------------------
-        {prompt['versions'][version]['after_llm4bi']}
-        --------------------
-        {cubes_ontology}
-        --------------------
-        {prompt['versions'][version]['after_cubes']}
-    """
+    initial_prompt = "\n".join(
+        [
+            prompt["versions"][version]["incipit"],
+            "--------------------",
+            llm4bi_ontology,
+            "--------------------",
+            prompt["versions"][version]["after_llm4bi"],
+            "--------------------",
+            cubes_ontology,
+            "--------------------",
+            prompt["versions"][version]["after_cubes"],
+        ]
+    )
+
     for i in range(ITERATIONS):
         test_id = uuid.uuid4()
         for q_cat, q_dict in questions["Categories"].items():
             for q_id, q in q_dict.items():
+                question = q["Q"]
+                format = q["Format"]
+                question_prompt = "\n".join(
+                    [
+                        initial_prompt,
+                        "",
+                        f"Question: {question}",
+                        "",
+                        prompt["versions"][version]["after_question"].strip(),
+                        "",
+                        "--------------------",
+                        f"Format: {format}",
+                        prompt["versions"][version]["after_format"].strip(),
+                    ]
+                ).strip()
+
                 logger.info(
                     f"Version {version} - Iteration {i} - Category: {q_cat} - Question ID: {q_id}"
                 )
-                agent.query(initial_prompt)
+
                 start_time = int(time.time())
-                question = f"{q}\n{prompt['versions'][version]['question_end']}"
-                answer = agent.query(question)
+                answer = agent.query(question_prompt)
                 end_time = int(time.time())
-                prompts = prompt["versions"]
+                prompts = prompt["versions"][0]
+
+                # if q_cat == "Olap":
+                # Validate the answer through refreee
+
                 statistics = pd.concat(
                     [
                         statistics,
                         pd.DataFrame(
                             {
-                                "test_id": [test_id],
+                                "test_id": [str(test_id)],
                                 "model": [agent.model],
                                 "category": [q_cat],
-                                "question": [q],
+                                "question": [q["Q"]],
                                 "answer": [answer],
                                 "iteration": [i],
                                 "start_time": [start_time],
