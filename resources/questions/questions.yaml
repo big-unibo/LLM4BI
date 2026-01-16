@@ -17,12 +17,12 @@ Categories:
       GT: ["Shop_Ticket"]
       Format: "Provide the answer as a list of the fact names (using the full URI)"
     S3:
-      Q: "Find the facts related to countries." ## ????
-      GT: ["Historical_Order",""]
+      Q: "Find the facts that can be analyzed from the point of view of countries."
+      GT: ["Historical_Order","Invoice", "Order", "Shop_Ticket", "Warehouse_Movement", "Warehouse_Stock", "Third_Party_Warehouse_Stock", "Traffic_Counter"]
       Format: "Provide the answer as a list of the fact names (using the full URI)"
     S3D:
-      Q: "Find the facts related to nations." ## ????
-      GT: ""
+      Q: "Find the facts that can be analyzed from the point of view of nations."
+      GT: ["Historical_Order","Invoice", "Order", "Shop_Ticket", "Warehouse_Movement", "Warehouse_Stock", "Third_Party_Warehouse_Stock", "Traffic_Counter"]
       Format: "Provide the answer as a list of the fact names (using the full URI)"
     S4:
       Q: "I would like to analyze the agents' performances, which facts should I look at?"
@@ -34,42 +34,43 @@ Categories:
         - ["Invoice","Order","Shop_Ticket"]
       Format: "Provide the answer as a list of the fact names (using the full URI)"
     S5:
-      Q: "Which cubes and dimensions should I check to analyze casual footwear sales?"
+      Q: "Which cubes and dimensions should I check to analyze sales of casual footwear ?"
       GT:
-        - ["Shop_Ticket", "SKU_SKU", "SKU_Subtype"]
-        - ["Warehouse_Stock", "SKU_SKU","SKU_Subtype"] #####
-        - ["Third_Party_Warehouse_Stock", "SKU_SKU","SKU_Subtype"] #####
-        - ["Order", "SKU_SKU","SKU_Subtype"]
-        - ["Invoice", "SKU_SKU","SKU_Subtype"]
-        - ["Historical_Order", "SKU_Subtype"]
-      Format: "Provide the answer as a list of list of cubes and their relevant dimensions (using full URIs)"
+        {
+          "Shop_Ticket": ["SKU_SKU", "SKU_Subtype"],
+          "Order": ["SKU_SKU","SKU_Subtype"],
+          "Invoice":  ["SKU_SKU","SKU_Subtype"],
+          "Historical_Order": ["SKU_Subtype"],
+        }
+      Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
+
     S5D:
       Q: "Which cubes and dimensions should I check to analyze t-shirts sales?"
       GT:
-        - ["Shop_Ticket", "SKU_SKU", "SKU_Subtype"]
-        - ["Warehouse_Stock", "SKU_SKU","SKU_Subtype"] #####
-        - ["Third_Party_Warehouse_Stock", "SKU_SKU","SKU_Subtype"] #####
-        - ["Order", "SKU_SKU","SKU_Subtype"]
-        - ["Invoice", "SKU_SKU","SKU_Subtype"]
-        - ["Historical_Order", "SKU_Subtype"]
-      Format: "Provide the answer as a list of list of cubes and their relevant dimensions (using full URIs)"
+        {
+          "Shop_Ticket": ["SKU_SKU", "SKU_Subtype"],
+          "Order": ["SKU_SKU","SKU_Subtype"],
+          "Invoice":  ["SKU_SKU","SKU_Subtype"],
+          "Historical_Order": ["SKU_Subtype"],
+        }
+      Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
 
   Olap:
     O1:
       Q: "Can I analyze invoices with reference to controllers?"
-      GT: "No" ## MultipleArc, non ricordo se risposta è si o no
+      GT: "Yes"
       Format: "Provide the answer as a Yes or No"
     O1D:
-      Q: "Can I analyze bills with reference to sales supervisors?"
-      GT: "No" ## MultipleArc, non ricordo se risposta è si o no
+      Q: "Can I analyze bills with reference to agent supervisors?"
+      GT: "Yes"
       Format: "Provide the answer as a Yes or No"
     O2:
       Q: "Can I find the total quantities of shop tickets by area manager and category?"
-      GT: "Yes" #####
+      GT: "Yes"
       Format: "Provide the answer as a Yes or No"
     O2D:
       Q: "Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?"
-      GT: "" ### La differenza tra manager e controller è molto lasca. Cos'è DOS?
+      GT: "Yes"
       Format: "Provide the answer as a Yes or No"
     O3:
       Q: "Can I aggregate quantities of shop tickets by area manager and category in 2025?"
@@ -77,15 +78,15 @@ Categories:
       Format: "Provide the answer as a Yes or No"
     O3D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications in 2025?"
-      GT: "" #####Non so coa sia DOS
+      GT: "Yes"
       Format: "Provide the answer as a Yes or No"
     O4:
       Q: "Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?"
-      GT: "No" ##### ????
+      GT: "No"
       Format: "Provide the answer as a Yes or No"
     O4D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment?"
-      GT: ""  ##### Still don't know what's a DOS store
+      GT: "No"
       Format: "Provide the answer as a Yes or No"
     O5:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands?"
@@ -93,15 +94,15 @@ Categories:
       Format: "Provide the answer as a Yes or No"
     O5D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products?"
-      GT: "" ##### Still don't know what's a DOS store
+      GT: "No"
       Format: "Provide the answer as a Yes or No"
     O6:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?"
-      GT: "No" ## No warehouse in shop ticket
+      GT: "No"
       Format: "Provide the answer as a Yes or No"
     O6D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?"
-      GT: "" ##### Still don't know what's a DOS store
+      GT: "No"
       Format: "Provide the answer as a Yes or No"
     O7:
       Q: "If I'm aggregating data by SKU, which roll-up paths are available?"
@@ -126,13 +127,13 @@ Categories:
     O8:
       Q: "If I'm aggregating data by year, which drill-down paths are available?"
       GT:
-        - ["Date_Year" ,"Date_4-Month_Period","Date_Month_In_Year","Date_Date"] ### Month & Week?
+        - ["Date_Year" ,"Date_4-Month_Period","Date_Month_In_Year","Date_Date"]
         - ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"]
       Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
     O8D:
       Q: "If I'm aggregating data by 12-months periods, which drill-down paths are available?"
       GT:
-        - ["Date_Year" ,"Date_4-Month_Period","Date_Month_In_Year","Date_Date"] ### Month & Week?
+        - ["Date_Year" ,"Date_4-Month_Period","Date_Month_In_Year","Date_Date"]
         - ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"]
       Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
     O9:
@@ -162,8 +163,8 @@ Categories:
       GT: "Many-To-Many relationship."
       Format: "Provide a concise explanation of the relationship"
     B3D:
-      Q: "Which relationship holds between product trademarks and product classifications?" 
-      GT: ""  ###What was this?
+      Q: "Which relationship holds between product trademarks and product classifications?"
+      GT: "Many-To-Many relationship."
       Format: "Provide a concise explanation of the relationship"
     B4:
       Q: "Which relationship holds between agents and controllers?"
@@ -171,30 +172,35 @@ Categories:
       Format: "Provide a concise explanation of the relationship"
     B4D:
       Q: "Which relationship holds between sales representatives and sales supervisors?"
-      GT: "" ## DOn't know if you refer to area manager or controller
+      GT: "Multiple-Arc, so many-to-many-relationships"
       Format: "Provide a concise explanation of the relationship"
     B6:
       Q: "Which relationship holds between brands and controllers?"
-      GT: "Many-To-Many since no direct arc between them" ### Is it true?
+      GT: "Many-To-Many since no direct arc between them"
       Format: "Provide a concise explanation of the relationship"
     B6D:
       Q: "Which relationship holds between product trademarks and sales supervisors?"
-      GT: ""  ### What's a product trademark?
+      GT: "Many-To-Many since no direct arc between them"
       Format: "Provide a concise explanation of the relationship"
 
   Test:
     T1:
-      Q: "Are there multiple measures with different names but same semantics?"
-      GT: "Yes,
-          Revenue: Order_Net_Value, Invoice_Amount_After_Discount, Shop_Ticket_Net_Value, Historical_Order_Net_Value
-          Discounts: Order_Discount_Value, Invoice_First_Commercial_Discount, Invoice_Second_Commercial_Discount, Shop_Ticket_Discount_Value, Historical_Order_Price_Reduction
-          Quantities: Order_Quantity, Invoice_Quantity, Shop_Ticket_Quantity, Historical_Order_Quantity, Warehouse_Movement_Quantity, Warehouse_Stock_Quantity_in_stock, Third_Party_Warehouse_Stock_Quantity_in_stock
-      Format: "Provide a Yes or No and list the equivalent measures if any"
+      Q: "Are there multiple measures with different names but same semantics? If so, which are them?"
+      GT:
+          - ["Order_Net_Value", "Invoice_Amount_After_Discount", "Shop_Ticket_Net_Value", "Historical_Order_Net_Value"]
+          - ["Order_Discount_Value", "Invoice_First_Commercial_Discount", "Invoice_Second_Commercial_Discount", "Shop_Ticket_Discount_Value", "Historical_Order_Price_Reduction"]
+          - ["Order_Quantity", "Invoice_Quantity", "Shop_Ticket_Quantity", "Historical_Order_Quantity", "Warehouse_Movement_Quantity", "Warehouse_Stock_Quantity_in_stock", "Third_Party_Warehouse_Stock_Quantity_in_stock"]
+      Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
     T2:
-      Q: "Are there measures whose aggregation operators are inconsistent with their business meaning?"
-      GT: "Yes, Traffic_Counter_Peopletickets_ratio"
-      Format: "Provide a Yes or No and list the problematic measures if any"
+      Q: "Are there measures whose aggregation operators are inconsistent with their business meaning? If so, which are them?"
+      GT: {
+          "Traffic_Counter_Peopletickets_ratio": ["SUM"]
+        }
+      Format: "Provide a dictionary of key-value pairs where keys are the measures (using full Uris) and values are the list of the inconsistent aggregation operators."
     T3:
-      Q: "Are there any attributes or hierarchies that could be conformed across different facts but are modeled as separate, non-conformed hierarchies?"
-      GT: Yes, Merchandise_Type (Order, Warehouse_Movement, Warehouse_Stock) and Season (Invoice, Historical_Order, Order, Shop_Ticket) and Currency (Invoice, Historical_Order, Order, Shop_Ticket)
-      Format: "Provide a Yes or No and describe the non-conformed elements"
+      Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"
+      GT:
+        - [("Merchandise_Type" "Order"), ("Merchandise_Type" "Warehouse_Movement"), ("Merchandise_Type" "Warehouse_Stock")]
+        - [("Season" "Invoice"), ("Season" "Historical_Order"), ("Season" "Order"), ("Season" "Shop_Ticket")]
+        - [("Currency" "Invoice"), ("Currency" "Historical_Order"), ("Currency" "Order"), ("Currency" "Shop_Ticket")]
+      Format: "Attributes that are candidates to become conformed must be grouped into separate lists; in each list, candidate attributes must be indicated as a couple (F,A) where F is the fact (using full URI) and A is the attribute (using full URI); provide all the lists you can find (if any)."
