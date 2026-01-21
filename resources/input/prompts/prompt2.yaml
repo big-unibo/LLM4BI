@@ -33,3 +33,47 @@ versions:
           Full: <FULL_ANS>
           Structured: <STR_ANS>
           Motivation: <MOT>
+
+          Below you can find a few examples of user questions with their answers.
+
+          1) Let the user ask the following question: "In which facts can I find information about merchandise types?" 
+          Your answer should be like this:
+          Full: "Both facts Order and Warehouse Movement show an attribute called Merchandise Type. In the first case it is a dimension, in the second a level of the Warehouse hierarchy."
+          Structured: ["LLM4BI_Indyco:Order", "LLM4BI_Indyco:Warehouse_Movement"]
+          Motivation: "The schema shows that the facts Order and Warehouse Movement have RollUpArc relationships to the attribute Merchandise Type; this indicates that these facts contain information about merchandise types."
+
+          2) Let the user ask the following question: "Can I analyze ordered quantities with reference to client cities?" 
+          Your answer should be like this:
+          Full: "Yes, by checking the Order fact, where Quantity is a measure, Customer (aka client) is a dimension, and City is a level of the Customer hierarchy."
+          Structured: "Yes"
+          Motivation: "The Order fact includes a Quantity measure and a Customer dimension; the Customer hierarchy has a level called City."
+
+          3) Let the user ask the following question: "Can I compute the average quantity in stock by product category and warehouse city during 2020?" 
+          Your answer should be like this:
+          Full: "Yes, by checking the Warehouse Stock fact, where quantity is a measure, Category is a level of the SKU (aka product) dimension, City is a level of the Warehouse dimension, and 2020 is a member of the Year level of the Date hierarchy."
+          Structured: "Yes"
+          Motivation: "Quantity in stock is a measure of the Warehouse Stock fact, which has an SKU (aka product) dimension, a Warehouse dimension, and a Date dimension. The SKU hierarchy includes level Category; the Warehouse hierarchy includes level City; and the Date hierarchy includes level Year. 2020 is a member of Year."
+
+          4) Let the user ask the following question: "If I'm aggregating data by client, which roll-up paths are available?" 
+          Your answer should be like this:
+          Full: "There is only one roll-up path from Customer (a synonym of client), which consists of the following list of attributes: City, County, State, Country, and Area."
+          Structured: - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+          Motivation: "Each path is shown as an ordered list of attributes connected by roll-up arcs, starting from the finest level up to the coarsest one."
+
+          5) Let the user ask the following question: "Can I do a drill-across between invoices and orders?" 
+          Your answer should be like this:
+          Full: "Yes. The finest common grouping available is by Date, Customer, Agent, SKU, Currency, and Season. The measures you can use include for instance invoiced quantity and net value, as well as ordered discount value and VAT value."
+          Structured: "Yes"
+          Motivation: "There is a non-empty intersection between the set of hierarchy levels for the Invoice and the Order facts."
+
+          6) Let the user ask the following question: "Give me a business-oriented description of the warehouse movements cube." 
+          Your answer should be like this:
+          Full: "The Warehouse Movement cube represents the quantities moved of each SKU in each warehouse at daily detail. Dimensions include date in, date out, SKU, warehouse, merchandise type, and movement cause. Among the possible aggregations, those by product type and brand, warehouse country and area, and movement year."
+          Structured: "The Warehouse Movement cube represents the quantities moved of each SKU in each warehouse at daily detail. Dimensions include date in, date out, SKU, warehouse, merchandise type, and movement cause. Among the possible aggregations, those by product type and brand, warehouse country and area, and movement year."
+          Motivation: "Derived from the fact definition of LLM4BI_Indyco:Warehouse_Movement and from its RollUpArc links showing related measures (Quantity) and dimensions (Warehouse, SKU, Date In, Date Out, Cause, Merchandise Type)."
+
+          7) Let the user ask the following question: "Which relationship holds between warehouse cities and warehouse areas?" 
+          Your answer should be like this:
+          Full: "It is a many-to-one relationship, i.e., one city belongs to exactly one area while one area includes several cities."
+          Structured: "Many-to-one relationship, because there is a roll-up path between them"
+          Motivation: "In the Warehouse hierarchy of the Warehouse Movement fact, there is a roll-up path from city to area."
