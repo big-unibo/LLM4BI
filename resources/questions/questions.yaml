@@ -153,7 +153,7 @@ Categories:
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["SKU_SKU", "SKU_Brand","SKU_Brand_Group"]
+          - ["SKU_SKU", "SKU_Brand", "SKU_Brand_Group"]
           - ["SKU_SKU", "Sku_Subtype", "SKU_Customer_Type"]
           - ["SKU_SKU", "SKU_Subtype", "SKU_Type", "SKU_Category"]
           - ["SKU_SKU", "SKU_Color", "SKU_Macro_Color"]
@@ -165,7 +165,7 @@ Categories:
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["SKU_SKU", "SKU_Brand","SKU_Brand_Group"]
+          - ["SKU_SKU", "SKU_Brand", "SKU_Brand_Group"]
           - ["SKU_SKU", "Sku_Subtype", "SKU_Customer_Type"]
           - ["SKU_SKU", "SKU_Subtype", "SKU_Type", "SKU_Category"]
           - ["SKU_SKU", "SKU_Color", "SKU_Macro_Color"]
@@ -212,49 +212,49 @@ Categories:
       Q: "Give me a business-oriented description of the order cube."
       GT:
         Format: Open_Ended
-        Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures—Net_Value, Discount_Value, Quantity, and VAT_Value—support evaluating revenue generation, discount strategies, and overall sales effectiveness."
+        Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
       Answer_Format: "Provide a concise business-oriented explanation"
     B2D:
       Q: "Give me a business-oriented description of the purchases cube."
       GT:
         Format: Open_Ended
-        Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures—Net_Value, Discount_Value, Quantity, and VAT_Value—support evaluating revenue generation, discount strategies, and overall sales effectiveness."
+        Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
       Answer_Format: "Provide a concise business-oriented explanation"
     B3:
       Q: "Which relationship holds between brands and categories?"
       GT:
         Format: Open_Ended
-        Truth: "Many-To-Many relationship."
+        Truth: "Many-To-Many relationship, because they are on different branches of the SKU hierarchy."
       Answer_Format: "Provide a concise explanation of the relationship"
     B3D:
       Q: "Which relationship holds between product trademarks and product classifications?"
       GT:
         Format: Open_Ended
-        Truth: "Many-To-Many relationship."
+        Truth: "Many-To-Many relationship, because they are on different branches of the SKU hierarchy."
       Answer_Format: "Provide a concise explanation of the relationship"
     B4:
       Q: "Which relationship holds between agents and controllers?"
       GT:
         Format: Open_Ended
-        Truth: "Multiple-Arc, so many-to-many-relationships"
+        Truth: "Many-to-many-relationships, because there is a Multiple-Arc between them."
       Answer_Format: "Provide a concise explanation of the relationship"
     B4D:
       Q: "Which relationship holds between sales representatives and sales supervisors?"
       GT:
         Format: Open_Ended
-        Truth: "Multiple-Arc, so many-to-many-relationships"
+        Truth: "Many-to-many-relationships, because there is a Multiple-Arc between them."
       Answer_Format: "Provide a concise explanation of the relationship"
-    B6:
+    B5:
       Q: "Which relationship holds between brands and controllers?"
       GT:
         Format: Open_Ended
-        Truth: "Many-To-Many since no direct arc between them"
+        Truth: "Many-To-Many, because there is no direct arc between them."
       Answer_Format: "Provide a concise explanation of the relationship"
-    B6D:
+    B5D:
       Q: "Which relationship holds between product trademarks and sales supervisors?"
       GT:
         Format: Open_Ended
-        Truth: "Many-To-Many since no direct arc between them"
+        Truth: "Many-To-Many, because there is no direct arc between them."
       Answer_Format: "Provide a concise explanation of the relationship"
 
   Test:
@@ -274,7 +274,7 @@ Categories:
         Truth: {
           "Traffic_Counter_Peopletickets_ratio": ["SUM"]
         }
-      Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full Uris) and values are the list of the inconsistent aggregation operators."
+      Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full URIs) and values are the list of the inconsistent aggregation operators."
     T3:
       Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"
       GT:
