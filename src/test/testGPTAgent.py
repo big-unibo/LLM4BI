@@ -63,8 +63,8 @@ from main.agents.GPTAgent import GPTAgent
 logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
 # Retrieving env variables
-ITERATIONS = int(os.getenv("ITERATIONS", 5))
-VERSIONS = [int(v) for v in os.getenv("VERSIONS", "0").split(",")]
+ITERATIONS = int(os.getenv("ITERATIONS", 2))
+VERSIONS = [int(v) for v in os.getenv("VERSIONS", "1").split(",")]
 BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
 
 # File paths
@@ -75,7 +75,9 @@ CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt2.yaml"
 
 # Filtering questions
-INCLUDED_QUESTIONS = ["S1", "O1", "O7", "O8"]  # utils.parse_list("INCLUDED_QUESTIONS")
+INCLUDED_QUESTIONS = utils.parse_list(
+    "INCLUDED_QUESTIONS"
+)  # ["S1", "O1", "O7", "O8"]  #
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
@@ -130,7 +132,7 @@ for version in VERSIONS:
         for q_cat, q_dict in questions["Categories"].items():
             for q_id, q in q_dict.items():
                 question = q["Q"]
-                format = q["Format"]
+                format = q["Answer_Format"]
                 question_prompt = "\n".join(
                     [
                         initial_prompt,
