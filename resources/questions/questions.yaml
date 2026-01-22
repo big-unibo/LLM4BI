@@ -10,7 +10,7 @@ Categories:
       Q: "In which facts can I find information about clients?"
       GT:
         Format: Set
-        Truth: ["Invoice", "Order"]
+        Truth: ["Invoice", "Order"] 
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
     S2:
       Q: "Which facts can be analyzed by SKU and store together?"
@@ -48,7 +48,7 @@ Categories:
         Format: Set
         Truth: ["Invoice","Order","Shop_Ticket"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-      
+
     S5:
       Q: "Which cubes and dimensions should I check to analyze sales of casual footwear ?"
       GT:
@@ -81,73 +81,73 @@ Categories:
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O1D:
       Q: "Can I analyze bills with reference to agent supervisors?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O2:
       Q: "Can I find the total quantities of shop tickets by area manager and category?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O2D:
       Q: "Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O3:
       Q: "Can I aggregate quantities of shop tickets by area manager and category in 2025?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O3D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications in 2025?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O4:
       Q: "Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O4D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O5:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O5D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O6:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O6D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?"
       GT:
         Format: Binary
         Truth: "No"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O7:
       Q: "If I'm aggregating data by SKU, which roll-up paths are available?"
       GT:
@@ -193,13 +193,13 @@ Categories:
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as 'Yes' or 'No', nothing more."
     O9D:
       Q: "Can I do a drill-across between bills and logistic hub transfers?"
       GT:
         Format: Binary
         Truth: "Yes"
-      Answer_Format: "Provide the answer as a Yes or No"
+      Answer_Format: "Provide the answer as 'Yes' or 'No', nothing more."
 
   Business_oriented:
     B1:
@@ -279,8 +279,8 @@ Categories:
       Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"
       GT:
         Format: Set_Of_Sets
-        Value:
-          - [("Merchandise_Type" "Order"), ("Merchandise_Type" "Warehouse_Movement"), ("Merchandise_Type" "Warehouse_Stock")]
-          - [("Season" "Invoice"), ("Season" "Historical_Order"), ("Season" "Order"), ("Season" "Shop_Ticket")]
-          - [("Currency" "Invoice"), ("Currency" "Historical_Order"), ("Currency" "Order"), ("Currency" "Shop_Ticket")]
-      Answer_Format: "Attributes that are candidates to become conformed must be grouped into separate lists; in each list, candidate attributes must be indicated as a couple (F,A) where F is the fact (using full URI) and A is the attribute (using full URI); provide all the lists you can find (if any)."
+        Truth:
+          - ["Order_Merchandise_Type", "Warehouse_Movement_Merchandise_Type", "Warehouse_Stock_Merchandise_Type"]
+          - ["Invoice_Season", "Historical_Order_Season", "Order_Season", "Shop_Ticket_Season"]
+          - ["Invoice_Currency", "Historical_Order_Currency", "Order_Currency", "Shop_Ticket_Currency"]
+      Answer_Format: "Attributes that are candidates to become conformed must be grouped into separate lists; in each list, candidate attributes must be indicated using full URI; provide all the lists you can find (if any)."

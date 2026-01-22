@@ -6,7 +6,8 @@ from sqlalchemy import create_engine
 import os
 import uuid
 import time
-import textwrap
+import json
+import yaml
 
 
 def filter_questions(questions, included, excluded):
@@ -59,6 +60,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
 from main.agents.GPTAgent import GPTAgent
+from main import MetricEvaluator
 
 logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
@@ -73,11 +75,11 @@ LLM4BI_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 ONTOLOGY_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt2.yaml"
-
+INCLUDED_QUESTIONS = ["T3"]
 # Filtering questions
-INCLUDED_QUESTIONS = utils.parse_list(
-    "INCLUDED_QUESTIONS"
-)  # ["S1", "O1", "O7", "O8"]  #
+# INCLUDED_QUESTIONS = utils.parse_list(
+#     "INCLUDED_QUESTIONS"
+# )  # ["S1", "O1", "O7", "O8"]  #
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
@@ -101,18 +103,13 @@ agent = GPTAgent(
     api_key=CREDENTIALS["gpt"]["api-key"],
 )
 
-refree = GPTAgent(
-    instruction="You are a highly expert professor of Business Intelligence. Your goal is to verify students' answers to Business Intelligence questions."
-    "You will be prompted the Dimensional Fact Model of some Data Marts, a business intelligence question on such cubes and a student answer to such question."
-    "Always provide the output in the form: Correct/Inaccurate/Incorrect",
-    api_key=CREDENTIALS["gpt"]["api-key"],
-)
+metric_evaluator = MetricEvaluator.PerformanceEvaluator(QUESTION_FILE, CREDENTIALS)
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
 for version in VERSIONS:
-    llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version{version}.ttl")
-    cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version{version}.ttl")
+    llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version1.ttl")
+    cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version1.ttl")
     initial_prompt = "\n".join(
         [
             prompt["versions"][version]["incipit"],
@@ -133,6 +130,8 @@ for version in VERSIONS:
             for q_id, q in q_dict.items():
                 question = q["Q"]
                 format = q["Answer_Format"]
+                truth = q["GT"]["Truth"]
+                answer_cat = q["GT"]["Format"]
                 question_prompt = "\n".join(
                     [
                         initial_prompt,
@@ -156,8 +155,29 @@ for version in VERSIONS:
                 end_time = int(time.time())
                 prompts = prompt["versions"][0]
 
-                # if q_cat == "Olap":
-                # Validate the answer through refreee
+                answer = answer.replace("LLM4BI_Indyco:", "")
+                answer = answer.replace(
+                    "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#", ""
+                )
+
+                answer_yaml = yaml.safe_load(answer)
+                if answer_cat == "Open_Ended":
+                    answer = answer_yaml["Full"]
+                else:
+                    answer = answer_yaml["Structured"]
+
+                metric = metric_evaluator.evaluate_query_performance(
+                    q_id, q_cat, answer
+                )
+
+                precision = metric["precision"]
+                recall = metric["recall"]
+                fmeasure = metric["fmeasure"]
+                avg_precision = metric["avg_precision"]
+                avg_recall = metric["avg_recall"]
+                avg_fmeasure = metric["avg_fmeasure"]
+                accuracy_binary = metric["accuracy_binary"]
+                referee_eval = metric["referee_eval"]
 
                 statistics = pd.concat(
                     [
@@ -168,7 +188,7 @@ for version in VERSIONS:
                                 "model": [agent.model],
                                 "category": [q_cat],
                                 "question": [q["Q"]],
-                                "answer": [answer],
+                                "answer": [json.dumps(answer)],
                                 "iteration": [i],
                                 "start_time": [start_time],
                                 "end_time": [end_time],
@@ -176,8 +196,16 @@ for version in VERSIONS:
                                 "prompt": [
                                     "|".join(prompt["versions"][version].values())
                                 ],
-                                "query_id": q_id,
-                                "version": version,
+                                "query_id": [q_id],
+                                "version": [version],
+                                "precision": [precision],
+                                "recall": [recall],
+                                "fmeasure": [fmeasure],
+                                "avg_precision": [avg_precision],
+                                "avg_recall": [avg_recall],
+                                "avg_fmeasure": [avg_fmeasure],
+                                "referee_eval": [referee_eval],
+                                "accuracy_binary": [accuracy_binary],
                             }
                         ),
                     ],

@@ -1,48 +1,321 @@
 from sklearn.metrics import precision_score, recall_score, f1_score
 from rouge_score import rouge_scorer
-from typing import Callable, Any
+from typing import Callable, Any, List, Tuple, Dict, Union
+from itertools import product
 import yaml
+from statistics import mean
+from main.agents.GPTAgent import GPTAgent
 
 
 class PerformanceEvaluator:
 
-    def __init__(self, questions_path):
+    def __init__(self, questions_path: str, credentials_dict: dict):
         with open(questions_path, "r") as f:
-            self.questions = yaml.safe_load(f)
+            self.questions: Dict[str, Any] = yaml.safe_load(f)["Categories"]
 
-    def evaluate_query_performance(self, query_id: str, answer) -> float:
-        truth = self.questions[query_id]["GT"]["Truth"]
-        format = self.questions[query_id]["GT"]["Format"]
+            self.refree = GPTAgent(
+                instruction="\n".join(
+                    [
+                        "You are a highly expert professor of Business Intelligence. Your goal is to verify students' answers to Business Intelligence questions.",
+                        "Always provide the output in the following form: {value} (without square brackets) where value is a 2 digit double in the range [0,1] and represents how much, to your expertise, the provided answer reflects the given grountruth. Just a plain an simple double value.",
+                        "You will receive prompts in the form:",
+                        "ANSWER:",
+                        "{ANSWER}",
+                        "-------",
+                        "GROUNDTRUTH:",
+                        "{GROUNDTRUTH}",
+                    ]
+                ),
+                api_key=credentials_dict["gpt"]["api-key"],
+            )
 
-        return self.__get_grountruth_metric(format)(truth, answer)
+    def evaluate_query_performance(
+        self, query_id: str, category: str, answer: Any
+    ) -> dict[str, Union[float, None]]:
+        truth = self.questions[category][query_id]["GT"]["Truth"]
+        gt_format = self.questions[category][query_id]["GT"]["Format"]
 
-    def __accuracy(self, groundtruth_list: list, observed_list: list):
-        return 1
+        # Ottieni il risultato dalla funzione corrispondente al formato del groundtruth
+        result = self.__get_grountruth_metric(gt_format)(truth, answer)
 
-    def __rouge_l(self, grountruth_set: list, observed_set: list):
-        return 1
+        # Default dict con None
+        metrics: dict[str, Union[float, None]] = {
+            "precision": None,
+            "recall": None,
+            "fmeasure": None,
+            "avg_precision": None,
+            "avg_recall": None,
+            "avg_fmeasure": None,
+            "referee_eval": None,
+            "accuracy_binary": None,
+        }
 
-    def __structured_function_eval(
+        # -------------------
+        # Key_Set_Dict o simili che ritornano due tuple
+        # -------------------
+        if isinstance(result, tuple):
+            # Caso Key_Set_Dict o altre funzioni che ritornano due tuple (chiavi, valori)
+            if len(result) == 2 and all(
+                isinstance(r, tuple) and len(r) == 3 for r in result
+            ):
+                key_metrics, avg_metrics = result
+                metrics["precision"], metrics["recall"], metrics["fmeasure"] = (
+                    key_metrics
+                )
+                (
+                    metrics["avg_precision"],
+                    metrics["avg_recall"],
+                    metrics["avg_fmeasure"],
+                ) = avg_metrics
+            # Caso Set_Of_Sets o ROUGE-L che ritornano 6 valori
+            elif len(result) == 6:
+                precision, recall, f1, ass_precision, ass_recall, ass_f1 = result
+                metrics["precision"] = precision
+                metrics["recall"] = recall
+                metrics["fmeasure"] = f1
+                metrics["avg_precision"] = ass_precision
+                metrics["avg_recall"] = ass_recall
+                metrics["avg_fmeasure"] = ass_f1
+            # Caso tuple di 3 valori (precision, recall, f1)
+            elif len(result) == 3:
+                metrics["precision"], metrics["recall"], metrics["fmeasure"] = result
+
+        # -------------------
+        # Binary evaluation
+        # -------------------
+        elif isinstance(result, int):
+            metrics["accuracy_binary"] = float(result)
+
+        # -------------------
+        # Open_Ended / singolo float
+        # -------------------
+        elif isinstance(result, str):
+            metrics["referee_eval"] = float(result)
+
+        else:
+            raise ValueError(
+                f"Unexpected result type from groundtruth metric: {type(result)}"
+            )
+
+        return metrics
+
+    # -------------------
+    # Basic set accuracy
+    # -------------------
+    def __accuracy(
+        self, groundtruth_list: List[Any], observed_list: List[Any]
+    ) -> Tuple[float, float, float]:
+        gt = set(groundtruth_list)
+        obs = set(observed_list)
+
+        tp = len(gt & obs)  # dovrebbe essere 2
+        fp = len(obs - gt)  # 0
+        fn = len(gt - obs)  # 0
+
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = (
+            (2 * precision * recall / (precision + recall))
+            if (precision + recall) > 0
+            else 0.0
+        )
+
+        print(precision, recall, f1)
+
+        return precision, recall, f1
+
+    # -------------------
+    # Average metrics
+    # -------------------
+    def __avg_metrics(
+        self, values: List[Tuple[float, float, float]]
+    ) -> Tuple[float, float, float]:
+        if not values:
+            return 0.0, 0.0, 0.0
+        n = len(values)
+        avg_precision = sum(p for p, _, _ in values) / n
+        avg_recall = sum(r for _, r, _ in values) / n
+        avg_f1 = sum(f for _, _, f in values) / n
+        return avg_precision, avg_recall, avg_f1
+
+    # -------------------
+    # Compute precision/recall for one-to-one assignment
+    # -------------------
+    @staticmethod
+    def __compute_precision_recall(
+        best_list: List[Tuple[Any, Any, float, float, float]],
+        all_truths: Union[List[Any], set],
+        all_observed: Union[List[Any], set],
+    ) -> Tuple[float, float]:
+
+        associated_truths = set(
+            " ".join(t) if isinstance(t, list) else t for t, _, _, _, _ in best_list
+        )
+        associated_observed = set(
+            " ".join(o) if isinstance(o, list) else o for _, o, _, _, _ in best_list
+        )
+
+        precision = (
+            len(associated_observed) / len(all_observed) if all_observed else 0.0
+        )
+        recall = len(associated_truths) / len(all_truths) if all_truths else 0.0
+
+        return precision, recall
+
+    # -------------------
+    # Assign best matches
+    # -------------------
+
+    @staticmethod
+    def __assign(
+        list_of_accuracies: List[Tuple[Any, Any, float, float, float]],
+        threshold: float = 0.5,
+    ) -> List[Tuple[Any, Any, float, float, float]]:
+
+        assigned_truth = set()
+        assigned_obs = set()
+        best_list: List[Tuple[Any, Any, float, float, float]] = []
+
+        for t, o, prec, rec, f1 in list_of_accuracies:
+            if f1 < threshold:
+                break
+
+            # Trasforma liste in stringhe per confronto e hashing
+            t_key = " ".join(t) if isinstance(t, list) else t
+            o_key = " ".join(o) if isinstance(o, list) else o
+
+            if t_key in assigned_truth or o_key in assigned_obs:
+                continue
+
+            best_list.append((t, o, prec, rec, f1))
+            assigned_truth.add(t_key)
+            assigned_obs.add(o_key)
+
+        return best_list
+
+    # -------------------
+    # Set of sets accuracy
+    # -------------------
+    def __set_of_sets(
+        self, grountruth_set: List[set], observed_set: List[set], threshold: float = 0.5
+    ) -> Tuple[List[Tuple[set, set, float]], Tuple[float, float]]:
+        list_of_accuracies = sorted(
+            [
+                (truth, obs, *self.__accuracy(truth, obs))
+                for truth, obs in product(grountruth_set, observed_set)
+            ],
+            key=lambda x: x[2],
+            reverse=True,
+        )
+        best_list = self.__assign(list_of_accuracies, threshold)
+        ass_precision, ass_recall = self.__compute_precision_recall(
+            best_list, grountruth_set, observed_set
+        )
+        ass_f1 = (
+            (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
+            if (ass_precision + ass_recall) > 0
+            else 0.0
+        )
+        f1 = mean([f1 for _, _, _, _, f1 in best_list])
+        precision = mean([prec for _, _, prec, _, _ in best_list])
+        recall = mean([rec for _, _, _, rec, _ in best_list])
+        return precision, recall, f1, ass_precision, ass_recall, ass_f1
+
+    # -------------------
+    # ROUGE-L for sets of strings
+    # -------------------
+
+    def __rouge_l(
         self,
-        groundtruth: list,
-        observed: list,
-    ):
-        return observed.lower() == groundtruth.lower()
+        groundtruth_set: List[List[str]],
+        observed_set: List[List[str]],
+        threshold: float = 0.5,
+    ) -> Tuple[float, float, float, float, float, float]:
 
-    def __get_grountruth_metric(self, groundtruth_type) -> Callable[[Any, Any], float]:
+        scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+
+        def to_str(x):
+            if isinstance(x, list):
+                return " ".join(x)
+            return x
+
+        list_of_accuracies = sorted(
+            [
+                (
+                    truth,
+                    obs,
+                    scorer.score(to_str(truth), to_str(obs))["rougeL"].precision,
+                    scorer.score(to_str(truth), to_str(obs))["rougeL"].recall,
+                    scorer.score(to_str(truth), to_str(obs))["rougeL"].fmeasure,
+                )
+                for truth, obs in product(groundtruth_set, observed_set)
+            ],
+            key=lambda x: x[4],
+            reverse=True,
+        )
+
+        best_list = self.__assign(list_of_accuracies, threshold)
+        ass_precision, ass_recall = self.__compute_precision_recall(
+            best_list, groundtruth_set, observed_set
+        )
+        ass_f1 = (
+            (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
+            if (ass_precision + ass_recall) > 0
+            else 0.0
+        )
+
+        f1 = mean([f1 for _, _, _, _, f1 in best_list])
+        precision = mean([prec for _, _, prec, _, _ in best_list])
+        recall = mean([rec for _, _, _, rec, _ in best_list])
+
+        return precision, recall, f1, ass_precision, ass_recall, ass_f1
+
+    # -------------------
+    # Key-Set dictionary accuracy
+    # -------------------
+    def __key_sect_dict(
+        self, groundtruth: Dict[Any, List[Any]], observed: Dict[Any, List[Any]]
+    ) -> Tuple[Tuple[float, float, float], Tuple[float, float, float]]:
+        key_precision, key_recall, key_f1 = self.__accuracy(
+            groundtruth.keys(), observed.keys()
+        )
+        values = [
+            self.__accuracy(gt_vals, obs_vals)
+            for gt_vals, obs_vals in zip(groundtruth.values(), observed.values())
+        ]
+        avg_precision, avg_recall, avg_f1 = self.__avg_metrics(values)
+        return (key_precision, key_recall, key_f1), (avg_precision, avg_recall, avg_f1)
+
+    # -------------------
+    # Binary evaluation
+    # -------------------
+    def __structured_function_eval(self, groundtruth: str, observed: str) -> int:
+        return int(observed.lower() == groundtruth.lower())
+
+    def __gptEval(self, groundtruth: str, observed: str):
+        return self.refree.query(
+            "\n".join(["ANSWER:", observed, "-------", "GROUNTRUTH:", groundtruth])
+        )
+
+    # -------------------
+    # Groundtruth metric dispatcher
+    # -------------------
+    def __get_grountruth_metric(
+        self, groundtruth_type: str
+    ) -> Callable[[Any, Any], Any]:
         if groundtruth_type == "Set":
             return self.__accuracy
         elif groundtruth_type == "Key_Set_Dict":
-            return self.__rouge_l
+            return self.__key_sect_dict
+        elif groundtruth_type == "Set_Of_Sets":
+            return self.__set_of_sets
         elif groundtruth_type == "Binary":
             return self.__structured_function_eval
         elif groundtruth_type == "Set_Of_Lists":
-            return 1
+            return self.__rouge_l
         elif groundtruth_type == "Open_Ended":
-            return 1
-        elif groundtruth_type == "Set_Of_Sets":
-            return 1
+            return self.__gptEval
         else:
             raise ValueError(
-                f"Groundtruth format: {groundtruth_type} currently not supported"
+                f"Groundtruth format '{groundtruth_type}' currently not supported"
             )
