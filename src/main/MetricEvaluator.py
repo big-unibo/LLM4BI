@@ -9,23 +9,14 @@ from main.agents.GPTAgent import GPTAgent
 
 class PerformanceEvaluator:
 
-    def __init__(self, questions_path: str, credentials_dict: dict):
+    def __init__(
+        self, questions_path: str, credentials_dict: dict, referee_instructions: str
+    ):
         with open(questions_path, "r") as f:
             self.questions: Dict[str, Any] = yaml.safe_load(f)["Categories"]
 
             self.refree = GPTAgent(
-                instruction="\n".join(
-                    [
-                        "You are a highly expert professor of Business Intelligence. Your goal is to verify students' answers to Business Intelligence questions.",
-                        "Always provide the output in the following form: {value} (without square brackets) where value is a 2 digit double in the range [0,1] and represents how much, to your expertise, the provided answer reflects the given grountruth. Just a plain an simple double value.",
-                        "You will receive prompts in the form:",
-                        "ANSWER:",
-                        "{ANSWER}",
-                        "-------",
-                        "GROUNDTRUTH:",
-                        "{GROUNDTRUTH}",
-                    ]
-                ),
+                instruction=referee_instructions,
                 api_key=credentials_dict["gpt"]["api-key"],
             )
 
@@ -219,7 +210,14 @@ class PerformanceEvaluator:
         f1 = mean([f1 for _, _, _, _, f1 in best_list])
         precision = mean([prec for _, _, prec, _, _ in best_list])
         recall = mean([rec for _, _, _, rec, _ in best_list])
-        return precision, recall, f1, ass_precision, ass_recall, ass_f1
+        return (
+            ass_precision,
+            ass_recall,
+            ass_f1,
+            precision,
+            recall,
+            f1,
+        )
 
     # -------------------
     # ROUGE-L for sets of strings
@@ -268,7 +266,7 @@ class PerformanceEvaluator:
         precision = mean([prec for _, _, prec, _, _ in best_list])
         recall = mean([rec for _, _, _, rec, _ in best_list])
 
-        return precision, recall, f1, ass_precision, ass_recall, ass_f1
+        return ass_precision, ass_recall, ass_f1, precision, recall, f1
 
     # -------------------
     # Key-Set dictionary accuracy

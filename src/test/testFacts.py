@@ -17,7 +17,21 @@ from typing import List, Dict
 import os
 import sys
 from pathlib import Path
+from rouge_score import rouge_scorer
 
+# l1 = [
+#     ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"],
+#     ["Date_Year", "Date_4Month_Period", "Date_Month_In_Year", "Date_Date"],
+# ]
+# truth = [
+#     ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"],
+#     ["Date_Year", "Date_4Month_Period", "Date_Month_In_Year", "Date_Date"],
+# ]
+
+# scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+
+# for i in range(len(l1)):
+#     print(f"""{scorer.score(" ".join(truth[i]), " ".join(l1[i]))}""")
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 

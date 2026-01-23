@@ -10,7 +10,7 @@ services:
     volumes:
       - ./resources/input/prompts/:/llm4bi/resources/input/prompts/
       - ./resources/questions/:/llm4bi/resources/questions
-    command: 
+    command:
       - /bin/bash
       - -c
       - |

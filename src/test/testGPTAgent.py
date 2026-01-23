@@ -74,12 +74,19 @@ QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
 LLM4BI_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 ONTOLOGY_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
-PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "prompt2.yaml"
-INCLUDED_QUESTIONS = ["T3"]
+PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
+PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
+REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
+
+referee_instructions = ""
+with open(REFREE_INSTRUCTIONS_PATH, "r", encoding="utf-8") as f:
+    referee_instructions = f.read()
+
+# INCLUDED_QUESTIONS = ["T3"]
 # Filtering questions
-# INCLUDED_QUESTIONS = utils.parse_list(
-#     "INCLUDED_QUESTIONS"
-# )  # ["S1", "O1", "O7", "O8"]  #
+INCLUDED_QUESTIONS = utils.parse_list(
+    "INCLUDED_QUESTIONS"
+)  # ["S1", "O1", "O7", "O8"]  #
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
@@ -103,7 +110,9 @@ agent = GPTAgent(
     api_key=CREDENTIALS["gpt"]["api-key"],
 )
 
-metric_evaluator = MetricEvaluator.PerformanceEvaluator(QUESTION_FILE, CREDENTIALS)
+metric_evaluator = MetricEvaluator.PerformanceEvaluator(
+    QUESTION_FILE, CREDENTIALS, referee_instructions
+)
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
@@ -124,14 +133,15 @@ for version in VERSIONS:
         ]
     )
 
+    test_id = uuid.uuid4()
     for i in range(ITERATIONS):
-        test_id = uuid.uuid4()
         for q_cat, q_dict in questions["Categories"].items():
             for q_id, q in q_dict.items():
                 question = q["Q"]
                 format = q["Answer_Format"]
                 truth = q["GT"]["Truth"]
                 answer_cat = q["GT"]["Format"]
+                motivation = q["GT"]["Motivation"]
                 question_prompt = "\n".join(
                     [
                         initial_prompt,
@@ -154,63 +164,94 @@ for version in VERSIONS:
                 answer = agent.query(question_prompt)
                 end_time = int(time.time())
                 prompts = prompt["versions"][0]
+                MAX_RETRIES = 3
+                attempt = 0
+                success = False
 
-                answer = answer.replace("LLM4BI_Indyco:", "")
-                answer = answer.replace(
-                    "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#", ""
-                )
+                while not success and attempt < MAX_RETRIES:
+                    try:
+                        attempt += 1
 
-                answer_yaml = yaml.safe_load(answer)
-                if answer_cat == "Open_Ended":
-                    answer = answer_yaml["Full"]
-                else:
-                    answer = answer_yaml["Structured"]
+                        answer = answer.replace("LLM4BI_Indyco:", "")
+                        answer = answer.replace(
+                            "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#",
+                            "",
+                        )
 
-                metric = metric_evaluator.evaluate_query_performance(
-                    q_id, q_cat, answer
-                )
+                        answer_yaml = yaml.safe_load(answer)
 
-                precision = metric["precision"]
-                recall = metric["recall"]
-                fmeasure = metric["fmeasure"]
-                avg_precision = metric["avg_precision"]
-                avg_recall = metric["avg_recall"]
-                avg_fmeasure = metric["avg_fmeasure"]
-                accuracy_binary = metric["accuracy_binary"]
-                referee_eval = metric["referee_eval"]
+                        if answer_cat == "Open_Ended":
+                            cleansed_answer = answer_yaml["Full"]
+                        else:
+                            cleansed_answer = answer_yaml["Structured"]
 
-                statistics = pd.concat(
-                    [
-                        statistics,
-                        pd.DataFrame(
-                            {
-                                "test_id": [str(test_id)],
-                                "model": [agent.model],
-                                "category": [q_cat],
-                                "question": [q["Q"]],
-                                "answer": [json.dumps(answer)],
-                                "iteration": [i],
-                                "start_time": [start_time],
-                                "end_time": [end_time],
-                                "duration": [(end_time - start_time) * 1000],
-                                "prompt": [
-                                    "|".join(prompt["versions"][version].values())
-                                ],
-                                "query_id": [q_id],
-                                "version": [version],
-                                "precision": [precision],
-                                "recall": [recall],
-                                "fmeasure": [fmeasure],
-                                "avg_precision": [avg_precision],
-                                "avg_recall": [avg_recall],
-                                "avg_fmeasure": [avg_fmeasure],
-                                "referee_eval": [referee_eval],
-                                "accuracy_binary": [accuracy_binary],
-                            }
-                        ),
-                    ],
-                    ignore_index=True,
-                )
-                agent.reset()
+                        metric = metric_evaluator.evaluate_query_performance(
+                            q_id, q_cat, cleansed_answer
+                        )
+
+                        precision = metric["precision"]
+                        recall = metric["recall"]
+                        fmeasure = metric["fmeasure"]
+                        avg_precision = metric["avg_precision"]
+                        avg_recall = metric["avg_recall"]
+                        avg_fmeasure = metric["avg_fmeasure"]
+                        accuracy_binary = metric["accuracy_binary"]
+                        referee_eval = metric["referee_eval"]
+
+                        statistics = pd.concat(
+                            [
+                                statistics,
+                                pd.DataFrame(
+                                    {
+                                        "test_id": [str(test_id)],
+                                        "model": [agent.model],
+                                        "category": [q_cat],
+                                        "question": [q["Q"]],
+                                        "answer": [json.dumps(cleansed_answer)],
+                                        "iteration": [i],
+                                        "start_time": [start_time],
+                                        "end_time": [end_time],
+                                        "duration": [(end_time - start_time) * 1000],
+                                        "prompt": [
+                                            "|".join(
+                                                prompt["versions"][version].values()
+                                            )
+                                        ],
+                                        "query_id": [q_id],
+                                        "version": [version],
+                                        "precision": [precision],
+                                        "recall": [recall],
+                                        "fmeasure": [fmeasure],
+                                        "avg_precision": [avg_precision],
+                                        "avg_recall": [avg_recall],
+                                        "avg_fmeasure": [avg_fmeasure],
+                                        "referee_eval": [referee_eval],
+                                        "accuracy_binary": [accuracy_binary],
+                                        "truth": [str(truth)],
+                                        "prompt_version": [version],
+                                        "full_answer": [answer],
+                                        "motivation": [str(answer_yaml["MOT"])],
+                                    }
+                                ),
+                            ],
+                            ignore_index=True,
+                        )
+
+                        success = True
+                        agent.reset()
+
+                    except Exception as e:
+                        logger.exception(
+                            f"Attempt {attempt}/{MAX_RETRIES} failed for query {q_id}"
+                        )
+                        logger.exception(f"Answer (raw): {answer}")
+                        logger.exception(e)
+                        logger.exception(e.__doc__)
+                        agent.reset()
+
+                if not success:
+                    logger.error(
+                        f"Query {q_id} failed after {MAX_RETRIES} attempts. Skipping."
+                    )
         logger.info(f"Iteration {i} completed, uplaoding results to database.")
         statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
