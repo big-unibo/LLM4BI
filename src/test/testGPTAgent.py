@@ -64,9 +64,16 @@ from main import MetricEvaluator
 
 logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
+
 # Retrieving env variables
 ITERATIONS = int(os.getenv("ITERATIONS", 2))
-VERSIONS = [int(v) for v in os.getenv("VERSIONS", "1").split(",")]
+VERSIONS = [int(v) for v in os.getenv("VERSIONS", "0,1").split(",")]
+INCLUDED_QUESTIONS = utils.parse_list(
+    "INCLUDED_QUESTIONS"
+)  # ["S1", "O1", "O7", "O8"]  #
+EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
+
+
 BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
 
 # File paths
@@ -84,10 +91,7 @@ with open(REFREE_INSTRUCTIONS_PATH, "r", encoding="utf-8") as f:
 
 # INCLUDED_QUESTIONS = ["T3"]
 # Filtering questions
-INCLUDED_QUESTIONS = utils.parse_list(
-    "INCLUDED_QUESTIONS"
-)  # ["S1", "O1", "O7", "O8"]  #
-EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
+
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
 questions = utils.load_yml(QUESTION_FILE)
@@ -141,7 +145,7 @@ for version in VERSIONS:
                 format = q["Answer_Format"]
                 truth = q["GT"]["Truth"]
                 answer_cat = q["GT"]["Format"]
-                motivation = q["GT"]["Motivation"]
+                # motivation = q["GT"]["Motivation"]
                 question_prompt = "\n".join(
                     [
                         initial_prompt,
@@ -177,6 +181,7 @@ for version in VERSIONS:
                             "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#",
                             "",
                         )
+                        answer = answer.replace(":", "")
 
                         answer_yaml = yaml.safe_load(answer)
 
@@ -230,7 +235,7 @@ for version in VERSIONS:
                                         "truth": [str(truth)],
                                         "prompt_version": [version],
                                         "full_answer": [answer],
-                                        "motivation": [str(answer_yaml["MOT"])],
+                                        "motivation": [str(answer_yaml["Motivation"])],
                                     }
                                 ),
                             ],
