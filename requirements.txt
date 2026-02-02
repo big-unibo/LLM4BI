@@ -1,7 +1,7 @@
 requests==2.32.3
 pandas==2.2.3
 SQLAlchemy==2.0.36
-matplotlib==3.9.2
+matplotlib==3.10.8
 ipykernel==5.2.1
 scikit-learn==1.5.2
 PyMySQL==0.9.3
