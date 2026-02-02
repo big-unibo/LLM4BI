@@ -67,7 +67,7 @@ logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
 
 # Retrieving env variables
-ITERATIONS = int(os.getenv("ITERATIONS", 2))
+ITERATIONS = int(os.getenv("ITERATIONS", 10))
 VERSIONS = [int(v) for v in os.getenv("VERSIONS", "0,1").split(",")]
 INCLUDED_QUESTIONS = utils.parse_list(
     "INCLUDED_QUESTIONS"
@@ -119,6 +119,8 @@ metric_evaluator = MetricEvaluator.PerformanceEvaluator(
     QUESTION_FILE, CREDENTIALS, referee_instructions
 )
 
+test_id = uuid.uuid4()  # EG: ho spostato su
+
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
 for version in VERSIONS:
@@ -138,8 +140,7 @@ for version in VERSIONS:
         ]
     )
 
-    test_id = uuid.uuid4()
-    for i in range(ITERATIONS):
+    for i in range(1, ITERATIONS + 1):
         for q_cat, q_dict in questions["Categories"].items():
             for q_id, q in q_dict.items():
                 question = q["Q"]
@@ -162,7 +163,7 @@ for version in VERSIONS:
                 ).strip()
 
                 logger.info(
-                    f"Version {version} - Iteration {i} - Category: {q_cat} - Question ID: {q_id}"
+                    f"Version {version} - Iteration {i}/{ITERATIONS} - Category: {q_cat} - Question ID: {q_id}"
                 )
 
                 start_time = int(time.time())
