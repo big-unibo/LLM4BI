@@ -25,9 +25,10 @@ class PerformanceEvaluator:
     ) -> dict[str, Union[float, None]]:
         truth = self.questions[category][query_id]["GT"]["Truth"]
         gt_format = self.questions[category][query_id]["GT"]["Format"]
+        q = self.questions[category][query_id]["Q"]
 
         # Ottieni il risultato dalla funzione corrispondente al formato del groundtruth
-        result = self.__get_grountruth_metric(gt_format)(truth, answer)
+        result = self.__get_grountruth_metric(gt_format)(truth, answer, q)
 
         # Default dict con None
         metrics: dict[str, Union[float, None]] = {
@@ -288,9 +289,13 @@ class PerformanceEvaluator:
         values = [
             self.__accuracy(gt_vals, obs_vals)[2] for gt_vals, obs_vals in assignments
         ]
-        ceaf_precision = sum(values) / len(observed)
-        ceaf_recall = sum(values) / len(groundtruth)
-        ceaf_f1 = (2 * ceaf_precision * ceaf_recall) / ceaf_precision + ceaf_recall
+        ceaf_precision = sum(values) / len(observed) if len(observed) > 0 else 0
+        ceaf_recall = sum(values) / len(groundtruth) if len(groundtruth) > 0 else 0
+        ceaf_f1 = (
+            (2 * ceaf_precision * ceaf_recall) / (ceaf_precision + ceaf_recall)
+            if (ceaf_precision + ceaf_recall) > 0
+            else 0
+        )
         return ceaf_precision, ceaf_recall, ceaf_f1
 
         # return ceaf(observed, groundtruth)
@@ -314,9 +319,20 @@ class PerformanceEvaluator:
         # Objective comparison of normalized strings
         return int(observed_str == groundtruth_str)
 
-    def __gptEval(self, groundtruth: str, observed: str):
+    def __gptEval(self, groundtruth: str, observed: str, question: str):
         return self.refree.query(
-            "\n".join(["ANSWER:", observed, "-------", "GROUNTRUTH:", groundtruth])
+            "\n".join(
+                [
+                    "QUESTION:",
+                    question,
+                    "-------",
+                    "ANSWER:",
+                    observed,
+                    "-------",
+                    "GROUNTRUTH:",
+                    groundtruth,
+                ]
+            )
         )
 
     # -------------------
