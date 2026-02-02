@@ -24,4 +24,4 @@ openai
 dspy
 networkx
 rouge-score
-coval
+metric4coref
