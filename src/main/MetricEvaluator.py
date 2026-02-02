@@ -95,7 +95,7 @@ class PerformanceEvaluator:
     # Basic set accuracy
     # -------------------
     def __accuracy(
-        self, groundtruth_list: List[Any], observed_list: List[Any]
+        self, groundtruth_list: List[Any], observed_list: List[Any], q: str
     ) -> Tuple[float, float, float]:
         gt = set(groundtruth_list)
         obs = set(observed_list)
@@ -192,6 +192,7 @@ class PerformanceEvaluator:
         self,
         groundtruth_set: List[set],
         observed_set: List[set],
+        q: str,
         threshold: float = 0.5,
     ) -> Tuple[List[Tuple[set, set, float]], Tuple[float, float]]:
         # list_of_accuracies = sorted(
@@ -232,6 +233,7 @@ class PerformanceEvaluator:
         self,
         groundtruth_set: List[List[str]],
         observed_set: List[List[str]],
+        q: str,
         threshold: float = 0.5,
     ) -> Tuple[float, float, float, float, float, float]:
 
@@ -278,7 +280,7 @@ class PerformanceEvaluator:
     # Key-Set dictionary accuracy
     # -------------------
     def __key_sect_dict(
-        self, groundtruth: Dict[Any, List[Any]], observed: Dict[Any, List[Any]]
+        self, groundtruth: Dict[Any, List[Any]], observed: Dict[Any, List[Any]], q: str
     ) -> Tuple[Tuple[float, float, float], Tuple[float, float, float]]:
         assignments = [
             [gt, obs]
@@ -287,7 +289,8 @@ class PerformanceEvaluator:
             if gt_idx == obs_idx
         ]
         values = [
-            self.__accuracy(gt_vals, obs_vals)[2] for gt_vals, obs_vals in assignments
+            self.__accuracy(gt_vals, obs_vals, q)[2]
+            for gt_vals, obs_vals in assignments
         ]
         ceaf_precision = sum(values) / len(observed) if len(observed) > 0 else 0
         ceaf_recall = sum(values) / len(groundtruth) if len(groundtruth) > 0 else 0
@@ -303,7 +306,9 @@ class PerformanceEvaluator:
     # -------------------
     # Binary evaluation
     # -------------------
-    def __structured_function_eval(self, groundtruth: str, observed: any) -> int:
+    def __structured_function_eval(
+        self, groundtruth: str, observed: any, q: str
+    ) -> int:
         """
         Evaluates the prediction against the ground truth.
         Handles YAML 1.1 implicit boolean conversion (e.g., 'Yes' becoming True).
