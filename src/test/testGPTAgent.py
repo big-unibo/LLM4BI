@@ -8,6 +8,7 @@ import uuid
 import time
 import json
 import yaml
+import re
 
 
 def filter_questions(questions, included, excluded):
@@ -181,7 +182,9 @@ for version in VERSIONS:
                             "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#",
                             "",
                         )
-                        answer = answer.replace(":", "")
+                        pattern = r"(?<!Full)(?<!Structured)(?<!Motivation):"
+
+                        # answer = re.sub(pattern, "", answer)
 
                         answer_yaml = yaml.safe_load(answer)
 

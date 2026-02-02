@@ -266,7 +266,7 @@ Categories:
             - ["Order_Net_Value", "Invoice_Amount_After_Discount", "Shop_Ticket_Net_Value", "Historical_Order_Net_Value"]
             - ["Order_Discount_Value", "Invoice_First_Commercial_Discount", "Invoice_Second_Commercial_Discount", "Shop_Ticket_Discount_Value", "Historical_Order_Price_Reduction"]
             - ["Order_Quantity", "Invoice_Quantity", "Shop_Ticket_Quantity", "Historical_Order_Quantity", "Warehouse_Movement_Quantity", "Warehouse_Stock_Quantity_in_stock", "Third_Party_Warehouse_Stock_Quantity_in_stock"]
-            -  ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
+            - ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
       Answer_Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
 
     T2:

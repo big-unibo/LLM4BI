@@ -16,6 +16,8 @@ versions:
           Full: <FULL_ANS>
           Structured: <STR_ANS>
           Motivation: <MOT>
+
+          Please, restrain from using any additional ":" (colon) in the answer besides those needed to respect the YAML syntax.
   1:
     incipit: The following is an ontology in Turtle format representing the Dimensional Fact Model, through which we describe the conceptual schema of a set of OLAP cubes.
     after_llm4bi: Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
@@ -34,6 +36,7 @@ versions:
           Structured: <STR_ANS>
           Motivation: <MOT>
 
+          Please, restrain from using any additional ":" (colon) in the answer besides those needed to respect the YAML syntax.
           Below you can find a few examples of user questions with their answers.
 
           1) Let the user ask the following question: "In which facts can I find information about merchandise types?" 

@@ -1,10 +1,10 @@
-from sklearn.metrics import precision_score, recall_score, f1_score
 from rouge_score import rouge_scorer
 from typing import Callable, Any, List, Tuple, Dict, Union
 from itertools import product
 import yaml
 from statistics import mean
 from main.agents.GPTAgent import GPTAgent
+from metric4coref import ceaf
 
 
 class PerformanceEvaluator:
@@ -15,10 +15,10 @@ class PerformanceEvaluator:
         with open(questions_path, "r") as f:
             self.questions: Dict[str, Any] = yaml.safe_load(f)["Categories"]
 
-            self.refree = GPTAgent(
-                instruction=referee_instructions,
-                api_key=credentials_dict["gpt"]["api-key"],
-            )
+        self.refree = GPTAgent(
+            instruction=referee_instructions,
+            api_key=credentials_dict["gpt"]["api-key"],
+        )
 
     def evaluate_query_performance(
         self, query_id: str, category: str, answer: Any
@@ -188,36 +188,40 @@ class PerformanceEvaluator:
     # Set of sets accuracy
     # -------------------
     def __set_of_sets(
-        self, grountruth_set: List[set], observed_set: List[set], threshold: float = 0.5
+        self,
+        groundtruth_set: List[set],
+        observed_set: List[set],
+        threshold: float = 0.5,
     ) -> Tuple[List[Tuple[set, set, float]], Tuple[float, float]]:
-        list_of_accuracies = sorted(
-            [
-                (truth, obs, *self.__accuracy(truth, obs))
-                for truth, obs in product(grountruth_set, observed_set)
-            ],
-            key=lambda x: x[2],
-            reverse=True,
-        )
-        best_list = self.__assign(list_of_accuracies, threshold)
-        ass_precision, ass_recall = self.__compute_precision_recall(
-            best_list, grountruth_set, observed_set
-        )
-        ass_f1 = (
-            (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
-            if (ass_precision + ass_recall) > 0
-            else 0.0
-        )
-        f1 = mean([f1 for _, _, _, _, f1 in best_list])
-        precision = mean([prec for _, _, prec, _, _ in best_list])
-        recall = mean([rec for _, _, _, rec, _ in best_list])
-        return (
-            ass_precision,
-            ass_recall,
-            ass_f1,
-            precision,
-            recall,
-            f1,
-        )
+        # list_of_accuracies = sorted(
+        #     [
+        #         (truth, obs, *self.__accuracy(truth, obs))
+        #         for truth, obs in product(grountruth_set, observed_set)
+        #     ],
+        #     key=lambda x: x[2],
+        #     reverse=True,
+        # )
+        # best_list = self.__assign(list_of_accuracies, threshold)
+        # ass_precision, ass_recall = self.__compute_precision_recall(
+        #     best_list, grountruth_set, observed_set
+        # )
+        # ass_f1 = (
+        #     (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
+        #     if (ass_precision + ass_recall) > 0
+        #     else 0.0
+        # )
+        # f1 = mean([f1 for _, _, _, _, f1 in best_list])
+        # precision = mean([prec for _, _, prec, _, _ in best_list])
+        # recall = mean([rec for _, _, _, rec, _ in best_list])
+        # return (
+        #     ass_precision,
+        #     ass_recall,
+        #     ass_f1,
+        #     precision,
+        #     recall,
+        #     f1,
+        # )
+        return ceaf(observed_set, groundtruth_set)
 
     # -------------------
     # ROUGE-L for sets of strings
@@ -230,43 +234,44 @@ class PerformanceEvaluator:
         threshold: float = 0.5,
     ) -> Tuple[float, float, float, float, float, float]:
 
-        scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+        # scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
 
-        def to_str(x):
-            if isinstance(x, list):
-                return " ".join(x)
-            return x
+        # def to_str(x):
+        #     if isinstance(x, list):
+        #         return " ".join(x)
+        #     return x
 
-        list_of_accuracies = sorted(
-            [
-                (
-                    truth,
-                    obs,
-                    scorer.score(to_str(truth), to_str(obs))["rougeL"].precision,
-                    scorer.score(to_str(truth), to_str(obs))["rougeL"].recall,
-                    scorer.score(to_str(truth), to_str(obs))["rougeL"].fmeasure,
-                )
-                for truth, obs in product(groundtruth_set, observed_set)
-            ],
-            key=lambda x: x[4],
-            reverse=True,
-        )
+        # list_of_accuracies = sorted(
+        #     [
+        #         (
+        #             truth,
+        #             obs,
+        #             scorer.score(to_str(truth), to_str(obs))["rougeL"].precision,
+        #             scorer.score(to_str(truth), to_str(obs))["rougeL"].recall,
+        #             scorer.score(to_str(truth), to_str(obs))["rougeL"].fmeasure,
+        #         )
+        #         for truth, obs in product(groundtruth_set, observed_set)
+        #     ],
+        #     key=lambda x: x[4],
+        #     reverse=True,
+        # )
 
-        best_list = self.__assign(list_of_accuracies, threshold)
-        ass_precision, ass_recall = self.__compute_precision_recall(
-            best_list, groundtruth_set, observed_set
-        )
-        ass_f1 = (
-            (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
-            if (ass_precision + ass_recall) > 0
-            else 0.0
-        )
+        # best_list = self.__assign(list_of_accuracies, threshold)
+        # ass_precision, ass_recall = self.__compute_precision_recall(
+        #     best_list, groundtruth_set, observed_set
+        # )
+        # ass_f1 = (
+        #     (2 * ass_precision * ass_recall / (ass_precision + ass_recall))
+        #     if (ass_precision + ass_recall) > 0
+        #     else 0.0
+        # )
 
-        f1 = mean([f1 for _, _, _, _, f1 in best_list])
-        precision = mean([prec for _, _, prec, _, _ in best_list])
-        recall = mean([rec for _, _, _, rec, _ in best_list])
+        # f1 = mean([f1 for _, _, _, _, f1 in best_list])
+        # precision = mean([prec for _, _, prec, _, _ in best_list])
+        # recall = mean([rec for _, _, _, rec, _ in best_list])
 
-        return ass_precision, ass_recall, ass_f1, precision, recall, f1
+        # return ass_precision, ass_recall, ass_f1, precision, recall, f1
+        return ceaf(observed_set, groundtruth_set)
 
     # -------------------
     # Key-Set dictionary accuracy
@@ -274,21 +279,40 @@ class PerformanceEvaluator:
     def __key_sect_dict(
         self, groundtruth: Dict[Any, List[Any]], observed: Dict[Any, List[Any]]
     ) -> Tuple[Tuple[float, float, float], Tuple[float, float, float]]:
-        key_precision, key_recall, key_f1 = self.__accuracy(
-            groundtruth.keys(), observed.keys()
-        )
-        values = [
-            self.__accuracy(gt_vals, obs_vals)
-            for gt_vals, obs_vals in zip(groundtruth.values(), observed.values())
+        assignments = [
+            [gt, obs]
+            for gt_idx, gt in groundtruth.items()
+            for obs_idx, obs in observed.items()
+            if gt_idx == obs_idx
         ]
-        avg_precision, avg_recall, avg_f1 = self.__avg_metrics(values)
-        return (key_precision, key_recall, key_f1), (avg_precision, avg_recall, avg_f1)
+        values = [
+            self.__accuracy(gt_vals, obs_vals)[2] for gt_vals, obs_vals in assignments
+        ]
+        ceaf_precision = sum(values) / len(observed)
+        ceaf_recall = sum(values) / len(groundtruth)
+        ceaf_f1 = (2 * ceaf_precision * ceaf_recall) / ceaf_precision + ceaf_recall
+        return ceaf_precision, ceaf_recall, ceaf_f1
+
+        # return ceaf(observed, groundtruth)
 
     # -------------------
     # Binary evaluation
     # -------------------
-    def __structured_function_eval(self, groundtruth: str, observed: str) -> int:
-        return int(observed.lower() == groundtruth.lower())
+    def __structured_function_eval(self, groundtruth: str, observed: any) -> int:
+        """
+        Evaluates the prediction against the ground truth.
+        Handles YAML 1.1 implicit boolean conversion (e.g., 'Yes' becoming True).
+        """
+        # Map Python booleas back to standard string representations if necessary
+        if isinstance(observed, bool):
+            observed = "yes" if observed else "no"
+
+        # Cast to string to handle potential numeric types and ensure consistency
+        observed_str = str(observed).strip().lower()
+        groundtruth_str = str(groundtruth).strip().lower()
+
+        # Objective comparison of normalized strings
+        return int(observed_str == groundtruth_str)
 
     def __gptEval(self, groundtruth: str, observed: str):
         return self.refree.query(
