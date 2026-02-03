@@ -221,4 +221,5 @@ for version in VERSIONS:
                         f"Query {q_id} failed after {MAX_RETRIES} attempts. Skipping."
                     )
         logger.info(f"Iteration {i} completed, uplaoding results to database.")
-        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        #        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        statistics = statistics.iloc[0:0]
