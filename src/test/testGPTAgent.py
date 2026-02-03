@@ -10,53 +10,6 @@ import json
 import yaml
 import re
 
-
-def filter_questions(questions, included, excluded):
-    # Convert empty strings to None
-    included = (
-        None
-        if (included is None or included == [""] or included == [])
-        else [q for q in included if q]
-    )
-    excluded = (
-        None
-        if (excluded is None or excluded == [""] or excluded == [])
-        else [q for q in excluded if q]
-    )
-
-    # Both lists cannot be defined at the same time
-    if included is not None and excluded is not None:
-        raise ValueError("Cannot set both INCLUDED_QUESTIONS and EXCLUDED_QUESTIONS.")
-
-    filtered = {"Categories": {}}
-
-    for category, qset in questions["Categories"].items():
-        new_qset = {}
-
-        for q_id, text in qset.items():
-
-            # Case 1: both None → select all
-            if included is None and excluded is None:
-                new_qset[q_id] = text
-                continue
-
-            # Case 2: only included defined → keep only included
-            if included is not None:
-                if q_id in included:
-                    new_qset[q_id] = text
-                continue
-
-            # Case 3: only excluded defined → exclude listed items
-            if excluded is not None:
-                if q_id not in excluded:
-                    new_qset[q_id] = text
-                continue
-
-        filtered["Categories"][category] = new_qset
-
-    return filtered
-
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
@@ -65,38 +18,43 @@ from main import MetricEvaluator
 
 logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
 
-
-# Retrieving env variables
-ITERATIONS = int(os.getenv("ITERATIONS", 10))
-VERSIONS = [int(v) for v in os.getenv("VERSIONS", "0,1").split(",")]
-INCLUDED_QUESTIONS = utils.parse_list(
-    "INCLUDED_QUESTIONS"
-)  # ["S1", "O1", "O7", "O8"]  #
-EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")
-
-
 BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
 
-# File paths
+# Input file paths
 QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
 LLM4BI_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 ONTOLOGY_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
+
+####################################################
+##               PARAMETERS                       ##
+####################################################
 PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
+ITERATIONS = int(os.getenv("ITERATIONS", 10))
+VERSIONS = [
+    int(v) for v in os.getenv("VERSIONS", "0,1").split(",")
+]  ## Should be a list [0,1]
+
+
+INCLUDED_QUESTIONS = utils.parse_list(
+    "INCLUDED_QUESTIONS"
+)  # ["S1", "O1", "O7", "O8"]  #
+EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
+
+####################################################
+####################################################
 
 referee_instructions = ""
 with open(REFREE_INSTRUCTIONS_PATH, "r", encoding="utf-8") as f:
     referee_instructions = f.read()
 
-# INCLUDED_QUESTIONS = ["T3"]
-# Filtering questions
 
 logger.info(f"Including questions: {INCLUDED_QUESTIONS}")
 logger.info(f"Excluding questions: {EXCLUDED_QUESTIONS}")
 questions = utils.load_yml(QUESTION_FILE)
-questions = filter_questions(questions, INCLUDED_QUESTIONS, EXCLUDED_QUESTIONS)
+questions = utils.filter_questions(questions, INCLUDED_QUESTIONS, EXCLUDED_QUESTIONS)
 
 # Statistics setup - Database connection
 POSTGRESQL_ENDPOINT = "137.204.70.156:45532"
@@ -107,9 +65,9 @@ SQL_ENGINE = create_engine(
 STATISTICS_COLUMNS = "test_id,model,category,question,answer,iteration,start_time,end_time,duration,prompt"
 statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
 
+
+### Creating evalaution agents ###
 prompt = utils.load_yml(PROMPT_FILE)
-
-
 agent = GPTAgent(
     instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
     api_key=CREDENTIALS["gpt"]["api-key"],

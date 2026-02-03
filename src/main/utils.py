@@ -11,6 +11,52 @@ import yaml
 from rdflib import Graph
 
 
+def filter_questions(questions, included, excluded):
+    # Convert empty strings to None
+    included = (
+        None
+        if (included is None or included == [""] or included == [])
+        else [q for q in included if q]
+    )
+    excluded = (
+        None
+        if (excluded is None or excluded == [""] or excluded == [])
+        else [q for q in excluded if q]
+    )
+
+    # Both lists cannot be defined at the same time
+    if included is not None and excluded is not None:
+        raise ValueError("Cannot set both INCLUDED_QUESTIONS and EXCLUDED_QUESTIONS.")
+
+    filtered = {"Categories": {}}
+
+    for category, qset in questions["Categories"].items():
+        new_qset = {}
+
+        for q_id, text in qset.items():
+
+            # Case 1: both None → select all
+            if included is None and excluded is None:
+                new_qset[q_id] = text
+                continue
+
+            # Case 2: only included defined → keep only included
+            if included is not None:
+                if q_id in included:
+                    new_qset[q_id] = text
+                continue
+
+            # Case 3: only excluded defined → exclude listed items
+            if excluded is not None:
+                if q_id not in excluded:
+                    new_qset[q_id] = text
+                continue
+
+        filtered["Categories"][category] = new_qset
+
+    return filtered
+
+
 def closest_to_node_to_root_tree(
     graph, nodes_to_check, target_node, nodes, dependency_ns
 ):
