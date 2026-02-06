@@ -54,10 +54,10 @@ versions:
           Structured: "Yes"
           Motivation: "Quantity in stock is a measure of the Warehouse Stock fact, which has an SKU (aka product) dimension, a Warehouse dimension, and a Date dimension. The SKU hierarchy includes level Category; the Warehouse hierarchy includes level City; and the Date hierarchy includes level Year. 2020 is a member of Year."
 
-          4) Let the user ask the following question: "If I'm aggregating data by client, which roll-up paths are available?" 
+          4) Let the user ask the following question: "If I'm aggregating data by product, which roll-up paths are available?" 
           Your answer should be like this:
-          Full: "There is only one roll-up path from Customer (a synonym of client), which consists of the following list of attributes: City, County, State, Country, and Area."
-          Structured: - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+          Full: "There are multiple roll-up paths from SKU (a synonym of product), which allow to group data by Size, Macro Color, Category, Customer Type, Brand Group, Customer Gender, and Made In."
+          Structured: ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Size"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Made In"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Color", "LLM4BI_Indyco:SKU_Macro Color"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Subtype", "LLM4BI_Indyco:SKU_Type", "LLM4BI_Indyco:SKU_Category"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Subtype", "LLM4BI_Indyco:SKU_Customer Type"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Customer Gender"] - ["LLM4BI_Indyco:SKU_SKU", "LLM4BI_Indyco:SKU_Brand", "LLM4BI_Indyco:SKU_Brand Group"] 
           Motivation: "Each path is shown as an ordered list of attributes connected by roll-up arcs, starting from the finest level up to the coarsest one."
 
           5) Let the user ask the following question: "Can I do a drill-across between invoices and orders?" 
@@ -70,10 +70,32 @@ versions:
           Your answer should be like this:
           Full: "The Warehouse Movement cube represents the quantities moved of each SKU in each warehouse at daily detail. Dimensions include date in, date out, SKU, warehouse, merchandise type, and movement cause. Among the possible aggregations, those by product type and brand, warehouse country and area, and movement year."
           Structured: "The Warehouse Movement cube represents the quantities moved of each SKU in each warehouse at daily detail. Dimensions include date in, date out, SKU, warehouse, merchandise type, and movement cause. Among the possible aggregations, those by product type and brand, warehouse country and area, and movement year."
-          Motivation: "Derived from the fact definition of LLM4BI_Indyco:Warehouse_Movement and from its RollUpArc links showing related measures (Quantity) and dimensions (Warehouse, SKU, Date In, Date Out, Cause, Merchandise Type)."
+          Motivation: "Derived from the fact definition of Warehouse_Movement and from its RollUpArc links showing related measures (Quantity) and dimensions (Warehouse, SKU, Date In, Date Out, Cause, Merchandise Type)."
 
           7) Let the user ask the following question: "Which relationship holds between warehouse cities and warehouse areas?" 
           Your answer should be like this:
           Full: "It is a many-to-one relationship, i.e., one city belongs to exactly one area while one area includes several cities."
-          Structured: "Many-to-one relationship, because there is a roll-up path between them"
+          Structured: "Many-To-One"
           Motivation: "In the Warehouse hierarchy of the Warehouse Movement fact, there is a roll-up path from city to area."
+
+          8) Let the user ask the following questions: "Which relationship holds between color and size of an SKU?" 
+          Your answer should be like this:
+          Full: "It is a many-to-many relationship, i.e., one color may correspond to multiple sizes, and vice versa."
+          Structured: "Many-To-Many"
+          Motivation: "In the SKU hierarchy, color and size belong to separate branches, so there is no roll-up path between them."
+
+          9) Let the user ask the following questions: "Can I compute the average quantity in stock by customer and warehouse city during 2020?" 
+          Your answer should be like this:
+          Full: "No, because the Warehouse Stock fact, where quantity is a measure, City is a level of the Warehouse dimension, and 2020 is a member of the Year level of the Date hierarchy, has no customer dimension."
+          Structured: "No"
+          Motivation: "Quantity in stock is a measure of the Warehouse Stock fact, which includes a Warehouse dimension and a Date dimension. The Warehouse hierarchy includes level City, and the Date hierarchy includes level Year. 2020 is a member of Year. However, no customer dimension is present, so there is no way to group data by customer."
+
+          10) Let the user ask the following questions: "Which facts can be analyzed by warehouse city, product type, and date together?" Your answer should be like this:
+          Full: "The Warehouse Stock and Warehouse Movement facts can be analyzed by warehouse city, product type, and date together."
+          Structured: ["LLM4BI_Indyco:Warehouse_Stock", "LLM4BI_Indyco:Warehouse_Movement"]
+          Motivation: "Both Warehouse Stock and Warehouse Movement include dimensions Date, Warehouse, and SKU (a synonym of product). The Warehouse hierarchy includes level City, and the SKU hierarchy includes level Type. Thus, both facts include the levels required and can be jointly analyzed."
+
+          11) Let the user ask the following questions: "If I'm aggregating data by type, which drill-down paths are available?" Your answer should be like this:
+          Full: "There is only one drill-down path from type, which consists of the following list of attributes: Subtype, SKU."
+          Structured: - ["LLM4BI_Indyco:SKU_Type", "LLM4BI_Indyco:SKU_Subtype", "LLM4BI_Indyco:SKU_SKU"]
+          Motivation: "Each path is shown as an ordered list of attributes connected by roll-up arcs, starting from the coarsest level up to the finest one."

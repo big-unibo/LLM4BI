@@ -1,178 +1,188 @@
 Categories:
   Search:
-    S1:
+    S_01:
       Q: "In which facts can I find information about customers?"
       GT:
         Format: Set
         Truth: ["Invoice", "Order"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S1D:
+    S_01_D:
       Q: "In which facts can I find information about clients?"
       GT:
         Format: Set
         Truth: ["Invoice", "Order"] 
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S2:
+    S_02:
       Q: "Which facts can be analyzed by SKU and store together?"
       GT:
         Format: Set
         Truth: ["Shop_Ticket"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S2D:
+    S_02_D:
       Q: "Which facts can be analyzed by article and shop together?"
       GT:
         Format: Set
         Truth: ["Shop_Ticket"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S3:
+    S_03:
       Q: "Find the facts that can be analyzed from the point of view of countries."
       GT:
         Format: Set
         Truth: ["Historical_Order","Invoice", "Order", "Shop_Ticket", "Warehouse_Movement", "Warehouse_Stock", "Third_Party_Warehouse_Stock", "Traffic_Counter"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S3D:
+    S_03_D:
       Q: "Find the facts that can be analyzed from the point of view of nations."
       GT:
         Format: Set
         Truth: ["Historical_Order","Invoice", "Order", "Shop_Ticket", "Warehouse_Movement", "Warehouse_Stock", "Third_Party_Warehouse_Stock", "Traffic_Counter"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S4:
+    S_04:
       Q: "I would like to analyze the agents' performances, which facts should I look at?"
       GT:
         Format: Set
         Truth: ["Invoice","Order","Shop_Ticket"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
-    S4D:
+    S_04_D:
       Q: "I would like to analyze the performances of sales representatives, which facts should I look at?"
       GT:
         Format: Set
         Truth: ["Invoice","Order","Shop_Ticket"]
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
 
-    S5:
+    S_05:
       Q: "Which cubes and dimensions should I check to analyze sales of casual footwear ?"
       GT:
         Format: Key_Set_Dict
         Truth:
           {
-            "Shop_Ticket": ["SKU_SKU", "SKU_Subtype"],
-            "Order": ["SKU_SKU","SKU_Subtype"],
-            "Invoice":  ["SKU_SKU","SKU_Subtype"],
+            "Shop_Ticket": ["SKU_SKU"],
+            "Order": ["SKU_SKU"],
+            "Invoice":  ["SKU_SKU"],
             "Historical_Order": ["SKU_Subtype"],
           }
       Answer_Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
 
-    S5D:
+    S_05_D:
       Q: "Which cubes and dimensions should I check to analyze t-shirts sales?"
       GT:
         Format: Key_Set_Dict
         Truth:
           {
-            "Shop_Ticket": ["SKU_SKU", "SKU_Subtype"],
-            "Order": ["SKU_SKU","SKU_Subtype"],
-            "Invoice":  ["SKU_SKU","SKU_Subtype"],
+            "Shop_Ticket": ["SKU_SKU"],
+            "Order": ["SKU_SKU"],
+            "Invoice":  ["SKU_SKU"],
             "Historical_Order": ["SKU_Subtype"],
           }
       Answer_Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
 
   Olap:
-    O1:
+    O_01:
       Q: "Can I analyze invoices with reference to controllers?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O1D:
+    O_01_D:
       Q: "Can I analyze bills with reference to agent supervisors?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O2:
+    O_02:
       Q: "Can I find the total quantities of shop tickets by area manager and category?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O2D:
+    O_02_D:
       Q: "Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O3:
+    O_03:
       Q: "Can I aggregate quantities of shop tickets by area manager and category in 2025?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O3D:
+    O_03_D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications in 2025?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O4:
+    O_04:
       Q: "Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O4D:
+    O_04_D:
       Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O5:
+    O_05:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O5D:
+    O_05_D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O6:
+    O_06:
       Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O6D:
+    O_06_D:
       Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
-    O7:
-      Q: "If I'm aggregating data by SKU, which roll-up paths are available?"
+    O_07:
+      Q: "If I'm aggregating data by store, which roll-up paths are available?"
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["SKU_SKU", "SKU_Brand", "SKU_Brand_Group"]
-          - ["SKU_SKU", "Sku_Subtype", "SKU_Customer_Type"]
-          - ["SKU_SKU", "SKU_Subtype", "SKU_Type", "SKU_Category"]
-          - ["SKU_SKU", "SKU_Color", "SKU_Macro_Color"]
-          - ["SKU_SKU", "SKU_Size"]
-          - ["SKU_SKU", "SKU_Made_In"]
+          - ["Store_Store", "Store_Location_Type"]
+          - ["Store_Store", "Store_Sales_District"]
+          - ["Store_Store", "Store_IsConnected"]
+          - ["Store_Store", "City_City", "City_County", "City_State", "City_Country", "City_Area"]
       Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
-    O7D:
-      Q: "If I'm aggregating data by article, which roll-up paths are available?"
+    O_07_D:
+      Q: "If I'm aggregating data by shopping center, which roll-up paths are available?"
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["SKU_SKU", "SKU_Brand", "SKU_Brand_Group"]
-          - ["SKU_SKU", "Sku_Subtype", "SKU_Customer_Type"]
-          - ["SKU_SKU", "SKU_Subtype", "SKU_Type", "SKU_Category"]
-          - ["SKU_SKU", "SKU_Color", "SKU_Macro_Color"]
-          - ["SKU_SKU", "SKU_Size"]
-          - ["SKU_SKU", "SKU_Made_In"]
+          - ["Store_Store", "Store_Location_Type"]
+          - ["Store_Store", "Store_Sales_District"]
+          - ["Store_Store", "Store_IsConnected"]
+          - ["Store_Store", "City_City", "City_County", "City_State", "City_Country", "City_Area"]
       Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
-    O8:
+    O_08:
+      Q: "If I'm aggregating data by customer, which roll-up paths are available?"
+      GT:
+        Format: Set_Of_Lists
+        Truth:
+          - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+      Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
+    O_08_D:
+      Q: "If I'm aggregating data by customer, which roll-up paths are available?"
+      GT:
+        Format: Set_Of_Lists
+        Truth:
+          - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+      Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
+    O_09:
       Q: "If I'm aggregating data by year, which drill-down paths are available?"
       GT:
         Format: Set_Of_Lists
@@ -180,7 +190,7 @@ Categories:
           - ["Date_Year" ,"Date_4Month_Period","Date_Month_In_Year","Date_Date"]
           - ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"]
       Answer_Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
-    O8D:
+    O_09_D:
       Q: "If I'm aggregating data by 12-months periods, which drill-down paths are available?"
       GT:
         Format: Set_Of_Lists
@@ -188,13 +198,27 @@ Categories:
           - ["Date_Year" ,"Date_4Month_Period","Date_Month_In_Year","Date_Date"]
           - ["Date_Year", "Date_Semester", "Date_Quarter", "Date_Month_In_Year", "Date_Date"]
       Answer_Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
-    O9:
+    O_10:
+      Q: "If I'm aggregating data by macro color, which drill-down paths are available?"
+      GT:
+        Format: Set_Of_Lists
+        Truth:
+          - ["SKU_Macro_Color" ,"SKU_Color","SKU_SKU"]
+      Answer_Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
+    O_10_D:
+      Q: "If I'm aggregating data by groups of color, which drill-down paths are available?"
+      GT:
+        Format: Set_Of_Lists
+        Truth:
+          - ["SKU_Macro_Color" ,"SKU_Color","SKU_SKU"]
+      Answer_Format: "Provide the answer as a list of the drill-down paths; each path should be an ordered list of attributes (using the full URIs), starting from the coarsest level down to the finest one."
+    O_11:
       Q: "Can I do a drill-across between invoices and warehouse movements?"
       GT:
         Format: Binary
         Truth: "Yes"
       Answer_Format: "Provide the answer as 'Yes' or 'No', nothing more."
-    O9D:
+    O_11_D:
       Q: "Can I do a drill-across between bills and logistic hub transfers?"
       GT:
         Format: Binary
@@ -202,55 +226,55 @@ Categories:
       Answer_Format: "Provide the answer as 'Yes' or 'No', nothing more."
 
   Business_oriented:
-    B1:
+    B_01:
       Q: "How do these facts, together, represent the end-to-end business process?"
       GT:
         Format: Open_Ended
         Truth: "The set of facts together represents the full retail value chain, from customer demand and sales generation in stores (Shop_Ticket, Traffic_Counter), through order management  (Order,  Historical_Order) and invoicing (Invoice), to inventory control and logistics (Warehouse_Movement, Warehouse_Stock, Third_Party_Warehouse_Stock), enabling analysis of performance, efficiency, and customer behavior across the end-to-end business process."
       Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
-    B2:
+    B_02:
       Q: "Give me a business-oriented description of the order cube."
       GT:
         Format: Open_Ended
         Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
       Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
-    B2D:
+    B_02_D:
       Q: "Give me a business-oriented description of the purchases cube."
       GT:
         Format: Open_Ended
         Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
       Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
-    B3:
+    B_03:
       Q: "Which relationship holds between brands and categories?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" # relationship, because they are on different branches of the SKU hierarchy."
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
-    B3D:
+    B_03_D:
       Q: "Which relationship holds between product trademarks and product classifications?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" # relationship, because they are on different branches of the SKU hierarchy."
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
-    B4:
+    B_04:
       Q: "Which relationship holds between agents and controllers?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #-relationships, because there is a Multiple-Arc between them."
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
-    B4D:
+    B_04_D:
       Q: "Which relationship holds between sales representatives and sales supervisors?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #-relationships, because there is a Multiple-Arc between them."
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
-    B5:
+    B_05:
       Q: "Which relationship holds between brands and controllers?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #, because there is no direct arc between them."
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
-    B5D:
+    B_05_D:
       Q: "Which relationship holds between product trademarks and sales supervisors?"
       GT:
         Format: Binary
@@ -258,7 +282,7 @@ Categories:
       Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
 
   Test:
-    T1:
+    T_01:
       Q: "Are there multiple measures with different names but same semantics? If so, which are them?"
       GT:
         Format: Set_Of_Sets
@@ -268,8 +292,15 @@ Categories:
             - ["Order_Quantity", "Invoice_Quantity", "Shop_Ticket_Quantity", "Historical_Order_Quantity", "Warehouse_Movement_Quantity", "Warehouse_Stock_Quantity_in_stock", "Third_Party_Warehouse_Stock_Quantity_in_stock"]
             - ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
       Answer_Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
-
-    T2:
+    T_02:
+      Q: "Are there measures whose aggregation operators support summarization even though their business meaning implies they should be non-additive? If so, which are them?"
+      GT:
+        Format: Key_Set_Dict
+        Truth: {
+          "Traffic_Counter_Peopletickets_ratio": ["SUM"]
+        }
+      Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full URIs) and values are the list of the inconsistent aggregation operators."
+    T_02_D:
       Q: "Are there measures whose aggregation operators are inconsistent with their business meaning? If so, which are them?"
       GT:
         Format: Key_Set_Dict
@@ -277,7 +308,7 @@ Categories:
           "Traffic_Counter_Peopletickets_ratio": ["SUM"]
         }
       Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full URIs) and values are the list of the inconsistent aggregation operators."
-    T3:
+    T_03:
       Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"
       GT:
         Format: Set_Of_Sets
