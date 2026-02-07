@@ -8,8 +8,11 @@ from rdflib import Graph, Literal, Namespace
 from rdflib.namespace import RDF, RDFS, OWL, XSD
 import sys
 
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 import utils
+from agents.GPTAgent import GPTAgent
 
 # ---------------------------------------------------------------------
 # CONFIG (modifica qui se serve)
@@ -23,6 +26,15 @@ OUTPUT_TTL = BASE / "output" / "ontologies" / f"LLM4BI_{FILENAME}"
 
 GRAPHDB_ENDPOINT = "http://127.0.0.1:7200"
 REPOSITORY = "test"
+
+RESOURCES_PATH = BASE / "resources"
+CREDENTIALS_FILE = RESOURCES_PATH / "credentials.yaml"
+PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "metadata_enhancer_prompt.txt"
+CREDENTIALS = utils.load_yml(CREDENTIALS_FILE)
+
+enhancer_instructions = ""
+with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+    enhancer_instructions = f.read()
 
 # ---------------------------------------------------------------------
 # NAMESPACES / CONSTRAINTS
@@ -69,6 +81,10 @@ class OntologyBuilder:
         self.latent_edges: Dict[str, Dict] = {}
         self.conformed_attributes: Dict[str, str] = {}
         self.facts: List[str] = []
+        self.agent = GPTAgent(
+            instruction=enhancer_instructions,
+            api_key=CREDENTIALS["gpt"]["api-key"],
+        )
 
         # logger
         self.logger = utils.setup_logger("LLM4BI_ExcelParser_FullyConnected")
@@ -172,8 +188,12 @@ class OntologyBuilder:
             }.items():
                 val = row.get(col, "").strip()
                 if val:
-                    if col == "Sample Values":
-                        self._add_sample_values(graph, attribute_node, val)
+                    if col == "Sample Values" or col == "Description":
+                        values = self.agent.query(f"Item: {row}. Enhance the {col}.")
+                        if col == "Sample Values":
+                            self._add_sample_values(graph, attribute_node, values)
+                        else:
+                            graph.add((attribute_node, prop, Literal(values)))
                     else:
                         graph.add((attribute_node, prop, Literal(val)))
 
@@ -309,11 +329,14 @@ class OntologyBuilder:
             }.items():
                 val = row.get(col, "").strip()
                 if val:
-                    if col == "Sample Values":
-                        self._add_sample_values(graph, attribute_node, val)
+                    if col == "Sample Values" or col == "Description":
+                        values = self.agent.query(f"Item: {row}. Enhance the {col}.")
+                        if col == "Sample Values":
+                            self._add_sample_values(graph, attribute_node, values)
+                        else:
+                            graph.add((attribute_node, prop, Literal(values)))
                     else:
                         graph.add((attribute_node, prop, Literal(val)))
-
             for col, prop in NODE_CONSTRAINTS.items():
                 if utils.is_truthy(row.get(col, "")):
                     graph.add(

@@ -33,7 +33,8 @@ PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
 PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
 ITERATIONS = int(os.getenv("ITERATIONS", 10))
-VERSIONS = [
+ONTOLOGY_VERSION = int(os.getenv("ONTOLOGY_VERSIONS", 2))
+PROMPT_VERSIONS = [
     int(v) for v in os.getenv("VERSIONS", "0,1").split(",")
 ]  ## Should be a list [0,1]
 
@@ -81,9 +82,11 @@ test_id = uuid.uuid4()  # EG: ho spostato su
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
-for version in VERSIONS:
+for version in PROMPT_VERSIONS:
     llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version1.ttl")
-    cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version1.ttl")
+    cubes_ontology = utils.load_ttl_as_text(
+        f"{ONTOLOGY_FILE}_version{ONTOLOGY_VERSION}.ttl"
+    )
     initial_prompt = "\n".join(
         [
             prompt["versions"][version]["incipit"],
@@ -185,7 +188,7 @@ for version in VERSIONS:
                                             )
                                         ],
                                         "query_id": [q_id],
-                                        "version": [version],
+                                        "version": ONTOLOGY_VERSION,
                                         "precision": [precision],
                                         "recall": [recall],
                                         "fmeasure": [fmeasure],
@@ -221,5 +224,5 @@ for version in VERSIONS:
                         f"Query {q_id} failed after {MAX_RETRIES} attempts. Skipping."
                     )
         logger.info(f"Iteration {i} completed, uplaoding results to database.")
-        #        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
         statistics = statistics.iloc[0:0]
