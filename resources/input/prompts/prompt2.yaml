@@ -13,9 +13,9 @@ versions:
           Let's call this <STR_ANS>.
           A concise explanation of how you derived the answer, mentioning the key elements that led to it. Let's call this <MOT>.
           Ultimately, your answer should strictly follow this pattern using YAML syntax:
+          Motivation: "<MOT>"
           Full: "<FULL_ANS>"
           Structured: <STR_ANS>
-          Motivation: "<MOT>"
   1:
     incipit: The following is an ontology in Turtle format representing the Dimensional Fact Model, through which we describe the conceptual schema of a set of OLAP cubes.
     after_llm4bi: Below you can find (in the form of Turtle triples) the conceptual schema (following the Dimensional Fact Model)
@@ -30,9 +30,9 @@ versions:
           Let's call this <STR_ANS>.
           A concise explanation of how you derived the answer, mentioning the key elements that led to it. Let's call this <MOT>.
           Ultimately, your answer should strictly follow this pattern using YAML syntax:
+          Motivation: "<MOT>"
           Full: "<FULL_ANS>"
           Structured: <STR_ANS>
-          Motivation: "<MOT>"
 
           Below you can find a few examples of user questions with their answers.
 
@@ -97,5 +97,6 @@ versions:
 
           11) Let the user ask the following questions: "If I'm aggregating data by type, which drill-down paths are available?" Your answer should be like this:
           Full: "There is only one drill-down path from type, which consists of the following list of attributes: Subtype, SKU."
-          Structured: - ["LLM4BI_Indyco:SKU_Type", "LLM4BI_Indyco:SKU_Subtype", "LLM4BI_Indyco:SKU_SKU"]
+          Structured: 
+            - ["LLM4BI_Indyco:SKU_Type", "LLM4BI_Indyco:SKU_Subtype", "LLM4BI_Indyco:SKU_SKU"]
           Motivation: "Each path is shown as an ordered list of attributes connected by roll-up arcs, starting from the coarsest level up to the finest one."
