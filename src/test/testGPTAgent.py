@@ -32,17 +32,18 @@ PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
 ####################################################
 PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
-ITERATIONS = int(os.getenv("ITERATIONS", 10))
-ONTOLOGY_VERSION = int(os.getenv("ONTOLOGY_VERSIONS", 2))
-PROMPT_VERSIONS = [
-    int(v) for v in os.getenv("VERSIONS", "0,1").split(",")
-]  ## Should be a list [0,1]
+ITERATIONS = int(os.getenv("ITERATIONS", 2))
+# VERSIONS = [
+#     int(v) for v in os.getenv("VERSIONS", "0,1").split(",")
+# ]  ## Should be a list [0,1]
+VERSIONS = [1]
 
 
-INCLUDED_QUESTIONS = utils.parse_list(
-    "INCLUDED_QUESTIONS"
-)  # ["S1", "O1", "O7", "O8"]  #
+# INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
+INCLUDED_QUESTIONS = ["O_04", "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
+
+SAVE_TO_DB = False
 
 ####################################################
 ####################################################
@@ -82,11 +83,9 @@ test_id = uuid.uuid4()  # EG: ho spostato su
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
-for version in PROMPT_VERSIONS:
+for version in VERSIONS:
     llm4bi_ontology = utils.load_ttl_as_text(f"{LLM4BI_FILE}_version1.ttl")
-    cubes_ontology = utils.load_ttl_as_text(
-        f"{ONTOLOGY_FILE}_version{ONTOLOGY_VERSION}.ttl"
-    )
+    cubes_ontology = utils.load_ttl_as_text(f"{ONTOLOGY_FILE}_version1.ttl")
     initial_prompt = "\n".join(
         [
             prompt["versions"][version]["incipit"],
@@ -188,7 +187,7 @@ for version in PROMPT_VERSIONS:
                                             )
                                         ],
                                         "query_id": [q_id],
-                                        "version": ONTOLOGY_VERSION,
+                                        "version": [version],
                                         "precision": [precision],
                                         "recall": [recall],
                                         "fmeasure": [fmeasure],
@@ -224,5 +223,11 @@ for version in PROMPT_VERSIONS:
                         f"Query {q_id} failed after {MAX_RETRIES} attempts. Skipping."
                     )
         logger.info(f"Iteration {i} completed, uplaoding results to database.")
-        statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        if SAVE_TO_DB:
+            statistics.to_sql("answers", SQL_ENGINE, if_exists="append", index=False)
+        else:
+            pd.set_option("display.max_colwidth", None)
+            pd.set_option("display.max_columns", None)
+            pd.set_option("display.max_rows", None)
+            print(statistics)
         statistics = statistics.iloc[0:0]
