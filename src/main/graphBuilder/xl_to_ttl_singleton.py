@@ -31,6 +31,7 @@ RESOURCES_PATH = BASE / "resources"
 CREDENTIALS_FILE = RESOURCES_PATH / "credentials.yaml"
 PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "metadata_enhancer_prompt.txt"
 CREDENTIALS = utils.load_yml(CREDENTIALS_FILE)
+VERSION = 2
 
 enhancer_instructions = ""
 with open(PROMPT_FILE, "r", encoding="utf-8") as f:
@@ -596,12 +597,14 @@ class OntologyBuilder:
 
         return g
 
-    def export_and_load(self, graph: Graph, output_ttl: Optional[Path] = None) -> None:
+    def export_and_load(
+        self, graph: Graph, output_ttl: Optional[Path] = None, version: int = 0
+    ) -> None:
         """Serialize graph to TTL file and load into GraphDB repository (clears first)."""
         out = output_ttl or self.output_ttl
 
         # Version 0
-        first_version = f"{out}_version1.ttl"
+        first_version = f"{out}_version{version}.ttl"
         ttl = graph.serialize(format="turtle")
         if isinstance(ttl, bytes):
             ttl = ttl.decode("utf-8")
@@ -610,7 +613,7 @@ class OntologyBuilder:
         with open(first_version, "w", encoding="utf-8") as f:
             f.write(ttl)
 
-        self.logger.info(f"Ontology version 0 exported to: {first_version}")
+        self.logger.info(f"Ontology version {version} exported to: {first_version}")
 
         # clear and upload
         utils.delete_repository(self.repository, self.graphdb_endpoint)
@@ -621,19 +624,19 @@ class OntologyBuilder:
 
         utils.load_ontology(first_version, self.graphdb_endpoint, self.repository)
 
-        # Version 1
-        graph.remove((None, LLM4BI.Notes, None))
-        graph.remove((None, LLM4BI.Description, None))
-        # graph.remove((None, LLM4BI.SampleValues, None))
+        # # Version 1
+        # graph.remove((None, LLM4BI.Notes, None))
+        # graph.remove((None, LLM4BI.Description, None))
+        # # graph.remove((None, LLM4BI.SampleValues, None))
 
-        second_version = f"{out}_version0.ttl"
-        ttl = graph.serialize(format="turtle")
-        if isinstance(ttl, bytes):
-            ttl = ttl.decode("utf-8")
+        # second_version = f"{out}_version0.ttl"
+        # ttl = graph.serialize(format="turtle")
+        # if isinstance(ttl, bytes):
+        #     ttl = ttl.decode("utf-8")
 
-        os.makedirs(os.path.dirname(second_version), exist_ok=True)
-        with open(second_version, "w", encoding="utf-8") as f:
-            f.write(ttl)
+        # os.makedirs(os.path.dirname(second_version), exist_ok=True)
+        # with open(second_version, "w", encoding="utf-8") as f:
+        #     f.write(ttl)
 
 
 # ---------------------------------------------------------------------
@@ -648,7 +651,7 @@ def main():
         repository=REPOSITORY,
     )
     graph = builder.build_graph()
-    builder.export_and_load(graph)
+    builder.export_and_load(graph, version=VERSION)
 
 
 if __name__ == "__main__":
