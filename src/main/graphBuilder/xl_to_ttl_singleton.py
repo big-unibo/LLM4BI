@@ -328,15 +328,17 @@ class OntologyBuilder:
                 # "Notes": LLM4BI.Notes,
             }.items():
                 val = row.get(col, "").strip()
-                if val:
-                    if col == "Sample Values" or col == "Description":
-                        values = self.agent.query(f"Item: {row}. Enhance the {col}.")
-                        if col == "Sample Values":
-                            self._add_sample_values(graph, attribute_node, values)
-                        else:
-                            graph.add((attribute_node, prop, Literal(values)))
+                if col == "Sample Values" or col == "Description":
+                    enhance_or_provide = "Enhance" if val else "Provide"
+                    values = self.agent.query(
+                        f"Item: {row}. {enhance_or_provide} the {col}."
+                    )
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, values)
                     else:
-                        graph.add((attribute_node, prop, Literal(val)))
+                        graph.add((attribute_node, prop, Literal(values)))
+                elif val:
+                    graph.add((attribute_node, prop, Literal(val)))
             for col, prop in NODE_CONSTRAINTS.items():
                 if utils.is_truthy(row.get(col, "")):
                     graph.add(

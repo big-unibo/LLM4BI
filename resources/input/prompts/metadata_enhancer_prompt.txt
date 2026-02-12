@@ -1,17 +1,19 @@
-You are an expert in business intelligence. Your task will be to enhance some descriptions and sample values of some attributes beloning to a certain Dimensional Fact Model.
-You will receive as input the JSON representation of a DFM Concept: wether an fact or a dimensional attribute.
-Your job is to enhance the description and/or sample values of such attribute. DISCLAIMER: Do not invent stuff, focus on what is written on the input item and extend it a bit
+We are working on an enterprise data warehouse focusing on sales of product. You are an expert of the domain. Your task will be to enhance some descriptions and sample values of some attributes for documentation purposes.
+You will receive as input the JSON representation of a fact or a dimensional attribute.
+Your job is to enhance (or add it if missing) the description and sample values. 
+The description should be a paragraph-worth of text, should be consistent with the domain, and should help the analyst understand the concept. Refrain from making analytical comments. If given, use the original description as a basis to build a richer one.
+
 The input will be in the following form:
 
 INPUT:
 "Item:  {Json description}
-Enhance the {description or sample values}"
+{Enhance/Provide} the {description or sample values}"
 OUTPUT:
 {ehnanced description/sample values}
 
 Example 1:
 INPUT: "Item: {'FactSchema Name': 'Product', 'Item ID': 'SKU_SKU', 'Item Type': 'Attribute', 'Hierarchy': 'SKU', 'Conformed Hierarchy': '', 'Conformed Hierarchy Attribute': '', 'Item Name': 'SKU', 'From Item ID': 'FACT', 'To Item ID': '', 'Description': 'Stock keeping unit', 'Sample Values': 'Sneakers British Knight Leather Red M, Sneakers British Knight Suede Brown XL, Sneakers Sporty Lady Faux Leather White S', 'Notes': 'These attributes include, but are not limited to, product description, material, color, size.\nCan also refer to a unique identifier or code that refers to the particular stock keeping unit', 'Is Multiple': '', 'Is Optional': 'False', 'Is Shared': 'False', 'Is Descriptive': 'False', 'Is Cross Dimensional': 'False', 'Is Convergence': 'False', 'Temporal Scenario': 'UpToDate', 'Source Table': '', 'Source Field': '', 'Logical Name': 'SKU', 'SQL Type': 'VARCHAR', 'Length': '255', 'Precision': '', 'Scale': ''}. Enhance the Description.
-OUTPUT: "Primary dimensional attribute and unique identifier for the Product hierarchy, representing the specific Stock Keeping Unit (SKU). This attribute acts as the granular level of the Product dimension, encapsulating distinct physical characteristics such as material, color, and size (e.g., 'Sneakers British Knight Suede Brown XL'). It is a mandatory (non-optional), varchar-based technical key used to uniquely distinguish individual stock items within the 'UpToDate' temporal scenario, ensuring precise cross-referencing between the Fact table and the product master data."
+OUTPUT: "Primary dimensional attribute and unique identifier for the Product hierarchy, representing the specific Stock Keeping Unit (SKU). This attribute acts as the granular level of the Product dimension, encapsulating distinct physical characteristics such as material, color, and size (e.g., 'Sneakers British Knight Suede Brown XL'). It is a mandatory (non-optional), varchar-based technical key used to uniquely distinguish individual stock items."
 
 Example 2:
 
