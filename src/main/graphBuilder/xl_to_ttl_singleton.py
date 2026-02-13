@@ -175,11 +175,13 @@ class OntologyBuilder:
             )
         else:
             # otherwise add attribute node and metadata
-            graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
-            if attribute_description:
-                graph.add(
-                    (attribute_node, LLM4BI.Description, Literal(attribute_description))
-                )
+
+            # COMMENTED to avoid having it twice
+            # graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
+            # if attribute_description:
+            #     graph.add(
+            #         (attribute_node, LLM4BI.Description, Literal(attribute_description))
+            #     )
 
             # metadata properties
             for col, prop in {
@@ -188,15 +190,17 @@ class OntologyBuilder:
                 "Sample Values": LLM4BI.SampleValues,
             }.items():
                 val = row.get(col, "").strip()
-                if val:
-                    if col == "Sample Values" or col == "Description":
-                        values = self.agent.query(f"Item: {row}. Enhance the {col}.")
-                        if col == "Sample Values":
-                            self._add_sample_values(graph, attribute_node, values)
-                        else:
-                            graph.add((attribute_node, prop, Literal(values)))
+                if col == "Sample Values" or col == "Description":
+                    enhance_or_provide = "Enhance" if val else "Provide"
+                    values = self.agent.query(
+                        f"Item: {row}. {enhance_or_provide} the {col}."
+                    )
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, values)
                     else:
-                        graph.add((attribute_node, prop, Literal(val)))
+                        graph.add((attribute_node, prop, Literal(values)))
+                elif val:
+                    graph.add((attribute_node, prop, Literal(val)))
 
             graph.add((from_node, LLM4BI.RollUpArc, attribute_node))
 
@@ -408,6 +412,7 @@ class OntologyBuilder:
             df = attributes_df[attributes_df["FactSchema Name"] == fact]
             root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
             graph.add((root_node, RDF.type, LLM4BI.Fact))
+
             graph.add(
                 (
                     root_node,
@@ -419,6 +424,16 @@ class OntologyBuilder:
                     ),
                 )
             )
+
+            # descr = self.project_info.loc[
+            #             self.project_info["Name"] == fact, "Description"
+            #         ].iloc[0]
+            # enhance_or_provide = "Enhance" if descr else "Provide"
+            # values = self.agent.query(
+            #     f"Item: {row}. {enhance_or_provide} the Description."
+            # )
+            # graph.add((attribute_node, prop, Literal(values)))
+
             for _, row in df.iterrows():
                 if row.get("Item Type", "").strip() == "Attribute":
                     self.parse_attribute(graph, row)
@@ -510,10 +525,27 @@ class OntologyBuilder:
                         )
                     )
 
-            if attribute_description:
-                graph.add(
-                    (attribute_node, LLM4BI.Description, Literal(attribute_description))
-                )
+            # if attribute_description:
+            #     graph.add(
+            #         (attribute_node, LLM4BI.Description, Literal(attribute_description))
+            #     )
+
+            for col, prop in {
+                "Description": LLM4BI.Description,
+                "Sample Values": LLM4BI.SampleValues,
+            }.items():
+                val = row.get(col, "").strip()
+                if col == "Sample Values" or col == "Description":
+                    enhance_or_provide = "Enhance" if val else "Provide"
+                    values = self.agent.query(
+                        f"Item: {row}. {enhance_or_provide} the {col}."
+                    )
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, values)
+                    else:
+                        graph.add((attribute_node, prop, Literal(values)))
+                elif val:
+                    graph.add((attribute_node, prop, Literal(val)))
 
     def extract_name_description(self, df: pd.DataFrame) -> pd.DataFrame:
         # 1. Trova la riga header (contiene Name e Description)
@@ -616,13 +648,13 @@ class OntologyBuilder:
         self.logger.info(f"Ontology version {version} exported to: {first_version}")
 
         # clear and upload
-        utils.delete_repository(self.repository, self.graphdb_endpoint)
-        utils.create_repository(self.repository, self.graphdb_endpoint)
-        self.logger.info(
-            f"Cleared GraphDB repository: {self.repository} at {self.graphdb_endpoint}"
-        )
+        # utils.delete_repository(self.repository, self.graphdb_endpoint)
+        # utils.create_repository(self.repository, self.graphdb_endpoint)
+        # self.logger.info(
+        #     f"Cleared GraphDB repository: {self.repository} at {self.graphdb_endpoint}"
+        # )
 
-        utils.load_ontology(first_version, self.graphdb_endpoint, self.repository)
+        # utils.load_ontology(first_version, self.graphdb_endpoint, self.repository)
 
         # # Version 1
         # graph.remove((None, LLM4BI.Notes, None))

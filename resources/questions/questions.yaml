@@ -113,13 +113,13 @@ Categories:
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_04:
-      Q: "Can I aggregate quantities of shop tickets by area manager and category of the Disney Toons merchandise type?"
+      Q: "Can I aggregate quantities of shop tickets of the Disney Toons merchandise type by area manager and category?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_04_D:
-      Q: "Can I aggregate quantities of DOS stores sales by agent coordinators and product classifications of the Winter Sports Apparel assortment?"
+      Q: "Can I aggregate quantities of DOS stores sales of the Winter Sports Apparel assortment by agent coordinators and product classifications?"
       GT:
         Format: Binary
         Truth: "No"
@@ -131,19 +131,19 @@ Categories:
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_05_D:
-      Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products?"
+      Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by product trademarks?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_06:
-      Q: "Can I aggregate quantities of shop tickets by warehouse countries and brands of the Disney Toons merchandise?"
+      Q: "Can I aggregate quantities of shop tickets of the Disney Toons merchandise by warehouse countries and brands?"
       GT:
         Format: Binary
         Truth: "No"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_06_D:
-      Q: "Can I aggregate quantities of DOS stores sales by the nations where my logistic hubs are located and by the trademarks of the products of the Winter Sports Apparel assortment?"
+      Q: "Can I aggregate quantities of DOS stores sales of the Winter Sports Apparel assortment by the nations where my logistic hubs are located and by product trademarks?"
       GT:
         Format: Binary
         Truth: "No"
@@ -293,21 +293,17 @@ Categories:
             - ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
       Answer_Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
     T_02:
-      Q: "Are there measures whose aggregation operators support summarization even though their business meaning implies they should be non-additive? If so, which are them?"
+      Q: "Are there measures whose aggregation operators support summarization (i.e., aggregation via the SUM operator) even though their business meaning implies they should be non-additive? If so, which are them?"
       GT:
-        Format: Key_Set_Dict
-        Truth: {
-          "Traffic_Counter_Peopletickets_ratio": ["SUM"]
-        }
-      Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full URIs) and values are the list of the inconsistent aggregation operators."
+        Format: Set
+        Truth: ["Traffic_Counter_Peopletickets_ratio"]
+      Answer_Format: "Provide the answer as a list of the measures (using the full URI)."
     T_02_D:
       Q: "Are there measures whose aggregation operators are inconsistent with their business meaning? If so, which are them?"
       GT:
-        Format: Key_Set_Dict
-        Truth: {
-          "Traffic_Counter_Peopletickets_ratio": ["SUM"]
-        }
-      Answer_Format: "Provide a dictionary of key-value pairs where keys are the measures (using full URIs) and values are the list of the inconsistent aggregation operators."
+        Format: Set
+        Truth: ["Traffic_Counter_Peopletickets_ratio"]
+      Answer_Format: "Provide the answer as a list of the measures (using the full URI)."
     T_03:
       Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"
       GT:

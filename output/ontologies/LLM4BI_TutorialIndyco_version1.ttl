@@ -257,88 +257,242 @@ LLM4BI_Indyco:Warehouse_Warehouse_Warehouse_Type a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:OptionalArc .
 
 LLM4BI_Indyco:Agent_Area_Manager a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "An agent who manages and coordinates other agents" ;
+    LLM4BI:Description "An agent who manages and coordinates other agents",
+        "Represents the managerial role within the sales organization responsible for supervising and coordinating the activities of multiple sales agents across a defined geographic area or market region. The *Area Manager* attribute identifies the individual accountable for achieving regional sales targets, ensuring coverage, and maintaining customer satisfaction within their territory. This role typically involves performance monitoring, training, and strategic alignment of the agents they oversee. The attribute enables reporting and analysis of sales results at a managerial level, supporting organizational structure, performance reviews, and territory-based planning." ;
     LLM4BI:LogicalName "AREA_MANAGER" ;
-    LLM4BI:SampleValues "John Green",
-        "Mark White" .
+    LLM4BI:SampleValues "Antoine Dubois",
+        "Benjamin Clark",
+        "David Rossi",
+        "Elena Petrova",
+        "Emma Brown",
+        "Javier Gómez",
+        "John Green",
+        "Laura Smith",
+        "Lucia Marino",
+        "Mark White",
+        "Michelle Carter",
+        "Peter Novak",
+        "Roberto Alvarez",
+        "Sarah Johnson",
+        "Thomas Becker" .
 
 LLM4BI_Indyco:City_Area a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The geographic area of a state" ;
+    LLM4BI:Description "Represents a broad geographic or economic region that groups together countries or states sharing common characteristics such as location, culture, or market conditions. The *Area* attribute provides an aggregated geographic layer above the country level, enabling regional performance analysis and strategic reporting. Examples include large-scale zones like “North Europe” or “North America.” This attribute supports global business analysis, supply chain management, and market segmentation by allowing comparison and consolidation of results across multiple related countries or territories.",
+        "The geographic area of a state" ;
     LLM4BI:LogicalName "AREA" ;
-    LLM4BI:SampleValues "North America",
-        "North Europe" .
+    LLM4BI:SampleValues "Central America",
+        "Central Europe",
+        "East Asia",
+        "Eastern Europe",
+        "Middle East",
+        "North America",
+        "North Europe",
+        "Northern Africa",
+        "Oceania",
+        "South America",
+        "South Asia",
+        "South Europe",
+        "Southeast Asia",
+        "Sub-Saharan Africa",
+        "Western Europe" .
 
 LLM4BI_Indyco:City_County a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The county where a city belongs (if specified)" ;
+    LLM4BI:Description "Represents the administrative subdivision or local jurisdiction in which a city or town is located. The *County* attribute provides an intermediate geographic level between the city and region or state, used primarily in countries where counties or similar entities form part of the territorial organization. It supports geographic enrichment of business data, enabling more precise analysis of sales distribution, logistics coverage, and regulatory reporting. This attribute is optional and typically populated only for locations where county-level distinction is applicable, such as “Monterey” or “Orange.”",
+        "The county where a city belongs (if specified)" ;
     LLM4BI:LogicalName "COUNTY" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_State ;
-    LLM4BI:SampleValues "Monterey",
-        "Orange" ;
+    LLM4BI:SampleValues "Alameda",
+        "Broward",
+        "Clark",
+        "Cook",
+        "Dallas",
+        "DuPage",
+        "Essex",
+        "Fairfax",
+        "Fulton",
+        "Harris",
+        "King",
+        "Los Angeles",
+        "Maricopa",
+        "Monterey",
+        "Montgomery",
+        "Orange",
+        "Palm Beach",
+        "Suffolk",
+        "Travis",
+        "Wayne" ;
     LLM4BI:isOptional true .
 
 LLM4BI_Indyco:City_State a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The state where a city belongs (for USA only)" ;
+    LLM4BI:Description "Represents the U.S. state or equivalent territorial division in which a city is located. The *State* attribute provides a key geographic grouping level within the Geography dimension, used exclusively for cities in the United States. It supports regional aggregation and analysis of sales, logistics, or customer data by state boundaries. This attribute enables standardized reporting across nationwide networks, facilitates compliance with state-specific regulations, and enhances geographic segmentation within U.S. markets. Typical examples include “Florida” and “California.”",
+        "The state where a city belongs (for USA only)" ;
     LLM4BI:LogicalName "STATE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_Country ;
-    LLM4BI:SampleValues "California",
-        "Florida" ;
+    LLM4BI:SampleValues "Arizona",
+        "California",
+        "Colorado",
+        "Florida",
+        "Georgia",
+        "Illinois",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Nevada",
+        "New Jersey",
+        "New York",
+        "North Carolina",
+        "Ohio",
+        "Oregon",
+        "Pennsylvania",
+        "Tennessee",
+        "Texas",
+        "Virginia",
+        "Washington" ;
     LLM4BI:isOptional true .
 
 LLM4BI_Indyco:Customer_Billing_Information a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The specific data needed for billing a customer" ;
+    LLM4BI:Description "Contains the detailed financial and administrative data required to issue invoices and process payments for a specific customer. The *Billing Information* attribute may include elements such as billing address, tax identification number, payment terms, and contact details for accounts payable. It ensures accurate and compliant invoicing, supports reconciliation between sales transactions and accounting records, and facilitates proper allocation of revenue within the enterprise system. This attribute is essential for maintaining consistency between commercial operations, finance, and customer relationship management processes.",
+        "The specific data needed for billing a customer" ;
     LLM4BI:LogicalName "BILLING_INFORMATION" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Customer_Shipping_Address a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The shipping address of a customer" ;
+    LLM4BI:Description "Represents the physical location where goods are delivered or shipped for a specific customer. The *Shipping Address* attribute typically includes details such as street name, building number, city, postal code, region, and country. It ensures that products reach the correct destination and supports logistics operations, delivery tracking, and transportation planning. This attribute is essential for distinguishing multiple delivery points within the same customer account and for integrating with order fulfillment, warehouse management, and carrier systems to optimize distribution efficiency and accuracy.",
+        "The shipping address of a customer" ;
     LLM4BI:LogicalName "SHIPPING_ADDRESS" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Date_4Month_Period a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "_4_MONTH_PERIOD" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "3MP1 13",
-        "3MP2 13",
-        "3MP3 14" .
+    LLM4BI:SampleValues "4MP1 13",
+        "4MP1 14",
+        "4MP1 15",
+        "4MP1 16",
+        "4MP1 17",
+        "4MP1 18",
+        "4MP2 13",
+        "4MP2 14",
+        "4MP2 15",
+        "4MP2 16",
+        "4MP2 17",
+        "4MP2 18",
+        "4MP3 13",
+        "4MP3 14",
+        "4MP3 15",
+        "4MP3 16",
+        "4MP3 17",
+        "4MP3 18" .
 
 LLM4BI_Indyco:Date_Month a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A generic month" ;
+    LLM4BI:Description "A generic month",
+        "Represents the month component within the Time dimension, identifying one of the twelve standard calendar months in a year, independent of any specific year context. This attribute serves as a reusable and descriptive element for grouping and comparing data across the same month in different years (e.g., analyzing all January sales across multiple years). It is commonly used in seasonal trend analyses, month-over-month performance comparisons, and reporting that aggregates data by month name." ;
     LLM4BI:LogicalName "MONTH" ;
-    LLM4BI:SampleValues "Feb",
+    LLM4BI:SampleValues "Apr",
+        "Aug",
+        "Dec",
+        "Feb",
         "Jan",
-        "Mar" .
+        "Jul",
+        "Jun",
+        "Mar",
+        "May",
+        "Nov",
+        "Oct",
+        "Sep" .
 
 LLM4BI_Indyco:Date_Quarter a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific quarter" ;
+    LLM4BI:Description "A specific quarter",
+        "Represents the quarterly aggregation level within the Time dimension, identifying a specific three-month period within a given year. Each quarter groups months as follows: Q1 (January–March), Q2 (April–June), Q3 (July–September), and Q4 (October–December). This attribute is used to align and summarize data for financial, operational, and performance reporting over standard fiscal or calendar quarters. It provides a key temporal layer between monthly and yearly levels, enabling consistent quarter-over-quarter and year-to-date comparisons across business metrics." ;
     LLM4BI:LogicalName "QUARTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Semester ;
-    LLM4BI:SampleValues "Q1 14",
+    LLM4BI:SampleValues "Q1 13",
+        "Q1 14",
+        "Q1 15",
+        "Q1 16",
+        "Q1 17",
+        "Q2 13",
         "Q2 14",
+        "Q2 15",
+        "Q2 16",
+        "Q2 17",
+        "Q3 13",
         "Q3 14",
-        "Q4 14" .
+        "Q3 15",
+        "Q3 16",
+        "Q3 17",
+        "Q4 13",
+        "Q4 14",
+        "Q4 15",
+        "Q4 16",
+        "Q4 17" .
 
 LLM4BI_Indyco:Date_Semester a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific semester" ;
+    LLM4BI:Description "A specific semester",
+        "Represents the half-year aggregation level within the Time dimension, identifying one of two six-month periods within a given calendar or fiscal year. Each semester groups two consecutive quarters: S1 (January–June) and S2 (July–December). This attribute is useful for mid-year performance evaluations, long-term trend tracking, and alignment with organizations that report biannually. It provides an intermediate temporal layer between quarterly and annual levels, supporting summarized reporting and comparative analysis across half-year periods." ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
-    LLM4BI:SampleValues "S1 14",
-        "S2 14" .
+    LLM4BI:SampleValues "S1 13",
+        "S1 14",
+        "S1 15",
+        "S1 16",
+        "S1 17",
+        "S1 18",
+        "S1 19",
+        "S1 20",
+        "S2 13",
+        "S2 14",
+        "S2 15",
+        "S2 16",
+        "S2 17",
+        "S2 18",
+        "S2 19",
+        "S2 20" .
 
 LLM4BI_Indyco:Date_Week a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific week" ;
+    LLM4BI:Description "A specific week",
+        "Represents the weekly level of granularity within the Time dimension, identifying a specific week in the calendar year, typically numbered sequentially from W1 through W52 (or W53 in leap years). Each week groups seven consecutive days, serving as an intermediate aggregation level between daily and monthly analyses. A week may span across two different months or, in some cases, two different years, depending on calendar alignment. This attribute is commonly used to analyze short-term trends, weekly sales performance, and operational reporting cycles." ;
     LLM4BI:LogicalName "WEEK" ;
-    LLM4BI:SampleValues "W1",
-        "W2",
-        "W3" .
+    LLM4BI:SampleValues "W1 2014",
+        "W1 2024",
+        "W10 2015",
+        "W15 2021",
+        "W2 2014",
+        "W23 2016",
+        "W27 2022",
+        "W3 2014",
+        "W35 2017",
+        "W4 2014",
+        "W41 2023",
+        "W48 2018",
+        "W5 2014",
+        "W52 2019",
+        "W7 2020" .
 
 LLM4BI_Indyco:Historical_Order_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for billing" ;
+    LLM4BI:Description "Represents the monetary unit used for invoicing, payment, and financial reporting associated with a specific transaction or order. The *Currency* attribute identifies the legal tender in which prices, revenues, and costs are recorded, such as *USD* (United States Dollar), *EUR* (Euro), or *JPY* (Japanese Yen). It ensures consistency in financial reporting across regions, supports currency conversion for global consolidation, and enables analysis of sales and financial performance in both local and corporate currencies. This attribute is essential for managing international operations, exchange rate application, and financial reconciliation processes.",
+        "The currency used for billing" ;
     LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
+    LLM4BI:SampleValues "AED",
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "CNY",
+        "DKK",
         "EUR",
         "GBP",
+        "HKD",
+        "INR",
         "JPY",
-        "USD" .
+        "MXN",
+        "NOK",
+        "NZD",
+        "PLN",
+        "SEK",
+        "SGD",
+        "USD",
+        "ZAR" .
 
 LLM4BI_Indyco:Historical_Order_Net_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
@@ -354,14 +508,32 @@ LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
 
 LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:Description "Represents the commercial season or collection period during which a specific assortment of products is designed, produced, and released to the market. The *Season* attribute is commonly used in the fashion, apparel, and retail industries to identify product cycles, such as *FW12* (Fall/Winter 2012) or *SS13* (Spring/Summer 2013). It supports analysis of sales and inventory performance by collection, facilitates comparisons across seasonal launches, and provides a consistent temporal framework for planning, merchandising, and forecasting activities.",
+        "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
-        "SS13" .
+        "FW14",
+        "FW15",
+        "FW16",
+        "FW17",
+        "FW18",
+        "FW19",
+        "FW20",
+        "FW21",
+        "SS13",
+        "SS14",
+        "SS15",
+        "SS16",
+        "SS17",
+        "SS18",
+        "SS19",
+        "SS20",
+        "SS21" .
 
 LLM4BI_Indyco:Historical_Order_Semester a LLM4BI:Attribute ;
+    LLM4BI:Description "Represents the half-year commercial cycle or collection period within a given year, typically used in seasonal industries such as fashion and retail. The *Semester* attribute classifies product assortments or sales campaigns into two main periods: *SS* (Spring/Summer) and *FW* (Fall/Winter). It provides a consistent temporal grouping for analyzing sales, inventory, and production activities aligned with merchandising calendars. This attribute supports performance tracking by seasonal collection and enables year-over-year comparisons between equivalent selling periods." ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "FW",
@@ -378,13 +550,29 @@ LLM4BI_Indyco:Invoice_Amount_After_Discount a LLM4BI:Measure ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Invoice_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for invoicing" ;
+    LLM4BI:Description "Represents the monetary unit used to issue and settle an invoice. The *Currency* attribute specifies the denomination in which amounts such as sales values, taxes, and totals are recorded (e.g., *USD* for United States Dollar, *EUR* for Euro, *JPY* for Japanese Yen). It ensures financial accuracy and consistency across international transactions, allowing proper conversion, consolidation, and reporting in multi-currency environments. This attribute is essential for global invoicing, accounting reconciliation, and compliance with regional financial standards.",
+        "The currency used for invoicing" ;
     LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
+    LLM4BI:SampleValues "AED",
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "CNY",
+        "DKK",
         "EUR",
         "GBP",
+        "HKD",
+        "INR",
         "JPY",
-        "USD" .
+        "MXN",
+        "NOK",
+        "NZD",
+        "PLN",
+        "SEK",
+        "SGD",
+        "USD",
+        "ZAR" .
 
 LLM4BI_Indyco:Invoice_First_Commercial_Discount a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
@@ -399,12 +587,29 @@ LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
 
 LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:Description "Represents the commercial collection period during which a defined assortment of products is released or sold. The *Season* attribute indicates the fashion or merchandise cycle, typically defined as *Spring/Summer (SS)* or *Fall/Winter (FW)* followed by the year (e.g., *FW12*, *SS13*). It is used to organize, track, and analyze sales, production, and inventory by collection, providing a temporal framework that aligns product lines with retail and production planning calendars. This attribute supports performance comparison across seasons and facilitates trend analysis across multiple years of product launches.",
+        "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
-        "SS13" .
+        "FW14",
+        "FW15",
+        "FW16",
+        "FW17",
+        "FW18",
+        "FW19",
+        "FW20",
+        "FW21",
+        "SS13",
+        "SS14",
+        "SS15",
+        "SS16",
+        "SS17",
+        "SS18",
+        "SS19",
+        "SS20",
+        "SS21" .
 
 LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
@@ -414,6 +619,7 @@ LLM4BI_Indyco:Invoice_SellIn_Margin a LLM4BI:Measure ;
     LLM4BI:Description "Gross margin" .
 
 LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
+    LLM4BI:Description "Represents the half-year merchandising period under which a seasonal collection or assortment of goods is organized. The *Semester* attribute defines the two main retail and production cycles used in industries such as fashion and apparel — *SS* (Spring/Summer) and *FW* (Fall/Winter). It provides a standardized temporal classification for analyzing product launches, sales campaigns, and inventory movements within specific half-year periods. This attribute supports consistent reporting across collections and enables comparison of performance trends between equivalent semesters across different years." ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "FW",
@@ -422,35 +628,74 @@ LLM4BI_Indyco:Invoice_Semester a LLM4BI:Attribute ;
 LLM4BI_Indyco:Invoice_name a LLM4BI:Measure .
 
 LLM4BI_Indyco:Order_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for billing" ;
+    LLM4BI:Description "Represents the monetary denomination in which an order’s financial values—such as total amount, taxes, and discounts—are recorded and processed. The *Currency* attribute identifies the official medium of exchange applicable to the transaction, for example, *USD* (United States Dollar), *EUR* (Euro), or *JPY* (Japanese Yen). It ensures accuracy in pricing, invoicing, and financial consolidation across regions and supports multi-currency operations, exchange rate conversion, and standardized reporting for global business activities.",
+        "The currency used for billing" ;
     LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
+    LLM4BI:SampleValues "AED",
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "CNY",
+        "DKK",
         "EUR",
         "GBP",
+        "HKD",
+        "INR",
         "JPY",
-        "USD" .
+        "MXN",
+        "NOK",
+        "NZD",
+        "PLN",
+        "SEK",
+        "SGD",
+        "USD",
+        "ZAR" .
 
 LLM4BI_Indyco:Order_Discount_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Discount, if any" .
 
 LLM4BI_Indyco:Order_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products.",
+        "Represents a commercial classification that defines a specific merchandising theme, line, or collection concept within the product assortment. The *Merchandise Type* attribute captures how products are grouped and presented in relation to brand strategy, target audience, or thematic campaigns—for example, *Football UK Teams*, *Disney Toons*, or *Far West Men Wears*. It encompasses aspects such as product display, assortment composition, and discounting strategy. This attribute enables analysis and planning of product mix, visual merchandising, and promotional performance across different thematic or licensed product ranges." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:SampleValues "Classic Formal Line",
+        "Coastal Resort Wear",
+        "Disney Toons",
+        "Far West Men Wears",
+        "Festival Summer Edition",
+        "Football UK Teams",
+        "Heritage Sports Range",
+        "Kids Cartoon Series",
+        "Luxury Essentials",
+        "Marvel Heroes Collection",
+        "Minimalist Contemporary Style",
+        "Streetwear Urban Vibes",
+        "Tropical Print Collection",
+        "Vintage Denim Line",
+        "Winter Outdoor Gear" .
 
 LLM4BI_Indyco:Order_Net_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" ;
     LLM4BI:Description "Value, net of discounts and VAT" .
 
 LLM4BI_Indyco:Order_Order_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "Conditions on how the order is executed" ;
+    LLM4BI:Description "Conditions on how the order is executed",
+        "Defines the set of business or transactional conditions that determine how an order is executed, processed, or fulfilled. The *Order Type* attribute identifies the operational or financial behavior assigned to an order—such as *Market Order*, *Limit Order*, or *Stop Order*—specifying rules around price execution, timing, and trigger conditions. It helps differentiate between the various types of order instructions used in business, trading, or supply processes. This attribute supports monitoring of order processing logic, performance evaluation, and adherence to execution strategies or customer-defined requirements." ;
     LLM4BI:LogicalName "ORDER_TYPE" ;
-    LLM4BI:SampleValues "Market order",
-        "limit order",
-        "stop order" .
+    LLM4BI:SampleValues "All or None Order",
+        "Conditional Order",
+        "Day Order",
+        "Fill or Kill Order",
+        "Good Till Canceled Order",
+        "Iceberg Order",
+        "Immediate or Cancel Order",
+        "Limit Order",
+        "Market Order",
+        "Stop Limit Order",
+        "Stop Order",
+        "Trailing Stop Order" .
 
 LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
@@ -458,14 +703,32 @@ LLM4BI_Indyco:Order_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothes, ..." .
 
 LLM4BI_Indyco:Order_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:Description "Represents the commercial collection period during which a defined assortment of products is planned, produced, and released for sale. The *Season* attribute identifies the merchandising cycle, typically divided into *Spring/Summer (SS)* and *Fall/Winter (FW)* collections followed by the corresponding year (e.g., *FW12*, *SS13*). It provides a temporal and strategic framework for organizing product launches, sales campaigns, and inventory management. This attribute supports performance analysis by collection period, enabling comparisons of sales trends and product lifecycle behavior across multiple seasons.",
+        "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Order_Season_Type ;
     LLM4BI:SampleValues "FW12",
         "FW13",
-        "SS13" .
+        "FW14",
+        "FW15",
+        "FW16",
+        "FW17",
+        "FW18",
+        "FW19",
+        "FW20",
+        "FW21",
+        "SS13",
+        "SS14",
+        "SS15",
+        "SS16",
+        "SS17",
+        "SS18",
+        "SS19",
+        "SS20",
+        "SS21" .
 
 LLM4BI_Indyco:Order_Season_Type a LLM4BI:Attribute ;
+    LLM4BI:Description "Represents the classification of a merchandising or production period within a given year, typically dividing the commercial calendar into two main segments. The *Season Type* attribute identifies whether a collection or assortment belongs to *Spring/Summer (SS)* or *Fall/Winter (FW)*, reflecting key fashion and retail cycles. It provides a standardized reference used for planning, product development, and sales analysis, enabling consistent comparison and reporting of performance across seasonal product launches and collections." ;
     LLM4BI:LogicalName "SEASON_TYPE" ;
     LLM4BI:SampleValues "FW",
         "SS" .
@@ -476,85 +739,231 @@ LLM4BI_Indyco:Order_VAT_Value a LLM4BI:Measure ;
 
 LLM4BI_Indyco:SKU_Age_Range a LLM4BI:ConformedAttribute ;
     LLM4BI:LogicalName "AGE_RANGE" ;
-    LLM4BI:SampleValues "1-5",
-        "11-16",
-        "6-10" ;
+    LLM4BI:SampleValues "0-1",
+        "1-3",
+        "11-14",
+        "15-18",
+        "19-25",
+        "26-35",
+        "36-45",
+        "4-6",
+        "46-55",
+        "56-65",
+        "66+",
+        "7-10" ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:SKU_Brand a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The brand of the product (a.k.a. the label or trademark of the product)" ;
+    LLM4BI:Description "Represents the commercial brand, label, or trademark under which a product is marketed and sold. The Brand attribute identifies the manufacturer or designer associated with the product and is a key component of product identity, influencing customer perception, pricing strategies, and market positioning. It supports analysis of sales performance, brand portfolio management, and competitive benchmarking by enabling grouping and comparison of products across different brands. This attribute may include both owned (private labels) and external (licensed or partner) brands, ensuring consistency in brand-level reporting across all business channels.",
+        "The brand of the product (a.k.a. the label or trademark of the product)" ;
     LLM4BI:LogicalName "BRAND" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand_Group .
 
 LLM4BI_Indyco:SKU_Brand_Group a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A group of brands" ;
+    LLM4BI:Description "A group of brands",
+        "Represents a higher-level classification that groups multiple related brands under a common corporate, strategic, or stylistic umbrella. The Brand Group attribute is used to organize brands that share ownership, market positioning, design philosophy, or distribution channels. For example, several fashion or sportswear brands may belong to the same parent company or share a unified target market. This attribute facilitates consolidated reporting, brand portfolio analysis, and performance evaluation across brand families, supporting strategic decision-making in brand management and marketing initiatives." ;
     LLM4BI:LogicalName "BRAND_GROUP" .
 
 LLM4BI_Indyco:SKU_Category a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
+    LLM4BI:Description "A classification of products",
+        "Represents a high-level grouping of products within the Product dimension that defines the primary nature or purpose of an item. The Category attribute organizes merchandise into broad classes such as “Footwear,” “Apparel,” or “Accessories,” providing a key level for summarization, reporting, and product portfolio management. It supports consistent categorization across sales, inventory, and marketing systems, enabling performance tracking and strategic analysis at the category level. This attribute often serves as the parent of more detailed classifications such as Type and Subtype within the product hierarchy." ;
     LLM4BI:LogicalName "CATEGORY" ;
-    LLM4BI:SampleValues "Footwear",
-        "accessories",
-        "apparel" .
+    LLM4BI:SampleValues "Accessories",
+        "Activewear",
+        "Apparel",
+        "Bags",
+        "Eyewear",
+        "Footwear",
+        "Headwear",
+        "Home Textiles",
+        "Jewelry",
+        "Outerwear",
+        "Sleepwear",
+        "Sportswear",
+        "Swimwear",
+        "Underwear",
+        "Workwear" .
 
 LLM4BI_Indyco:SKU_Color a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The specific color of the product" ;
+    LLM4BI:Description "Represents the specific color or shade associated with a product variant within the Product dimension. The Color attribute distinguishes items of the same model or style based on their visual appearance, enabling customers and analysts to identify and track products by color variations. It can include standard color names (e.g., “Red,” “Navy Blue”) as well as descriptive or branded shades (e.g., “Midnight Black,” “Arctic White,” “Forest Green”). This attribute supports merchandising, assortment planning, and aesthetic consistency in reporting, facilitating detailed analysis of sales and inventory performance by color preference.",
+        "The specific color of the product" ;
     LLM4BI:LogicalName "COLOR" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Macro_Color ;
-    LLM4BI:SampleValues "Dark blu",
-        "light blu" .
+    LLM4BI:SampleValues "Beige Sand",
+        "Bright Yellow",
+        "Burgundy",
+        "Charcoal Grey",
+        "Chocolate Brown",
+        "Coral Pink",
+        "Dark Blue",
+        "Deep Red",
+        "Denim Blue",
+        "Emerald Green",
+        "Forest Green",
+        "Heather Grey",
+        "Jet Black",
+        "Light Blue",
+        "Midnight Blue",
+        "Navy",
+        "Olive Drab",
+        "Pure White",
+        "Sky Blue",
+        "Stone" .
 
 LLM4BI_Indyco:SKU_Customer_Gender a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The gender the product is targeted to" ;
+    LLM4BI:Description "Identifies the gender segment that a product is primarily designed or marketed for within the Product dimension. The Customer Gender attribute is used to distinguish product assortments targeted toward “Male,” “Female,” or “Unisex” customers. This classification supports merchandising, product design, and marketing analysis by enabling segmentation of sales and inventory data by gender-based market focus. It also facilitates comparison of performance across gender-specific product lines, ensuring alignment of offerings with consumer preferences and retail strategies.",
+        "The gender the product is targeted to" ;
     LLM4BI:LogicalName "CUSTOMER_GENDER" ;
-    LLM4BI:SampleValues "Male",
-        "female",
-        "unisex" .
+    LLM4BI:SampleValues "Boys",
+        "Female",
+        "Girls",
+        "Kids",
+        "Male",
+        "Men",
+        "Non-Binary",
+        "Unisex",
+        "Women",
+        "Youth" .
 
 LLM4BI_Indyco:SKU_Customer_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The type of customer the product is targeted to" ;
+    LLM4BI:Description "Represents the intended consumer segment or demographic group for which a product is designed within the Product hierarchy. The Customer Type attribute classifies merchandise according to target audience characteristics such as age group, gender, or usage context—for example, “Baby,” “Junior,” or “Adult.” This classification supports differentiated product planning, marketing strategies, and sales analysis by allowing segmentation of performance metrics by customer audience. It ensures that product assortments align with the needs and preferences of specific consumer groups across retail, e-commerce, and promotional activities.",
+        "The type of customer the product is targeted to" ;
     LLM4BI:LogicalName "CUSTOMER_TYPE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Age_Range ;
-    LLM4BI:SampleValues "Junior",
-        "adult",
-        "baby" .
+    LLM4BI:SampleValues "Adult",
+        "Baby",
+        "Boys",
+        "Girls",
+        "Infants",
+        "Junior",
+        "Maternity",
+        "Men",
+        "Plus Size",
+        "Senior",
+        "Teen",
+        "Toddler",
+        "Unisex",
+        "Women",
+        "Youth" .
 
 LLM4BI_Indyco:SKU_Macro_Color a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A group of colors" ;
+    LLM4BI:Description "A group of colors",
+        "Represents a generalized or aggregated color category used to group individual product colors into broader families for analysis and reporting purposes. The Macro Color attribute simplifies color management by consolidating detailed shades (e.g., “Navy,” “Sky Blue,” “Royal Blue”) into main groups such as “Blue” or “Red.” This higher-level classification supports consistent reporting across product lines, facilitates color-based assortment and trend analysis, and enhances visual merchandising decisions by aligning detailed color variants under a unified color family." ;
     LLM4BI:LogicalName "MACRO_COLOR" ;
-    LLM4BI:SampleValues "Blu",
-        "red" .
+    LLM4BI:SampleValues "Beige",
+        "Black",
+        "Blue",
+        "Brown",
+        "Burgundy",
+        "Green",
+        "Grey",
+        "Navy",
+        "Olive",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "White",
+        "Yellow" .
 
 LLM4BI_Indyco:SKU_Made_In a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The country where the product has been manufactured" ;
+    LLM4BI:Description "Indicates the country of origin where the product was manufactured, assembled, or primarily produced. The *Made In* attribute provides visibility into the geographic source of goods, supporting regulatory compliance, quality control, and supply chain transparency. It also serves as an important indicator for consumer perception, sustainability tracking, and trade reporting. Typical values include countries or regions such as “China,” “Italy,” or “Vietnam.” This attribute enables analysis related to production sourcing, cost optimization, and brand positioning based on manufacturing origin.",
+        "The country where the product has been manufactured" ;
     LLM4BI:LogicalName "MADE_IN" ;
-    LLM4BI:SampleValues "China",
-        "Korea" .
+    LLM4BI:SampleValues "Bangladesh",
+        "Cambodia",
+        "China",
+        "France",
+        "Germany",
+        "India",
+        "Indonesia",
+        "Italy",
+        "Japan",
+        "Mexico",
+        "Pakistan",
+        "Portugal",
+        "South Korea",
+        "Spain",
+        "Thailand",
+        "Turkey",
+        "United Kingdom",
+        "United States",
+        "Vietnam" .
 
 LLM4BI_Indyco:SKU_Size a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The size of the product" ;
+    LLM4BI:Description "Represents the standardized measurement or dimensional specification of a product variant within the Product dimension. The Size attribute differentiates items of the same model or style based on physical proportions such as clothing sizes (e.g., S, M, L, XL), shoe sizes, or numeric values (e.g., 36, 38, 40). It is essential for inventory control, replenishment, and presentation purposes, ensuring accurate product identification across supply chain, sales, and e-commerce systems. This attribute allows analysis of sales distribution by size range and supports assortment optimization to meet customer demand patterns.",
+        "The size of the product" ;
     LLM4BI:LogicalName "SIZE" ;
-    LLM4BI:SampleValues "L",
+    LLM4BI:SampleValues "25L",
+        "30W",
+        "32W",
+        "34W",
+        "36",
+        "38",
+        "3XL",
+        "40",
+        "42",
+        "44",
+        "46",
+        "48",
+        "L",
         "M",
+        "OneSize",
         "S",
-        "XL" .
+        "XL",
+        "XS",
+        "XXL" .
 
 LLM4BI_Indyco:SKU_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
+    LLM4BI:Description "A classification of products",
+        "Represents a mid-level product classification within the Product hierarchy that groups items sharing similar design, purpose, or use characteristics. The Type attribute provides a standardized categorization framework for reporting and analysis, allowing products to be classified into distinct families such as “Coats,” “Casual,” or “Suits.” It is typically broader than Subtype but more specific than higher-level product groupings (such as Category or Department). This attribute supports consistent product organization across assortments, sales reporting, and inventory planning by reflecting how items are positioned within the overall product structure." ;
     LLM4BI:LogicalName "TYPE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Category ;
-    LLM4BI:SampleValues "Coats",
-        "casual",
-        "suits" .
+    LLM4BI:SampleValues "Accessories",
+        "Activewear",
+        "Blazers",
+        "Casual",
+        "Coats",
+        "Dresses",
+        "Footwear",
+        "Hoodies",
+        "Jackets",
+        "Jeans",
+        "Overcoats",
+        "Polo Shirts",
+        "Rainwear",
+        "Shirts",
+        "Shorts",
+        "Skirts",
+        "Suits",
+        "Sweaters",
+        "Trousers",
+        "Vests" .
 
 LLM4BI_Indyco:Shop_Ticket_Currency a LLM4BI:Attribute ;
-    LLM4BI:Description "The currency used for buying" ;
+    LLM4BI:Description "Represents the monetary unit in which purchasing transactions or shop ticket values are recorded. The *Currency* attribute specifies the official denomination used for buying activities, such as payments to suppliers, production purchases, or internal cost accounting. Typical examples include *USD* (United States Dollar), *EUR* (Euro), or *JPY* (Japanese Yen). It ensures consistency in financial reporting, facilitates multi-currency management, and supports conversion into base currency for consolidated analysis. This attribute plays a key role in procurement tracking, cost evaluation, and international financial reconciliation.",
+        "The currency used for buying" ;
     LLM4BI:LogicalName "CURRENCY" ;
-    LLM4BI:SampleValues "CAD",
+    LLM4BI:SampleValues "AED",
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "CNY",
+        "DKK",
         "EUR",
         "GBP",
+        "HKD",
+        "INR",
         "JPY",
-        "USD" .
+        "MXN",
+        "NOK",
+        "NZD",
+        "PLN",
+        "SEK",
+        "SGD",
+        "USD",
+        "ZAR" .
 
 LLM4BI_Indyco:Shop_Ticket_Discount_Value a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" .
@@ -568,14 +977,32 @@ LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "Document quantity (order / invoice / bill / ...) in terms of pairs of shoes, clothing, ..." .
 
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "The collection of goods" ;
+    LLM4BI:Description "Represents the merchandising or production collection period under which a defined set of goods is developed, manufactured, and distributed. The *Season* attribute identifies the time-based product cycle, commonly described in terms such as *Fall/Winter (FW)* and *Spring/Summer (SS)* followed by the year (e.g., *FW12*, *SS13*). It provides a consistent temporal reference for organizing product assortments, shop tickets, and production orders. This attribute supports scheduling, performance tracking, and analysis of production and sales by seasonal collection, ensuring alignment between design, manufacturing, and retail planning processes.",
+        "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
-        "SS13" .
+        "FW14",
+        "FW15",
+        "FW16",
+        "FW17",
+        "FW18",
+        "FW19",
+        "FW20",
+        "FW21",
+        "SS13",
+        "SS14",
+        "SS15",
+        "SS16",
+        "SS17",
+        "SS18",
+        "SS19",
+        "SS20",
+        "SS21" .
 
 LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
+    LLM4BI:Description "Represents the half-year merchandising or production cycle that groups seasonal collections according to industry convention. The *Semester* attribute distinguishes between the two main commercial periods of the year: *SS* (Spring/Summer) and *FW* (Fall/Winter). It is used to organize and analyze production orders, shop tickets, and product launches in alignment with design and retail schedules. This attribute provides a consistent temporal framework for monitoring performance across seasons, supporting planning, scheduling, and reporting of activities within each half-year cycle." ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "FW",
@@ -590,20 +1017,33 @@ LLM4BI_Indyco:Store_Address a LLM4BI:ConformedAttribute ;
     LLM4BI:isDescriptive true .
 
 LLM4BI_Indyco:Store_IsConnected a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Whether the store is connected to Internet or not" ;
+    LLM4BI:Description "Indicates whether a store has an active internet connection that enables real-time data exchange with central systems. The *IsConnected* attribute identifies stores capable of online operations such as electronic transaction processing, live inventory synchronization, and automated reporting (“Y” for connected and “N” for not connected). This information is essential for monitoring system integration readiness, supporting point-of-sale connectivity analysis, and optimizing technical infrastructure management across the store network.",
+        "Whether the store is connected to Internet or not" ;
     LLM4BI:LogicalName "ISCONNECTED" ;
     LLM4BI:SampleValues "N",
         "Y" .
 
 LLM4BI_Indyco:Store_Location_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The environment where the store is located" ;
+    LLM4BI:Description "Describes the type of physical environment or setting in which a store operates, reflecting its geographic and commercial context. The *Location Type* attribute classifies stores based on their placement, such as an “Old Town” boutique, a “Mall” retail unit, or a “Highway Shopping Center” outlet. This classification helps identify differences in customer traffic, store accessibility, and sales dynamics influenced by location characteristics. It supports market segmentation, site performance analysis, and retail expansion strategy by providing insight into how store placement impacts customer behavior and revenue potential.",
+        "The environment where the store is located" ;
     LLM4BI:LogicalName "LOCATION_TYPE" ;
-    LLM4BI:SampleValues "Highway shopping center",
+    LLM4BI:SampleValues "Airport Terminal",
+        "Business District",
+        "City Center",
+        "Coastal Promenade",
+        "Highway Shopping Center",
         "Mall",
-        "Old Town" .
+        "Old Town",
+        "Outlet Village",
+        "Residential Neighborhood",
+        "Suburban Retail Park",
+        "Tourist District",
+        "Train Station",
+        "University Campus" .
 
 LLM4BI_Indyco:Store_Sales_District a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A geography-based grouping of stores" ;
+    LLM4BI:Description "A geography-based grouping of stores",
+        "Represents a geographic or administrative subdivision used to group stores for sales management and performance monitoring. The *Sales District* attribute defines a regional cluster of stores under common commercial oversight, typically based on proximity, market characteristics, or operational alignment. Districts are often managed by regional sales managers and form part of a broader territorial hierarchy (e.g., district → region → country). This attribute supports the analysis of regional sales performance, resource allocation, and distribution planning, enabling consistent comparison and reporting across different market areas." ;
     LLM4BI:LogicalName "SALES_DISTRICT" .
 
 LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
@@ -612,10 +1052,20 @@ LLM4BI_Indyco:Third_Party_Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
     LLM4BI:Description "The inventory level" .
 
 LLM4BI_Indyco:Traffic_Counter_Hour a LLM4BI:Attribute ;
-    LLM4BI:Description "Part of the day" ;
+    LLM4BI:Description "Part of the day",
+        "Represents the time interval or segment of the day during which traffic counts or related activities are recorded. The *Hour* attribute groups data into defined hourly or multi-hour ranges (e.g., *8–10*, *10–12*, *12–14*) to support time-based analysis of store activity, customer flow, or operational performance. It provides a finer level of temporal granularity within the Time dimension, enabling comparisons of visit patterns, staffing efficiency, and sales correlation across different parts of the day. This attribute is essential for analyzing traffic trends and optimizing in-store operations throughout business hours." ;
     LLM4BI:LogicalName "HOUR" ;
-    LLM4BI:SampleValues "10-12",
+    LLM4BI:SampleValues "0-2",
+        "10-12",
         "12-14",
+        "14-16",
+        "16-18",
+        "18-20",
+        "2-4",
+        "20-22",
+        "22-24",
+        "4-6",
+        "6-8",
         "8-10" .
 
 LLM4BI_Indyco:Traffic_Counter_Peopletickets_ratio a LLM4BI:Measure ;
@@ -629,21 +1079,51 @@ LLM4BI_Indyco:Traffic_Counter_Traffic_counter a LLM4BI:Measure ;
     LLM4BI:Description "Numer of persons who entered the store" .
 
 LLM4BI_Indyco:Warehouse_IsVirtual a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Specifies whether the warehouse is a physical or a virtual one" ;
+    LLM4BI:Description "Indicates whether a warehouse represents a tangible physical facility or a logical (virtual) location used for organizational or accounting purposes. The *IsVirtual* attribute helps distinguish between actual storage sites, where goods are physically held, and virtual warehouses used for inventory consolidation, stock visibility, or internal management (for example, assigning stock to online orders or reserved allocations). Typical values are “Y” for virtual warehouses and “N” for physical ones. This distinction supports accurate supply chain reporting, inventory reconciliation, and logistics process optimization.",
+        "Specifies whether the warehouse is a physical or a virtual one" ;
     LLM4BI:LogicalName "ISVIRTUAL" ;
     LLM4BI:SampleValues "N",
         "Y" .
 
 LLM4BI_Indyco:Warehouse_Movement_Cause a LLM4BI:Attribute ;
-    LLM4BI:Description "The reason for moving goods" ;
-    LLM4BI:LogicalName "CAUSE" .
+    LLM4BI:Description "Represents the underlying reason or business event that triggers the physical or logical movement of goods within or between warehouse locations. The *Cause* attribute identifies the purpose of each stock movement, such as *Replenishment*, *Customer Return*, *Damaged Goods Adjustment*, or *Transfer to Store*. It provides essential context for tracking inventory transactions, supporting audit trails, and analyzing warehouse operations efficiency. This attribute enables differentiation between planned logistics activities and corrective or exceptional movements, facilitating accurate reporting and warehouse performance monitoring.",
+        "The reason for moving goods" ;
+    LLM4BI:LogicalName "CAUSE" ;
+    LLM4BI:SampleValues "Customer Return",
+        "Damaged Goods Adjustment",
+        "Expired Goods Disposal",
+        "Goods Repackaging",
+        "Inventory Correction",
+        "Order Fulfillment",
+        "Production Output",
+        "Promotional Allocation",
+        "Quality Inspection",
+        "Replenishment",
+        "Sample Dispatch",
+        "Seasonal Relocation",
+        "Stock Transfer",
+        "Store Return",
+        "Supplier Delivery" .
 
 LLM4BI_Indyco:Warehouse_Movement_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products.",
+        "Represents a commercial classification that defines a specific theme, style, or concept used to group and organize products within warehouse operations. The *Merchandise Type* attribute links physical merchandise movements to marketing or assortment strategies, reflecting how goods are categorized and displayed in line with sales or promotional objectives. Examples may include *Football UK Teams*, *Disney Toons*, or *Far West Men Wears*. This attribute supports tracking of stock levels, transfers, and replenishment by merchandise segment, enabling analysis of warehouse activity and product flow across different assortments or thematic collections." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:SampleValues "Classic Formal Range",
+        "Coastal Resort Wear",
+        "Disney Toons",
+        "Far West Men Wears",
+        "Festival Summer Series",
+        "Football UK Teams",
+        "Heritage Sports Line",
+        "Kids Cartoon Apparel",
+        "Luxury Classics",
+        "Marvel Heroes Collection",
+        "Minimalist Contemporary Collection",
+        "Streetwear Urban Edition",
+        "Tropical Print Collection",
+        "Vintage Denim Line",
+        "Winter Adventure Gear" .
 
 LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
@@ -651,11 +1131,24 @@ LLM4BI_Indyco:Warehouse_Movement_Quantity a LLM4BI:Measure ;
     LLM4BI:Description "The quantity of goods being moved" .
 
 LLM4BI_Indyco:Warehouse_Stock_Merchandise_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products." ;
+    LLM4BI:Description "It includes disciplines and discounting, physical presentation of products and displays, and the various assortments of products.",
+        "Represents a thematic or commercial classification used to organize and manage stock within the warehouse according to product concept, branding, or display strategy. The *Merchandise Type* attribute defines how products are grouped in relation to visual presentation, promotional alignment, and assortment planning—for example, *Football UK Teams*, *Disney Toons*, or *Far West Men Wears*. It plays a key role in categorizing inventory for analysis, supporting stock valuation, replenishment, and reporting by merchandise concept. This attribute helps ensure consistency between warehouse stock management and commercial or marketing structures." ;
     LLM4BI:LogicalName "MERCHANDISE_TYPE" ;
-    LLM4BI:SampleValues "Disney Toons",
-        "Far West Men wears",
-        "Football UK Teams" .
+    LLM4BI:SampleValues "Classic Formal Range",
+        "Coastal Resort Wear",
+        "Disney Toons",
+        "Far West Men Wears",
+        "Festival Summer Series",
+        "Football UK Teams",
+        "Heritage Sports Line",
+        "Kids Cartoon Apparel",
+        "Luxury Classics",
+        "Marvel Heroes Collection",
+        "Minimalist Contemporary Collection",
+        "Streetwear Urban Edition",
+        "Tropical Print Collection",
+        "Vintage Denim Line",
+        "Winter Adventure Gear" .
 
 LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "AVG",
@@ -663,53 +1156,135 @@ LLM4BI_Indyco:Warehouse_Stock_Quantity_in_stock a LLM4BI:Measure ;
     LLM4BI:Description "The inventory level" .
 
 LLM4BI_Indyco:City_Country a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The nation of a city" ;
+    LLM4BI:Description "Represents the sovereign nation in which a city is located, defining the highest level of geographic classification within the Geography dimension. The *Country* attribute standardizes national boundaries for reporting, regulatory compliance, and international comparisons. It is essential for aggregating and analyzing business data across global markets, supporting currency handling, tax management, and regional performance evaluations. Typical examples include “Italy,” “United Kingdom (UK),” and “United States of America (USA).”",
+        "The nation of a city" ;
     LLM4BI:LogicalName "COUNTRY" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_Area ;
-    LLM4BI:SampleValues "Italy",
-        "UK",
-        "USA" .
+    LLM4BI:SampleValues "Argentina",
+        "Australia",
+        "Brazil",
+        "Canada",
+        "China",
+        "France",
+        "Germany",
+        "India",
+        "Italy",
+        "Japan",
+        "Mexico",
+        "Netherlands",
+        "Portugal",
+        "South Africa",
+        "South Korea",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "United Kingdom",
+        "United States" .
 
 LLM4BI_Indyco:Date_Month_In_Year a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific month" ;
+    LLM4BI:Description "A specific month",
+        "Represents the month component within the Time dimension, identifying a specific month and year combination used for summarizing and analyzing business activity over monthly periods. Each value corresponds to a unique month in the Gregorian calendar, typically formatted as an abbreviated month name followed by the two-digit year (e.g., “Jan 14” for January 2014). This attribute provides the linkage between daily granularity (Date) and higher-level periods such as quarter and year, supporting month-based reporting, trend analysis, and period-over-period comparisons across different time spans." ;
     LLM4BI:LogicalName "MONTH_IN_YEAR" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_4Month_Period,
         LLM4BI_Indyco:Date_Month,
         LLM4BI_Indyco:Date_Quarter ;
-    LLM4BI:SampleValues "Feb 14",
+    LLM4BI:SampleValues "Apr 14",
+        "Apr 15",
+        "Apr 16",
+        "Aug 14",
+        "Aug 15",
+        "Dec 14",
+        "Dec 15",
+        "Feb 14",
+        "Feb 15",
+        "Feb 16",
         "Jan 14",
-        "Mar 15" .
+        "Jan 15",
+        "Jan 16",
+        "Jul 14",
+        "Jul 15",
+        "Jun 14",
+        "Jun 15",
+        "Jun 16",
+        "Mar 14",
+        "Mar 15",
+        "Mar 16",
+        "May 14",
+        "May 15",
+        "May 16",
+        "Nov 14",
+        "Nov 15",
+        "Oct 14",
+        "Oct 15",
+        "Sep 14",
+        "Sep 15" .
 
 LLM4BI_Indyco:Invoice_Doc_Type a LLM4BI:Attribute ;
-    LLM4BI:Description "The document type" ;
+    LLM4BI:Description "Represents the classification of an invoice or transaction document based on its business purpose or processing stage. The *Doc Type* attribute identifies the nature of the document, such as *Deposit*, *Shipped*, or *Ticket*, helping to distinguish between different kinds of sales, billing, or logistical operations. It enables accurate interpretation of document flow within the invoicing and order management processes and supports financial tracking, reconciliation, and reporting by document category. This attribute is essential for auditing, operational control, and maintaining consistency in transactional records across systems.",
+        "The document type" ;
     LLM4BI:LogicalName "DOC_TYPE" ;
-    LLM4BI:SampleValues "Deposit",
-        "shipped",
-        "ticket" .
+    LLM4BI:SampleValues "Adjustment Document",
+        "Consignment",
+        "Credit Note",
+        "Debit Note",
+        "Delivery Note",
+        "Deposit",
+        "Internal Transfer",
+        "Pending Invoice",
+        "Proforma Invoice",
+        "Return Order",
+        "Sales Invoice",
+        "Shipped",
+        "Ticket" .
 
 LLM4BI_Indyco:Invoice_Goods_On_Delivery a LLM4BI:Attribute ;
-    LLM4BI:Description "Whether the good is being delivered" ;
+    LLM4BI:Description "Indicates whether the goods associated with an invoice are currently in the process of being delivered to the customer. The *Goods On Delivery* attribute is used to flag transactions where shipment is ongoing or pending confirmation of receipt. A value of “Y” (Yes) denotes that the delivery is in progress or scheduled, while “N” (No) means the goods have already been delivered or are not part of an active delivery. This attribute supports shipment tracking, delivery performance monitoring, and reconciliation between invoicing and logistics operations.",
+        "Whether the good is being delivered" ;
     LLM4BI:LogicalName "GOODS_ON_DELIVERY" ;
     LLM4BI:SampleValues "N",
         "Y" .
 
 LLM4BI_Indyco:Invoice_Profit_Center a LLM4BI:Attribute ;
-    LLM4BI:Description "A part of the company that directly adds the sale to its profits" ;
-    LLM4BI:LogicalName "PROFIT_CENTER" .
+    LLM4BI:Description "A part of the company that directly adds the sale to its profits",
+        "Represents an organizational unit within the company that is accountable for its own revenue generation and cost management, allowing direct measurement of its financial performance. The *Profit Center* attribute identifies the division, department, region, or business line whose operations contribute to overall corporate profitability. By isolating revenues and expenses associated with each profit center, organizations can evaluate operational efficiency, monitor profitability trends, and support strategic decision-making. This attribute enables detailed financial reporting, internal performance comparison, and responsibility tracking across different business segments." ;
+    LLM4BI:LogicalName "PROFIT_CENTER" ;
+    LLM4BI:SampleValues "Asia Pacific Online Channel",
+        "E-Commerce Division",
+        "European Wholesale Unit",
+        "Home & Lifestyle Division",
+        "Italy Fashion Department",
+        "Luxury Accessories Division",
+        "North America Retail Division",
+        "Outlet Operations Group",
+        "Premium Footwear Segment",
+        "Sportswear Business Unit" .
 
 LLM4BI_Indyco:Invoice_Return_Justification a LLM4BI:Attribute ;
-    LLM4BI:Description "The reason for which the goods are returned back" ;
+    LLM4BI:Description "Specifies the reason or justification provided for the return of goods from a customer or distribution point. The *Return Justification* attribute categorizes return transactions according to business, operational, or quality-related causes such as *Shipping Error*, *Wrong Goods*, *Dead Stock*, *Outdated Stock*, or *Flawed Goods*. It is used to monitor return patterns, identify process inefficiencies, and support corrective actions in logistics, production, or quality control. This attribute enables detailed reporting and analysis of return behavior, helping to improve customer satisfaction and reduce return-related costs.",
+        "The reason for which the goods are returned back" ;
     LLM4BI:LogicalName "RETURN_JUSTIFICATION" ;
-    LLM4BI:SampleValues "Dead Stock",
+    LLM4BI:SampleValues "Color Mismatch",
+        "Customer Refusal",
+        "Damaged Packaging",
+        "Dead Stock",
+        "Defective Item",
         "Flawed Goods",
-        "Outdate Stock",
+        "Incorrect Labeling",
+        "Late Delivery",
+        "Outdated Stock",
+        "Overstock Return",
+        "Product Recall",
         "Shipping Error",
+        "Size Mismatch",
+        "Warranty Return",
         "Wrong Goods" .
 
 LLM4BI_Indyco:Invoice_Virtual_Warehouse a LLM4BI:Attribute ;
-    LLM4BI:Description "Goods in shipping status" ;
+    LLM4BI:Description "Goods in shipping status",
+        "Indicates whether goods associated with an invoice are managed through a virtual warehouse, typically representing inventory in transit or allocated for shipment rather than physically stored in a fixed warehouse location. The *Virtual Warehouse* attribute distinguishes between physical stock and goods in shipping, staging, or reserved status. A value of “Y” (Yes) denotes that the goods are in a virtual or in-transit state, while “N” (No) indicates storage in a physical facility. This attribute supports logistics tracking, inventory reconciliation, and visibility of goods movement across the supply chain." ;
     LLM4BI:LogicalName "VIRTUAL_WAREHOUSE" ;
-    LLM4BI:SampleValues "Y/N" .
+    LLM4BI:SampleValues "N",
+        "Y" .
 
 LLM4BI:Arc a owl:ObjectProperty ;
     rdfs:label "" ;
@@ -719,7 +1294,8 @@ LLM4BI:Arc a owl:ObjectProperty ;
             owl:unionOf ( LLM4BI:Attribute LLM4BI:Measure ) ] .
 
 LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The store where a product is being sold" ;
+    LLM4BI:Description "Represents the physical or virtual retail location where products are sold and customer transactions are recorded. The *Store* attribute uniquely identifies each point of sale, which may include company-owned stores, franchise locations, outlets, or e-commerce platforms. It serves as a key element in analyzing sales performance, inventory distribution, and regional profitability. This attribute supports reporting by store, enables comparison across channels and regions, and provides a foundation for measuring store-level productivity, customer traffic, and operational effectiveness within the retail network.",
+        "The store where a product is being sold" ;
     LLM4BI:LogicalName "STORE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Store_Address,
@@ -728,7 +1304,8 @@ LLM4BI_Indyco:Store_Store a LLM4BI:ConformedAttribute ;
         LLM4BI_Indyco:Store_Sales_District .
 
 LLM4BI_Indyco:Warehouse_Warehouse a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The warehouse where a product is stored" ;
+    LLM4BI:Description "Represents the physical or logistical facility used for storing, handling, and distributing products within the supply chain. The *Warehouse* attribute identifies the specific location where inventory is held before being shipped to stores, customers, or other distribution points. It serves as a key element for inventory management, replenishment planning, and logistics optimization. This attribute supports reporting on stock levels, warehouse efficiency, and product movement, enabling analysis of storage capacity utilization and supply chain performance across different warehouse locations.",
+        "The warehouse where a product is stored" ;
     LLM4BI:LogicalName "WAREHOUSE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Warehouse_IsVirtual ;
@@ -739,30 +1316,74 @@ LLM4BI:MultipleArc a owl:ObjectProperty ;
     rdfs:subPropertyOf LLM4BI:Arc .
 
 LLM4BI_Indyco:Agent_Agent a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A salesman who covers a geographic area" ;
+    LLM4BI:Description "A salesman who covers a geographic area",
+        "Represents the individual salesperson or commercial representative responsible for managing customer relationships and driving sales within a defined geographic area or market segment. The *Agent* attribute identifies the primary point of contact between the company and its clients, facilitating performance tracking by sales territory, product line, or account portfolio. Agents may operate directly or through derived or regional structures, with relationships to area or regional managers maintained within the data warehouse. This attribute supports reporting on sales productivity, territory coverage, and commission-based performance analysis." ;
     LLM4BI:LogicalName "AGENT" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Agent_Area_Manager ;
-    LLM4BI:SampleValues "John Carrie",
+    LLM4BI:SampleValues "Carlos Mendes",
+        "Daniel Schmidt",
+        "Emily Foster",
+        "Giulia Rossi",
+        "Hannah Becker",
+        "Ingrid Johansson",
+        "Jacob Patel",
+        "John Carrie",
+        "Laura Chen",
         "Michael Baldi",
-        "Steve Gorini" ;
+        "Patrick O’Neill",
+        "Roberto Marino",
+        "Sofia Alvarez",
+        "Steve Gorini",
+        "Thomas Nguyen" ;
     LLM4BI_Indyco:Agent_Agent_Controller LLM4BI_Indyco:Agent_Controller .
 
 LLM4BI_Indyco:City_City a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific city or town" ;
+    LLM4BI:Description "A specific city or town",
+        "Represents the city or town associated with a specific business entity or transaction, such as the location of a store, warehouse, customer, or sales activity. The *City* attribute defines the local geographic area within a regional or country structure and is essential for territorial analysis, logistics operations, and market segmentation. It supports reporting by urban area, allowing comparisons of performance, distribution, or customer activity across different cities or metropolitan zones. This attribute forms part of the broader Geography dimension, typically linked to region, province, and country hierarchies." ;
     LLM4BI:LogicalName "CITY" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_County ;
-    LLM4BI:SampleValues "London",
+    LLM4BI:SampleValues "Amsterdam",
+        "Barcelona",
+        "Berlin",
+        "Buenos Aires",
+        "Chicago",
+        "Dubai",
+        "Hong Kong",
+        "London",
+        "Los Angeles",
+        "Madrid",
         "Miami",
-        "Rome" .
+        "Milan",
+        "New York",
+        "Paris",
+        "Rome",
+        "Singapore",
+        "Sydney",
+        "São Paulo",
+        "Tokyo",
+        "Toronto" .
 
 LLM4BI_Indyco:SKU_Subtype a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of products" ;
+    LLM4BI:Description "A classification of products",
+        "Represents a detailed product classification level within the Product dimension, defining a specific subgroup or variant within a broader product type. The Subtype typically captures a functional or stylistic distinction that differentiates products intended for different uses, target audiences, or design characteristics—for example, “Lady Sports Multipurpose Footwear” or “Man Leathers Formal Footwear.” This attribute enables finer segmentation and categorization of products for reporting, inventory management, and market analysis, supporting more accurate insights into assortment composition, performance, and consumer trends." ;
     LLM4BI:LogicalName "SUBTYPE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Customer_Type,
         LLM4BI_Indyco:SKU_Type ;
-    LLM4BI:SampleValues "Lady Sandals Casual Footwear",
+    LLM4BI:SampleValues "Kid Sandals Summer Casual Footwear",
+        "Kid Sneakers Everyday Footwear",
+        "Lady Ballet Shoes Leisure Footwear",
+        "Lady Boots Winter Fashion Footwear",
+        "Lady Heels Evening Formal Footwear",
+        "Lady Sandals Casual Footwear",
         "Lady Sports Multipurpose Footwear",
-        "Man Leathers Formal Footwear" .
+        "Man Flip-Flops Beach Footwear",
+        "Man Leathers Formal Footwear",
+        "Man Loafers Business Casual Footwear",
+        "Man Outdoor Hiking Footwear",
+        "Man Slippers Home Comfort Footwear",
+        "Unisex Running Performance Footwear",
+        "Unisex Safety Work Footwear",
+        "Unisex Trainers CrossFit Footwear" .
 
 LLM4BI:RollUpArc a owl:ObjectProperty ;
     rdfs:label "" ;
@@ -770,21 +1391,35 @@ LLM4BI:RollUpArc a owl:ObjectProperty ;
         LLM4BI:RollUpArc .
 
 LLM4BI_Indyco:Agent_Controller a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis" ;
+    LLM4BI:Description "Agent supervisors who periodically check agents on a random basis",
+        "Represents supervisory personnel responsible for overseeing and auditing the activities of sales agents to ensure compliance with company standards, operational guidelines, and performance expectations. The *Controller* attribute identifies individuals who perform periodic quality checks and evaluations of agents, often on a random or rotational basis. Their role focuses on maintaining consistency in sales practices, evaluating customer interactions, and ensuring adherence to organizational policies. This attribute supports accountability, performance assessment, and continuous improvement within the sales force management structure." ;
     LLM4BI:LogicalName "CONTROLLER" .
 
 LLM4BI_Indyco:Customer_Customer a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "The buying customer" ;
+    LLM4BI:Description "Represents the primary buyer entity associated with a transaction or business relationship within the Customer dimension. The *Customer* attribute identifies the organization, company, or individual responsible for purchasing products or services, such as “Holding1” or “Holding2.” It serves as the key level for analyzing sales performance, revenue contribution, and customer behavior. This attribute often links to additional descriptive data such as market segment, geography, or channel, supporting comprehensive profiling and strategic account management.",
+        "The buying customer" ;
     LLM4BI:LogicalName "CUSTOMER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:City_City,
         LLM4BI_Indyco:Customer_Billing_Information,
         LLM4BI_Indyco:Customer_Shipping_Address ;
-    LLM4BI:SampleValues "Holding1",
-        "Holding2" ;
+    LLM4BI:SampleValues "Casual Wear Wholesalers",
+        "Elegant Chain Stores",
+        "Fashion Outlet Europe",
+        "Global Retail Group",
+        "Holding1",
+        "Holding2",
+        "Lifestyle Retail Partners",
+        "Luxury Department Holdings",
+        "Metro Fashion Group",
+        "Outdoor Apparel Corp.",
+        "Premium Clothing Co.",
+        "Trendy Stores Ltd.",
+        "Urban Style Distributors" ;
     LLM4BI:isShared true .
 
 LLM4BI_Indyco:SKU_SKU a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "Stock keeping unit" ;
+    LLM4BI:Description "Represents the most granular product identifier in the Product dimension, known as the Stock Keeping Unit (SKU). Each SKU uniquely defines a specific product variant that can be sold, stocked, or shipped, typically distinguished by attributes such as brand, model, material, color, size, or packaging format. This attribute enables precise tracking of sales, inventory, and logistics performance at the item level, ensuring clear differentiation between similar products and supporting detailed product-level reporting and analysis across the enterprise data warehouse.",
+        "Stock keeping unit" ;
     LLM4BI:LogicalName "SKU" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Brand,
         LLM4BI_Indyco:SKU_Color,
@@ -792,17 +1427,38 @@ LLM4BI_Indyco:SKU_SKU a LLM4BI:ConformedAttribute ;
         LLM4BI_Indyco:SKU_Made_In,
         LLM4BI_Indyco:SKU_Size,
         LLM4BI_Indyco:SKU_Subtype ;
-    LLM4BI:SampleValues "Sneakers British Knight Leather Red M",
+    LLM4BI:SampleValues "Backpack Nomad Canvas Weatherproof Forest Green 25L",
+        "Belt Classic Heritage Full Grain Leather Black 100cm",
+        "Boots Rough Terrain Nubuck Sandstone 44",
+        "Cap Street Icon Twill Cotton Navy OneSize",
+        "Gloves Thermal Grip Synthetic Fiber Charcoal Grey S",
+        "Hoodie Urban Shield Recycled Polyester Heather Grey L",
+        "Jacket Alpine Pro Gore-Tex Hardshell Deep Navy XL",
+        "Running Shoes Velocity Carbon Fiber Bolt Blue 42",
+        "Shorts Active Performance Quick-Dry Black M",
+        "Sneakers British Knight Leather Red M",
         "Sneakers British Knight Suede Brown XL",
-        "Sneakers Sporty Lady Faux Leather White S" .
+        "Sneakers Sporty Lady Faux Leather White S",
+        "Sweater Nordic Comfort Wool Blend Beige L",
+        "T-Shirt Essential Organic Cotton Optic White M",
+        "Trousers Cargo Tactical Ripstop Cotton Olive Drab 34W" .
 
 LLM4BI_Indyco:Warehouse_Warehouse_Type a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A classification of warehouses" ;
+    LLM4BI:Description "A classification of warehouses",
+        "Represents the classification of a warehouse based on its operational role, ownership, or function within the supply chain network. The *Warehouse Type* attribute distinguishes between various kinds of storage and distribution facilities, such as *Third-Party Warehouse* (operated by external logistics providers), *POP* (Point of Production), *Stock Production* (dedicated to finished goods storage), or *Other* (special-purpose locations). This classification enables efficient management and reporting of inventory flows, logistics costs, and distribution efficiency across different types of warehousing operations." ;
     LLM4BI:LogicalName "WAREHOUSE_TYPE" ;
-    LLM4BI:SampleValues "Other",
+    LLM4BI:SampleValues "Central Warehouse",
+        "Cross-Docking Facility",
+        "Finished Goods Depot",
+        "Other",
         "POP",
+        "Raw Materials Storage",
+        "Regional Distribution Center",
+        "Returns Hub",
         "Stock Production",
-        "Third party warehouse" .
+        "Temporary Storage",
+        "Third-Party Warehouse",
+        "Transit Warehouse" .
 
 LLM4BI:OptionalArc a owl:ObjectProperty ;
     rdfs:label "OptionalArc" ;
@@ -813,21 +1469,47 @@ LLM4BI:DFMConcept a owl:Class .
 LLM4BI:Fact rdfs:subClassOf LLM4BI:DFMConcept .
 
 LLM4BI_Indyco:Date_Date a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific day" ;
+    LLM4BI:Description "A specific day",
+        "Represents the fundamental chronological unit in the Time dimension, identifying a specific calendar day used for recording and aggregating business events within the data warehouse. Each date corresponds to a unique day in the Gregorian calendar and serves as the base level for higher time hierarchies such as week, month, quarter, and year. This attribute enables analysts to associate sales, inventory movements, and other fact transactions with precise time references, facilitating temporal analysis and trend tracking across reporting periods." ;
     LLM4BI:LogicalName "DATE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Month_In_Year,
         LLM4BI_Indyco:Date_Week ;
     LLM4BI:SampleValues "01-01-2014",
-        "01-02-2014",
-        "01-03-2014" ;
+        "01-01-2015",
+        "01-01-2021",
+        "05-07-2017",
+        "09-09-2023",
+        "10-10-2016",
+        "14-02-2015",
+        "15-03-2014",
+        "15-08-2020",
+        "20-03-2019",
+        "25-12-2014",
+        "28-02-2022",
+        "30-04-2015",
+        "30-06-2014",
+        "31-12-2018" ;
     LLM4BI:isShared true .
 
 LLM4BI_Indyco:Date_Year a LLM4BI:ConformedAttribute ;
-    LLM4BI:Description "A specific year" ;
+    LLM4BI:Description "A specific year",
+        "Represents the highest granularity level in the Time dimension, identifying a distinct calendar year within which business transactions and events occur. This attribute is used to group and analyze facts by annual periods, supporting long-term performance comparisons such as year-over-year growth or historical trend analysis. Each value corresponds to a full Gregorian calendar year (e.g., 2013, 2014, 2015) and serves as a convergence point for monthly, quarterly, and daily hierarchies within the Time dimension, enabling consistent roll-ups across various temporal levels." ;
     LLM4BI:LogicalName "YEAR" ;
-    LLM4BI:SampleValues "2013",
+    LLM4BI:SampleValues "2010",
+        "2011",
+        "2012",
+        "2013",
         "2014",
-        "2015" .
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024" .
 
 LLM4BI:Attribute rdfs:subClassOf LLM4BI:DFMConcept .
 
