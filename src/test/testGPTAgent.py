@@ -39,15 +39,15 @@ ITERATIONS = int(os.getenv("ITERATIONS", 10))
 
 KG_VERSIONS = [2, 1, 0]
 ONTOLOGY_VERSIONS = [1, 0]
-PROMPT_VERSIONS = [1, 0]
+PROMPT_VERSIONS = [2, 0]
 
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
-# INCLUDED_QUESTIONS = ["O_04", "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
+INCLUDED_QUESTIONS = ["O_04"]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-SAVE_TO_DB = False
-
+SAVE_TO_DB = True
+MAX_RETRIES_X_QUESTION = 3
 ####################################################
 ####################################################
 
@@ -96,57 +96,72 @@ for kg_version in KG_VERSIONS:
             cubes_ontology = utils.load_ttl_as_text(
                 f"{KG_FILE}_version{kg_version}.ttl"
             )
+            # First prompt is the same and mandatory for each prompt
+            prompts = prompt["versions"][version]
+            intial_prompt_dict = prompts["p1"]
             initial_prompt = "\n".join(
                 [
-                    prompt["versions"][version]["incipit"],
+                    intial_prompt_dict["incipit"],
                     "--------------------",
                     llm4bi_ontology,
                     "--------------------",
-                    prompt["versions"][version]["after_llm4bi"],
+                    intial_prompt_dict["after_llm4bi"],
                     "--------------------",
                     cubes_ontology,
                     "--------------------",
-                    prompt["versions"][version]["after_cubes"],
+                    intial_prompt_dict["after_cubes"],
                 ]
             )
-
+            # For each iteration
             for i in range(1, ITERATIONS + 1):
+                # For each question category
                 for q_cat, q_dict in questions["Categories"].items():
+                    # For each question within a category
                     for q_id, q in q_dict.items():
                         question = q["Q"]
                         format = q["Answer_Format"]
                         truth = q["GT"]["Truth"]
                         answer_cat = q["GT"]["Format"]
                         # motivation = q["GT"]["Motivation"]
-                        question_prompt = "\n".join(
-                            [
-                                initial_prompt,
-                                "",
-                                f"Question: {question}",
-                                "",
-                                prompt["versions"][version]["after_question"].strip(),
-                                "",
-                                "--------------------",
-                                f"Format: {format}",
-                                prompt["versions"][version]["after_format"].strip(),
-                            ]
-                        ).strip()
 
-                        logger.info(
-                            f"KG {kg_version} - Onto {onto_version} - Prompt {version} - Iteration {i}/{ITERATIONS} - Category: {q_cat} - Question ID: {q_id}"
-                        )
-
-                        start_time = int(time.time())
-                        answer = agent.query(question_prompt)
-                        end_time = int(time.time())
-                        prompts = prompt["versions"][0]
-                        MAX_RETRIES = 3
                         attempt = 0
                         success = False
-
-                        while not success and attempt < MAX_RETRIES:
+                        while not success and attempt <= MAX_RETRIES_X_QUESTION:
+                            attempt += 1
                             try:
-                                attempt += 1
+                                question_prompt = "\n".join(
+                                    [
+                                        initial_prompt,
+                                        "",
+                                        f"Question: {question}",
+                                        "",
+                                        intial_prompt_dict["after_question"].strip(),
+                                        "",
+                                        "--------------------",
+                                        f"Format: {format}",
+                                        intial_prompt_dict["after_format"].strip(),
+                                    ]
+                                ).strip()
+
+                                logger.info(
+                                    f"KG {kg_version} - Onto {onto_version} - Prompt {version} - Iteration {i}/{ITERATIONS} - Category: {q_cat} - Question ID: {q_id}"
+                                )
+
+                                start_time = int(time.time())
+                                answer = agent.query(question_prompt)
+                                end_time = int(time.time())
+                                duration = end_time - start_time
+                                # If there are further prompt phases
+                                for next_part in prompts.keys():
+                                    # Skip p1 which we already prompted
+                                    if next_part != "p1":
+                                        next_prompt = prompts[next_part]
+                                        next_part_start_time = int(time.time())
+                                        answer = agent.query(next_prompt)
+                                        next_part_end_time = int(time.time())
+                                        duration = duration + (
+                                            next_part_end_time - next_part_start_time
+                                        )
 
                                 answer = answer.replace("LLM4BI_Indyco:", "")
                                 answer = answer.replace(
@@ -190,18 +205,14 @@ for kg_version in KG_VERSIONS:
                                                 "iteration": [i],
                                                 "start_time": [start_time],
                                                 "end_time": [end_time],
-                                                "duration": [
-                                                    (end_time - start_time) * 1000
-                                                ],
+                                                "duration": [duration * 1000],
                                                 "prompt": [
-                                                    "|".join(
-                                                        prompt["versions"][
-                                                            version
-                                                        ].values()
+                                                    json.dumps(
+                                                        prompt["versions"][version]
                                                     )
                                                 ],
                                                 "query_id": [q_id],
-                                                "version": [version],
+                                                "ontology_version": [version],
                                                 "precision": [precision],
                                                 "recall": [recall],
                                                 "fmeasure": [fmeasure],
@@ -216,6 +227,7 @@ for kg_version in KG_VERSIONS:
                                                 "motivation": [
                                                     str(answer_yaml["Motivation"])
                                                 ],
+                                                "llm4bi_version": [onto_version],
                                             }
                                         ),
                                     ],
@@ -227,7 +239,7 @@ for kg_version in KG_VERSIONS:
 
                             except Exception as e:
                                 logger.exception(
-                                    f"Attempt {attempt}/{MAX_RETRIES} failed for query {q_id}"
+                                    f"Attempt {attempt}/{MAX_RETRIES_X_QUESTION} failed for query {q_id}"
                                 )
                                 logger.exception(f"Answer (raw): {answer}")
                                 logger.exception(e)
@@ -236,7 +248,7 @@ for kg_version in KG_VERSIONS:
 
                         if not success:
                             logger.error(
-                                f"Query {q_id} failed after {MAX_RETRIES} attempts. Skipping."
+                                f"Query {q_id} failed after {MAX_RETRIES_X_QUESTION} attempts. Skipping."
                             )
                 logger.info(f"Iteration {i} completed, uplaoding results to database.")
                 if SAVE_TO_DB:
