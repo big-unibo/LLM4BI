@@ -39,14 +39,14 @@ ITERATIONS = int(os.getenv("ITERATIONS", 10))
 
 KG_VERSIONS = [2, 1, 0]
 ONTOLOGY_VERSIONS = [1, 0]
-PROMPT_VERSIONS = [2, 0]
+PROMPT_VERSIONS = [2, 1, 0]
 
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
 INCLUDED_QUESTIONS = ["O_04"]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-SAVE_TO_DB = True
+SAVE_TO_DB = False
 MAX_RETRIES_X_QUESTION = 3
 ####################################################
 ####################################################
