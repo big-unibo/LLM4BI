@@ -112,7 +112,7 @@ class PerformanceEvaluator:
             else 0.0
         )
 
-        print(precision, recall, f1)
+        # print(precision, recall, f1)
 
         return precision, recall, f1
 

@@ -101,5 +101,5 @@ LLM4BI:isCrossDimensional a owl:DataTypeProperty ;
 
 LLM4BI:isDescriptive a owl:DataTypeProperty ;
   rdfs:domain LLM4BI:DFMConcept ;
-  rdfs:comment "A descriptive attribute stores additional information about another attribute; it should not be used for aggregation, because it has a dense domain and/or it is the child of a one-to-one association.";
+  rdfs:comment "A descriptive attribute stores additional information about another attribute. It cannot be used for aggregation, because it has a dense domain and/or it is the child of a one-to-one association: if there is a RollUpArc from A to B where B is descriptive, it is not possible to roll-up from A to B (i.e., there is no roll-up path). Intuitively, if B is descriptive, there cannot be any RollUpArc starting from B.";
   rdfs:range xsd:boolean .

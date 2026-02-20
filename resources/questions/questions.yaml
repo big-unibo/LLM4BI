@@ -50,30 +50,18 @@ Categories:
       Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
 
     S_05:
-      Q: "Which cubes and dimensions should I check to analyze sales of casual footwear ?"
+      Q: "Which facts should I check to analyze sales of casual footwear?"
       GT:
-        Format: Key_Set_Dict
-        Truth:
-          {
-            "Shop_Ticket": ["SKU_SKU"],
-            "Order": ["SKU_SKU"],
-            "Invoice":  ["SKU_SKU"],
-            "Historical_Order": ["SKU_Subtype"],
-          }
-      Answer_Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
+        Format: Set
+        Truth: ["Shop_Ticket","Order","Invoice","Historical_Order"]
+      Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
 
     S_05_D:
-      Q: "Which cubes and dimensions should I check to analyze t-shirts sales?"
+      Q: "Which facts should I check to analyze t-shirts sales?"
       GT:
-        Format: Key_Set_Dict
-        Truth:
-          {
-            "Shop_Ticket": ["SKU_SKU"],
-            "Order": ["SKU_SKU"],
-            "Invoice":  ["SKU_SKU"],
-            "Historical_Order": ["SKU_Subtype"],
-          }
-      Answer_Format: "Provide the answer as a dictionary of key-value pairs where keys are the cubes (using full URIs) and values are lists of their relevant dimensions (using full URIs)"
+        Format: Set
+        Truth: ["Shop_Ticket","Order","Invoice","Historical_Order"]
+      Answer_Format: "Provide the answer as a list of the fact names (using the full URI)"
 
   Olap:
     O_01:
@@ -173,14 +161,14 @@ Categories:
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+          - ["Customer_Customer", "City_City", "City_County", "City_State", "City_Country", "City_Area"]
       Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
     O_08_D:
       Q: "If I'm aggregating data by customer, which roll-up paths are available?"
       GT:
         Format: Set_Of_Lists
         Truth:
-          - ["LLM4BI_Indyco:Customer_Customer", "LLM4BI_Indyco:Customer_City", "LLM4BI_Indyco:Customer_County", "LLM4BI_Indyco:Customer_State", "LLM4BI_Indyco:Customer_Country", "LLM4BI_Indyco:Customer_Area"]
+          - ["Customer_Customer", "City_City", "City_County", "City_State", "City_Country", "City_Area"]
       Answer_Format: "Provide the answer as a list of the roll-up paths; each path should be an ordered list of attributes (using the full URIs), starting from the finest level up to the coarsest one."
     O_09:
       Q: "If I'm aggregating data by year, which drill-down paths are available?"
@@ -249,37 +237,37 @@ Categories:
       GT:
         Format: Binary
         Truth: "Many-To-Many" # relationship, because they are on different branches of the SKU hierarchy."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
     B_03_D:
       Q: "Which relationship holds between product trademarks and product classifications?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" # relationship, because they are on different branches of the SKU hierarchy."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
     B_04:
       Q: "Which relationship holds between agents and controllers?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #-relationships, because there is a Multiple-Arc between them."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
     B_04_D:
-      Q: "Which relationship holds between sales representatives and sales supervisors?"
+      Q: "Which relationship holds between sales representatives and the people that periodically evaluate them?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #-relationships, because there is a Multiple-Arc between them."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
     B_05:
       Q: "Which relationship holds between brands and controllers?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #, because there is no direct arc between them."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
     B_05_D:
-      Q: "Which relationship holds between product trademarks and sales supervisors?"
+      Q: "Which relationship holds between product trademarks and the people that do periodical evaluations of sales representatives?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" #, because there is no direct arc between them."
-      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', 'Many-To-Many' or 'Unknown', do not add anything more."
+      Answer_Format: "Choose the answer between 'One-To-One', 'One-To-Many', 'Many-To-One', or 'Many-To-Many', do not add anything more."
 
   Test:
     T_01:
@@ -293,7 +281,7 @@ Categories:
             - ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
       Answer_Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
     T_02:
-      Q: "Are there measures whose aggregation operators support summarization (i.e., aggregation via the SUM operator) even though their business meaning implies they should be non-additive? If so, which are them?"
+      Q: "Are there measures whose aggregation operators include the SUM operator, even though their business meaning implies they should be non-additive? If so, which are them?"
       GT:
         Format: Set
         Truth: ["Traffic_Counter_Peopletickets_ratio"]

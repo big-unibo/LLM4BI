@@ -32,21 +32,26 @@ PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
 ####################################################
 PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
-ITERATIONS = int(os.getenv("ITERATIONS", 10))
+ITERATIONS = int(os.getenv("ITERATIONS", 3))
 # PROMPT_VERSIONS = [
 #     int(v) for v in os.getenv("PROMPT_VERSIONS", "0,1").split(",")
 # ]  ## Should be a list [0,1]
 
-KG_VERSIONS = [2, 1, 0]
-ONTOLOGY_VERSIONS = [1, 0]
-PROMPT_VERSIONS = [2, 1, 0]
-
+KG_VERSIONS = [2]  # 2,1,0
+ONTOLOGY_VERSIONS = [1]  # 1,0
+PROMPT_VERSIONS = [0]  # 2,1,0
+TEST_ID = "FULL"
+# TEST_ID = None
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
-INCLUDED_QUESTIONS = ["O_04"]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
+# INCLUDED_QUESTIONS = [
+#     "S_05",
+#     "S_05_D",
+#     "T_02",
+# ]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-SAVE_TO_DB = False
+SAVE_TO_DB = True
 MAX_RETRIES_X_QUESTION = 3
 ####################################################
 ####################################################
@@ -82,7 +87,8 @@ metric_evaluator = MetricEvaluator.PerformanceEvaluator(
     QUESTION_FILE, CREDENTIALS, referee_instructions
 )
 
-test_id = uuid.uuid4()  # EG: ho spostato su
+test_id = TEST_ID if TEST_ID else str(uuid.uuid4())  # EG: ho spostato su
+
 
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
@@ -212,7 +218,7 @@ for kg_version in KG_VERSIONS:
                                                     )
                                                 ],
                                                 "query_id": [q_id],
-                                                "ontology_version": [version],
+                                                "ontology_version": [kg_version],
                                                 "precision": [precision],
                                                 "recall": [recall],
                                                 "fmeasure": [fmeasure],
