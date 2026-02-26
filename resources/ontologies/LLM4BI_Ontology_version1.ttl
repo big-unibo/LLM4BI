@@ -49,14 +49,9 @@ LLM4BI:Arc a owl:ObjectProperty ;
   rdfs:comment "An arc connecting entities within a Dimensional Fact Model schema." ;
   rdfs:label "" .
 
-LLM4BI:HasDimension a owl:ObjectProperty ;
-  rdfs:subPropertyOf LLM4BI:Arc ;
-  rdfs:comment "Represents a functional dependency between a fact and an attribute, indicating that there is a many-to-one relationship from the fact to the attribute. The referenced attribute is a dimension of the fact." ; 
-  rdfs:label "" .
-
 LLM4BI:RollUpArc a owl:ObjectProperty ;
   rdfs:subPropertyOf LLM4BI:Arc ;
-  rdfs:comment "Represents a functional dependency between two attributes connected by a many-to-one relationship (e.g., if one product belongs to one type, there is a RollUpArc from product to the type attribute). In presence of a RollUpArc from A to B, the user can roll-up from A to B or drill-down from B to A. RollUpArc are transitive: in presence of a RollUpArc from A to B and from B to C, then the user can roll-up from A to C or drill-down from C to A. In the case of a branch (i.e., there is a RollUpArc from A to B and from A to C, but not from B to C), then B and C are in a many-to-many relationship and there is no roll-up or drill-down relationship between them." ; 
+  rdfs:comment "Represents a functional dependency. It is usually specified between two attributes connected by a many-to-one relationship (e.g., if one product belongs to one type, there is a RollUpArc from the product to the type attribute). It is also used to connect a fact to its measures and its attributes; the referenced attributes are also called 'dimensions' of the fact. In presence of a RollUpArc from A to B, we say that the user can roll-up from A to B or drill-down from B to A. RollUpArc are transitive, but only if they are navigated in the same direction: in presence of a RollUpArc from A to B and from B to C, then the user can roll-up from A to C or drill-down from C to A. In the case of a branch (i.e., there is an attribute A that is a common root between B and C), then B and C are in a many-to-many relationship and there is no roll-up or drill-down relationship between them; indeed, going from B to C would require a drill-down to A and a roll-up to C (and the same viceversa), thus there is only a many-to-many relationship between B and C." ; 
   rdfs:label "" .
 
 LLM4BI:MultipleArc a owl:ObjectProperty ;

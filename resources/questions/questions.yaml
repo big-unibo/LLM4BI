@@ -226,14 +226,14 @@ Categories:
         Format: Open_Ended
         Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
       Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
-    B_02_D:
-      Q: "Give me a business-oriented description of the purchases cube."
-      GT:
-        Format: Open_Ended
-        Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
-      Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
+    # B_02_D:
+    #   Q: "Give me a business-oriented description of the purchases cube."
+    #   GT:
+    #     Format: Open_Ended
+    #     Truth: "The Order cube provides a comprehensive view of customer order activity, allowing the business to analyze sales by agent, customer, product, and time, while tracking financial aspects such as currency, merchandise type, order type, and season; its measures (Net_Value, Discount_Value, Quantity, and VAT_Value) support evaluating revenue generation, discount strategies, and overall sales effectiveness."
+    #   Answer_Format: "Provide a concise business-oriented explanation; enclose the answer between quotes."
     B_03:
-      Q: "Which relationship holds between brands and categories?"
+      Q: "Which relationship holds between brands and product categories?"
       GT:
         Format: Binary
         Truth: "Many-To-Many" # relationship, because they are on different branches of the SKU hierarchy."
@@ -281,16 +281,16 @@ Categories:
             - ["Historical_Order_VAT_Value", "Order_VAT_Value", "Shop_Ticket_VAT_Value"]
       Answer_Format: "Measures with different name but same semantics must be grouped into separate lists; provide all the lists you can find (if any)"
     T_02:
-      Q: "Are there measures whose aggregation operators include the SUM operator, even though their business meaning implies they should be non-additive? If so, which are them?"
+      Q: "Are there measures whose business meaning implies they should be non-additive, but their aggregation operators include the SUM operator? If so, which are them?"
       GT:
         Format: Set
-        Truth: ["Traffic_Counter_Peopletickets_ratio"]
+        Truth: ["Traffic_Counter_Peopletickets_ratio","Invoice_SellIn_Margin"]
       Answer_Format: "Provide the answer as a list of the measures (using the full URI)."
     T_02_D:
       Q: "Are there measures whose aggregation operators are inconsistent with their business meaning? If so, which are them?"
       GT:
         Format: Set
-        Truth: ["Traffic_Counter_Peopletickets_ratio"]
+        Truth: ["Traffic_Counter_Peopletickets_ratio","Invoice_SellIn_Margin"]
       Answer_Format: "Provide the answer as a list of the measures (using the full URI)."
     T_03:
       Q: "Are there any attributes that could be conformed across different facts but are modeled as separate, non-conformed hierarchies? If so, which are them?"

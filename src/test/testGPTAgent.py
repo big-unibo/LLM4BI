@@ -32,22 +32,28 @@ PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
 ####################################################
 PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
-ITERATIONS = int(os.getenv("ITERATIONS", 3))
+ITERATIONS = int(os.getenv("ITERATIONS", 5))
 # PROMPT_VERSIONS = [
 #     int(v) for v in os.getenv("PROMPT_VERSIONS", "0,1").split(",")
 # ]  ## Should be a list [0,1]
 
-KG_VERSIONS = [2]  # 2,1,0
-ONTOLOGY_VERSIONS = [1]  # 1,0
-PROMPT_VERSIONS = [0]  # 2,1,0
-TEST_ID = "FULL"
+KG_VERSIONS = [0, 2]  # 2,1,0
+ONTOLOGY_VERSIONS = [0, 1]  # 1,0
+PROMPT_VERSIONS = [1]  # 2,1,0
+TEST_ID = "FULL_NEW"
 # TEST_ID = None
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
+INCLUDED_QUESTIONS = ["B_01", "B_02"]
 # INCLUDED_QUESTIONS = [
 #     "S_05",
 #     "S_05_D",
-#     "T_02",
+#     "O_03",
+#     "O_03_D",
+#     "O_04",
+#     "O_04_D",
+#     "O_06",
+#     "O_06_D",
 # ]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
