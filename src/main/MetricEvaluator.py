@@ -3,8 +3,10 @@ from typing import Callable, Any, List, Tuple, Dict, Union
 from itertools import product
 import yaml
 from statistics import mean
+from main import ceaf
 from main.agents.GPTAgent import GPTAgent
-from metric4coref import ceaf
+
+# from metric4coref import ceaf
 
 
 class PerformanceEvaluator:
@@ -223,7 +225,8 @@ class PerformanceEvaluator:
         #     recall,
         #     f1,
         # )
-        return ceaf(observed_set, groundtruth_set)
+        precision, recall, f1, _, _ = ceaf.ceaf_jaccard(observed_set, groundtruth_set)
+        return precision, recall, f1
 
     # -------------------
     # ROUGE-L for sets of strings
@@ -274,7 +277,8 @@ class PerformanceEvaluator:
         # recall = mean([rec for _, _, _, rec, _ in best_list])
 
         # return ass_precision, ass_recall, ass_f1, precision, recall, f1
-        return ceaf(observed_set, groundtruth_set)
+        precision, recall, f1, _, _ = ceaf.ceaf_rouge_l(observed_set, groundtruth_set)
+        return precision, recall, f1
 
     # -------------------
     # Key-Set dictionary accuracy
