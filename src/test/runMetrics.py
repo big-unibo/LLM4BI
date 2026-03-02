@@ -5,6 +5,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 import os
 import yaml
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
@@ -42,7 +43,7 @@ metric_evaluator = MetricEvaluator.PerformanceEvaluator(
 
 ## PARAMETERS ##
 
-TEST_ID = "x"
+TEST_ID = "FULL"
 TABLE = "answers"
 
 
@@ -54,13 +55,12 @@ df = pd.read_sql(query, SQL_ENGINE)
 # 2. Process metrics and update the DataFrame in memory
 for index, row in df.iterrows():
     # Evaluate metrics using the specific evaluator
-    metric = metric_evaluator.evaluate_answer(
-        test_id=TEST_ID,
+    metric = metric_evaluator.evaluate_query_performance(
         query_id=row["query_id"],
         category=row["category"],
-        answer=yaml.safe_load(row["answer"])
+        answer=yaml.safe_load(row["answer"]),
     )
-    
+
     # Map each calculated metric back into the current DataFrame row
     # The 'at' method is efficient for single-value assignments
     for key, value in metric.items():
@@ -73,7 +73,8 @@ records = df.to_dict(orient="records")
 # 4. Execute the bulk UPDATE using the composite primary key
 # We use bind parameters (e.g., :precision) to map dictionary keys to SQL columns
 with SQL_ENGINE.begin() as conn:
-    statement = text(f"""
+    statement = text(
+        f"""
         UPDATE {TABLE} 
         SET precision = :precision, 
             recall = :recall, 
@@ -92,8 +93,9 @@ with SQL_ENGINE.begin() as conn:
           AND prompt_version = :prompt_version 
           AND llm4bi_version = :llm4bi_version
           AND start_time = :start_time
-    """)
-    
+    """
+    )
+
     # SQLAlchemy's execute method handles the list of dicts as a batch operation
     conn.execute(statement, records)
 
