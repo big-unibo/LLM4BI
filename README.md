@@ -16,7 +16,7 @@ This repository contains the implementation of the following research paper:
 
 ## Repository Organization
 
-### `resources/` - Data & Configuration
+#### Data & Configuration
 * **`input/`**
     * `indyco_exports/`: Contains the `.xlsx` files used to build the **Schema Graph (SG)**.
     * `prompts/`: Contains the set of prompts fed to GPT Agents for evaluating the approach and responses.
@@ -24,17 +24,17 @@ This repository contains the implementation of the following research paper:
 * **`ontologies/`**: Contains the different versions of the **Master Graph (MG)**.
 * `credentials.yaml`: Contains the GPT API keys (**Note**: must be modified with your own keys).
 
-### `src/` - Source Code
+#### Source Code
 * **`main/graphBuilder/`**
     * `xl_to_ttl_singleton.py`: Python script to build the **SG** from the **MG** and the Excel exports.
 * **`test/`**
     * `testGPTAgent.py`: The core test script that handles agent queries and response collection.
 
-### `output/` - Results & Exports
+#### Results & Exports
 * **`ontologies/`**: Contains the different versions of the generated **Schema Graphs (SG)**.
 * **`statistics/`**: Contains the performance evaluation results and execution metrics.
 
-### Environment
+#### Environment
 * `.env.examples`: Defines the global parameters and configurations for the evaluation pipeline.
 
 ##### Running the approach
