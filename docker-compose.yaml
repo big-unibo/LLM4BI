@@ -8,9 +8,9 @@ services:
     env_file: .env
     volumes:
       - ./resources/:/llm4bi/resources/
+      - ./output/:/llm4bi/output/
     command:
       - /bin/bash
       - -c
       - |
         python3 src/test/testGPTAgent.py
-        tail -f /dev/null

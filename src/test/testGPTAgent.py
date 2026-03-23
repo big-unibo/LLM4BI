@@ -60,7 +60,7 @@ EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
 
 SAVE_TO_DB = False
-MAX_RETRIES_X_QUESTION = os.getenv("MAX_RETRIES_X_QUESTION", 3)
+MAX_RETRIES_X_QUESTION = int(os.getenv("MAX_RETRIES_X_QUESTION", 3))
 ####################################################
 ####################################################
 
@@ -104,6 +104,9 @@ test_id = TEST_ID if TEST_ID else str(uuid.uuid4())  # EG: ho spostato su
 for kg_version in KG_VERSIONS:
     for onto_version in ONTOLOGY_VERSIONS:
         for version in PROMPT_VERSIONS:
+            version = int(version)
+            onto_version = int(onto_version)
+            kg_version = int(kg_version)
             llm4bi_ontology = utils.load_ttl_as_text(
                 f"{ONTOLOGY_FILE}_version{onto_version}.ttl"
             )
@@ -264,7 +267,7 @@ for kg_version in KG_VERSIONS:
                             logger.error(
                                 f"Query {q_id} failed after {MAX_RETRIES_X_QUESTION} attempts. Skipping."
                             )
-                logger.info(f"Iteration {i} completed, uplaoding results to database.")
+                logger.info(f"Iteration {i} completed, storing results.")
                 if SAVE_TO_DB:
                     statistics.to_sql(
                         "answers", SQL_ENGINE, if_exists="append", index=False
@@ -273,6 +276,9 @@ for kg_version in KG_VERSIONS:
                     pd.set_option("display.max_colwidth", None)
                     pd.set_option("display.max_columns", None)
                     pd.set_option("display.max_rows", None)
+                    print(statistics)
                     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-                    statistics.to_csv(os.path.join(OUTPUT_FOLDER, f"statistics_{test_id}.csv"), index=False)
+                    statistics_path = os.path.join(OUTPUT_FOLDER, f"statistics.csv")
+                    file_exists = os.path.isfile(statistics_path)
+                    statistics.to_csv(statistics_path, mode='a', index=False, header=not file_exists)
                 statistics = statistics.iloc[0:0]
