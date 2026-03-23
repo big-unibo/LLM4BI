@@ -37,7 +37,7 @@ This repository contains the implementation of the following research paper:
 #### Environment
 * `.env.examples`: Defines the global parameters and configurations for the evaluation pipeline.
 
-##### Running the approach
+## Running the approach
 
 - **Rename ".env.example" file to ".env"**
 - **Rename "/resources/credentials_example.yaml" file to "credentials.yaml" and update the api-key within such file.**
