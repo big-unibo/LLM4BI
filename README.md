@@ -14,6 +14,8 @@ This repository contains the implementation of the following research paper:
 - A Python script to create the Schema Graph (SG), parsing Excel's export of Indyco Buillder metadata schema into a Knowledge Graph leveraging the MG.
 - A Python script that given the MG, SG, and a set of Chat-GPT API keys as input, asks the defined questions and computes the metrics described in the paper. 
 
+## Repository Organization
+
 ### `resources/` - Data & Configuration
 * **`input/`**
     * `indyco_exports/`: Contains the `.xlsx` files used to build the **Schema Graph (SG)**.
