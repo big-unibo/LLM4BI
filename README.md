@@ -42,7 +42,7 @@ This repository contains the implementation of the following research paper:
 - **Rename ".env.example" file to ".env"**
 - **Rename "/resources/credentials_example.yaml" file to "credentials.yaml" and update the api-key within such file.**
 - The list of mandatory (Python) dependencies to successfully run the script is explicited inside `requirements.txt` file in the project root directory.
-- Alternatively, the approach and data mentioned in the article can be reproduced through Docker by opening a shell within this project directory and running
+- The approach and data mentioned in the article can be reproduced through Docker by opening a shell within this project directory and running
    ```sh
    docker compose up --abort-on-container-exit
    ```
