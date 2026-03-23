@@ -17,7 +17,6 @@ This repository contains the implementation of the following research paper:
 #### Repository Organization
 
 - `.env.examples` defines the parameters of the evaluation pipeline.
-- 
 - `/resources/credentials.yaml` contains the GPT api-keys (to be modified).
 - `/resources/ontologies` contains the different version of MG.
 - `/resources/input/indyco_exports` contains the .xlsx to build the SG.
