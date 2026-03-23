@@ -16,9 +16,9 @@ from main import utils
 from main.agents.GPTAgent import GPTAgent
 from main import MetricEvaluator
 
-logger = utils.setup_logger("LLM4BI_IndycoGPTAgent")
+logger = utils.setup_logger("LLM4BI_IndycoTestGPTAgent")
 
-BASE = Path("/home")  # Path(os.getenv("BASE_PATH", "/home"))
+BASE = Path(os.getenv("BASE_PATH", "/home"))
 
 # Input file paths
 QUESTION_FILE = BASE / "resources" / "questions" / "questions.yaml"
@@ -26,7 +26,7 @@ ONTOLOGY_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
 KG_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
-
+OUTPUT_FOLDER = BASE / "output" / "statistics"
 ####################################################
 ##               PARAMETERS                       ##
 ####################################################
@@ -37,14 +37,16 @@ ITERATIONS = int(os.getenv("ITERATIONS", 5))
 #     int(v) for v in os.getenv("PROMPT_VERSIONS", "0,1").split(",")
 # ]  ## Should be a list [0,1]
 
-KG_VERSIONS = [0, 2]  # 2,1,0
-ONTOLOGY_VERSIONS = [0, 1]  # 1,0
-PROMPT_VERSIONS = [1]  # 2,1,0
-TEST_ID = "FULL_NEW"
+KG_VERSIONS = os.getenv("KG_VERSIONS", "0,2").split(",")  # 2,1,0
+ONTOLOGY_VERSIONS = os.getenv("ONTOLOGY_VERSIONS", "0,1").split(",")  # 1,0
+PROMPT_VERSIONS = os.getenv("PROMPT_VERSIONS", "1").split(",")  # 2,1,0
+TEST_ID = os.getenv("TEST_ID", str(uuid.uuid4()))  # EG: "FULL_NEW" or None for random UUID
 # TEST_ID = None
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
-INCLUDED_QUESTIONS = ["B_01", "B_02"]
+EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
+
+#INCLUDED_QUESTIONS = ["B_01", "B_02"]
 # INCLUDED_QUESTIONS = [
 #     "S_05",
 #     "S_05_D",
@@ -55,10 +57,10 @@ INCLUDED_QUESTIONS = ["B_01", "B_02"]
 #     "O_06",
 #     "O_06_D",
 # ]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
-EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-SAVE_TO_DB = True
-MAX_RETRIES_X_QUESTION = 3
+
+SAVE_TO_DB = False
+MAX_RETRIES_X_QUESTION = os.getenv("MAX_RETRIES_X_QUESTION", 3)
 ####################################################
 ####################################################
 
@@ -271,5 +273,6 @@ for kg_version in KG_VERSIONS:
                     pd.set_option("display.max_colwidth", None)
                     pd.set_option("display.max_columns", None)
                     pd.set_option("display.max_rows", None)
-                    print(statistics)
+                    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+                    statistics.to_csv(os.path.join(OUTPUT_FOLDER, f"statistics_{test_id}.csv"), index=False)
                 statistics = statistics.iloc[0:0]
