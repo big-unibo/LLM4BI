@@ -21,7 +21,7 @@ This repository contains the implementation of the following research paper:
     * `indyco_exports/`: Contains the `.xlsx` files used to build the **Schema Graph (SG)**.
     * `prompts/`: Contains the set of prompts fed to GPT Agents for evaluating the approach and responses.
 * **`questions/`**: Contains the different sets of evaluation questions in **YAML** format.
-* **`ontologies/`**: Contains the different versions of the **Master Graph (MG)**.
+* **`ontologies/`**: Contains the different versions of the **Model Graph (MG)**.
 * `credentials.yaml`: Contains the GPT API keys (**Note**: must be modified with your own keys).
 
 #### Source Code
