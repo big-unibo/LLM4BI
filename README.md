@@ -8,14 +8,16 @@ This repository contains the implementation of the following research paper:
 
 ## Getting Started
 
-Main features
+#### Main features
 
 - An ontology (Model Graph, MG) defining the basic concept of a DFM in a Turtle format.
 - A Python script to create the Schema Graph (SG), parsing Excel's export of Indyco Buillder metadata schema into a Knowledge Graph leveraging the MG.
 - A Python script that given the MG, SG, and a set of Chat-GPT API keys as input, asks the defined questions and computes the metrics described in the paper. 
 
-Repository Organization
+#### Repository Organization
 
+- `.env.examples` defines the parameters of the evaluation pipeline.
+- 
 - `/resources/credentials.yaml` contains the GPT api-keys (to be modified).
 - `/resources/ontologies` contains the different version of MG.
 - `/resources/input/indyco_exports` contains the .xlsx to build the SG.
@@ -26,10 +28,15 @@ Repository Organization
 - `/src/test/testGPTAgent.py` represents the Python file that asks ques
 - `/output/statistics/` contains the performance evaluation results.
 
-Running the approach
+##### Running the approach
 
+- **Rename the ".env.example" file to ".env"**
 - The list of mandatory (Python) dependencies to successfully run the script is explicited inside `requirements.txt` file in the project root directory.
-- Alternatively. the approach and data mentioned in the article can be reproduced through Docker by opening a shell within this project directory and running
+- Alternatively, the approach and data mentioned in the article can be reproduced through Docker by opening a shell within this project directory and running
    ```sh
    docker compose up --abort-on-container-exit
    ```
+   
+#### Working the code
+
+Tests can be extended by updating/adding questions or modyfing the different prompts
