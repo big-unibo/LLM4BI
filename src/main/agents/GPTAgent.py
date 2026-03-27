@@ -5,9 +5,11 @@ from .Agent import Agent
 class GPTAgent(Agent):
     def __init__(self, instruction: str, api_key: str, model: str = "gpt-5-chat"):
         self.client = AzureOpenAI(
-            api_version="2024-12-01-preview",
-            azure_endpoint="https://llm4dfm-gpt.openai.azure.com/openai/deployments/gpt-5-chat/chat/completions?api-version=2025-01-01-preview",
             api_key=api_key,
+            api_version="2024-12-01-preview",
+            # api_version="2025-04-01-preview",
+            azure_endpoint="https://llm4dfm-gpt.openai.azure.com/openai/deployments/gpt-5-chat/chat/completions?api-version=2025-01-01-preview",
+            # azure_endpoint="https://llm4dfm-gpt.openai.azure.com/openai/deployments/gpt-5-mini/chat/completions?api-version=2025-04-01-preview",
         )
         self.model = model
 
