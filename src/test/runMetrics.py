@@ -43,13 +43,13 @@ metric_evaluator = MetricEvaluator.PerformanceEvaluator(
 
 ## PARAMETERS ##
 
-TEST_ID = "FULL"
+TEST_ID = "..."
 TABLE = "answers"
 
 
 # 1. Load data from the database
 # We filter by TEST_ID to work only on the relevant subset
-query = f"SELECT * FROM {TABLE} WHERE test_id = '{TEST_ID}'"
+query = f"SELECT * FROM {TABLE} WHERE test_id = '{TEST_ID}' and query_id not in ('B_01','B_02')"
 df = pd.read_sql(query, SQL_ENGINE)
 
 # 2. Process metrics and update the DataFrame in memory
@@ -98,5 +98,36 @@ with SQL_ENGINE.begin() as conn:
 
     # SQLAlchemy's execute method handles the list of dicts as a batch operation
     conn.execute(statement, records)
+
+    conn.execute(
+        text(
+            f"UPDATE {TABLE} SET precision = null WHERE test_id = :test_id AND precision = 'NaN'"
+        ),
+        {"test_id": TEST_ID},
+    )
+    conn.execute(
+        text(
+            f"UPDATE {TABLE} SET recall = null WHERE test_id = :test_id AND recall = 'NaN'"
+        ),
+        {"test_id": TEST_ID},
+    )
+    conn.execute(
+        text(
+            f"UPDATE {TABLE} SET fmeasure = null WHERE test_id = :test_id AND fmeasure = 'NaN'"
+        ),
+        {"test_id": TEST_ID},
+    )
+    conn.execute(
+        text(
+            f"UPDATE {TABLE} SET referee_eval = null WHERE test_id = :test_id AND referee_eval = 'NaN'"
+        ),
+        {"test_id": TEST_ID},
+    )
+    conn.execute(
+        text(
+            f"UPDATE {TABLE} SET accuracy_binary = null WHERE test_id = :test_id AND accuracy_binary = 'NaN'"
+        ),
+        {"test_id": TEST_ID},
+    )
 
 print("Bulk update completed successfully using composite keys.")
