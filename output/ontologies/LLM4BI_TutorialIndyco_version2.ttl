@@ -1201,7 +1201,7 @@ LLM4BI_Indyco:SKU_Brand_Group LLM4BI:Description "Represents a higher-level grou
         "VF Corporation",
         "Wolverine Worldwide" .
 
-LLM4BI_Indyco:SKU_Category LLM4BI:Description "Represents the highest-level grouping within the Product hierarchy, defining the broad commercial family to which a product belongs. The **Category** attribute classifies items based on their functional purpose or merchandising domain, such as “Footwear,” “Apparel,” or “Accessories.” It provides a foundational level for analyzing product performance, sales distribution, and inventory structure across major product lines. This attribute is essential for reporting, product portfolio management, and strategic decision-making, as it enables comparisons and trend analysis across different segments of the business while maintaining consistency in product organization within the data warehouse." ;
+LLM4BI_Indyco:SKU_Category LLM4BI:Description "Represents the highest-level grouping within the Product hierarchy, defining the broad commercial family to which a product belongs. The **Category** attribute classifies items based on their functional purpose, such as “Footwear,” “Apparel,” or “Accessories.” It provides a foundational level for analyzing product performance, sales distribution, and inventory structure across major product lines. This attribute is essential for reporting, product portfolio management, and strategic decision-making, as it enables comparisons and trend analysis across different segments of the business while maintaining consistency in product organization within the data warehouse." ;
     LLM4BI:LogicalName "CATEGORY" ;
     LLM4BI:SampleValues "Footwear",
         "Accessories",
@@ -1224,7 +1224,7 @@ LLM4BI_Indyco:SKU_Category LLM4BI:Description "Represents the highest-level grou
         "Uniforms",
         "Watches" .
 
-LLM4BI_Indyco:SKU_Color LLM4BI:Description "Represents the visual color attribute of a product, describing its primary color or color variation as marketed or produced. The **Color** attribute captures detailed color information, including shades, tones, or combinations (e.g., “Dark Blue,” “Light Blue,” “Red/Black Mix”), which help distinguish different product variants within the same style or model. This attribute is essential for product identification, merchandising, and consumer selection, as color often influences purchasing decisions and seasonal assortments. In analytical contexts, it supports reporting on color-based inventory levels, sales trends, and product performance across design lines or collections." ;
+LLM4BI_Indyco:SKU_Color LLM4BI:Description "Represents the visual color attribute of a product, describing its primary color or color variation as marketed or produced. The **Color** attribute captures detailed color information, including shades, tones, or combinations (e.g., “Dark Blue,” “Light Blue,” “Red/Black Mix”), which help distinguish different product variants within the same style or model. This attribute is essential for product identification, and consumer selection, as color often influences purchasing decisions and seasonal assortments. In analytical contexts, it supports reporting on color-based inventory levels, sales trends, and product performance across design lines or collections." ;
     LLM4BI:LogicalName "COLOR" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Macro_Color ;
     LLM4BI:SampleValues "Dark Blue",
@@ -1303,7 +1303,7 @@ LLM4BI_Indyco:SKU_Customer_Type LLM4BI:Description "Represents the intended cust
         "Women",
         "Youth" .
 
-LLM4BI_Indyco:SKU_Macro_Color LLM4BI:Description "Represents a higher-level color grouping that consolidates multiple related shades or tones under a common color family. The **Macro Color** attribute generalizes detailed color values (e.g., “Light Blue,” “Navy,” and “Sky Blue”) into broader values such as “Blue,” “Red,” or “Green.” Macro colors are often used for assortment planning, visual merchandising, and marketing communication, allowing analysts to aggregate performance metrics or product distributions at an easily interpretable color family level." ;
+LLM4BI_Indyco:SKU_Macro_Color LLM4BI:Description "Represents a higher-level color grouping that consolidates multiple related shades or tones under a common color family. The **Macro Color** attribute generalizes detailed color values (e.g., “Light Blue,” “Navy,” and “Sky Blue”) into broader values such as “Blue,” “Red,” or “Green.” Macro colors are often used for assortment planning, and marketing communication, allowing analysts to aggregate performance metrics or product distributions at an easily interpretable color family level." ;
     LLM4BI:LogicalName "MACRO_COLOR" ;
     LLM4BI:SampleValues "Blue",
         "Beige",
@@ -1396,7 +1396,7 @@ LLM4BI_Indyco:SKU_Size LLM4BI:Description "Represents the physical dimension or 
         "XL",
         "XXL" .
 
-LLM4BI_Indyco:SKU_Type LLM4BI:Description "Represents the general product type within the Product hierarchy, defining the primary grouping used to organize items that share similar functional or stylistic characteristics. The **Type** attribute provides a broad-level classification that allows aggregation and comparison of products across different subtypes or collections. Common examples include types such as “Coats,” “Casual,” or “Suits,” which help retailers and manufacturers manage assortments, track sales performance, and align product offerings with merchandising or marketing strategies. It plays a key role in structuring product catalogs, facilitating inventory control, and supporting business reporting related to product families and market positioning." ;
+LLM4BI_Indyco:SKU_Type LLM4BI:Description "Represents the general product type within the Product hierarchy, defining the primary grouping used to organize items that share similar functional or stylistic characteristics. The **Type** attribute provides a broad-level classification that allows aggregation and comparison of products across different subtypes or collections. Common examples include types such as “Coats,” “Casual,” or “Suits,” which help retailers and manufacturers manage assortments, track sales performance, and align product offerings with marketing strategies. It plays a key role in structuring product catalogs, facilitating inventory control, and supporting business reporting related to product families and market positioning." ;
     LLM4BI:LogicalName "TYPE" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:SKU_Category ;
     LLM4BI:SampleValues "Coats",
@@ -1518,7 +1518,7 @@ LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
         "9.000" .
 
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
-    LLM4BI:Description "Represents the commercial or fashion collection period in which the products listed on a shop ticket are designed, produced, or sold. The **Season** attribute identifies the specific merchandising cycle—such as **FW12** (Fall/Winter 2012) or **SS13** (Spring/Summer 2013)—and is widely used in retail and apparel industries to track product performance across different seasonal collections. It provides essential context for analyzing sales trends, production scheduling, and merchandising activities by aligning data with the corresponding collection period. This attribute supports reporting and comparison across multiple seasons, helping to evaluate collection success and guide future assortment planning.",
+    LLM4BI:Description "Represents the commercial or fashion collection period in which the products listed on a shop ticket are designed, produced, or sold. The **Season** attribute identifies the specific marketing cycle—such as **FW12** (Fall/Winter 2012) or **SS13** (Spring/Summer 2013)—and is widely used in retail and apparel industries to track product performance across different seasonal collections. It provides essential context for analyzing sales trends, production scheduling, and marketing activities by aligning data with the corresponding collection period. This attribute supports reporting and comparison across multiple seasons, helping to evaluate collection success and guide future assortment planning.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
@@ -1549,7 +1549,7 @@ LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
         "SS24" .
 
 LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
-    LLM4BI:Description "Represents the half-year period that defines the seasonal cycle of a collection or product line. The **Semester** attribute differentiates between the two main merchandising periods used in industries such as fashion and retail: **SS (Spring/Summer)** and **FW (Fall/Winter)**. Each semester corresponds to a distinct phase of product development, sales planning, and marketing activity, often characterized by unique design themes and customer demand patterns. This attribute supports analysis of purchasing, production, and sales trends by season, enabling comparisons of performance and collection effectiveness across different parts of the business year." ;
+    LLM4BI:Description "Represents the half-year period that defines the seasonal cycle of a collection or product line. The **Semester** attribute differentiates between the two main marketing periods used in industries such as fashion and retail: **SS (Spring/Summer)** and **FW (Fall/Winter)**. Each semester corresponds to a distinct phase of product development, sales planning, and marketing activity, often characterized by unique design themes and customer demand patterns. This attribute supports analysis of purchasing, production, and sales trends by season, enabling comparisons of performance and collection effectiveness across different parts of the business year." ;
     LLM4BI:LogicalName "SEMESTER" ;
     LLM4BI:RollUpArc LLM4BI_Indyco:Date_Year ;
     LLM4BI:SampleValues "SS",
