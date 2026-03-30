@@ -41,7 +41,7 @@ This repository contains the implementation of the following research paper:
 
 ## Running the approach
 
-- **Rename ".env.example" file to ".env"**
+- **Rename ".env.example" file to ".env and (if desired) update the parameters of the sperimental run"**
 - **Rename "/resources/credentials_example.yaml" file to "credentials.yaml" and update the GPT-5 api-key within such file.**
 - The list of mandatory (Python) dependencies to successfully run the script is explicited inside `requirements.txt` file in the project root directory.
 - The approach and data mentioned in the article can be reproduced through Docker by opening a shell within this project directory and running
