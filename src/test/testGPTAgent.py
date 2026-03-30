@@ -30,7 +30,7 @@ OUTPUT_FOLDER = BASE / "output" / "statistics"
 ####################################################
 ##               PARAMETERS                       ##
 ####################################################
-PROMPT_FILE = PROMPTS_FOLDER / "prompt2.yaml"
+PROMPT_FILE = PROMPTS_FOLDER / "prompt.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
 ITERATIONS = int(os.getenv("ITERATIONS", 5))
 # PROMPT_VERSIONS = [
@@ -273,10 +273,6 @@ for kg_version in KG_VERSIONS:
                         "answers", SQL_ENGINE, if_exists="append", index=False
                     )
                 else:
-                    pd.set_option("display.max_colwidth", None)
-                    pd.set_option("display.max_columns", None)
-                    pd.set_option("display.max_rows", None)
-                    print(statistics)
                     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
                     statistics_path = os.path.join(OUTPUT_FOLDER, f"statistics.csv")
                     file_exists = os.path.isfile(statistics_path)
