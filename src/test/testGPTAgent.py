@@ -27,6 +27,7 @@ KG_FILE = BASE / "output" / "ontologies" / "LLM4BI_TutorialIndyco"
 CREDENTIALS_FILE = BASE / "resources" / "CREDENTIALS.yaml"
 PROMPTS_FOLDER = BASE / "resources" / "input" / "prompts"
 OUTPUT_FOLDER = BASE / "output" / "statistics"
+
 ####################################################
 ##               PARAMETERS                       ##
 ####################################################
@@ -59,7 +60,7 @@ EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 # ]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
 
 
-SAVE_TO_DB = False
+SAVE_TO_DB = os.getenv("SAVE_TO_DB", "False").lower() == "true"
 MAX_RETRIES_X_QUESTION = int(os.getenv("MAX_RETRIES_X_QUESTION", 3))
 ####################################################
 ####################################################
