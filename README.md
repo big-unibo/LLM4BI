@@ -27,6 +27,8 @@ This repository contains the implementation of the following research paper:
 #### Source Code
 * **`src/main/graphBuilder/`**
     * `xl_to_ttl_singleton.py`: Python script to build the **SG** from the **MG** and the Excel exports.
+* * **`src/main/charts/`**
+    * contains the code to reproduce the charts mentioned in the paper.
 * **`src/test/`**
     * `testGPTAgent.py`: The core test script that handles agent queries and response collection.
 
