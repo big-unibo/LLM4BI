@@ -692,7 +692,6 @@ LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the commercial or fashion collection period during which a specific set of products is released, marketed, or sold. The **Season** attribute identifies the product lifecycle phase using standard industry abbreviations such as “FW12” (Fall/Winter 2012) or “SS13” (Spring/Summer 2013). This classification is key in industries like fashion, apparel, and retail, where product assortments and sales cycles are organized by seasonal collections. It supports historical order analysis, trend tracking, and product lifecycle management by allowing comparisons of performance across different seasons and years. The attribute also helps align production, merchandising, and inventory planning with seasonal demand patterns.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",
@@ -858,7 +857,6 @@ LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the commercial or fashion collection cycle associated with the goods included in an invoice. The **Season** attribute identifies the specific selling period in which the products were launched or sold, typically expressed in standard format codes such as “FW12” (Fall/Winter 2012) or “SS13” (Spring/Summer 2013). This attribute is especially relevant in industries like fashion, apparel, and retail, where product assortments follow seasonal trends and release calendars. It enables tracking of sales, inventory turnover, and margin performance by season, supporting analyses that compare results across collections, years, and merchandising periods.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",
@@ -1521,7 +1519,6 @@ LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the commercial or fashion collection period in which the products listed on a shop ticket are designed, produced, or sold. The **Season** attribute identifies the specific marketing cycle—such as **FW12** (Fall/Winter 2012) or **SS13** (Spring/Summer 2013)—and is widely used in retail and apparel industries to track product performance across different seasonal collections. It provides essential context for analyzing sales trends, production scheduling, and marketing activities by aligning data with the corresponding collection period. This attribute supports reporting and comparison across multiple seasons, helping to evaluate collection success and guide future assortment planning.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",

@@ -301,8 +301,7 @@ LLM4BI_Indyco:Historical_Order_Quantity a LLM4BI:Measure ;
         "SUM" .
 
 LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
-    LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester .
+    LLM4BI:LogicalName "SEASON" .
 
 LLM4BI_Indyco:Historical_Order_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;
@@ -328,8 +327,7 @@ LLM4BI_Indyco:Invoice_Quantity a LLM4BI:Measure ;
         "SUM" .
 
 LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
-    LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester .
+    LLM4BI:LogicalName "SEASON"  .
 
 LLM4BI_Indyco:Invoice_Second_Commercial_Discount a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" .
@@ -421,8 +419,7 @@ LLM4BI_Indyco:Shop_Ticket_Quantity a LLM4BI:Measure ;
     LLM4BI:AggregationOperator "SUM" .
 
 LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
-    LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester .
+    LLM4BI:LogicalName "SEASON" .
 
 LLM4BI_Indyco:Shop_Ticket_Semester a LLM4BI:Attribute ;
     LLM4BI:LogicalName "SEMESTER" ;

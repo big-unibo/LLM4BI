@@ -511,7 +511,6 @@ LLM4BI_Indyco:Historical_Order_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the commercial season or collection period during which a specific assortment of products is designed, produced, and released to the market. The *Season* attribute is commonly used in the fashion, apparel, and retail industries to identify product cycles, such as *FW12* (Fall/Winter 2012) or *SS13* (Spring/Summer 2013). It supports analysis of sales and inventory performance by collection, facilitates comparisons across seasonal launches, and provides a consistent temporal framework for planning, merchandising, and forecasting activities.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Historical_Order_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",
@@ -590,7 +589,6 @@ LLM4BI_Indyco:Invoice_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the commercial collection period during which a defined assortment of products is released or sold. The *Season* attribute indicates the fashion or merchandise cycle, typically defined as *Spring/Summer (SS)* or *Fall/Winter (FW)* followed by the year (e.g., *FW12*, *SS13*). It is used to organize, track, and analyze sales, production, and inventory by collection, providing a temporal framework that aligns product lines with retail and production planning calendars. This attribute supports performance comparison across seasons and facilitates trend analysis across multiple years of product launches.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Invoice_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",
@@ -980,7 +978,6 @@ LLM4BI_Indyco:Shop_Ticket_Season a LLM4BI:Attribute ;
     LLM4BI:Description "Represents the merchandising or production collection period under which a defined set of goods is developed, manufactured, and distributed. The *Season* attribute identifies the time-based product cycle, commonly described in terms such as *Fall/Winter (FW)* and *Spring/Summer (SS)* followed by the year (e.g., *FW12*, *SS13*). It provides a consistent temporal reference for organizing product assortments, shop tickets, and production orders. This attribute supports scheduling, performance tracking, and analysis of production and sales by seasonal collection, ensuring alignment between design, manufacturing, and retail planning processes.",
         "The collection of goods" ;
     LLM4BI:LogicalName "SEASON" ;
-    LLM4BI:RollUpArc LLM4BI_Indyco:Shop_Ticket_Semester ;
     LLM4BI:SampleValues "FW12",
         "FW13",
         "FW14",
