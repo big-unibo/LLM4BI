@@ -83,7 +83,7 @@ Categories:
         Truth: "Yes"
       Answer_Format: "Provide the answer as a 'Yes' or 'No', nothing more."
     O_02_D:
-      Q: "Can I compute the average quantities of DOS stores sales by agent coordinators and product classifications?"
+      Q: "Can I compute the total quantities of DOS stores sales by agent coordinators and product classifications?"
       GT:
         Format: Binary
         Truth: "Yes"

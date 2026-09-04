@@ -2,27 +2,51 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+# data = {
+#     "MG$^{\\text{bas}}$, SG$^{\\text{bas}}$": {  # basic enric
+#         "ALL": 0.65,
+#         "Business": 0.48,
+#         "OLAP-related": 0.62,
+#         "Search": 0.94,
+#         "Test": 0.39,
+#     },
+#     "MG$^{\\text{enr}}$, SG$^{\\text{bas}}$": {
+#         "ALL": 0.78,
+#         "Business": 0.84,
+#         "OLAP-related": 0.73,
+#         "Search": 0.96,
+#         "Test": 0.48,
+#     },
+#     "MG$^{\\text{enr}}$, SG$^{\\text{enr}}$": {
+#         "ALL": 0.79,
+#         "Business": 0.74,
+#         "OLAP-related": 0.73,
+#         "Search": 0.96,
+#         "Test": 0.77,
+#     },
+# }
+
 data = {
     "MG$^{\\text{bas}}$, SG$^{\\text{bas}}$": {  # basic enric
-        "ALL": 0.65,
-        "Business": 0.48,
-        "OLAP-related": 0.62,
-        "Search": 0.94,
-        "Test": 0.39,
+        "ALL": 0.92,
+        "Business": 0.98,
+        "OLAP-related": 0.92,
+        "Search": 0.96,
+        "Test": 0.70,
     },
     "MG$^{\\text{enr}}$, SG$^{\\text{bas}}$": {
-        "ALL": 0.78,
-        "Business": 0.84,
-        "OLAP-related": 0.73,
-        "Search": 0.96,
-        "Test": 0.48,
+        "ALL": 0.92,
+        "Business": 0.97,
+        "OLAP-related": 0.92,
+        "Search": 0.97,
+        "Test": 0.65,
     },
     "MG$^{\\text{enr}}$, SG$^{\\text{enr}}$": {
-        "ALL": 0.79,
-        "Business": 0.74,
-        "OLAP-related": 0.73,
-        "Search": 0.96,
-        "Test": 0.77,
+        "ALL": 0.96,
+        "Business": 0.94,
+        "OLAP-related": 0.96,
+        "Search": 0.99,
+        "Test": 0.90,
     },
 }
 
@@ -75,4 +99,4 @@ plt.tight_layout()
 plt.show()
 
 # Save as PDF, overwrite if exists, put in the same directory as the script.
-fig.savefig(os.path.join(os.path.dirname(__file__), "fig-f1_all.pdf"), format="pdf")
+fig.savefig(os.path.join(os.path.dirname(__file__), "fig-f1_all-5.6.pdf"), format="pdf")

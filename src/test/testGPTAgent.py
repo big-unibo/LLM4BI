@@ -33,21 +33,23 @@ OUTPUT_FOLDER = BASE / "output" / "statistics"
 ####################################################
 PROMPT_FILE = PROMPTS_FOLDER / "prompt.yaml"
 REFREE_INSTRUCTIONS_PATH = PROMPTS_FOLDER / "referee_instruction.txt"
-ITERATIONS = int(os.getenv("ITERATIONS", 5))
+ITERATIONS = int(os.getenv("ITERATIONS", 1))
 # PROMPT_VERSIONS = [
 #     int(v) for v in os.getenv("PROMPT_VERSIONS", "0,1").split(",")
 # ]  ## Should be a list [0,1]
 
-KG_VERSIONS = os.getenv("KG_VERSIONS", "0,2").split(",")  # 2,1,0
-ONTOLOGY_VERSIONS = os.getenv("ONTOLOGY_VERSIONS", "0,1").split(",")  # 1,0
+KG_VERSIONS = os.getenv("KG_VERSIONS", "2").split(",")  # 2,1,0
+ONTOLOGY_VERSIONS = os.getenv("ONTOLOGY_VERSIONS", "1").split(",")  # 1,0
 PROMPT_VERSIONS = os.getenv("PROMPT_VERSIONS", "1").split(",")  # 2,1,0
-TEST_ID = os.getenv("TEST_ID", str(uuid.uuid4()))  # EG: "FULL_NEW" or None for random UUID
+TEST_ID = os.getenv(
+    "TEST_ID", str(uuid.uuid4())
+)  # EG: "FULL_NEW" or None for random UUID
 # TEST_ID = None
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-#INCLUDED_QUESTIONS = ["B_01", "B_02"]
+INCLUDED_QUESTIONS = ["O_02_D"]
 # INCLUDED_QUESTIONS = [
 #     "S_05",
 #     "S_05_D",
@@ -277,5 +279,7 @@ for kg_version in KG_VERSIONS:
                     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
                     statistics_path = os.path.join(OUTPUT_FOLDER, f"statistics.csv")
                     file_exists = os.path.isfile(statistics_path)
-                    statistics.to_csv(statistics_path, mode='a', index=False, header=not file_exists)
+                    statistics.to_csv(
+                        statistics_path, mode="a", index=False, header=not file_exists
+                    )
                 statistics = statistics.iloc[0:0]
