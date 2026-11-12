@@ -7,18 +7,21 @@ import pandas as pd
 from rdflib import Graph, Literal, Namespace
 from rdflib.namespace import RDF, RDFS, OWL, XSD
 import sys
-
+from rdflib import URIRef, RDF
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 import utils
 from agents.GPTAgent import GPTAgent
+from agents.OllamaAgent import OllamaAgent
 
 # ---------------------------------------------------------------------
 # CONFIG (modifica qui se serve)
 # ---------------------------------------------------------------------
-BASE = Path("/home")
-FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
+BASE = Path(os.getenv("BASE_PATH", "/home"))
+# FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
+# FILENAME = "DWateneo_passaggi"
+FILENAME = "DWateneo"
 
 EXCEL_FILE = BASE / "resources" / "input" / "indyco_export" / f"{FILENAME}.xlsx"
 ONTO_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
@@ -31,7 +34,7 @@ RESOURCES_PATH = BASE / "resources"
 CREDENTIALS_FILE = RESOURCES_PATH / "credentials.yaml"
 PROMPT_FILE = BASE / "resources" / "input" / "prompts" / "metadata_enhancer_prompt.txt"
 CREDENTIALS = utils.load_yml(CREDENTIALS_FILE)
-VERSION = 2
+VERSION = 0
 
 enhancer_instructions = ""
 with open(PROMPT_FILE, "r", encoding="utf-8") as f:
@@ -82,9 +85,12 @@ class OntologyBuilder:
         self.latent_edges: Dict[str, Dict] = {}
         self.conformed_attributes: Dict[str, str] = {}
         self.facts: List[str] = []
-        self.agent = GPTAgent(
-            instruction=enhancer_instructions,
-            api_key=CREDENTIALS["gpt"]["api-key"],
+        # self.agent = GPTAgent(
+           # instruction=enhancer_instructions,
+           # api_key=CREDENTIALS["gpt"]["api-key"],
+        # )
+        self.agent = OllamaAgent(
+           instruction=enhancer_instructions,
         )
 
         # logger
@@ -149,15 +155,14 @@ class OntologyBuilder:
             )
             self.conformed_attributes[attribute_node] = target
 
+        from_item_id_split = "_".join(from_item_id.split("_")[1:]) if "_" in from_item_id else from_item_id
         from_node = (
             utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
-            if from_item_id == "FACT"
-            else utils.make_obj_uri(
-                LLM4BI_EXAMPLE, hierarchy, "_".join(from_item_id.split("_")[1:])
-            )
+            if from_item_id in ("FACT", "")
+            else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, from_item_id_split)
         )
-
-        # if this attribute is actually the conformed hierarchy root declared earlier
+        if from_item_id in ("FACT", ""):
+            graph.add((from_node, RDF.type, LLM4BI.ConformedHierarchyRoot))
         if (
             conformed_hierarchy in self.conformed_hierarchies
             and conformed_hierarchy_attribute == item_name
@@ -173,15 +178,17 @@ class OntologyBuilder:
                 conformed_hierarchy,
                 props,
             )
+            graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
         else:
             # otherwise add attribute node and metadata
 
             # COMMENTED to avoid having it twice
-            # graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
-            # if attribute_description:
-            #     graph.add(
-            #         (attribute_node, LLM4BI.Description, Literal(attribute_description))
-            #     )
+            # UNCOMMENTED per problema dei nodi non tipizzati
+            graph.add((attribute_node, RDF.type, LLM4BI.ConformedAttribute))
+            if attribute_description:
+                graph.add(
+                    (attribute_node, LLM4BI.Description, Literal(attribute_description))
+                )
 
             # metadata properties
             for col, prop in {
@@ -216,26 +223,32 @@ class OntologyBuilder:
         fact_table = str(row.get("FactSchema Name", "")).strip()
         label = str(row.get("Item Name", ""))
         from_item_id = str(row.get("From Item ID", "")).strip()
-        src = (
-            "_".join(from_item_id.split("_")[1:]) if from_item_id != "FACT" else "FACT"
-        )
-        dst = "_".join(str(row.get("To Item ID", "")).strip().split("_")[1:])
+        src = "_".join(from_item_id.split("_")[1:]) if "_" in from_item_id else from_item_id
+        dst = row.get("To Item ID", "").strip()
+        dst_split = "_".join(dst.split("_")[1:]) if "_" in dst else dst
 
         attribute_node = utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, src)
         src_node = (
-            utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
-            if src == "FACT"
+            utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
+            if src in ("FACT", "")
             else attribute_node
         )
 
-        dst_node = self.resolve_conformed_attribute(
-            utils.make_fact_uri(LLM4BI_EXAMPLE, hierarchy)
-            if dst == "FACT"
-            else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, dst)
+        base_dst_node = (
+            utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
+            if dst in ("FACT", "")
+            else utils.make_obj_uri(LLM4BI_EXAMPLE, hierarchy, dst_split)
         )
+        dst_node = self.resolve_conformed_attribute(base_dst_node)
+        if dst not in ("FACT", ""):
+            graph.add((dst_node, RDF.type, LLM4BI.ConformedAttribute))
+        if src not in ("FACT", ""):
+            is_conformed = hierarchy in getattr(self, 'conformed_hierarchies', {})
+            node_type = LLM4BI.ConformedAttribute if is_conformed else LLM4BI.Attribute
+            graph.add((src_node, RDF.type, node_type))
 
         standard_link = (
-            utils.make_link_uri(LLM4BI_EXAMPLE, hierarchy, label, dst)
+            utils.make_link_uri(LLM4BI_EXAMPLE, hierarchy, label, dst_split)
             if label
             else LLM4BI.RollUpArc
         )
@@ -296,13 +309,14 @@ class OntologyBuilder:
                 conformed_hierarchy_attribute,
             )
 
+        from_item_id_split = "_".join(from_item_id.split("_")[1:]) if "_" in from_item_id else from_item_id
         from_node = (
             utils.make_fact_uri(LLM4BI_EXAMPLE, fact_table)
             if from_item_id in ("FACT", "") or conformed_hierarchy
-            else utils.make_obj_uri(
-                LLM4BI_EXAMPLE, fact_table, "_".join(from_item_id.split("_")[1:])
+            else utils.make_obj_uri(LLM4BI_EXAMPLE, fact_table, from_item_id_split)
             )
-        )
+        if from_item_id in ("FACT", "") or conformed_hierarchy:
+            graph.add((from_node, RDF.type, LLM4BI.Fact))
 
         # if attribute links to a conformed hierarchy, record as latent edge to resolve later
         if conformed_hierarchy and conformed_hierarchy in self.conformed_hierarchies:
@@ -317,9 +331,12 @@ class OntologyBuilder:
                 conformed_hierarchy,
                 props,
             )
+            graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
         else:
             # otherwise add attribute and metadata
             graph.add((attribute_node, RDF.type, LLM4BI.Attribute))
+            if from_item_id not in ("FACT", "") and not conformed_hierarchy:
+                graph.add((from_node, RDF.type, LLM4BI.Attribute))
             graph.add((from_node, LLM4BI.RollUpArc, attribute_node))
             if attribute_description:
                 graph.add(
@@ -412,19 +429,22 @@ class OntologyBuilder:
             df = attributes_df[attributes_df["FactSchema Name"] == fact]
             root_node = utils.make_fact_uri(LLM4BI_EXAMPLE, fact)
             graph.add((root_node, RDF.type, LLM4BI.Fact))
-
-            graph.add(
-                (
-                    root_node,
-                    LLM4BI.Description,
-                    Literal(
-                        self.project_info.loc[
-                            self.project_info["Name"] == fact, "Description"
-                        ].iloc[0]
-                    ),
+            try:
+                graph.add(
+                    (
+                        root_node,
+                        LLM4BI.Description,
+                        Literal(
+                            self.project_info.loc[
+                                self.project_info["Name"] == fact, "Description"
+                            ].iloc[0]
+                        ),
+                    )
                 )
-            )
-
+            except IndexError:
+                self.logger.warning(
+                    f"No description found for fact table '{fact}'."
+                )
             # descr = self.project_info.loc[
             #             self.project_info["Name"] == fact, "Description"
             #         ].iloc[0]
@@ -594,12 +614,18 @@ class OntologyBuilder:
         # read excel once
         xl = pd.ExcelFile(self.excel_path)
 
+        clean_sheets = {}
+        for sheet_name in xl.sheet_names:
+            df_sheet = xl.parse(sheet_name)
+            col_testo = df_sheet.select_dtypes(['object', 'string']).columns
+            df_sheet[col_testo] = df_sheet[col_testo].apply(lambda x: x.str.strip())
+            clean_sheets[sheet_name] = df_sheet
+
+        self.project_info = self.extract_name_description(clean_sheets["PROJECT"])
+
         # collect conformed hierarchies and facts (normalized)
-        attribute_heads = utils.extract_heads(xl.parse("ATTRIBUTES"))
-
-        df = xl.parse("PROJECT")
-
-        self.project_info = self.extract_name_description(df)
+        df_attributes = clean_sheets["ATTRIBUTES"]
+        attribute_heads = utils.extract_heads(df_attributes)
 
         raw_conformed = (
             attribute_heads["Conformed Hierarchy"].dropna().unique().tolist()
@@ -619,7 +645,7 @@ class OntologyBuilder:
         )
 
         # prepare attribute dataframe (clean rows)
-        attribute_df = utils.extract_heads(xl.parse("ATTRIBUTES"))
+        attribute_df = utils.extract_heads(clean_sheets["ATTRIBUTES"])
         attribute_df = attribute_df.apply(utils.clean_row, axis=1)
 
         # build pieces
