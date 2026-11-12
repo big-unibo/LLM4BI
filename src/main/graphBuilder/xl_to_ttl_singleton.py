@@ -19,9 +19,11 @@ from agents.OllamaAgent import OllamaAgent
 # CONFIG (modifica qui se serve)
 # ---------------------------------------------------------------------
 BASE = Path(os.getenv("BASE_PATH", "/home"))
-# FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
+FILENAME = "TutorialIndyco"  # TutorialIndyco / amadori_dwh
 # FILENAME = "DWateneo_passaggi"
-FILENAME = "DWateneo"
+# FILENAME = "DWateneo"
+PROVIDER = "ollama"
+AI_ENHANCER = True
 
 EXCEL_FILE = BASE / "resources" / "input" / "indyco_export" / f"{FILENAME}.xlsx"
 ONTO_FILE = BASE / "resources" / "ontologies" / "LLM4BI_Ontology"
@@ -85,13 +87,17 @@ class OntologyBuilder:
         self.latent_edges: Dict[str, Dict] = {}
         self.conformed_attributes: Dict[str, str] = {}
         self.facts: List[str] = []
-        # self.agent = GPTAgent(
-           # instruction=enhancer_instructions,
-           # api_key=CREDENTIALS["gpt"]["api-key"],
-        # )
-        self.agent = OllamaAgent(
-           instruction=enhancer_instructions,
-        )
+        if PROVIDER == "gpt":
+            self.agent = GPTAgent(
+                instruction=enhancer_instructions,
+                api_key=CREDENTIALS["gpt"]["api-key"],
+            )
+        elif PROVIDER == "ollama":
+            self.agent = OllamaAgent(
+                instruction=enhancer_instructions,
+            )
+        else:
+            raise ValueError("Invalid PROVIDER.")
 
         # logger
         self.logger = utils.setup_logger("LLM4BI_ExcelParser_FullyConnected")
@@ -197,7 +203,7 @@ class OntologyBuilder:
                 "Sample Values": LLM4BI.SampleValues,
             }.items():
                 val = row.get(col, "").strip()
-                if col == "Sample Values" or col == "Description":
+                if (col in ["Sample Values", "Description"]) and AI_ENHANCER:
                     enhance_or_provide = "Enhance" if val else "Provide"
                     values = self.agent.query(
                         f"Item: {row}. {enhance_or_provide} the {col}."
@@ -207,7 +213,10 @@ class OntologyBuilder:
                     else:
                         graph.add((attribute_node, prop, Literal(values)))
                 elif val:
-                    graph.add((attribute_node, prop, Literal(val)))
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, val)
+                    else:
+                        graph.add((attribute_node, prop, Literal(val)))
 
             graph.add((from_node, LLM4BI.RollUpArc, attribute_node))
 
@@ -350,7 +359,7 @@ class OntologyBuilder:
                 # "Notes": LLM4BI.Notes,
             }.items():
                 val = row.get(col, "").strip()
-                if col == "Sample Values" or col == "Description":
+                if (col in ["Sample Values", "Description"]) and AI_ENHANCER:
                     enhance_or_provide = "Enhance" if val else "Provide"
                     values = self.agent.query(
                         f"Item: {row}. {enhance_or_provide} the {col}."
@@ -360,7 +369,10 @@ class OntologyBuilder:
                     else:
                         graph.add((attribute_node, prop, Literal(values)))
                 elif val:
-                    graph.add((attribute_node, prop, Literal(val)))
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, val)
+                    else:
+                        graph.add((attribute_node, prop, Literal(val)))
             for col, prop in NODE_CONSTRAINTS.items():
                 if utils.is_truthy(row.get(col, "")):
                     graph.add(
@@ -555,7 +567,7 @@ class OntologyBuilder:
                 "Sample Values": LLM4BI.SampleValues,
             }.items():
                 val = row.get(col, "").strip()
-                if col == "Sample Values" or col == "Description":
+                if (col in ["Sample Values", "Description"]) and AI_ENHANCER:
                     enhance_or_provide = "Enhance" if val else "Provide"
                     values = self.agent.query(
                         f"Item: {row}. {enhance_or_provide} the {col}."
@@ -565,7 +577,10 @@ class OntologyBuilder:
                     else:
                         graph.add((attribute_node, prop, Literal(values)))
                 elif val:
-                    graph.add((attribute_node, prop, Literal(val)))
+                    if col == "Sample Values":
+                        self._add_sample_values(graph, attribute_node, val)
+                    else:
+                        graph.add((attribute_node, prop, Literal(val)))
 
     def extract_name_description(self, df: pd.DataFrame) -> pd.DataFrame:
         # 1. Trova la riga header (contiene Name e Description)
