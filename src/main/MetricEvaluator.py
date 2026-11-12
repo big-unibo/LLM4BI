@@ -4,6 +4,7 @@ from itertools import product
 import yaml
 from statistics import mean
 from main import ceaf
+from main.agents.OllamaAgent import OllamaAgent
 from main.agents.GPTAgent import GPTAgent
 
 # from metric4coref import ceaf
@@ -17,9 +18,12 @@ class PerformanceEvaluator:
         with open(questions_path, "r") as f:
             self.questions: Dict[str, Any] = yaml.safe_load(f)["Categories"]
 
-        self.refree = GPTAgent(
+        #self.refree = GPTAgent(
+            #instruction=referee_instructions,
+            #api_key=credentials_dict["gpt"]["api-key"],
+        #)
+        self.refree = OllamaAgent(
             instruction=referee_instructions,
-            api_key=credentials_dict["gpt"]["api-key"],
         )
 
     def evaluate_query_performance(

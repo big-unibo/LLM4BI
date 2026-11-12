@@ -14,6 +14,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
 from main.agents.GPTAgent import GPTAgent
+from main.agents.OllamaAgent import OllamaAgent
 from main import MetricEvaluator
 
 logger = utils.setup_logger("LLM4BI_IndycoTestGPTAgent")
@@ -38,28 +39,28 @@ ITERATIONS = int(os.getenv("ITERATIONS", 1))
 #     int(v) for v in os.getenv("PROMPT_VERSIONS", "0,1").split(",")
 # ]  ## Should be a list [0,1]
 
+'''
+KG_VERSION è la versione del model graph (istanze). 0: senza arricchimento; 2: con arricchimento
+ONTOLGOY_VERSION è la versione dello schema graph. 0: senza arricchimento; 1: con arricchimento
+PROMPT_VERSIONS sono verisoni diverse di prompt. 0: 0shot, 1: few shots, 2: few shots con iterazioni. Usiamo SOLO LA 1.
+--
+Le combinazioni da testare sono:
+KG_VERSION=0, ONTOLOGY_VERSION=0, PROMPT_VERSION=1
+KG_VERSION=0, ONTOLOGY_VERSION=1, PROMPT_VERSION=1
+KG_VERSION=2, ONTOLOGY_VERSION=1, PROMPT_VERSION=1
+'''
 KG_VERSIONS = os.getenv("KG_VERSIONS", "2").split(",")  # 2,1,0
 ONTOLOGY_VERSIONS = os.getenv("ONTOLOGY_VERSIONS", "1").split(",")  # 1,0
 PROMPT_VERSIONS = os.getenv("PROMPT_VERSIONS", "1").split(",")  # 2,1,0
 TEST_ID = os.getenv(
     "TEST_ID", str(uuid.uuid4())
 )  # EG: "FULL_NEW" or None for random UUID
-# TEST_ID = None
+TEST_ID = "DILAVER"
 
 INCLUDED_QUESTIONS = utils.parse_list("INCLUDED_QUESTIONS")  # ["S1", "O1", "O7", "O8"]
 EXCLUDED_QUESTIONS = utils.parse_list("EXCLUDED_QUESTIONS")  # ["S1", "S3"]
 
-INCLUDED_QUESTIONS = ["O_02_D"]
-# INCLUDED_QUESTIONS = [
-#     "S_05",
-#     "S_05_D",
-#     "O_03",
-#     "O_03_D",
-#     "O_04",
-#     "O_04_D",
-#     "O_06",
-#     "O_06_D",
-# ]  # , "O_04_D", "O_05", "O_05_D", "O_06", "O_06_D"]
+# INCLUDED_QUESTIONS = ["O_02_D"]
 
 
 SAVE_TO_DB = os.getenv("SAVE_TO_DB", "False").lower() == "true"
@@ -89,9 +90,12 @@ statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
 
 ### Creating evalaution agents ###
 prompt = utils.load_yml(PROMPT_FILE)
-agent = GPTAgent(
+#agent = GPTAgent(
+    # instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
+    # api_key=CREDENTIALS["gpt"]["api-key"],
+# )
+agent = OllamaAgent(
     instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
-    api_key=CREDENTIALS["gpt"]["api-key"],
 )
 
 metric_evaluator = MetricEvaluator.PerformanceEvaluator(
@@ -104,182 +108,207 @@ test_id = TEST_ID if TEST_ID else str(uuid.uuid4())  # EG: ho spostato su
 ## TODO: Aggiungi tempi e timestamp di test
 ## Aggiungi ID domande, diverse x category
 
-for kg_version in KG_VERSIONS:
-    for onto_version in ONTOLOGY_VERSIONS:
-        for version in PROMPT_VERSIONS:
-            version = int(version)
-            onto_version = int(onto_version)
-            kg_version = int(kg_version)
-            llm4bi_ontology = utils.load_ttl_as_text(
-                f"{ONTOLOGY_FILE}_version{onto_version}.ttl"
-            )
-            cubes_ontology = utils.load_ttl_as_text(
-                f"{KG_FILE}_version{kg_version}.ttl"
-            )
-            # First prompt is the same and mandatory for each prompt
-            prompts = prompt["versions"][version]
-            intial_prompt_dict = prompts["p1"]
-            initial_prompt = "\n".join(
-                [
-                    intial_prompt_dict["incipit"],
-                    "--------------------",
-                    llm4bi_ontology,
-                    "--------------------",
-                    intial_prompt_dict["after_llm4bi"],
-                    "--------------------",
-                    cubes_ontology,
-                    "--------------------",
-                    intial_prompt_dict["after_cubes"],
-                ]
-            )
-            # For each iteration
-            for i in range(1, ITERATIONS + 1):
-                # For each question category
-                for q_cat, q_dict in questions["Categories"].items():
-                    # For each question within a category
-                    for q_id, q in q_dict.items():
-                        question = q["Q"]
-                        format = q["Answer_Format"]
-                        truth = q["GT"]["Truth"]
-                        answer_cat = q["GT"]["Format"]
-                        # motivation = q["GT"]["Motivation"]
+# Lista per ciclare su determinate versioni di KG, Ontology e Prompt
+combo_version = [
+    (0, 0, 1),
+    (0, 1, 1),
+    (2, 1, 1),
+]
 
-                        attempt = 0
-                        success = False
-                        while not success and attempt <= MAX_RETRIES_X_QUESTION:
-                            attempt += 1
-                            try:
-                                question_prompt = "\n".join(
-                                    [
-                                        initial_prompt,
-                                        "",
-                                        f"Question: {question}",
-                                        "",
-                                        intial_prompt_dict["after_question"].strip(),
-                                        "",
-                                        "--------------------",
-                                        f"Format: {format}",
-                                        intial_prompt_dict["after_format"].strip(),
-                                    ]
-                                ).strip()
+# for kg_version in KG_VERSIONS:
+    # for onto_version in ONTOLOGY_VERSIONS:
+        # for version in PROMPT_VERSIONS:
+for kg_version, onto_version, version in combo_version:
+    version = int(version)
+    onto_version = int(onto_version)
+    kg_version = int(kg_version)
+    llm4bi_ontology = utils.load_ttl_as_text(
+        f"{ONTOLOGY_FILE}_version{onto_version}.ttl"
+    )
+    cubes_ontology = utils.load_ttl_as_text(
+        f"{KG_FILE}_version{kg_version}.ttl"
+    )
+    # First prompt is the same and mandatory for each prompt
+    prompts = prompt["versions"][version]
+    intial_prompt_dict = prompts["p1"]
+    initial_prompt = "\n".join(
+        [
+            intial_prompt_dict["incipit"],
+            "--------------------",
+            llm4bi_ontology,
+            "--------------------",
+            intial_prompt_dict["after_llm4bi"],
+            "--------------------",
+            cubes_ontology,
+            "--------------------",
+            intial_prompt_dict["after_cubes"],
+        ]
+    )
+    # For each iteration
+    for i in range(1, ITERATIONS + 1):
+        # For each question category
+        for q_cat, q_dict in questions["Categories"].items():
+            # For each question within a category
+            for q_id, q in q_dict.items():
+                question = q["Q"]
+                format = q["Answer_Format"]
+                truth = q["GT"]["Truth"]
+                answer_cat = q["GT"]["Format"]
+                # motivation = q["GT"]["Motivation"]
 
-                                logger.info(
-                                    f"KG {kg_version} - Onto {onto_version} - Prompt {version} - Iteration {i}/{ITERATIONS} - Category: {q_cat} - Question ID: {q_id}"
+                attempt = 0
+                success = False
+                while not success and attempt <= MAX_RETRIES_X_QUESTION:
+                    attempt += 1
+                    try:
+                        question_prompt = "\n".join(
+                            [
+                                initial_prompt,
+                                "",
+                                f"Question: {question}",
+                                "",
+                                intial_prompt_dict["after_question"].strip(),
+                                "",
+                                "--------------------",
+                                f"Format: {format}",
+                                intial_prompt_dict["after_format"].strip(),
+                            ]
+                        ).strip()
+
+                        logger.info(
+                            f"KG {kg_version} - Onto {onto_version} - Prompt {version} - Iteration {i}/{ITERATIONS} - Category: {q_cat} - Question ID: {q_id}"
+                        )
+
+                        start_time = int(time.time())
+                        answer = agent.query(question_prompt)
+                        end_time = int(time.time())
+                        duration = end_time - start_time
+                        # If there are further prompt phases
+                        for next_part in prompts.keys():
+                            # Skip p1 which we already prompted
+                            if next_part != "p1":
+                                next_prompt = prompts[next_part]
+                                next_part_start_time = int(time.time())
+                                answer = agent.query(next_prompt)
+                                next_part_end_time = int(time.time())
+                                duration = duration + (
+                                    next_part_end_time - next_part_start_time
                                 )
 
-                                start_time = int(time.time())
-                                answer = agent.query(question_prompt)
-                                end_time = int(time.time())
-                                duration = end_time - start_time
-                                # If there are further prompt phases
-                                for next_part in prompts.keys():
-                                    # Skip p1 which we already prompted
-                                    if next_part != "p1":
-                                        next_prompt = prompts[next_part]
-                                        next_part_start_time = int(time.time())
-                                        answer = agent.query(next_prompt)
-                                        next_part_end_time = int(time.time())
-                                        duration = duration + (
-                                            next_part_end_time - next_part_start_time
-                                        )
+                        answer = answer.replace("LLM4BI_Indyco:", "")
+                        answer = answer.replace(
+                            "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#",
+                            "",
+                        )
+                        pattern = r"(?<!Full)(?<!Structured)(?<!Motivation):"
 
-                                answer = answer.replace("LLM4BI_Indyco:", "")
-                                answer = answer.replace(
-                                    "http://www.foo.bar/LLM4BI/ontologies/LLM4BI_TutorialIndyco#",
-                                    "",
-                                )
-                                pattern = r"(?<!Full)(?<!Structured)(?<!Motivation):"
+                        # answer = re.sub(pattern, "", answer)
 
-                                # answer = re.sub(pattern, "", answer)
+                        answer_yaml = yaml.safe_load(answer)
 
-                                answer_yaml = yaml.safe_load(answer)
+                        if answer_cat == "Open_Ended":
+                            cleansed_answer = answer_yaml["Full"]
+                        else:
+                            cleansed_answer = answer_yaml["Structured"]
 
-                                if answer_cat == "Open_Ended":
-                                    cleansed_answer = answer_yaml["Full"]
-                                else:
-                                    cleansed_answer = answer_yaml["Structured"]
+                        metric = metric_evaluator.evaluate_query_performance(
+                            q_id, q_cat, cleansed_answer
+                        )
 
-                                metric = metric_evaluator.evaluate_query_performance(
-                                    q_id, q_cat, cleansed_answer
-                                )
+                        precision = metric["precision"]
+                        recall = metric["recall"]
+                        fmeasure = metric["fmeasure"]
+                        avg_precision = metric["avg_precision"]
+                        avg_recall = metric["avg_recall"]
+                        avg_fmeasure = metric["avg_fmeasure"]
+                        accuracy_binary = metric["accuracy_binary"]
+                        referee_eval = metric["referee_eval"]
 
-                                precision = metric["precision"]
-                                recall = metric["recall"]
-                                fmeasure = metric["fmeasure"]
-                                avg_precision = metric["avg_precision"]
-                                avg_recall = metric["avg_recall"]
-                                avg_fmeasure = metric["avg_fmeasure"]
-                                accuracy_binary = metric["accuracy_binary"]
-                                referee_eval = metric["referee_eval"]
+                        statistics = pd.concat(
+                            [
+                                statistics,
+                                pd.DataFrame(
+                                    {
+                                        "test_id": [str(test_id)],
+                                        "model": [agent.model],
+                                        "category": [q_cat],
+                                        "question": [q["Q"]],
+                                        "answer": [json.dumps(cleansed_answer)],
+                                        "iteration": [i],
+                                        "start_time": [start_time],
+                                        "end_time": [end_time],
+                                        "duration": [duration * 1000],
+                                        "prompt": [
+                                            json.dumps(
+                                                prompt["versions"][version]
+                                            )
+                                        ],
+                                        "query_id": [q_id],
+                                        "ontology_version": [kg_version],
+                                        "precision": [precision],
+                                        "recall": [recall],
+                                        "fmeasure": [fmeasure],
+                                        "avg_precision": [avg_precision],
+                                        "avg_recall": [avg_recall],
+                                        "avg_fmeasure": [avg_fmeasure],
+                                        "referee_eval": [referee_eval],
+                                        "accuracy_binary": [accuracy_binary],
+                                        "truth": [str(truth)],
+                                        "prompt_version": [version],
+                                        "full_answer": [answer],
+                                        "motivation": [
+                                            str(answer_yaml["Motivation"])
+                                        ],
+                                        "llm4bi_version": [onto_version],
+                                    }
+                                ),
+                            ],
+                            ignore_index=True,
+                        )
 
-                                statistics = pd.concat(
-                                    [
-                                        statistics,
-                                        pd.DataFrame(
-                                            {
-                                                "test_id": [str(test_id)],
-                                                "model": [agent.model],
-                                                "category": [q_cat],
-                                                "question": [q["Q"]],
-                                                "answer": [json.dumps(cleansed_answer)],
-                                                "iteration": [i],
-                                                "start_time": [start_time],
-                                                "end_time": [end_time],
-                                                "duration": [duration * 1000],
-                                                "prompt": [
-                                                    json.dumps(
-                                                        prompt["versions"][version]
-                                                    )
-                                                ],
-                                                "query_id": [q_id],
-                                                "ontology_version": [kg_version],
-                                                "precision": [precision],
-                                                "recall": [recall],
-                                                "fmeasure": [fmeasure],
-                                                "avg_precision": [avg_precision],
-                                                "avg_recall": [avg_recall],
-                                                "avg_fmeasure": [avg_fmeasure],
-                                                "referee_eval": [referee_eval],
-                                                "accuracy_binary": [accuracy_binary],
-                                                "truth": [str(truth)],
-                                                "prompt_version": [version],
-                                                "full_answer": [answer],
-                                                "motivation": [
-                                                    str(answer_yaml["Motivation"])
-                                                ],
-                                                "llm4bi_version": [onto_version],
-                                            }
-                                        ),
-                                    ],
-                                    ignore_index=True,
-                                )
+                        success = True
+                        agent.reset()
 
-                                success = True
-                                agent.reset()
+                    except Exception as e:
+                        logger.exception(
+                            f"Attempt {attempt}/{MAX_RETRIES_X_QUESTION} failed for query {q_id}"
+                        )
+                        logger.exception(f"Answer (raw): {answer}")
+                        logger.exception(e)
+                        logger.exception(e.__doc__)
+                        agent.reset()
 
-                            except Exception as e:
-                                logger.exception(
-                                    f"Attempt {attempt}/{MAX_RETRIES_X_QUESTION} failed for query {q_id}"
-                                )
-                                logger.exception(f"Answer (raw): {answer}")
-                                logger.exception(e)
-                                logger.exception(e.__doc__)
-                                agent.reset()
-
-                        if not success:
-                            logger.error(
-                                f"Query {q_id} failed after {MAX_RETRIES_X_QUESTION} attempts. Skipping."
-                            )
-                logger.info(f"Iteration {i} completed, storing results.")
-                if SAVE_TO_DB:
-                    statistics.to_sql(
-                        "answers", SQL_ENGINE, if_exists="append", index=False
+                if not success:
+                    logger.error(
+                        f"Query {q_id} failed after {MAX_RETRIES_X_QUESTION} attempts. Skipping."
                     )
-                else:
-                    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
-                    statistics_path = os.path.join(OUTPUT_FOLDER, f"statistics.csv")
-                    file_exists = os.path.isfile(statistics_path)
-                    statistics.to_csv(
-                        statistics_path, mode="a", index=False, header=not file_exists
-                    )
-                statistics = statistics.iloc[0:0]
+        logger.info(f"Iteration {i} completed, storing results.")
+
+        avg_accuracy_columns = [
+            'test_id', 'model', 'ontology_version', 'llm4bi_version', 'prompt_version', 
+            'iteration', 'accuracy_binary', 'precision', 'recall', 'fmeasure', 
+            'referee_eval', 'avg_precision', 'avg_recall', 'avg_fmeasure', 
+            'question', 'truth', 'full_answer'
+        ]
+
+        statistics = statistics.replace(r'\n|\r', ' ', regex=True)
+
+        if SAVE_TO_DB:
+            statistics[avg_accuracy_columns].to_sql(
+                "ds_answers",
+                SQL_ENGINE,
+                if_exists="append",
+                index=False,
+            )
+        else:
+            os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+            statistics_path = os.path.join(OUTPUT_FOLDER, f"statistics.csv")
+            file_exists = os.path.isfile(statistics_path)
+
+            statistics.to_csv(
+                statistics_path, 
+                mode="a", 
+                index=False, 
+                header=not file_exists,
+                columns=avg_accuracy_columns)
+        statistics = statistics.iloc[0:0]
