@@ -13,18 +13,22 @@ from main.agents.GPTAgent import GPTAgent
 class PerformanceEvaluator:
 
     def __init__(
-        self, questions_path: str, credentials_dict: dict, referee_instructions: str
+        self, questions_path: str, provider: str, credentials_dict: dict, referee_instructions: str
     ):
         with open(questions_path, "r") as f:
             self.questions: Dict[str, Any] = yaml.safe_load(f)["Categories"]
 
-        #self.refree = GPTAgent(
-            #instruction=referee_instructions,
-            #api_key=credentials_dict["gpt"]["api-key"],
-        #)
-        self.refree = OllamaAgent(
-            instruction=referee_instructions,
-        )
+        if provider == "gpt":
+            self.refree = GPTAgent(
+                instruction=referee_instructions,
+                api_key=credentials_dict["gpt"]["api-key"],
+            )
+        elif provider == "ollama":
+            self.refree = OllamaAgent(
+                instruction=referee_instructions,
+            )
+        else:
+            raise ValueError(f"Provider {provider} not supported.")
 
     def evaluate_query_performance(
         self, query_id: str, category: str, answer: Any

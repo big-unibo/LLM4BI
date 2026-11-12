@@ -6,6 +6,8 @@ from sqlalchemy import create_engine, text
 import os
 import yaml
 
+from test.testGPTAgent import PROVIDER
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from main import utils
@@ -37,7 +39,7 @@ STATISTICS_COLUMNS = "test_id,model,category,question,answer,iteration,start_tim
 statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
 
 metric_evaluator = MetricEvaluator.PerformanceEvaluator(
-    QUESTION_FILE, CREDENTIALS, referee_instructions
+    QUESTION_FILE, PROVIDER, CREDENTIALS, referee_instructions
 )
 
 

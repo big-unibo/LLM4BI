@@ -90,16 +90,22 @@ statistics = pd.DataFrame(columns=STATISTICS_COLUMNS.split(","))
 
 ### Creating evalaution agents ###
 prompt = utils.load_yml(PROMPT_FILE)
-#agent = GPTAgent(
-    # instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
-    # api_key=CREDENTIALS["gpt"]["api-key"],
-# )
-agent = OllamaAgent(
-    instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
-)
+
+PROVIDER = "ollama"
+if PROVIDER == "gpt":
+    agent = GPTAgent(
+        instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
+        api_key=CREDENTIALS["gpt"]["api-key"],
+    )
+elif PROVIDER == "ollama":
+    agent = OllamaAgent(
+        instruction="You are a helpful assistant for answering questions about OLAP cubes described through an ontology representation of the  Dimensional Fact Model (DFM).",
+    )
+else:
+    raise ValueError("Invalid PROVIDER.")
 
 metric_evaluator = MetricEvaluator.PerformanceEvaluator(
-    QUESTION_FILE, CREDENTIALS, referee_instructions
+    QUESTION_FILE, PROVIDER, CREDENTIALS, referee_instructions
 )
 
 test_id = TEST_ID if TEST_ID else str(uuid.uuid4())  # EG: ho spostato su
